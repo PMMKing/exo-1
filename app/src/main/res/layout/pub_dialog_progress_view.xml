@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/pub_loading_dlg_bg"
+    android:gravity="center"
+    android:layout_margin="30dp"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <com.wuye.wuye.framework.view.loading.LoadingProgressView
+        android:id="@+id/loading"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <TextView
+        android:id="@+id/hint"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/text_h12"
+        android:gravity="center"
+        android:textColor="@color/pub_color_white"
+        android:layout_height="wrap_content"
+        tools:text="" />
+
+</LinearLayout>

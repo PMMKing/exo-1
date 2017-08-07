@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="icon_font_back">&#xe61d;</string>//返回
+    <string name="icon_font_add">&#xe60f;</string>//十字添加
+    <string name="icon_font_home">&#xe604;</string>//房子home icon
+    <string name="icon_font_my">&#xe609;</string>//我的icon
+    <string name="icon_font_menu">&#xe64b;</string>//三点菜单
+    <string name="icon_font_money">&#xe660;</string>//口袋钱
+    <string name="icon_font_right_arrows">&#xe635;</string>//右箭头
+    <string name="icon_font_setting">&#xe615;</string>//设置齿轮
+</resources>

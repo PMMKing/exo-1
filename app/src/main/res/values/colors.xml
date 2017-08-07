@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#b42031</color>//actionbar color
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#b42031</color>//checkbox check color
+
+    <color name="transparent">#00000000</color>
+    <color name="pub_color_white">#ffffffff</color>
+    <color name="pub_color_black">#ff000000</color>
+    <color name="pub_color_gray_999">#ff999999</color>
+    <color name="pub_color_gray_c8c8c8">#ffc8c8c8</color>
+    <color name="pub_color_gray_e5e5e5">#ffe5e5e5</color>
+    <color name="pub_color_gray_f2f2f2">#fff2f2f2</color>
+    <color name="pub_color_gray_bcbcbc">#ffBCBCBC</color>
+    <color name="pub_color_gray_f8f8f8">#fff8f8f8</color>
+    <color name="pub_color_gray_c1cdd8">#ffC1CDD8</color>
+    <color name="pub_color_gray_b9bebe">#ffb9bebe</color>
+    <color name="pub_color_gray_666">#ff666666</color>
+    <color name="pub_color_red">#b42031</color>
+    <color name="pub_color_red_press">#a71a2a</color>
+    <color name="pub_color_red_disable">#eeff6e6e</color>
+    <color name="pub_color_blue">#ff41CDBE</color>
+    <color name="pub_color_blue_press">#00B9AA</color>
+    <color name="pub_color_blue_calendar">#A0E6DE</color>
+    <color name="pub_color_blue_e5f9ff">#ffe5f9ff</color>
+    <color name="pub_color_blue_f5ffff">#f5ffff</color>
+    <color name="pub_color_gray_line">#fff1f1f1</color>
+    <color name="pub_color_gray_line_c3c3c8">#c3c3c8</color>
+    <color name="pub_color_yellow_line">#ffd306</color>
+
+    <color name="pub_color_ABC">#458467</color>
+    <color name="pub_color_BOC">#971E22</color>
+    <color name="pub_color_CCB">#3467B1</color>
+    <color name="pub_color_CMB">#791C20</color>
+    <color name="pub_color_ICBC">#C2242A</color>
+    <color name="pub_color_PSBC">#366836</color>
+    <color name="pub_color_SPDB">#275192</color>
+
+    <color name="pub_keybord_normal">#ffffff</color>
+    <color name="pub_keybord_press">#d2d4d8</color>
+    <color name="pub_keybord_disable">#c7ced4</color>
+
+</resources>

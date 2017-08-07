@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/pub_titlebar_layout"/>
+
+    <com.wuye.wuye.framework.view.PasswordInputView
+        android:id="@+id/passwordInputView"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_margin="10dp"
+        android:layout_marginTop="25dp"
+        android:cursorVisible="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="number"
+        android:maxLength="6"
+        app:pivBorderColor="#cccccc"
+        app:pivBorderRadius="10dp"
+        app:pivBorderWidth="10dp"
+        app:pivPasswordColor="#cccccc"
+        app:pivPasswordLength="6"
+        app:pivPasswordWidth="10dp" />
+
+    <com.wuye.wuye.framework.view.SafeEditText
+        android:id="@+id/set"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="10dp"
+        android:digits="0123456789QWERTYUIOPASDFGHJKLZXCVBNM."
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="18位身份证号"
+        android:inputType="text"
+        android:lines="1"
+        android:singleLine="true"
+        android:textColor="@color/pub_color_black"
+        android:textSize="@dimen/text_h18" />
+
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="#00ff00"
+        android:src="@drawable/pub_atest" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="400dp"
+        android:background="#00ff00"
+        android:src="@drawable/pub_atest" />
+
+</LinearLayout>
