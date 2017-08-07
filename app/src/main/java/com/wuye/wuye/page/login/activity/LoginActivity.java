@@ -33,14 +33,6 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         animType = CloseActivityAnim.FADE;
-        TitleBarItem titleBarItem = new TitleBarItem(getContext());
-        titleBarItem.setTextTypeItem("注册", 13, 20);
-        setTitleBar(false, titleBarItem);
-        mTitleBar.setRightOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
         ButterKnife.bind(this);
     }
 
