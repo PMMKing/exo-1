@@ -2,5 +2,9 @@
     {
         "merged": "/Users/dzc/que/code/exo/app/build/intermediates/res/merged/debug/raw/outgoing.ogg",
         "source": "/Users/dzc/que/code/exo/app/src/main/res/raw/outgoing.ogg"
+    },
+    {
+        "merged": "/Users/dzc/code/exo/exo/app/build/intermediates/res/merged/debug/raw/outgoing.ogg",
+        "source": "/Users/dzc/code/exo/exo/app/src/main/res/raw/outgoing.ogg"
     }
 ]

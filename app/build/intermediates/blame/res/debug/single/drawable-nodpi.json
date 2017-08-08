@@ -2,5 +2,9 @@
     {
         "merged": "/Users/dzc/que/code/exo/app/build/intermediates/res/merged/debug/drawable-nodpi/empty_photo.png",
         "source": "/Users/dzc/que/code/exo/app/src/main/res/drawable-nodpi/empty_photo.png"
+    },
+    {
+        "merged": "/Users/dzc/code/exo/exo/app/build/intermediates/res/merged/debug/drawable-nodpi/empty_photo.png",
+        "source": "/Users/dzc/code/exo/exo/app/src/main/res/drawable-nodpi/empty_photo.png"
     }
 ]
