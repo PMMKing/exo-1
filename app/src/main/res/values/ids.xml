@@ -6,5 +6,5 @@
     <item name="mod_usercenter" type="id"/>
     <item name="mod_more" type="id"/>
     <item name="realtabcontent" type="id"/>
-
+    <item type="id" name="title_bar"/>
 </resources>

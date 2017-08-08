@@ -43,4 +43,17 @@
         <attr name="isPwd" format="boolean" />
     </declare-styleable>
 
+    <declare-styleable name="ClearableEditText">
+        <attr name="deleteEnabled" format="boolean" />
+        <attr name="textSizeHint" format="dimension" />
+        <attr name="textStyleHint">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <attr name="android:textSize" />
+        <attr name="android:textStyle" />
+        <attr name="clearableIcon" format="integer" />
+    </declare-styleable>
+
 </resources>

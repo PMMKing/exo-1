@@ -17,6 +17,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.text.TextUtils;
 
 import com.alibaba.fastjson.JSON;
@@ -36,6 +37,7 @@ public class MainApplication extends Application {
 
     public static Context applicationContext;
     private static MainApplication instance;
+    private static Typeface iconFont;
     // login user name
     public final String PREF_USERNAME = "username";
 
@@ -88,6 +90,19 @@ public class MainApplication extends Application {
 
     public static MainApplication getInstance() {
         return instance;
+    }
+
+
+    public static Typeface getIconFont() {
+
+        if (iconFont == null) {
+            synchronized (Typeface.class) {
+                if (iconFont == null) {
+                    iconFont = Typeface.createFromAsset(applicationContext.getAssets(), "iconfont/iconfont.ttf");
+                }
+            }
+        }
+        return iconFont;
     }
 
     /**
