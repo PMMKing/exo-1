@@ -27,14 +27,17 @@ import java.util.ArrayList;
  */
 
 public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer> {
+    private final Context mContext;
     RecyclerView rcvListDialog;
 
     public ListDialog(@NonNull Context context) {
-        super(context);
+        this(context, 0);
+
     }
 
     public ListDialog(@NonNull Context context, @StyleRes int themeResId) {
         super(context, themeResId);
+        this.mContext = context;
     }
 
     @Override
@@ -53,6 +56,7 @@ public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer
         getWindow().setAttributes(attributes);
         setContentView(R.layout.pub_dialog_listdialog_layout);
         rcvListDialog = (RecyclerView) findViewById(R.id.rcv_list_dialog);
+        rcvListDialog.addItemDecoration(new LineDecoration(mContext));
         setListView();
 
     }
@@ -72,7 +76,7 @@ public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer
 
             @Override
             public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
-                return new ViewHolder(mContext, LayoutInflater.from(mContext).inflate());
+                return new ViewHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_dialog_listdialog_item_layout, parent, false));
             }
         });
         rcvListDialog.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
