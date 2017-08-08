@@ -21,7 +21,8 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         animType = CloseActivityAnim.DOWN;
 
-        startMainActivity();
+        qStartActivity(LoginActivity.class);
+//        startMainActivity();
     }
 
 

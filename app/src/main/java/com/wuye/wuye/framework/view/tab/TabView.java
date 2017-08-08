@@ -24,7 +24,7 @@ public class TabView extends LinearLayout implements View.OnClickListener {
 
 
     @BindView(R.id.icon)
-    TextView icon;
+    IFView icon;
     @BindView(R.id.text)
     TextView text;
     private TabItem tabItem;
@@ -48,7 +48,7 @@ public class TabView extends LinearLayout implements View.OnClickListener {
         setOrientation(VERTICAL);
         setGravity(Gravity.CENTER);
         setBackgroundResource(R.drawable.pub_tabview_bg_selector);
-        LinearLayout.inflate(context,R.layout.pub_tabview_layout, this);
+        LinearLayout.inflate(context, R.layout.pub_tabview_layout, this);
         ButterKnife.bind(this);
     }
 

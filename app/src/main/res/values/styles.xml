@@ -22,7 +22,6 @@
 
     <style name="mainAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/pub_color_red</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowBackground">@color/pub_color_white</item>
         <item name="windowNoTitle">true</item>
@@ -31,7 +30,6 @@
 
     <style name="titleBarStyle">
         <item name="android:id">@+id/title_bar</item>
-        <item name="android:background">@color/pub_color_red</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>

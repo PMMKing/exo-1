@@ -2,11 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:drawable="@color/pub_color_blue_e5f9ff"/>
+        android:drawable="@color/pub_color_blue"/>
 
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/ic_launcher"/>
+            android:src="@drawable/pub_login_icon"/>
     </item>
 </layer-list>
