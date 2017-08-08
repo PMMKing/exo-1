@@ -43,7 +43,7 @@
 
 
     <color name="colorPrimary">#b42031</color>//actionbar color
-    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">@color/pub_color_gray_666</color>//checkbox check color
 
     <color name="transparent">#00000000</color>
