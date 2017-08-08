@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.wuye.wuye.R;
+
 /**
  * Created by shucheng.qu on 2017/8/7.
  */
@@ -21,17 +23,7 @@ public class LineDecoration extends RecyclerView.ItemDecoration {
     public static final int VERTICAL_LIST = LinearLayoutManager.VERTICAL;
 
     public LineDecoration(Context mContext) {
-        this.mContext = mContext;
-    }
-
-    public LineDecoration(Context mContext, Drawable mDivider) {
-        this.mContext = mContext;
-        this.mDivider = mDivider;
-    }
-
-    public LineDecoration(Context mContext, int mOrientation) {
-        this.mContext = mContext;
-        this.mOrientation = mOrientation;
+        this(mContext,VERTICAL_LIST, R.drawable.pub_gray_line);
     }
 
     public LineDecoration(Context context, int orientation,int resId) {
