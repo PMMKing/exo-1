@@ -66,7 +66,7 @@ public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer
         attributes.width = (int) (0.9*widthPixels);
         getWindow().setAttributes(attributes);
         rcvListDialog = (RecyclerView) findViewById(R.id.rcv_list_dialog);
-//        rcvListDialog.addItemDecoration(new LineDecoration(mContext));
+        rcvListDialog.addItemDecoration(new LineDecoration(mContext));
         setListView();
 
         rcvListDialog.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {

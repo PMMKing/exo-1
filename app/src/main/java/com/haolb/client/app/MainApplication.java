@@ -85,7 +85,7 @@ public class MainApplication extends Application {
          *     // do HuanXin related work
          * }
          */
-        hxSDKHelper.onInit(applicationContext);
+//        hxSDKHelper.onInit(applicationContext);
     }
 
     public static MainApplication getInstance() {

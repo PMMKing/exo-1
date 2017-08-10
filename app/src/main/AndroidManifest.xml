@@ -39,46 +39,42 @@
         android:icon="@drawable/logo_uidemo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
+
         <activity
             android:name="com.page.splash.activity.SplashActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.page.login.activity.LoginActivity"
+            android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
 
+        <activity
+            android:name="com.page.eventlist.activity.EventListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- 设置环信应用的appkey -->
-        <meta-data
-            android:name="EASEMOB_APPKEY"
-            android:value="liarman#bang" />
-        <!-- 声明sdk所需的service -->
-        <service android:name="com.easemob.chat.EMChatService" />
+        <activity
+            android:name="com.page.repairlist.activity.RepairListActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
 
-        <!-- 百度地图所需的service -->
-        <service
-            android:name="com.baidu.location.f"
-            android:enabled="true"
-            android:process=":remote" />
-        <!-- umeng appkey-->
-        <meta-data
-            android:name="UMENG_APPKEY"
-            android:value="53235a7b56240b888d05bb1b"></meta-data>
-        <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="Umeng"></meta-data>
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="3ecea51f560650b1ed8a4b99808f52e8" />
+        <activity
+            android:name="com.page.quickpai.activity.QuickPaiActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+
     </application>
-
 </manifest>

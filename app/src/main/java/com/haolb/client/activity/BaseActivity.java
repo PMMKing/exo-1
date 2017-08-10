@@ -68,7 +68,6 @@ import com.haolb.client.utils.tuski.Tuski;
 import com.haolb.client.view.QProgressDialogFragment;
 import com.haolb.client.view.SystemBarTintManager;
 import com.haolb.client.view.TitleBar;
-import com.umeng.analytics.MobclickAgent;
 
 import java.util.List;
 
@@ -144,7 +143,6 @@ public abstract class BaseActivity extends FragmentActivity implements
 
     protected void onPause() {
         super.onPause();
-        MobclickAgent.onPause(this);
     }
     /**
      * 返回
@@ -455,10 +453,9 @@ public abstract class BaseActivity extends FragmentActivity implements
         isActive = true;
         }
         // onresume时，取消notification显示
-        HXSDKHelper.getInstance().getNotifier().reset();
+//        HXSDKHelper.getInstance().getNotifier().reset();
 
         // umeng
-        MobclickAgent.onResume(this);
 
 		mAndroidContent = (FrameLayout) getWindow().findViewById(
 				Window.ID_ANDROID_CONTENT);

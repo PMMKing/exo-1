@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AutoCompleteTextView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.haolb.client.R;
 import com.haolb.client.app.MainApplication;
@@ -92,8 +93,8 @@ public class TitleBarCenterItem extends LinearLayout {
             }
         } else {
             View inflateView = inflate(this.getContext(), R.layout.pub_titlebar_center_content_layout, (ViewGroup) null);
-            if (inflateView != null && inflateView instanceof AutoCompleteTextView) {
-                AutoCompleteTextView autoScaleTextView = (AutoCompleteTextView) inflateView;
+            if (inflateView != null && inflateView instanceof TextView) {
+                TextView autoScaleTextView = (TextView) inflateView;
                 autoScaleTextView.setTypeface(MainApplication.getIconFont());
                 if (this.titleMaxTextSize != -1.0F) {
                     autoScaleTextView.setTextSize(this.titleMaxTextSize);

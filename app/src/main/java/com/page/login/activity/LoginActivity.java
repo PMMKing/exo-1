@@ -12,6 +12,9 @@ import android.widget.Toast;
 import com.framework.view.ListDialog;
 import com.haolb.client.R;
 import com.haolb.client.activity.BaseActivity;
+import com.page.eventlist.activity.EventListActivity;
+import com.page.quickpai.activity.QuickPaiActivity;
+import com.page.repairlist.activity.RepairListActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -47,13 +50,14 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
 
-        ListDialog dialog = null;
-        if (dialog == null) {
-            dialog = new ListDialog(getContext(), R.style.list_dialog_style);
-        }
-        dialog.show();
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(false);
+//        ListDialog dialog = null;
+//        if (dialog == null) {
+//            dialog = new ListDialog(getContext(), R.style.list_dialog_style);
+//        }
+//        dialog.show();
+//        dialog.setCancelable(true);
+//        dialog.setCanceledOnTouchOutside(false);
+        qStartActivity(QuickPaiActivity.class);
 //        exitBy2Click();
     }
 

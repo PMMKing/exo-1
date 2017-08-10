@@ -18,13 +18,13 @@
         android:visibility="gone"
         tools:visibility="visible">
 
-        <com.wuye.wuye.framework.view.IFView
+        <com.framework.view.IFView
             android:id="@+id/pub_pat_id_icon_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="false"
             android:text="@string/icon_font_back"
-            android:textColor="@color/pub_color_white"
+            android:textColor="@color/pub_color_blue"
             android:textSize="@dimen/text_h26" />
     </LinearLayout>
 

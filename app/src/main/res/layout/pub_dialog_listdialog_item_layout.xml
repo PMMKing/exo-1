@@ -7,11 +7,16 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center_vertical"
-
+        android:gravity="center"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
         android:text="这是一个测试的item"
-        android:textColor="#00ff00" />
+        android:background="@drawable/pub_background_ripple"
+        android:textColor="@color/pub_color_black"
+        android:textSize="@dimen/text_h20" />
 
 </LinearLayout>
