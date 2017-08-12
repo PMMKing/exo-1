@@ -44,7 +44,7 @@ public final class MD5Util {
      * 
      * @param bytes 要进行MD5摘要的字节信�?
      * @return 十六进制的MD5摘要
-     * @throws java.security.NoSuchAlgorithmException
+     * @throws NoSuchAlgorithmException
      * @throws Exception 如果处理中发生异常的�?
      */
     public static String hexDigest(byte[] bytes) throws NoSuchAlgorithmException {

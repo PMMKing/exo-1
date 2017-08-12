@@ -18,7 +18,7 @@ import java.util.RandomAccess;
 public class QArrays {
 
     /**
-     * 加强版的asList会检查传入是否为null，以保证不会抛出异常 并且返回的arraylist改为{@link java.util.ArrayList}
+     * 加强版的asList会检查传入是否为null，以保证不会抛出异常 并且返回的arraylist改为{@link ArrayList}
      * 
      * @param <T>
      * @param array

@@ -98,10 +98,10 @@ final class TuskiHandler extends Handler {
     }
 
     /**
-     * Sends a {@link Tuski} within a {@link android.os.Message}.
+     * Sends a {@link Tuski} within a {@link Message}.
      *
      * @param tuski The {@link Tuski} that should be sent.
-     * @param messageId The {@link android.os.Message} id.
+     * @param messageId The {@link Message} id.
      */
     private void sendMessage(Tuski tuski, final int messageId) {
         final Message message = obtainMessage(messageId);
@@ -110,10 +110,10 @@ final class TuskiHandler extends Handler {
     }
 
     /**
-     * Sends a {@link Tuski} within a delayed {@link android.os.Message}.
+     * Sends a {@link Tuski} within a delayed {@link Message}.
      *
      * @param tuski The {@link Tuski} that should be sent.
-     * @param messageId The {@link android.os.Message} id.
+     * @param messageId The {@link Message} id.
      * @param delay The delay in milliseconds.
      */
     private void sendMessageDelayed(Tuski tuski, final int messageId, final long delay) {
@@ -153,7 +153,7 @@ final class TuskiHandler extends Handler {
     }
 
     /**
-     * Adds a {@link Tuski} to the {@link android.view.ViewParent} of it's {@link android.app.Activity}.
+     * Adds a {@link Tuski} to the {@link android.view.ViewParent} of it's {@link Activity}.
      *
      * @param tuski The {@link Tuski} that should be added.
      */
@@ -197,7 +197,7 @@ final class TuskiHandler extends Handler {
     /**
      * Removes the {@link Tuski}'s view after it's display durationInMilliseconds.
      *
-     * @param tuski The {@link Tuski} added to a {@link android.view.ViewGroup} and should be removed.
+     * @param tuski The {@link Tuski} added to a {@link ViewGroup} and should be removed.
      */
     protected void removeTuski(Tuski tuski) {
         View contentView = tuski.getView();
@@ -284,7 +284,7 @@ final class TuskiHandler extends Handler {
     }
 
     /**
-     * Removes all {@link Tuski}s for the provided activity. This will remove tuski from {@link android.app.Activity}s content view
+     * Removes all {@link Tuski}s for the provided activity. This will remove tuski from {@link Activity}s content view
      * immediately.
      */
     void clearTuskisForActivity(Activity activity) {
@@ -332,7 +332,7 @@ final class TuskiHandler extends Handler {
      * Adapted from https://http://eyes-free.googlecode.com/files/accessibility_codelab_demos_v2_src.zip via
      * https://github.com/coreform/android-formidable-validation
      *
-     * @param context Used to get {@link android.view.accessibility.AccessibilityManager}
+     * @param context Used to get {@link AccessibilityManager}
      * @param text The text to announce.
      */
     public static void announceForAccessibilityCompat(Context context, CharSequence text) {

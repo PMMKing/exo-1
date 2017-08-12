@@ -207,7 +207,7 @@ public final class DiskLruCache implements Closeable {
      * @param directory a writable directory
      * @param valueCount the number of values per cache entry. Must be positive.
      * @param maxSize the maximum number of bytes this cache should use to store
-     * @throws java.io.IOException if reading or writing the cache directory fails
+     * @throws IOException if reading or writing the cache directory fails
      */
     public static DiskLruCache open(File directory, int appVersion, int valueCount, long maxSize) throws IOException {
         if (maxSize <= 0) {

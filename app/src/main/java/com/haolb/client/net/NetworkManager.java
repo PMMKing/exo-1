@@ -14,12 +14,10 @@ import com.alibaba.fastjson.JSON;
 import com.haolb.client.app.AppConstants;
 import com.haolb.client.app.MainApplication;
 import com.haolb.client.app.NetConnChangeReceiver;
-import com.haolb.client.domain.param.CommonParam;
 import com.haolb.client.domain.response.BaseResult;
 import com.haolb.client.utils.EqualUtils;
 import com.haolb.client.utils.QLog;
 import com.haolb.client.utils.SecureUtil;
-import com.haolb.client.utils.UCUtils;
 
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
@@ -172,15 +170,15 @@ public class NetworkManager implements TaskListener {
                 return null;
             }
             
-            networkTask.param.param.cparam = new CommonParam();
-            networkTask.param.param.cparam.imei = imei;
-            networkTask.param.param.cparam.versionCode = MainApplication.getInstance().versionCode;
-            networkTask.param.param.cparam.versionName = MainApplication.getInstance().versionName;
-            networkTask.param.param.cparam.city =UCUtils.getInstance().getCity().id;
-            String userId = UCUtils.getInstance().getUserid();
-            networkTask.param.param.cparam.userId = TextUtils.isEmpty(userId) ? null : Integer.parseInt(userId);
-            String token = UCUtils.getInstance().getToken();
-            networkTask.param.param.cparam.token = TextUtils.isEmpty(token) ? "" : token;
+//            networkTask.param.param.cparam = new CommonParam();
+//            networkTask.param.param.cparam.imei = imei;
+//            networkTask.param.param.cparam.versionCode = MainApplication.getInstance().versionCode;
+//            networkTask.param.param.cparam.versionName = MainApplication.getInstance().versionName;
+//            networkTask.param.param.cparam.city =UCUtils.getInstance().getCity().id;
+//            String userId = UCUtils.getInstance().getUserid();
+//            networkTask.param.param.cparam.userId = TextUtils.isEmpty(userId) ? null : Integer.parseInt(userId);
+//            String token = UCUtils.getInstance().getToken();
+//            networkTask.param.param.cparam.token = TextUtils.isEmpty(token) ? "" : token;
             String bjson = JSON.toJSONString(networkTask.param.param);
     		String b = SecureUtil.encode(bjson, networkTask.param.ke);
     		networkTask.param.url = "b=" + b + "&key=" + networkTask.param.ke + "&ver=1" ;

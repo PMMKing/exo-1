@@ -36,22 +36,15 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.easemob.chat.EMMessage;
-import com.easemob.chat.TextMessageBody;
 import com.haolb.client.R;
-import com.haolb.client.app.MainApplication;
-import com.haolb.client.domain.response.MessageResult;
 import com.haolb.client.net.NetworkListener;
 import com.haolb.client.net.NetworkManager;
 import com.haolb.client.net.NetworkParam;
 import com.haolb.client.net.Request;
-import com.haolb.client.net.ServiceMap;
 import com.haolb.client.utils.BusinessUtils;
-import com.haolb.client.utils.Globals;
 import com.haolb.client.utils.HandlerCallbacks;
 import com.haolb.client.utils.IBaseActFrag;
 import com.haolb.client.utils.QLog;
-import com.haolb.client.utils.UCUtils;
 import com.haolb.client.utils.inject.Injector;
 import com.haolb.client.utils.tuski.Tuski;
 import com.haolb.client.view.QProgressDialogFragment;
@@ -428,33 +421,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
 	}
     @Override
     public boolean onMsgSearchComplete(final NetworkParam param) {
-        if(param.key== ServiceMap.GET_MESSAGE){
-            if(param.result.bstatus.code==0){
-                MessageResult messageResult =(MessageResult) param.result;
-                MainApplication.getInstance().setMessage(messageResult.data.messages);
-                if (MainApplication.getInstance().getHasNewMessage()) {
-                    // 提示新消息
-                    EMMessage message = EMMessage.createReceiveMessage(EMMessage.Type.TXT);
-                    message.setFrom(getContext().getContext().getString(R.string.app_name));
-                    message.addBody(new TextMessageBody("新公告"));
-                    com.easemob.applib.controller.HXSDKHelper.getInstance().getNotifier().sendMyNotification(message);
-                }
-            }
-        }
 
-        switch (param.result.bstatus.code) {
-            case Globals.STATUS_CODE_NOT_LOGIN:
-                UCUtils.getInstance().removeCookie();
-                showToast(param.result.bstatus.des);
-
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(NetworkParam.TAG, param);
-
-                qStartActivityForResult(LoginAct.class, bundle, BaseActivity.REQUEST_CODE_LOGIN);
-                return true;
-            default:
-                break;
-        }
         return false;
     }
 

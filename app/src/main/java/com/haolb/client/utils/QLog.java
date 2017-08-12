@@ -184,7 +184,7 @@ public final class QLog {
 
     /**
      * from = 20120101
-     * @see #getSecond(java.util.Calendar)
+     * @see #getSecond(Calendar)
      * @return
      */
     public static long getSecond() {

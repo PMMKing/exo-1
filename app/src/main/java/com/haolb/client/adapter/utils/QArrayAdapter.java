@@ -86,8 +86,8 @@ public abstract class QArrayAdapter<T> extends BaseAdapter implements Filterable
     }
 
     /**
-     * 适配2.3以下的{@link android.view.View#setTag(int, Object)},避免内存泄漏<br/>
-     * WARING!!! 通过这种方式setTag时请勿调用该view的{@link android.view.View#setTag(Object)} （会覆盖原本的Tag）
+     * 适配2.3以下的{@link View#setTag(int, Object)},避免内存泄漏<br/>
+     * WARING!!! 通过这种方式setTag时请勿调用该view的{@link View#setTag(Object)} （会覆盖原本的Tag）
      *
      * @param view
      * @param id
@@ -108,7 +108,7 @@ public abstract class QArrayAdapter<T> extends BaseAdapter implements Filterable
     }
 
     /**
-     * WARING!!! 通过这种方式setTag时请勿调用该view的{@link android.view.View#getTag()} （会覆盖原本的Tag）
+     * WARING!!! 通过这种方式setTag时请勿调用该view的{@link View#getTag()} （会覆盖原本的Tag）
      * 
      * @param view
      * @param id

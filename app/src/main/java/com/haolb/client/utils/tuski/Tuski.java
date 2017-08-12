@@ -17,7 +17,7 @@ import android.widget.TextView;
  * 消息提示，用于替换Toast(这玩意从4.2开始可以被用户禁用了 哇擦雷) <br / >
  * 不过由于系统安全限制，使用Tuski进行提示时消息仅能悬浮于当前activity前面，这个问题后续考虑解决::>_<::<br />
  * <p>
- * WARNING!!! {@link android.app.Activity#onDestory()}时要调用 Tuski.clearTuskiesForActivity(this); 防止activity泄露
+ * WARNING!!! {@link Activity#onDestory()}时要调用 Tuski.clearTuskiesForActivity(this); 防止activity泄露
  * </p>
  *
  * @author zitian.zhang
@@ -93,7 +93,7 @@ public final class Tuski {
     /**
      * Creates a {@link com.mixin.client.utils.tuski.Tuski} with provided text and style for a given activity.
      *
-     * @param activity The {@link android.app.Activity} that the {@link com.mixin.client.utils.tuski.Tuski} should be attached to.
+     * @param activity The {@link Activity} that the {@link com.mixin.client.utils.tuski.Tuski} should be attached to.
      * @param text The text you want to display.
      * @param style The style that this {@link com.mixin.client.utils.tuski.Tuski} should be created with.
      *
@@ -106,10 +106,10 @@ public final class Tuski {
     /**
      * Creates a {@link com.mixin.client.utils.tuski.Tuski} with provided text and style for a given activity.
      *
-     * @param activity The {@link android.app.Activity} that represents the context in which the Tuski should exist.
+     * @param activity The {@link Activity} that represents the context in which the Tuski should exist.
      * @param text The text you want to display.
      * @param style The style that this {@link com.mixin.client.utils.tuski.Tuski} should be created with.
-     * @param viewGroup The {@link android.view.ViewGroup} that this {@link com.mixin.client.utils.tuski.Tuski} should be added to.
+     * @param viewGroup The {@link ViewGroup} that this {@link com.mixin.client.utils.tuski.Tuski} should be added to.
      *
      * @return The created {@link com.mixin.client.utils.tuski.Tuski}.
      */
@@ -121,7 +121,7 @@ public final class Tuski {
     /**
      * Creates a {@link com.mixin.client.utils.tuski.Tuski} with provided text-resource and style for a given activity.
      *
-     * @param activity The {@link android.app.Activity} that the {@link com.mixin.client.utils.tuski.Tuski} should be attached to.
+     * @param activity The {@link Activity} that the {@link com.mixin.client.utils.tuski.Tuski} should be attached to.
      * @param textResourceId The resource id of the text you want to display.
      * @param style The style that this {@link com.mixin.client.utils.tuski.Tuski} should be created with.
      *
@@ -134,10 +134,10 @@ public final class Tuski {
     /**
      * Creates a {@link com.mixin.client.utils.tuski.Tuski} with provided text-resource and style for a given activity.
      *
-     * @param activity The {@link android.app.Activity} that represents the context in which the Tuski should exist.
+     * @param activity The {@link Activity} that represents the context in which the Tuski should exist.
      * @param textResourceId The resource id of the text you want to display.
      * @param style The style that this {@link com.mixin.client.utils.tuski.Tuski} should be created with.
-     * @param viewGroup The {@link android.view.ViewGroup} that this {@link com.mixin.client.utils.tuski.Tuski} should be added to.
+     * @param viewGroup The {@link ViewGroup} that this {@link com.mixin.client.utils.tuski.Tuski} should be added to.
      *
      * @return The created {@link com.mixin.client.utils.tuski.Tuski}.
      */
@@ -149,8 +149,8 @@ public final class Tuski {
     /**
      * Creates a {@link com.mixin.client.utils.tuski.Tuski} with provided text-resource and style for a given activity.
      *
-     * @param activity The {@link android.app.Activity} that the {@link com.mixin.client.utils.tuski.Tuski} should be attached to.
-     * @param customView The custom {@link android.view.View} to display
+     * @param activity The {@link Activity} that the {@link com.mixin.client.utils.tuski.Tuski} should be attached to.
+     * @param customView The custom {@link View} to display
      *
      * @return The created {@link com.mixin.client.utils.tuski.Tuski}.
      */
@@ -161,9 +161,9 @@ public final class Tuski {
     /**
      * Creates a {@link com.mixin.client.utils.tuski.Tuski} with provided text-resource and style for a given activity.
      *
-     * @param activity The {@link android.app.Activity} that represents the context in which the Tuski should exist.
-     * @param customView The custom {@link android.view.View} to display
-     * @param viewGroup The {@link android.view.ViewGroup} that this {@link com.mixin.client.utils.tuski.Tuski} should be added to.
+     * @param activity The {@link Activity} that represents the context in which the Tuski should exist.
+     * @param customView The custom {@link View} to display
+     * @param viewGroup The {@link ViewGroup} that this {@link com.mixin.client.utils.tuski.Tuski} should be added to.
      *
      * @return The created {@link com.mixin.client.utils.tuski.Tuski}.
      */
@@ -180,9 +180,9 @@ public final class Tuski {
     }
 
     /**
-     * Clears (and removes from {@link android.app.Activity}'s content view, if necessary) all tuskies for the provided activity
+     * Clears (and removes from {@link Activity}'s content view, if necessary) all tuskies for the provided activity
      *
-     * @param activity - The {@link android.app.Activity} to clear the tuskies for.
+     * @param activity - The {@link Activity} to clear the tuskies for.
      */
     public static void clearTuskiesForActivity(Activity activity) {
         TuskiHandler.getInstance().clearTuskisForActivity(activity);

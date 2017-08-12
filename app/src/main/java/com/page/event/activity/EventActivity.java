@@ -1,4 +1,4 @@
-package com.page.eventlaunch.activity;
+package com.page.event.activity;
 
 import android.os.Bundle;
 
@@ -9,7 +9,7 @@ import com.haolb.client.activity.BaseActivity;
  * Created by shucheng.qu on 2017/8/11.
  */
 
-public class EventLaunchActivity extends BaseActivity {
+public class EventActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
