@@ -9,6 +9,9 @@ import com.haolb.client.utils.Enums;
  */
 public enum ServiceMap implements Enums.IType {
     OPENGATE("/opengate.do", BaseResult.class), //获取通讯录联系人
+    getLinks("/getLinks.do", BaseResult.class),
+    checkVersion("/checkVersion.do", BaseResult.class),
+    getVerificationCode("/getVerificationCode.do", BaseResult.class),
     ;
 
     private final String mType;

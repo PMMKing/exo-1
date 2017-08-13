@@ -72,6 +72,7 @@
             </android.support.design.widget.TextInputLayout>
 
             <TextView
+                android:id="@+id/text_send_code"
                 android:layout_width="93dp"
                 android:layout_height="33dp"
                 android:layout_gravity="center_vertical|right"

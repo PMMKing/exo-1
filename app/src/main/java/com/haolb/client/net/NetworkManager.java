@@ -14,6 +14,8 @@ import com.alibaba.fastjson.JSON;
 import com.haolb.client.app.AppConstants;
 import com.haolb.client.app.MainApplication;
 import com.haolb.client.app.NetConnChangeReceiver;
+import com.haolb.client.domain.UCUtils;
+import com.haolb.client.domain.param.CommonParam;
 import com.haolb.client.domain.response.BaseResult;
 import com.haolb.client.utils.EqualUtils;
 import com.haolb.client.utils.QLog;
@@ -127,11 +129,11 @@ public class NetworkManager implements TaskListener {
             if (!networkTask.cancel) {
                 // set host
                 switch (networkTask.param.key.getCode()) {
-                default:
-                    // 未指定host使用默认
-                	hostUrl = TextUtils.isEmpty(networkTask.param.hostPath) ? AppConstants.COMMON_URL + networkTask.param.key.getDesc()
-                            : networkTask.param.hostPath;
-                    break;
+                    default:
+                        // 未指定host使用默认
+                        hostUrl = TextUtils.isEmpty(networkTask.param.hostPath) ? AppConstants.COMMON_URL + networkTask.param.key.getDesc()
+                                : networkTask.param.hostPath;
+                        break;
                 }
                 // -- end -- set host
                 // set proxy
@@ -169,21 +171,20 @@ public class NetworkManager implements TaskListener {
             if (networkTask.param.param == null) {
                 return null;
             }
-            
-//            networkTask.param.param.cparam = new CommonParam();
-//            networkTask.param.param.cparam.imei = imei;
-//            networkTask.param.param.cparam.versionCode = MainApplication.getInstance().versionCode;
-//            networkTask.param.param.cparam.versionName = MainApplication.getInstance().versionName;
+
+            networkTask.param.param.cparam = new CommonParam();
+            networkTask.param.param.cparam.imei = imei;
+            networkTask.param.param.cparam.versionCode = MainApplication.getInstance().versionCode;
+            networkTask.param.param.cparam.versionName = MainApplication.getInstance().versionName;
 //            networkTask.param.param.cparam.city =UCUtils.getInstance().getCity().id;
-//            String userId = UCUtils.getInstance().getUserid();
-//            networkTask.param.param.cparam.userId = TextUtils.isEmpty(userId) ? null : Integer.parseInt(userId);
-//            String token = UCUtils.getInstance().getToken();
-//            networkTask.param.param.cparam.token = TextUtils.isEmpty(token) ? "" : token;
+            String userId = UCUtils.getInstance().getUserid();
+            networkTask.param.param.cparam.userId = TextUtils.isEmpty(userId) ? null : Integer.parseInt(userId);
+            String token = UCUtils.getInstance().getToken();
+            networkTask.param.param.cparam.token = TextUtils.isEmpty(token) ? "" : token;
+            networkTask.param.param.cparam.platform = "1";
             String bjson = JSON.toJSONString(networkTask.param.param);
-    		String b = SecureUtil.encode(bjson, networkTask.param.ke);
-    		networkTask.param.url = "b=" + b + "&key=" + networkTask.param.ke + "&ver=1" ;
-            
-    		
+            String b = SecureUtil.encode(bjson, networkTask.param.ke);
+            networkTask.param.url = "b=" + b + "&key=" + networkTask.param.ke + "&ver=1" ;
             if (networkTask.cancel) {
                 return null;
             }
@@ -198,41 +199,41 @@ public class NetworkManager implements TaskListener {
             FileInputStream fis = null;
             HttpClient httpClient = NetworkManager.getHttpClient(proxyHost, proxyPort);
             try {
-            	HttpPost request;
-            	
-            	if(networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_CONTROL) {
-            		request = new HttpPost(hostUrl);
-            		request.addHeader("Content-Type", "application/x-www-form-urlencoded");
-            		// request.addHeader("User-Agent",
-            		// "Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
-            		request.setEntity(new StringEntity(networkTask.param.url));
-            	} else if(networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_FILE) {
-            		if(TextUtils.isEmpty(networkTask.param.filePath)) {
-            			request = new HttpPost(hostUrl);
-                		request.addHeader("Content-Type", "application/x-www-form-urlencoded");
-                		// request.addHeader("User-Agent",
-                		// "Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
-                		request.setEntity(new StringEntity(networkTask.param.url));
-            		} else {
-            			String url = hostUrl;
-            			if(url.lastIndexOf("?") != -1) {
-            				url += "&";
-            			} else {
-            				url += "?";
-            			}
-            			url += networkTask.param.url;
-            			request = new HttpPost(url);
-            			request.addHeader("Content-Type", "application/octet-stream");
-            			File file = new File(networkTask.param.filePath);
-            			InputStreamEntity ise = new InputStreamEntity(fis = new FileInputStream(file), file.length());
-            			request.setEntity(ise);
-            		}
-            	} else {
-            		//不支持的类型
-            		return null;
-            	}
-                
-                
+                HttpPost request;
+
+                if(networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_CONTROL) {
+                    request = new HttpPost(hostUrl);
+                    request.addHeader("Content-Type", "application/x-www-form-urlencoded");
+                    // request.addHeader("User-Agent",
+                    // "Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
+                    request.setEntity(new StringEntity(networkTask.param.url));
+                } else if(networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_FILE) {
+                    if(TextUtils.isEmpty(networkTask.param.filePath)) {
+                        request = new HttpPost(hostUrl);
+                        request.addHeader("Content-Type", "application/x-www-form-urlencoded");
+                        // request.addHeader("User-Agent",
+                        // "Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
+                        request.setEntity(new StringEntity(networkTask.param.url));
+                    } else {
+                        String url = hostUrl;
+                        if(url.lastIndexOf("?") != -1) {
+                            url += "&";
+                        } else {
+                            url += "?";
+                        }
+                        url += networkTask.param.url;
+                        request = new HttpPost(url);
+                        request.addHeader("Content-Type", "application/octet-stream");
+                        File file = new File(networkTask.param.filePath);
+                        InputStreamEntity ise = new InputStreamEntity(fis = new FileInputStream(file), file.length());
+                        request.setEntity(ise);
+                    }
+                } else {
+                    //不支持的类型
+                    return null;
+                }
+
+
                 HttpResponse response = httpClient.execute(request);
                 int statusCode = response.getStatusLine().getStatusCode();
                 QLog.v("response", "http status code : %d", statusCode);
@@ -249,11 +250,11 @@ public class NetworkManager implements TaskListener {
                     httpClient.getConnectionManager().shutdown();
                 }
                 if(fis != null) {
-                	try {
-						fis.close();
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
+                    try {
+                        fis.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             return null;
@@ -263,7 +264,7 @@ public class NetworkManager implements TaskListener {
         @Override
         protected BaseResult doInBackground(Void... params) {
             if (!networkTask.cancel) {
-            	BaseResult baseResult = Response.dealWithResponse(doRequest(), networkTask.param);
+                BaseResult baseResult = Response.dealWithResponse(doRequest(), networkTask.param);
 //            	if(networkTask.param.key == ServiceMap.GET_FRIENDS && baseResult != null) {
 //            		if(baseResult.bstatus.code == 0) {
 //            			//更新本地数据库记录
@@ -273,7 +274,7 @@ public class NetworkManager implements TaskListener {
 ////            			friendListResult.data.friendList = FriendManager.sync(friendListResult.data.friendList,myId);
 //            		}
 //            	}
-            	return baseResult;
+                return baseResult;
             }
             cancel(true);
             return null;
@@ -386,59 +387,59 @@ public class NetworkManager implements TaskListener {
             }
 
             switch (param.addType) {
-            case Request.NET_ADD_ONORDER:
-                this.listSequence.add(task);
-                break;
-            case Request.NET_ADD_INSERT2HEAD:
-                this.listSequence.add(0, task);
-                break;
-            case Request.NET_ADD_CANCELPRE: {
-                Iterator<NetworkTask> it = this.listSequence.iterator();
-                while (it.hasNext()) {
-                    NetworkTask nt = it.next();
-                    if (param.key.getCode() == nt.param.key.getCode() && nt.param.cancelAble) {
-                        it.remove();
+                case Request.NET_ADD_ONORDER:
+                    this.listSequence.add(task);
+                    break;
+                case Request.NET_ADD_INSERT2HEAD:
+                    this.listSequence.add(0, task);
+                    break;
+                case Request.NET_ADD_CANCELPRE: {
+                    Iterator<NetworkTask> it = this.listSequence.iterator();
+                    while (it.hasNext()) {
+                        NetworkTask nt = it.next();
+                        if (param.key.getCode() == nt.param.key.getCode() && nt.param.cancelAble) {
+                            it.remove();
+                        }
                     }
-                }
 
-                synchronized (taskList) {
-                    Iterator<QTasks> itt = taskList.iterator();
-                    while (itt.hasNext()) {
-                        QTasks qtask = itt.next();
-                        qtask.cancelWithType(param.key.getCode());
-                        itt.remove();
-                    }
-                }
-
-                this.listSequence.add(0, task);
-            }
-                break;
-            case Request.NET_ADD_CANCELSAMET: {
-
-                Iterator<NetworkTask> it = this.listSequence.iterator();
-                while (it.hasNext()) {
-                    NetworkTask nt = it.next();
-                    if (param.key == nt.param.key && nt.param.cancelAble) {
-                        it.remove();
-                    }
-                }
-                synchronized (taskList) {
-                    Iterator<QTasks> itt = taskList.iterator();
-                    while (itt.hasNext()) {
-                        QTasks qtask = itt.next();
-                        if (qtask.networkTask.param.key == param.key) {
+                    synchronized (taskList) {
+                        Iterator<QTasks> itt = taskList.iterator();
+                        while (itt.hasNext()) {
+                            QTasks qtask = itt.next();
                             qtask.cancelWithType(param.key.getCode());
                             itt.remove();
                         }
                     }
+
+                    this.listSequence.add(0, task);
                 }
-
-                this.listSequence.add(task);
-
-            }
                 break;
-            default:
+                case Request.NET_ADD_CANCELSAMET: {
+
+                    Iterator<NetworkTask> it = this.listSequence.iterator();
+                    while (it.hasNext()) {
+                        NetworkTask nt = it.next();
+                        if (param.key == nt.param.key && nt.param.cancelAble) {
+                            it.remove();
+                        }
+                    }
+                    synchronized (taskList) {
+                        Iterator<QTasks> itt = taskList.iterator();
+                        while (itt.hasNext()) {
+                            QTasks qtask = itt.next();
+                            if (qtask.networkTask.param.key == param.key) {
+                                qtask.cancelWithType(param.key.getCode());
+                                itt.remove();
+                            }
+                        }
+                    }
+
+                    this.listSequence.add(task);
+
+                }
                 break;
+                default:
+                    break;
             }
         }
         checkTasks();
@@ -681,10 +682,10 @@ public class NetworkManager implements TaskListener {
     }
 
     /**
-     * 
+     *
      * @param proxyHost 代理host
      * @param proxyPort 代理port
-     * 
+     *
      *            <pre>
      *   CMWAP 10.0.0.172:80
      *   CTWAP 10.0.0.200
@@ -725,7 +726,7 @@ public class NetworkManager implements TaskListener {
 
     /**
      * 获取APN名称
-     * 
+     *
      * @return
      */
     public static String getApnName() {

@@ -10,7 +10,7 @@ public class AppConstants {
 
 //	public final static String COMMON_URL = "http://123.59.33.179:8080/bang2/customer";
 
-    public final static String COMMON_URL = "http://123.56.121.2:8080/bang/customer";
+    public final static String COMMON_URL = "http://115.28.235.86:8081/yjwy/customer";
 
 	/** 浅定制需求3: 退出应用，杀死进程 **/
 	public final static boolean KILL_PROGRESS_ON_QUIT = false;

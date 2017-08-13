@@ -6,12 +6,16 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 import com.framework.view.ListDialog;
 import com.haolb.client.R;
 import com.haolb.client.activity.BaseActivity;
+import com.haolb.client.net.NetworkParam;
+import com.haolb.client.net.Request;
+import com.haolb.client.net.ServiceMap;
 import com.page.eventlist.activity.EventListActivity;
 import com.page.quickpai.activity.QuickPaiActivity;
 import com.page.repairlist.activity.RepairListActivity;
@@ -37,6 +41,9 @@ public class LoginActivity extends BaseActivity {
     TextInputEditText tietPassword;
     @BindView(R.id.til_password)
     TextInputLayout tilPassword;
+//    @BindView(R.id.text_send_code)
+    TextView textSendCode;
+
     private boolean mIsExit;
 
     @Override
@@ -44,8 +51,34 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_login_layout);
         ButterKnife.bind(this);
+        textSendCode=(TextView)findViewById(R.id.text_send_code);
+        textSendCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//             sendCode();
+                checkUpdate();
+            }
+
+        });
+    }
+    public void checkUpdate(){
+
+        Request.startRequest(new UpdateParam(), ServiceMap.checkVersion, mHandler);
     }
 
+    private void sendCode() {
+        LoginSendCodeParam loginSendCodeParam = new LoginSendCodeParam();
+        loginSendCodeParam.phone="15811508404";
+        Request.startRequest(loginSendCodeParam, ServiceMap.getVerificationCode, mHandler);
+    }
+
+    @Override
+    public boolean onMsgSearchComplete(NetworkParam param) {
+        if (param.key==ServiceMap.getVerificationCode){
+
+        }
+        return super.onMsgSearchComplete(param);
+    }
 
     @Override
     public void onBackPressed() {
