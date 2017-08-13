@@ -48,7 +48,7 @@
 
     <color name="transparent">#00000000</color>
     <color name="pub_color_white">#ffffffff</color>
-    <color name="pub_color_black">#ff000000</color>
+    <color name="pub_color_black">#ff333333</color>
     <color name="pub_color_red">#D0011B</color>
     <color name="pub_color_gray_999">#ff999999</color>
     <color name="pub_color_gray_666">#ff666666</color>
@@ -66,6 +66,7 @@
     <color name="pub_color_gray_f5f5f5">#F5F5F5</color>
     <color name="pub_color_yellow">#FF9A14</color>
     <color name="pub_color_yellow_press">#cc7808</color>
-    
+
+    <color name="pub_common_bg">#fcfcfc</color>
 
 </resources>

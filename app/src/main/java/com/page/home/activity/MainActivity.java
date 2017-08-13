@@ -5,15 +5,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.os.UserManagerCompat;
 import android.widget.Toast;
 
 
 import com.framework.view.tab.TabLayout;
 import com.haolb.client.R;
 import com.haolb.client.utils.ArrayUtils;
-
-import org.greenrobot.eventbus.EventBus;
+import com.page.uc.UserCenterFragment;
 
 import java.util.List;
 import java.util.Timer;
