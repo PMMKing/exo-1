@@ -20,8 +20,8 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        qStartActivity(LoginActivity.class);
-//        startMainActivity();
+//        qStartActivity(LoginActivity.class);
+        startMainActivity();
     }
 
 

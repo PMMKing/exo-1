@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.framework.view.ListDialog;
 import com.haolb.client.R;
 import com.haolb.client.activity.BaseActivity;
+import com.haolb.client.domain.param.BaseParam;
 import com.haolb.client.net.NetworkParam;
 import com.haolb.client.net.Request;
 import com.haolb.client.net.ServiceMap;
@@ -56,10 +57,17 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 //             sendCode();
-                checkUpdate();
+//                checkUpdate();
+                getLink();
             }
 
         });
+    }
+    public static class LinkParam extends BaseParam{
+        public int type=1;
+    }
+    public void getLink(){
+        Request.startRequest(new LinkParam(), ServiceMap.getLinks, mHandler);
     }
     public void checkUpdate(){
 

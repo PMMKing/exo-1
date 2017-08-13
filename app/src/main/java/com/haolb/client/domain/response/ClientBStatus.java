@@ -1,8 +1,12 @@
 package com.haolb.client.domain.response;
 
+import java.io.Serializable;
+
 /**
  * Created by chenxi.cui on 2017/8/13.
  */
 
-public class ClientBStatus {
+public class ClientBStatus implements Serializable {
+    public String code;
+    public String des;
 }

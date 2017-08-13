@@ -22,12 +22,13 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
 
     protected final ArrayList<TabItem> mTabs = new ArrayList<TabItem>();
 
-    @BindView(R.id.tl_tab)
+//    @BindView(R.id.tl_tab)
     TabLayout tabLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        tabLayout = (TabLayout) findViewById(R.id.title_bar);
     }
 
     protected void addTab(String text, Class<? extends BaseFragment> clss, Bundle bundle, int... icon) {

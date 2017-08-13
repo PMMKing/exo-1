@@ -13,10 +13,10 @@
 
     <View
         style="@style/line_gray_h"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:background="@color/pub_color_gray_999" />
 
-    <com.wuye.wuye.framework.view.tab.TabLayout
+    <com.framework.view.tab.TabLayout
         android:id="@+id/tl_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

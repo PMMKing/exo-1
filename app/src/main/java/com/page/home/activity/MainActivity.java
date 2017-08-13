@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.os.UserManagerCompat;
 import android.widget.Toast;
 
 
@@ -38,9 +39,10 @@ public class MainActivity extends MainTabActivity {
         setContentView(R.layout.pub_activity_mian_layout);
         ButterKnife.bind(this);
         tabLayout = tlTab;
-//        setTitleBar("测试", true);
-        addTab("首页", null, myBundle, R.string.icon_font_home);
-        addTab("我的", null, myBundle, R.string.icon_font_my);
+        addTab("首页", HomeFragment.class, myBundle, R.string.icon_font_home);
+        addTab("我的小区", MycommunityFragment.class, myBundle, R.string.icon_font_home);
+        addTab("购物车", ShoppingFragment.class, myBundle, R.string.icon_font_home);
+        addTab("个人中心", UserCenterFragment.class, myBundle, R.string.icon_font_home);
         onPostCreate();
     }
 
