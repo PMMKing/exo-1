@@ -38,7 +38,7 @@
         android:allowBackup="true"
         android:icon="@drawable/logo_uidemo"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@style/SwipeBackLayout">
 
         <activity
             android:name="com.page.splash.activity.SplashActivity"

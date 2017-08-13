@@ -383,7 +383,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
                             Request.startRequest(param, mHandler);
                         }
                     })
-                    .setPositiveButton(getString(R.string.cancel) ,new DialogInterface.OnClickListener() {
+                    .setPositiveButton("取消" ,new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();

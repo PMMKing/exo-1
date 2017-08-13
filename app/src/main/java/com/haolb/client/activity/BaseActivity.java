@@ -283,7 +283,7 @@ public abstract class BaseActivity extends FragmentActivity implements
                                     Request.startRequest(param, mHandler);
                                 }
                             })
-                    .setPositiveButton(R.string.cancel,
+                    .setPositiveButton("取消",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog,
