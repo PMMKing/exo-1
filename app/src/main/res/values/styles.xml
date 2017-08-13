@@ -39,6 +39,8 @@
         <item name="android:layout_width">0.5dp</item>
     </style>
 
+    <style name="pub_list">
+    </style>
     <style name="titleBarStyle">
         <item name="android:id">@+id/title_bar</item>
         <item name="android:background">@color/pub_color_white</item>

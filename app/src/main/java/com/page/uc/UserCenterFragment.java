@@ -88,6 +88,8 @@ public class UserCenterFragment extends BaseFragment {
             case R.id.ll_list_1:
                 break;
             case R.id.ll_list_2:
+                //收货地址
+                qStartActivity(AddressActivity.class);
                 break;
             case R.id.ll_list_3:
                 break;

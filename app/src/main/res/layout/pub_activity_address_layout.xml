@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />
+
+    <ListView
+        android:id="@+id/listview"
+        style="@style/pub_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp" />
+
+    <TextView
+        android:id="@+id/tv_add"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/pub_color_blue"
+        android:gravity="center"
+        android:text="添加新地址"
+        android:textColor="@color/pub_color_white"
+        android:textSize="18dp"/>
+
+
+</LinearLayout>
