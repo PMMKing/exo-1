@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_weight="1.5"
+        android:ellipsize="end"
+        android:lines="1"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="【上海浦东新区党委】党员固定活动日"
+        android:textColor="@color/pub_color_black"
+        android:textSize="@dimen/text_h12" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="37dp"
+        android:ellipsize="end"
+        android:gravity="right"
+        android:lines="1"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:text="2017-07-24  13：56"
+        android:textColor="@color/pub_color_gray_999"
+        android:textSize="@dimen/text_h12" />
+
+
+</LinearLayout>

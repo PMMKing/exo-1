@@ -1,18 +1,20 @@
-package com.page.signup.holder;
+package com.page.home.holder;
 
 import android.content.Context;
 import android.view.View;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.haolb.client.R;
 
 /**
- * Created by shucheng.qu on base2017/8/11.
+ * Created by shucheng.qu on 2017/8/13.
  */
 
-public class ViewHolder extends BaseViewHolder {
+public class SMHolder extends BaseViewHolder {
 
-    public ViewHolder(Context context, View itemView) {
+    public SMHolder(Context context, View itemView) {
         super(context, itemView);
+//        R.layout.pub_fragment_home_711_item_layout
     }
 
     @Override

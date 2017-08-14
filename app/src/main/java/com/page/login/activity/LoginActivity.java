@@ -17,6 +17,7 @@ import com.haolb.client.domain.param.BaseParam;
 import com.haolb.client.net.NetworkParam;
 import com.haolb.client.net.Request;
 import com.haolb.client.net.ServiceMap;
+import com.page.details.activity.DetailsActivity;
 import com.page.eventlist.activity.EventListActivity;
 import com.page.quickpai.activity.QuickPaiActivity;
 import com.page.repairlist.activity.RepairListActivity;
@@ -42,7 +43,7 @@ public class LoginActivity extends BaseActivity {
     TextInputEditText tietPassword;
     @BindView(R.id.til_password)
     TextInputLayout tilPassword;
-//    @BindView(R.id.text_send_code)
+    @BindView(R.id.text_send_code)
     TextView textSendCode;
 
     private boolean mIsExit;
@@ -52,7 +53,6 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_login_layout);
         ButterKnife.bind(this);
-        textSendCode=(TextView)findViewById(R.id.text_send_code);
         textSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +63,7 @@ public class LoginActivity extends BaseActivity {
 
         });
     }
-    public static class LinkParam extends BaseParam{
+    public static class LinkParam extends BaseParam {
         public int type=1;
     }
     public void getLink(){
@@ -82,7 +82,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
-        if (param.key==ServiceMap.getVerificationCode){
+        if (param.key== ServiceMap.getVerificationCode){
 
         }
         return super.onMsgSearchComplete(param);
@@ -98,7 +98,7 @@ public class LoginActivity extends BaseActivity {
 //        dialog.show();
 //        dialog.setCancelable(true);
 //        dialog.setCanceledOnTouchOutside(false);
-        qStartActivity(QuickPaiActivity.class);
+        qStartActivity(DetailsActivity.class);
 //        exitBy2Click();
     }
 
