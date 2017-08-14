@@ -2,7 +2,7 @@ package com.framework.view.tab;
 
 import android.os.Bundle;
 
-import com.haolb.client.activity.BaseFragment;
+import com.framework.activity.BaseFragment;
 
 /**
  */

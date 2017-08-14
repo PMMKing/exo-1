@@ -1,18 +1,19 @@
 package com.framework.view;
 
 import android.content.Context;
+import android.support.v7.widget.AppCompatCheckedTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
-import android.widget.CheckedTextView;
 import android.widget.TextView;
 
-import com.haolb.client.app.MainApplication;
-import com.haolb.client.utils.ArrayUtils;
+import com.framework.app.MainApplication;
+import com.framework.utils.ArrayUtils;
 
 /**
- *
+ * Created by chenxi.cui on 2017/8/14.
  */
-public class IFView extends android.support.v7.widget.AppCompatCheckedTextView {
+
+public class IFView extends AppCompatCheckedTextView {
     private CharSequence[] texts;
     private OnCheckedChangeListener onCheckedChangeListener;
 

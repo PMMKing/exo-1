@@ -8,11 +8,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
-import com.haolb.client.adapter.utils.QSimpleAdapter;
+import com.framework.activity.BaseActivity;
+import com.framework.adapter.utils.QSimpleAdapter;
 import com.page.uc.bean.Address;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

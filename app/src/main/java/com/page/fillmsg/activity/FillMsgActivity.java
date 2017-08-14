@@ -5,7 +5,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
+import com.framework.activity.BaseActivity;
 
 /**
  * Created by shucheng.qu on 2017/8/9.

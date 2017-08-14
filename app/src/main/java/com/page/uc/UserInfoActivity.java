@@ -2,13 +2,12 @@ package com.page.uc;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CalendarView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
-import com.haolb.client.view.CircleImageView;
+import com.framework.activity.BaseActivity;
+import com.framework.view.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

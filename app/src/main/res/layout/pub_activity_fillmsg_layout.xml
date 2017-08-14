@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />
 
     <ScrollView
         android:layout_width="match_parent"

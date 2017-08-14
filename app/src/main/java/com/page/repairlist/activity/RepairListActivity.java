@@ -14,7 +14,7 @@ import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
+import com.framework.activity.BaseActivity;
 import com.page.eventlist.holder.ViewHolder;
 
 import java.util.ArrayList;

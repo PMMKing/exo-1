@@ -17,6 +17,6 @@
         android:text="这是一个测试的item"
         android:background="@drawable/pub_background_ripple"
         android:textColor="@color/pub_color_black"
-        android:textSize="@dimen/text_h20" />
+        android:textSize="20dp" />
 
 </LinearLayout>

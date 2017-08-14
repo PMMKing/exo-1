@@ -63,7 +63,7 @@
                 android:layout_marginTop="10dp"
                 android:text="xxx小区一角"
                 android:textColor="@color/pub_color_black"
-                android:textSize="@dimen/text_h14" />
+                android:textSize="14dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                 android:layout_marginTop="10dp"
                 android:text="发布时间：2017-12-13"
                 android:textColor="@color/pub_color_gray_666"
-                android:textSize="@dimen/text_h12" />
+                android:textSize="12dp" />
 
 
         </LinearLayout>

@@ -16,7 +16,7 @@
             android:layout_height="200dp"
             android:background="@color/pub_color_blue">
 
-            <com.haolb.client.view.CircleImageView
+            <com.framework.view.CircleImageView
                 android:id="@+id/image_head"
                 android:layout_width="80dp"
                 android:layout_height="80dp"

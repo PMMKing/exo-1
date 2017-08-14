@@ -2,13 +2,10 @@ package com.page.splash.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
 
-import com.haolb.client.activity.BaseActivity;
+import com.framework.activity.BaseActivity;
 import com.page.home.activity.MainActivity;
-import com.page.login.activity.LoginActivity;
 
 
 /**
@@ -31,5 +28,6 @@ public class SplashActivity extends BaseActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         qStartActivity(intent);
+        finish();
     }
 }

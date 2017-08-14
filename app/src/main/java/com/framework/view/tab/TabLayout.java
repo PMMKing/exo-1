@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 
-import com.haolb.client.utils.ArrayUtils;
+import com.framework.utils.ArrayUtils;
 
 import java.util.ArrayList;
 

@@ -5,7 +5,6 @@
     android:orientation="vertical">
 
 
-    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/srl_down_refresh"

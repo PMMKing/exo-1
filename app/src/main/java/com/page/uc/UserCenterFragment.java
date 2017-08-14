@@ -9,8 +9,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseFragment;
-import com.haolb.client.view.CircleImageView;
+import com.framework.activity.BaseFragment;
+import com.framework.view.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

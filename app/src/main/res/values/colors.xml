@@ -3,36 +3,8 @@
 
     <drawable name="transparent">#00000000</drawable>
     <color name="common_bg">#fcfcfc</color>
-    <color name="common_bg_trans">#44324C</color>
     <color name="common_color_white">#ffffffff</color>
-    <color name="common_color_orange">#fff7941d</color>
-    <color name="common_color_orange_tarns">#ffe7941d</color>
-    <color name="common_color_orange_light">#F1B136</color>
     <color name="common_color_black">#ff333333</color>
-    <color name="common_color_yellow">#ff7800</color>
-    <color name="common_color_gray">#7f8081</color>
-    <color name="common_color_light_gray">#CCCCCC</color>
-    <color name="common_color_red">#ffcc0000</color>
-    <color name="common_color_greed">#00BEC8</color>
-    <color name="common_color_purple">#B271c3</color>
-    <color name="common_color_hgreed">#3399FF</color>
-    <color name="common_color_transparent">#00000000</color>
-    <color name="common_color_title">#00695D</color>
-    <color name="common_color_line">#E0E0E0</color>
-    <color name="common_color_line2">#21213F</color>
-    <color name="common_color_title_bg">#00695D</color>
-    <color name="bg_yellow">#F1B136</color>
-    <color name="bg_red">#D74A74</color>  
-    <color name="bg_gray">#33334C</color> 
-    <color name="bg_green">#13B0A5</color>
-    <color name="bg_light_gray">#593D43</color> 
-    <color name="bg_y">#EDEDED</color>
-    <color name="t0">#3F7E3F</color>
-    <color name="t1">#FF80C0</color> 
-    <color name="t2">#0080C0</color> 
-    <color name="t3">#8000FF</color> 
-    <color name="t4">#525252</color>
-
     <!--new-->
 
     <color name="t_theme">#3E97FA</color>
@@ -47,14 +19,15 @@
     <color name="colorAccent">@color/pub_color_gray_666</color>//checkbox check color
 
     <color name="transparent">#00000000</color>
+    <color name="pub_color_white_fafafa">#FAFAFA</color>
     <color name="pub_color_white">#ffffffff</color>
     <color name="pub_color_black">#ff333333</color>
     <color name="pub_color_red">#D0011B</color>
     <color name="pub_color_gray_999">#ff999999</color>
     <color name="pub_color_gray_666">#ff666666</color>
-    <color name="pub_color_blue">#00B4EF</color>
+    <color name="pub_color_blue">#00B3E3</color>
     <color name="pub_color_blue_press">#0295c6</color>
-    <color name="pub_color_gray_line">#fff1f1f1</color>
+    <color name="pub_color_gray_line">#ffe8e8e8</color>
 
     <color name="pub_keybord_normal">#ffffff</color>
     <color name="pub_keybord_press">#d2d4d8</color>
@@ -67,6 +40,6 @@
     <color name="pub_color_yellow">#FF9A14</color>
     <color name="pub_color_yellow_press">#cc7808</color>
 
-    <color name="pub_common_bg">#fcfcfc</color>
+    <color name="pub_common_bg">#f5f5f5</color>
 
 </resources>

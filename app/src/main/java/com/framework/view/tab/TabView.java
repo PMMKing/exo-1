@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.framework.view.AlwaysFocusedTextView;
 import com.framework.view.IFView;
 import com.haolb.client.R;
 

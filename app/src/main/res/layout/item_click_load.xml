@@ -2,7 +2,7 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/lm_view_more"
     android:textColor="@color/common_color_black"
-    android:textSize="@dimen/text_h18"
+    android:textSize="18dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"

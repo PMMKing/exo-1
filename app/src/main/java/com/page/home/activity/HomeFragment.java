@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseFragment;
+import com.framework.activity.BaseFragment;
 
 /**
  * Created by chenxi.cui on 2017/8/13.
