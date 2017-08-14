@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.haolb.client"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 22
     }
 
 
