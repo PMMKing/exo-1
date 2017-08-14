@@ -8,8 +8,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.framework.utils.Dimen;
 import com.haolb.client.R;
-import com.haolb.client.utils.Dimen;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

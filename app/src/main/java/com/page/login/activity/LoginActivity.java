@@ -5,22 +5,17 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.framework.view.ListDialog;
+import com.framework.activity.BaseActivity;
+import com.framework.domain.param.BaseParam;
+import com.framework.net.NetworkParam;
+import com.framework.net.Request;
+import com.framework.net.ServiceMap;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
-import com.haolb.client.domain.param.BaseParam;
-import com.haolb.client.net.NetworkParam;
-import com.haolb.client.net.Request;
-import com.haolb.client.net.ServiceMap;
 import com.page.details.activity.DetailsActivity;
-import com.page.eventlist.activity.EventListActivity;
-import com.page.quickpai.activity.QuickPaiActivity;
-import com.page.repairlist.activity.RepairListActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

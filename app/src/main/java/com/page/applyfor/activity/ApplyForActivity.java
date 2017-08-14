@@ -2,8 +2,8 @@ package com.page.applyfor.activity;
 
 import android.os.Bundle;
 
+import com.framework.activity.BaseActivity;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
 
 /**
  * Created by shucheng.qu on 2017/8/11.
