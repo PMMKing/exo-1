@@ -1,6 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pub_color_gray_f5f5f5"
+    android:orientation="vertical">
+
+    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.framework.view.AddView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/pub_color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="活动标题"
+                    android:textColor="@color/pub_color_gray_666"
+                    android:textSize="@dimen/text_h14" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:lines="1"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="晚上吃烧烤"
+                    android:textColor="@color/pub_color_black"
+                    android:textSize="@dimen/text_h14" />
+
+            </LinearLayout>
+
+            <View style="@style/line_gray_h" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pub_color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="活动时间"
+                    android:textColor="@color/pub_color_gray_666"
+                    android:textSize="@dimen/text_h14" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:lines="1"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="2017-12-17"
+                    android:textColor="@color/pub_color_black"
+                    android:textSize="@dimen/text_h14" />
+
+            </LinearLayout>
+
+            <View style="@style/line_gray_h" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pub_color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="活动地点"
+                    android:textColor="@color/pub_color_gray_666"
+                    android:textSize="@dimen/text_h14" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:lines="1"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="浦东新区锦康路400弄"
+                    android:textColor="@color/pub_color_black"
+                    android:textSize="@dimen/text_h14" />
+
+            </LinearLayout>
+
+            <View style="@style/line_gray_h" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pub_color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="人数"
+                    android:textColor="@color/pub_color_gray_666"
+                    android:textSize="@dimen/text_h14" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@null"
+                    android:lines="1"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="22dp"
+                    android:text="10人"
+                    android:textColor="@color/pub_color_black"
+                    android:textSize="@dimen/text_h14" />
+
+            </LinearLayout>
+
+            <View style="@style/line_gray_h" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pub_color_white"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="14dp"
+                    android:paddingTop="14dp"
+                    android:text="限制人数"
+                    android:textColor="@color/pub_color_gray_666"
+                    android:textSize="@dimen/text_h14" />
+
+                <CheckBox
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:lines="1"
+                    android:textColor="@color/pub_color_black"
+                    android:textSize="@dimen/text_h14" />
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/pub_color_white"
+                android:gravity="left"
+                android:hint="活动详情"
+                android:lines="6"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h12" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/pub_btn_blue_arc_selector"
+                android:clickable="true"
+                android:enabled="false"
+                android:gravity="center"
+                android:paddingBottom="13dp"
+                android:paddingTop="13dp"
+                android:text="提交"
+                android:textColor="@color/pub_color_white"
+                android:textSize="@dimen/text_h18" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </LinearLayout>

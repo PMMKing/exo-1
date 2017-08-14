@@ -1,11 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pub_color_gray_f5f5f5"
+    android:orientation="vertical">
 
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="首页"
-        />
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants"
+        android:orientation="vertical">
+
+        <com.sivin.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            app:banner_pageChangeDuration="800"
+            app:banner_pointAutoPlayInterval="3"
+            app:banner_pointContainerBackground="#33000000"
+            app:banner_pointContainerLeftRightPadding="10dp"
+            app:banner_pointDrawable="@drawable/selector_banner_point"
+            app:banner_pointGravity="right"
+            app:banner_pointLeftRightMargin="3dp"
+            app:banner_pointTopBottomMargin="6dp"
+            app:banner_tipTextColor="#FFFFFF"
+            app:banner_tipTextSize="12sp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pub_color_white"
+            android:orientation="horizontal">
+
+            <com.framework.view.IFView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="19dp"
+                android:text="@string/icon_font_add"
+                android:textColor="@color/pub_color_blue"
+                android:textSize="@dimen/text_h18" />
+
+            <TextView
+                android:id="@+id/tv_tips"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:lines="1"
+                android:paddingBottom="14dp"
+                android:paddingTop="14dp"
+                android:text="绿城城院小区7月24号停水停电通知"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h14" />
+
+            <com.framework.view.IFView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/icon_font_add"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h18" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.GridLayout
+            android:id="@+id/gl_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pub_color_blue_F5FCFF"
+            app:columnCount="4"
+            app:orientation="horizontal"
+            app:rowCount="2" />
+
+        <LinearLayout
+            android:id="@+id/ll_711"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pub_color_white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:lines="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="14dp"
+                android:text="超市商品推荐"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h14" />
+
+            <com.framework.view.IFView
+                android:id="@+id/ifv_711_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="更多>"
+                android:textColor="@color/pub_color_blue"
+                android:textSize="@dimen/text_h14" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_711_list"
+            android:layout_width="match_parent"
+            android:layout_height="147dp" />
+
+
+        <LinearLayout
+            android:id="@+id/ll_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pub_color_white"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="marquee"
+                android:lines="1"
+                android:paddingBottom="14dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="14dp"
+                android:text="活动召集"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h14" />
+
+            <com.framework.view.IFView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="更多>"
+                android:textColor="@color/pub_color_blue"
+                android:textSize="@dimen/text_h14" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_event_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingTop="8dp">
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

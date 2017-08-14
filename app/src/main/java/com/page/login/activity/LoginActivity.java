@@ -5,23 +5,29 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.framework.view.ListDialog;
 import com.haolb.client.R;
-import com.framework.activity.BaseActivity;
-import com.framework.domain.param.BaseParam;
-import com.framework.net.NetworkParam;
-import com.framework.net.Request;
-import com.framework.net.ServiceMap;
+import com.haolb.client.activity.BaseActivity;
+import com.haolb.client.domain.param.BaseParam;
+import com.haolb.client.net.NetworkParam;
+import com.haolb.client.net.Request;
+import com.haolb.client.net.ServiceMap;
+import com.page.details.activity.DetailsActivity;
+import com.page.eventlist.activity.EventListActivity;
 import com.page.quickpai.activity.QuickPaiActivity;
+import com.page.repairlist.activity.RepairListActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by shucheng.qu on 2017/6/1.
@@ -37,7 +43,7 @@ public class LoginActivity extends BaseActivity {
     TextInputEditText tietPassword;
     @BindView(R.id.til_password)
     TextInputLayout tilPassword;
-//    @BindView(R.id.text_send_code)
+    @BindView(R.id.text_send_code)
     TextView textSendCode;
 
     private boolean mIsExit;
@@ -47,7 +53,6 @@ public class LoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_login_layout);
         ButterKnife.bind(this);
-        textSendCode=(TextView)findViewById(R.id.text_send_code);
         textSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +63,7 @@ public class LoginActivity extends BaseActivity {
 
         });
     }
-    public static class LinkParam extends BaseParam{
+    public static class LinkParam extends BaseParam {
         public int type=1;
     }
     public void getLink(){
@@ -77,7 +82,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
-        if (param.key==ServiceMap.getVerificationCode){
+        if (param.key== ServiceMap.getVerificationCode){
 
         }
         return super.onMsgSearchComplete(param);
@@ -93,7 +98,7 @@ public class LoginActivity extends BaseActivity {
 //        dialog.show();
 //        dialog.setCancelable(true);
 //        dialog.setCanceledOnTouchOutside(false);
-        qStartActivity(QuickPaiActivity.class);
+        qStartActivity(DetailsActivity.class);
 //        exitBy2Click();
     }
 

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pub_color_gray_f5f5f5"
+    android:orientation="vertical">
+
+    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.framework.view.AddView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/pub_color_white"
+                android:gravity="left"
+                android:hint="描述一下"
+                android:lines="6"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="22dp"
+                android:textColor="@color/pub_color_gray_666"
+                android:textColorHint="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h14" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="150dp"
+                android:background="@drawable/pub_btn_blue_arc_selector"
+                android:clickable="true"
+                android:enabled="true"
+                android:gravity="center"
+                android:paddingBottom="13dp"
+                android:paddingTop="13dp"
+                android:text="提交"
+                android:textColor="@color/pub_color_white"
+                android:textSize="@dimen/text_h18" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
