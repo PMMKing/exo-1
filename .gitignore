@@ -44,6 +44,7 @@ jvl_android.iml
 package-id.txt
 /captures
 ext-args.txt
-gradle
+/gradle
 bulid.gradle
+/资料
 

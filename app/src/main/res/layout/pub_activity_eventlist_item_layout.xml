@@ -28,7 +28,7 @@
             android:layout_marginTop="10dp"
             android:text="周末我们一起去超颜值书店逛逛吧"
             android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h14" />
+            android:textSize="14dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:layout_marginTop="10dp"
             android:text="发起人：幸福宜居"
             android:textColor="@color/pub_color_gray_666"
-            android:textSize="@dimen/text_h12" />
+            android:textSize="12dp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -44,7 +44,7 @@
             android:layout_marginTop="10dp"
             android:text="参与人数：10"
             android:textColor="@color/pub_color_gray_666"
-            android:textSize="@dimen/text_h12" />
+            android:textSize="12dp" />
 
     </LinearLayout>
 

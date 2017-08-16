@@ -7,12 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import com.framework.activity.BaseActivity;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
 import com.page.signup.holder.HeaderHolder;
 import com.page.signup.holder.ViewHolder;
 

@@ -2,8 +2,6 @@ package com.page.eventlist.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,9 +14,8 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
-import com.framework.view.ListDialog;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
+import com.framework.activity.BaseActivity;
 import com.page.eventlist.holder.ViewHolder;
 
 import java.util.ArrayList;

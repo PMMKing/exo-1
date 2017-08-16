@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.framework.activity.BaseActivity;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
 import com.page.quickpain.ScaleCircleNavigator;
 import com.page.quickpain.fragment.ImageFragment;
 

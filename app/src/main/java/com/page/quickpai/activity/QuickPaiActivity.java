@@ -1,26 +1,16 @@
 package com.page.quickpai.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.daimajia.swipe.util.Attributes;
-import com.framework.rvadapter.adapter.MultiAdapter;
-import com.framework.rvadapter.click.OnItemClickListener;
-import com.framework.rvadapter.holder.BaseViewHolder;
-import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
+import com.framework.activity.BaseActivity;
 import com.page.quickpai.holder.RecyclerViewAdapter;
-import com.page.quickpai.holder.ViewHolder;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -7,12 +7,10 @@ import android.support.annotation.Nullable;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabLayout;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
-import com.haolb.client.activity.BaseFragment;
+import com.framework.activity.BaseActivity;
+import com.framework.activity.BaseFragment;
 
 import java.util.ArrayList;
-
-import butterknife.BindView;
 
 /**
  * Created by shucheng.qu on 2017/5/31.

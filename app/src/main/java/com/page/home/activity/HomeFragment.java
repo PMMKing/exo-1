@@ -13,13 +13,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.framework.activity.BaseFragment;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.IFView;
 import com.framework.view.LineDecoration;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseFragment;
 import com.page.eventlist.holder.ViewHolder;
 import com.page.home.holder.SMHolder;
 import com.page.home.view.ModeView;

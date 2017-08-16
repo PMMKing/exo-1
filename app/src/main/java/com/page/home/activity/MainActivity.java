@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.framework.view.tab.TabLayout;
 import com.haolb.client.R;
-import com.haolb.client.utils.ArrayUtils;
+import com.framework.utils.ArrayUtils;
 import com.page.uc.UserCenterFragment;
 
 import java.util.List;
@@ -37,10 +37,10 @@ public class MainActivity extends MainTabActivity {
         setContentView(R.layout.pub_activity_mian_layout);
         ButterKnife.bind(this);
         tabLayout = tlTab;
-        addTab("首页", HomeFragment.class, myBundle, R.string.icon_font_home);
-        addTab("我的小区", MycommunityFragment.class, myBundle, R.string.icon_font_home);
-        addTab("购物车", ShoppingFragment.class, myBundle, R.string.icon_font_home);
-        addTab("个人中心", UserCenterFragment.class, myBundle, R.string.icon_font_home);
+        addTab("主页", HomeFragment.class, myBundle, R.string.icon_font_home);
+        addTab("商城", ShoppingFragment.class, myBundle, R.string.icon_font_home);
+        addTab("购物车", ShoppingCartFragment.class, myBundle, R.string.icon_font_home);
+        addTab("我的", UserCenterFragment.class, myBundle, R.string.icon_font_home);
         onPostCreate();
     }
 
