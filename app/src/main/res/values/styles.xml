@@ -2,7 +2,7 @@
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
-        <item name="android:windowBackground">@color/pub_common_bg</item>
+        <item name="android:windowBackground">@color/pub_color_white</item>
     </style>
 
     <style name="MProgressDialog" parent="android:style/Theme.Dialog">

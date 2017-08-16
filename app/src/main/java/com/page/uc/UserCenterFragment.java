@@ -11,6 +11,11 @@ import android.widget.LinearLayout;
 import com.haolb.client.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
+import com.haolb.client.activity.BaseFragment;
+import com.haolb.client.view.CircleImageView;
+import com.page.classify.activity.ClassifyActivity;
+import com.page.classifylist.activity.ClassifyListActivity;
+import com.page.productevaluate.activity.ProEvaluateActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -74,6 +79,7 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(UserInfoActivity.class);
                 break;
             case R.id.image_setting:
+                qStartActivity(ProEvaluateActivity.class);
                 break;
             case R.id.ll_order_0:
                 break;

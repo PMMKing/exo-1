@@ -181,8 +181,6 @@ public abstract class BaseActivity extends FragmentActivity implements
         }
     }
 
-    ;
-
     public void setContentView(int layoutResID, boolean autoInject) {
         final View content = getLayoutInflater().inflate(layoutResID, null);
         setContentView(content, autoInject);
@@ -464,8 +462,7 @@ public abstract class BaseActivity extends FragmentActivity implements
      * @param rightIconResId
      * @param rightListener
      */
-    public void setTitleBar(String title, boolean hasBackBtn,
-                            int rightIconResId, OnClickListener rightListener) {
+    public void setTitleBar(String title, boolean hasBackBtn, int rightIconResId, OnClickListener rightListener) {
         mTitleBar.setTitleBar(titleBarClickListener, hasBackBtn, title,
                 rightIconResId, rightListener);
         mTitleBar.setVisibility(View.VISIBLE);
@@ -479,8 +476,7 @@ public abstract class BaseActivity extends FragmentActivity implements
      * @param rightText
      * @param rightListener
      */
-    public void setTitleBar(String title, boolean hasBackBtn, String rightText,
-                            OnClickListener rightListener) {
+    public void setTitleBar(String title, boolean hasBackBtn, String rightText, OnClickListener rightListener) {
         mTitleBar.setTitleBar(titleBarClickListener, hasBackBtn, title,
                 rightText, rightListener);
         mTitleBar.setVisibility(View.VISIBLE);
@@ -500,6 +496,10 @@ public abstract class BaseActivity extends FragmentActivity implements
 
     public void setTitleText(String text) {
         mTitleBar.setTitle(text);
+    }
+
+    public void setTitleBar() {
+        setTitleBar("", true);
     }
 
 
@@ -639,7 +639,7 @@ public abstract class BaseActivity extends FragmentActivity implements
         if (bundle != null) {
             int intentToCode = bundle.getInt(Globals.INTENT_TO_ACTIVITY);
             /*if (Globals.INTENT_TO_QUITAPP == intentToCode) {
-				finish();
+                finish();
 				MainApp.getContext().onClose();
 			} else if(Globals.INTENT_TO_PAY_CENTER == intentToCode) {
 				//跳到支付中心
