@@ -1,7 +1,9 @@
 package com.page.uc;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -104,6 +106,21 @@ public class UserCenterFragment extends BaseFragment {
             case R.id.ll_list_5:
                 break;
             case R.id.ll_list_6:
+                final String phone = "10086";
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setMessage("联系客服：" + phone).setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        processAgentPhoneCall(phone);
+                        dialog.dismiss();
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+
                 break;
             case R.id.ll_list_7:
                 break;
