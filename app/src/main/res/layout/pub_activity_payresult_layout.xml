@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.framework.view.TitleBar style="@style/titleBarStyle" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/pub_login_icon" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="订单编号：xxx支付成功"
+        android:textColor="@color/pub_color_black"
+        android:textSize="@dimen/text_h14" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/pub_btn_blue_arc_selector"
+        android:gravity="center"
+        android:text="查看订单"
+        android:textColor="@color/pub_color_white"
+        android:textSize="@dimen/text_h18" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/pub_btn_blue_hollow_arc_selector"
+        android:gravity="center"
+        android:text="继续购物"
+        android:textColor="@color/pub_color_blue"
+        android:textSize="@dimen/text_h18" />
+
+
+</LinearLayout>

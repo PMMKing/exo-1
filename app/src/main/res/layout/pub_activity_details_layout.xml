@@ -5,7 +5,7 @@
     android:background="@color/pub_color_gray_f5f5f5"
     android:orientation="vertical">
 
-    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />
+    <com.framework.view.TitleBar style="@style/titleBarStyle" />
 
     <ScrollView
         android:layout_width="match_parent"

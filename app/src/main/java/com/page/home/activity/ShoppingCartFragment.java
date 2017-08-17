@@ -7,8 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.framework.activity.BaseFragment;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseFragment;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,11 +18,7 @@ import butterknife.Unbinder;
  * Created by chenxi.cui on 2017/8/13.
  */
 
-public class MycommunityFragment extends BaseFragment {
-
-    @BindView(R.id.rv_list)
-    RecyclerView rvList;
-    Unbinder unbinder;
+public class ShoppingCartFragment extends BaseFragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,9 +28,7 @@ public class MycommunityFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pub_fragment_mycom_layout, null);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
+        return inflater.inflate(R.layout.pub_fragment_classify_layout, container, false);
     }
 
     @Override
@@ -47,9 +41,4 @@ public class MycommunityFragment extends BaseFragment {
 
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }

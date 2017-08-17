@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
 
-    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />t
+    <com.framework.view.TitleBar style="@style/titleBarStyle" />t
 
 
     <ScrollView

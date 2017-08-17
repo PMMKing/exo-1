@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="11dp"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/pub_login_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="126dp"
+            android:paddingRight="22dp"
+            android:paddingTop="17dp"
+            android:text="越南进口Tipo牛奶面包干饼干300g办公室零食大礼包"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h12" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="18dp"
+            android:layout_marginLeft="126dp"
+            android:text="￥100.00"
+            android:textColor="@color/pub_color_blue"
+            android:textSize="@dimen/text_h18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="18dp"
+            android:paddingRight="22dp"
+            android:text="X1"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h18" />
+
+
+    </FrameLayout>
+
+    <View
+        style="@style/line_gray_h"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingLeft="15dp"
+            android:paddingTop="40dp"
+            android:text="购买数量"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="@dimen/text_h18" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/pub_black_frame_bg"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="-"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h18" />
+
+            <View style="@style/line_gray_v" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="12666"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h18" />
+
+            <View style="@style/line_gray_v" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="+"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h18" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View style="@style/line_gray_h" />
+
+</LinearLayout>

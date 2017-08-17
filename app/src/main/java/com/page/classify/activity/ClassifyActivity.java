@@ -9,13 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.framework.activity.BaseActivity;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
 import com.haolb.client.R;
-import com.haolb.client.activity.BaseActivity;
 import com.page.classify.holder.NavHolder;
 import com.page.classify.holder.ProHolder;
 import com.page.classify.model.ClassifyModel;

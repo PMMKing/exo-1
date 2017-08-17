@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.framework.view.TitleBarNew style="@style/titleBarStyle" />
+    <com.framework.view.TitleBar style="@style/titleBarStyle" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list"
