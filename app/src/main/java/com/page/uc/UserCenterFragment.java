@@ -16,6 +16,8 @@ import com.framework.view.CircleImageView;
 import com.page.classify.activity.ClassifyActivity;
 import com.page.classifylist.activity.ClassifyListActivity;
 import com.page.orderaffirm.activity.OrderAffirmActivity;
+import com.page.orderdetails.activity.OrderDetailsActivity;
+import com.page.orderlist.activity.OrderListActivity;
 import com.page.prodetails.activity.ProDetailsActivity;
 import com.page.productevaluate.activity.ProEvaluateActivity;
 
@@ -81,7 +83,7 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(UserInfoActivity.class);
                 break;
             case R.id.image_setting:
-                qStartActivity(OrderAffirmActivity.class);
+                qStartActivity(OrderDetailsActivity.class);
                 break;
             case R.id.ll_order_0:
                 break;

@@ -9,7 +9,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        android:background="@color/common_bg">
+        android:background="@color/pub_color_gray_cccccc">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -21,7 +21,7 @@
 
             <TextView
                 android:id="@+id/textview1"
-                android:textColor="@color/common_color_white"
+                android:textColor="@color/pub_color_white"
                 android:textSize="20dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/textview"
-                android:textColor="@color/common_color_white"
+                android:textColor="@color/pub_color_white"
                 android:textSize="18dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

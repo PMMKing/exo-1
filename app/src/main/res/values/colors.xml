@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <drawable name="transparent">#00000000</drawable>
-    <color name="common_bg">#fcfcfc</color>
-    <color name="common_color_white">#ffffffff</color>
-    <color name="common_color_black">#ff333333</color>
-    <!--new-->
-
-    <color name="t_theme">#3E97FA</color>
-    <color name="t_btn_presses">#cc3E97FA</color>
-    <color name="t_bg">#EBEBEB</color>
-    <color name="t_selector">#ffdadfeb</color>
-    <color name="t_gray">#b5b5b6</color>
-
-
     <color name="colorPrimary">#b42031</color>//actionbar color
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorAccent">@color/pub_color_gray_666</color>//checkbox check color
@@ -24,6 +11,7 @@
     <color name="pub_color_black">#ff333333</color>
     <color name="pub_color_red">#D0011B</color>
     <color name="pub_color_green">#44DB5E</color>
+    <color name="pub_color_green_7ed321">#7ED321</color>
     <color name="pub_color_gray_999">#ff999999</color>
     <color name="pub_color_gray_666">#ff666666</color>
     <color name="pub_color_blue">#00B3E3</color>

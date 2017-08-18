@@ -111,7 +111,7 @@ public abstract class BaseActivity extends FragmentActivity implements
 
         SystemBarTintManager tintManager = new SystemBarTintManager(this);
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.t_theme);
+        tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
     }
 
     @TargetApi(19)

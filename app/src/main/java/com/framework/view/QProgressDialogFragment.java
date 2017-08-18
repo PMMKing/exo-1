@@ -107,7 +107,7 @@ public class QProgressDialogFragment extends DialogFragment implements Observer 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog onCreateDialog = super.onCreateDialog(savedInstanceState);
-        onCreateDialog.setContentView(R.layout.loading_dialog);
+//        onCreateDialog.setContentView(R.layout.loading_dialog);
         tvMessage = (TextView) onCreateDialog.findViewById(android.R.id.message);
         btnCancel = (ImageButton) onCreateDialog.findViewById(android.R.id.button2);
         if (isCancelable()) {

@@ -83,7 +83,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
         }
         SystemBarTintManager tintManager = new SystemBarTintManager(this.getActivity());
         tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.t_theme);
+        tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
 
     }
 

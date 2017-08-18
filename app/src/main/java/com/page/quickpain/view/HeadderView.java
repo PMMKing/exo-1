@@ -81,7 +81,7 @@ public class HeadderView extends LinearLayout {
         vpImage.setAdapter(new PagerAdapter(((BaseActivity) getContext()).getSupportFragmentManager(), mTitleDataList));
     }
 
-    class PagerAdapter extends FragmentPagerAdapter {
+    static class PagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> mFragments;
 

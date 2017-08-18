@@ -13,17 +13,70 @@
         <com.sivin.Banner
             android:id="@+id/banner"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="200dp"
             app:banner_pageChangeDuration="800"
             app:banner_pointAutoPlayInterval="3"
-            app:banner_pointContainerBackground="#33000000"
+            app:banner_pointContainerBackground="@color/pub_color_white"
             app:banner_pointContainerLeftRightPadding="10dp"
-            app:banner_pointDrawable="@drawable/selector_banner_point"
+            app:banner_pointDrawable="@drawable/pub_banner_gray_blue_point"
             app:banner_pointGravity="right"
             app:banner_pointLeftRightMargin="3dp"
             app:banner_pointTopBottomMargin="6dp"
             app:banner_tipTextColor="#FFFFFF"
             app:banner_tipTextSize="12sp" />
+
+        <View
+            style="@style/line_gray_h"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/tv_recommend1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="11dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="11dp"
+            android:text="饮料推荐"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h16" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recommend1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/tv_recommend2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="11dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="11dp"
+            android:text="食品推荐"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h16" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recommend2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_recommend3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="11dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="11dp"
+            android:text="特别推荐"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h16" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_recommend3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

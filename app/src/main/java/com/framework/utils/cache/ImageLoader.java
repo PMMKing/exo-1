@@ -53,7 +53,7 @@ public class ImageLoader {
 	private ImageLoader(Context contextInput) {
 		context = contextInput.getApplicationContext();
 		mLoadingBitmap3g = BitmapFactory.decodeResource(context.getResources(),
-				R.drawable.app_splash);
+				R.drawable.ic_launcher);
 		Picasso oldPicasso = Picasso.with(context);
 		qunarImageDownloader = QunarImageDownloader
 				.createQunarImageDownloader(context);

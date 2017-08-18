@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/pub_gray_box"
+        android:scaleType="center"
+        android:src="@drawable/pub_login_icon" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="125dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="17dp"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:text="越南进口Tipo牛奶面包干饼干300g办公室零食大礼包"
+        android:textColor="@color/pub_color_black"
+        android:textSize="@dimen/text_h12" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="15dp"
+        android:layout_marginLeft="125dp"
+        android:text="￥100.00"
+        android:textColor="@color/pub_color_blue"
+        android:textSize="@dimen/text_h18" />
+
+
+</FrameLayout>
