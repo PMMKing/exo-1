@@ -1,4 +1,4 @@
-package com.page.login.activity;
+package com.page.uc;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,7 +22,6 @@ import java.util.TimerTask;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by shucheng.qu on 2017/6/1.

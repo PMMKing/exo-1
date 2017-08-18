@@ -1,4 +1,4 @@
-package com.page.login.activity;
+package com.page.uc;
 
 import com.framework.domain.param.BaseParam;
 
