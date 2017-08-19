@@ -3,6 +3,8 @@ package com.framework.net;
 
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
+import com.page.uc.bean.AddressResult;
+import com.page.uc.bean.LoginResult;
 
 /**
  * @author zexu
@@ -11,7 +13,13 @@ public enum ServiceMap implements Enums.IType {
     OPENGATE("/opengate.do", BaseResult.class), //获取通讯录联系人
     getLinks("/getLinks.do", BaseResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
+    getAddresses("/getAddresses.do", AddressResult.class),
+    getDistricts("/getDistricts.do", BaseResult.class),//获取小区列表
+    getBuildings("/getBuildings.do", BaseResult.class),//获取栋号列表
+    getUnits("/getUnits.do", BaseResult.class),//获取单元列表
     getVerificationCode("/getVerificationCode.do", BaseResult.class),
+    customerLogin("/customerLogin.do", LoginResult.class),
+    customerLogout("/customerLogout.do", BaseResult.class),
     ;
 
     private final String mType;

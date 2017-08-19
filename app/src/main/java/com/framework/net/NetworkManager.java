@@ -14,12 +14,12 @@ import com.alibaba.fastjson.JSON;
 import com.framework.app.AppConstants;
 import com.framework.app.MainApplication;
 import com.framework.app.NetConnChangeReceiver;
-import com.framework.domain.UCUtils;
+import com.page.uc.UCUtils;
 import com.framework.domain.param.CommonParam;
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.EqualUtils;
 import com.framework.utils.QLog;
-import com.framework.utils.SecureUtil;
+import com.haolb.client.utils.SecureUtil;
 
 import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;

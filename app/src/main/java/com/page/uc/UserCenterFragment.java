@@ -13,13 +13,7 @@ import android.widget.LinearLayout;
 import com.haolb.client.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
-import com.page.classify.activity.ClassifyActivity;
-import com.page.classifylist.activity.ClassifyListActivity;
-import com.page.orderaffirm.activity.OrderAffirmActivity;
 import com.page.orderdetails.activity.OrderDetailsActivity;
-import com.page.orderlist.activity.OrderListActivity;
-import com.page.prodetails.activity.ProDetailsActivity;
-import com.page.productevaluate.activity.ProEvaluateActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -79,8 +73,11 @@ public class UserCenterFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image_head:
-                showToast("头像");
-                qStartActivity(UserInfoActivity.class);
+                if (UCUtils.getInstance().isLogin()) {
+                    qStartActivity(UserInfoActivity.class);
+                }else {
+                    qStartActivity(LoginActivity.class);
+                }
                 break;
             case R.id.image_setting:
                 qStartActivity(OrderDetailsActivity.class);

@@ -1,4 +1,4 @@
-package com.page.uc;
+package com.page.uc.bean;
 
 import com.framework.domain.param.BaseParam;
 

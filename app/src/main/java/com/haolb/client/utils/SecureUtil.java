@@ -1,4 +1,4 @@
-package com.framework.utils;
+package com.haolb.client.utils;
 
 /**
  * 加解密工具类

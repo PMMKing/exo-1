@@ -5,10 +5,6 @@
         android:angle="360"
         android:endColor="#80000000"
         android:startColor="#80000000" />
-
-    <size
-            android:height="135dp" />
-
     <padding
         android:bottom="7dp"
         android:left="7dp"

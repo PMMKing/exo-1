@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.framework.app.AppConstants;
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.QLog;
-import com.framework.utils.SecureUtil;
+import com.haolb.client.utils.SecureUtil;
 
 /**
  * 处理数据解析

@@ -15,6 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
 import com.haolb.client.R;
 
 import java.util.Observable;
@@ -107,7 +108,7 @@ public class QProgressDialogFragment extends DialogFragment implements Observer 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog onCreateDialog = super.onCreateDialog(savedInstanceState);
-//        onCreateDialog.setContentView(R.layout.loading_dialog);
+        onCreateDialog.setContentView(R.layout.pub_loading_dialog);
         tvMessage = (TextView) onCreateDialog.findViewById(android.R.id.message);
         btnCancel = (ImageButton) onCreateDialog.findViewById(android.R.id.button2);
         if (isCancelable()) {

@@ -32,7 +32,7 @@
         <com.framework.view.CircleImageView
             android:id="@+id/image_head"
             android:layout_width="50dp"
-            android:src="@drawable/ic_launcher"
+            android:src="@drawable/default_head"
             android:layout_height="50dp" />
     </LinearLayout>
 
@@ -148,4 +148,16 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/pub_color_gray_line" />
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"/>
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:background="@drawable/pub_btn_red_selector"
+        android:text="退出登录"
+        android:textSize="16dp"
+        android:textColor="@color/pub_color_white"
+        android:layout_margin="50dp"
+        android:layout_height="44dp" />
 </LinearLayout>

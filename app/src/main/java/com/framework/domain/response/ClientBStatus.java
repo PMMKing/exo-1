@@ -7,6 +7,6 @@ import java.io.Serializable;
  */
 
 public class ClientBStatus implements Serializable {
-    public String code;
+    public int code;
     public String des;
 }
