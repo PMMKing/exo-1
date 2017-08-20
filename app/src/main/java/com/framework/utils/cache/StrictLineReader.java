@@ -44,7 +44,7 @@ class StrictLineReader implements Closeable {
     private final Charset charset;
 
     /*
-     * Buffered data is stored in {@code buf}. As long as no exception occurs, 0 <= pos <= end and the data in the range
+     * Buffered datas is stored in {@code buf}. As long as no exception occurs, 0 <= pos <= end and the datas in the range
      * [pos, end) is buffered for reading. At end of input, if there is an unterminated line, we set end == -1,
      * otherwise end == pos. If the underlying {@code InputStream} throws an {@code IOException}, end may remain as
      * either pos or -1.
@@ -56,8 +56,8 @@ class StrictLineReader implements Closeable {
     /**
      * Constructs a new {@code LineReader} with the specified charset and the default capacity.
      *
-     * @param in the {@code InputStream} to read data from.
-     * @param charset the charset used to decode data. Only US-ASCII, UTF-8 and ISO-8859-1 are supported.
+     * @param in the {@code InputStream} to read datas from.
+     * @param charset the charset used to decode datas. Only US-ASCII, UTF-8 and ISO-8859-1 are supported.
      * @throws NullPointerException if {@code in} or {@code charset} is null.
      * @throws IllegalArgumentException if the specified charset is not supported.
      */
@@ -68,9 +68,9 @@ class StrictLineReader implements Closeable {
     /**
      * Constructs a new {@code LineReader} with the specified capacity and charset.
      *
-     * @param in the {@code InputStream} to read data from.
+     * @param in the {@code InputStream} to read datas from.
      * @param capacity the capacity of the buffer.
-     * @param charset the charset used to decode data. Only US-ASCII, UTF-8 and ISO-8859-1 are supported.
+     * @param charset the charset used to decode datas. Only US-ASCII, UTF-8 and ISO-8859-1 are supported.
      * @throws NullPointerException if {@code in} or {@code charset} is null.
      * @throws IllegalArgumentException if {@code capacity} is negative or zero or the specified charset is not
      *             supported.
@@ -119,13 +119,13 @@ class StrictLineReader implements Closeable {
                 throw new IOException("LineReader is closed");
             }
 
-            // Read more data if we are at the end of the buffered data.
+            // Read more datas if we are at the end of the buffered datas.
             // Though it's an error to read after an exception, we will let {@code fillBuf()}
             // throw again if that happens; thus we need to handle end == -1 as well as end == pos.
             if (pos >= end) {
                 fillBuf();
             }
-            // Try to find LF in the buffered data and return the line if successful.
+            // Try to find LF in the buffered datas and return the line if successful.
             for (int i = pos; i != end; ++i) {
                 if (buf[i] == LF) {
                     int lineEnd = i != pos && buf[i - 1] == CR ? i - 1 : i;
@@ -153,7 +153,7 @@ class StrictLineReader implements Closeable {
                 // Mark unterminated line in case fillBuf throws EOFException or IOException.
                 end = -1;
                 fillBuf();
-                // Try to find LF in the buffered data and return the line if successful.
+                // Try to find LF in the buffered datas and return the line if successful.
                 for (int i = pos; i != end; ++i) {
                     if (buf[i] == LF) {
                         if (i != pos) {
@@ -168,7 +168,7 @@ class StrictLineReader implements Closeable {
     }
 
     /**
-     * Reads new input data into the buffer. Call only with pos == end or end == -1, depending on the desired outcome if
+     * Reads new input datas into the buffer. Call only with pos == end or end == -1, depending on the desired outcome if
      * the function throws.
      */
     private void fillBuf() throws IOException {

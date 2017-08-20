@@ -3,8 +3,13 @@ package com.framework.net;
 
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
-import com.page.uc.bean.AddressResult;
+import com.page.address.AddressResult;
+import com.page.uc.bean.BuidingsResult;
+import com.page.uc.bean.DistrictsResult;
 import com.page.uc.bean.LoginResult;
+import com.page.uc.bean.RegiserResult;
+import com.page.uc.bean.RoomsResult;
+import com.page.uc.bean.UnitsResult;
 
 /**
  * @author zexu
@@ -14,10 +19,12 @@ public enum ServiceMap implements Enums.IType {
     getLinks("/getLinks.do", BaseResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
     getAddresses("/getAddresses.do", AddressResult.class),
-    getDistricts("/getDistricts.do", BaseResult.class),//获取小区列表
-    getBuildings("/getBuildings.do", BaseResult.class),//获取栋号列表
-    getUnits("/getUnits.do", BaseResult.class),//获取单元列表
+    getDistricts("/getDistricts.do", DistrictsResult.class),//获取小区列表
+    getBuildings("/getBuildings.do", BuidingsResult.class),//获取栋号列表
+    getUnits("/getUnits.do", UnitsResult.class),//获取单元列表
+    getRooms("/getRooms.do", RoomsResult.class),//获取单元列表
     getVerificationCode("/getVerificationCode.do", BaseResult.class),
+    quickRegister("/quickRegister.do", RegiserResult.class),
     customerLogin("/customerLogin.do", LoginResult.class),
     customerLogout("/customerLogout.do", BaseResult.class),
     ;

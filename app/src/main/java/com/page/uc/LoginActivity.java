@@ -42,6 +42,8 @@ public class LoginActivity extends BaseActivity {
     TextView textSendCode;
     @BindView(R.id.text_login)
     TextView textLogin;
+    @BindView(R.id.tv_rig)
+    TextView tvRig;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.text_send_code, R.id.text_login})
+    @OnClick({R.id.text_send_code, R.id.text_login,R.id.tv_rig})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.text_send_code:
@@ -59,8 +61,12 @@ public class LoginActivity extends BaseActivity {
             case R.id.text_login:
                 sendLogin();
                 break;
+            case R.id.tv_rig:
+                qStartActivity(SelectComActivity.class);
+                break;
         }
     }
+
 
     public static class LinkParam extends BaseParam {
         public int type = 1;
@@ -74,11 +80,11 @@ public class LoginActivity extends BaseActivity {
         Request.startRequest(new UpdateParam(), ServiceMap.checkVersion, mHandler);
     }
 
-    private void sendLogin(){
+    private void sendLogin() {
 
         String phone = tilUsername.getEditText().getText().toString();
         String psw = tilPassword.getEditText().getText().toString();
-        if (TextUtils.isEmpty(psw) || psw.length() != 4) {
+        if (TextUtils.isEmpty(psw) || psw.length() != 6) {
             showToast("验证码有误");
         }
 
@@ -87,6 +93,7 @@ public class LoginActivity extends BaseActivity {
         loginParam.phone = phone;
         Request.startRequest(loginParam, ServiceMap.customerLogin, mHandler, Request.RequestFeature.BLOCK);
     }
+
     private void sendCode() {
         String phone = tilUsername.getEditText().getText().toString();
         if (!BusinessUtils.checkPhoneNumber(phone)) {
@@ -110,6 +117,7 @@ public class LoginActivity extends BaseActivity {
 
             @Override
             public void onFinish() {
+                textSendCode.setText("重新发送");
                 textSendCode.setEnabled(true);
             }
         }.start();
@@ -121,13 +129,16 @@ public class LoginActivity extends BaseActivity {
             if (param.result.bstatus.code == 0) {
                 buildSendCodeText();
             }
-        } else if (param.key == ServiceMap.getLinks) {
+        } else if (param.key == ServiceMap.customerLogin) {
             if (param.result.bstatus.code == 0) {
                 //登录成功
                 LoginResult result = (LoginResult) param.result;
                 UCUtils.getInstance().saveUserInfo(result.data);
                 finish();
+            } else {
+                showToast(param.result.bstatus.des);
             }
+
         }
         return super.onMsgSearchComplete(param);
     }

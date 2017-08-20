@@ -16,7 +16,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选择楼宇"
+            android:text="选择小区"
             android:textColor="@color/pub_color_blue"
             android:textSize="16dp" />
 
@@ -51,7 +51,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选择单元"
+            android:text="选择楼号"
             android:textColor="@color/pub_color_blue"
             android:textSize="16dp" />
 
@@ -86,7 +86,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="选择房号"
+            android:text="选择单元"
             android:textColor="@color/pub_color_blue"
             android:textSize="16dp" />
 
@@ -109,4 +109,52 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/pub_color_gray_line" />
+    <LinearLayout
+        android:id="@+id/ll_3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="选择房号"
+            android:textColor="@color/pub_color_blue"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/text_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="14dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="16dp" />
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/right_arrow_icon" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/pub_color_gray_line" />
+    <TextView
+        android:id="@+id/tv_next"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/pub_btn_blue_arc_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="下一步"
+        android:textColor="@color/pub_color_white"
+        android:textSize="@dimen/text_h20" />
 </LinearLayout>

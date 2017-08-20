@@ -1,8 +1,7 @@
-package com.page.uc;
+package com.page.address.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -16,12 +15,11 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.IBaseActFrag;
 import com.haolb.client.R;
-import com.page.uc.bean.Address;
-import com.page.uc.bean.AddressResult;
+import com.page.address.Address;
+import com.page.address.AddressResult;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by chenxi.cui on 2017/8/13.

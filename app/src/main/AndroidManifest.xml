@@ -54,7 +54,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.page.uc.AddressEditActivity"
+        <activity android:name="com.page.address.activity.AddressEditActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
         <activity
@@ -77,7 +77,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="com.page.uc.AddressActivity"
+            android:name="com.page.address.activity.AddressActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
@@ -160,6 +160,11 @@
 
         <activity
             android:name="com.page.address.activity.SelectAddressActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.page.uc.RegisterActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />

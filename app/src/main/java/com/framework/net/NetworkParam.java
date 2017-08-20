@@ -20,7 +20,7 @@ public class NetworkParam implements Serializable {
     public String url;
     public String hostPath = "";
     public boolean block = false;
-    public boolean cancelAble = false;
+    public boolean cancelAble = true;
     public String progressMessage = "";
     public int addType = Request.NET_ADD_ONORDER;
     public BaseParam param;

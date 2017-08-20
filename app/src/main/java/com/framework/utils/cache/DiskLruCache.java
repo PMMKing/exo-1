@@ -45,7 +45,7 @@ import java.util.regex.Pattern;
  * streams or files. Each value must be between {@code 0} and {@code Integer.MAX_VALUE} bytes in length.
  *
  * <p>
- * The cache stores its data in a directory on the filesystem. This directory must be exclusive to the cache; the cache
+ * The cache stores its datas in a directory on the filesystem. This directory must be exclusive to the cache; the cache
  * may delete or overwrite files from its directory. It is an error for multiple processes to use the same cache
  * directory at the same time.
  *
@@ -61,7 +61,7 @@ import java.util.regex.Pattern;
  * <ul>
  * <li>When an entry is being <strong>created</strong> it is necessary to supply a full set of values; the empty value
  * should be used as a placeholder if necessary.
- * <li>When an entry is being <strong>edited</strong>, it is not necessary to supply data for every value; values
+ * <li>When an entry is being <strong>edited</strong>, it is not necessary to supply datas for every value; values
  * default to their previous value.
  * </ul>
  * Every {@link #edit} call must be matched by a call to {@link Editor#commit} or {@link Editor#abort}. Committing is
@@ -475,13 +475,13 @@ public final class DiskLruCache implements Closeable {
         return editor;
     }
 
-    /** Returns the directory where this cache stores its data. */
+    /** Returns the directory where this cache stores its datas. */
     public File getDirectory() {
         return directory;
     }
 
     /**
-     * Returns the maximum number of bytes that this cache should use to store its data.
+     * Returns the maximum number of bytes that this cache should use to store its datas.
      */
     public synchronized long getMaxSize() {
         return maxSize;

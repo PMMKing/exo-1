@@ -112,7 +112,7 @@ public class QProgressDialogFragment extends DialogFragment implements Observer 
         tvMessage = (TextView) onCreateDialog.findViewById(android.R.id.message);
         btnCancel = (ImageButton) onCreateDialog.findViewById(android.R.id.button2);
         if (isCancelable()) {
-            btnCancel.setVisibility(View.VISIBLE);
+            btnCancel.setVisibility(View.GONE);
             btnCancel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -1,4 +1,4 @@
-package com.page.uc.bean;
+package com.page.address;
 
 import java.io.Serializable;
 

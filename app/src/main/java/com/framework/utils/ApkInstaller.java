@@ -36,13 +36,13 @@ public class ApkInstaller {
 				return false;
 			}
 
-			String folder = Environment.getExternalStorageDirectory().getPath() + "/Android/data";
+			String folder = Environment.getExternalStorageDirectory().getPath() + "/Android/datas";
 			File f = new File(folder);
 			if (!f.exists()) {
 				f.mkdir();
 			}
 
-			String apkPath = Environment.getExternalStorageDirectory().getPath() + "/Android/data/SpeechService.apk";
+			String apkPath = Environment.getExternalStorageDirectory().getPath() + "/Android/datas/SpeechService.apk";
 			File file = new File(apkPath);
 			//往SDcard中写文件，需加权限
 			//<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

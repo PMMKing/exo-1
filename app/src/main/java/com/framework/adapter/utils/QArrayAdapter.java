@@ -26,14 +26,14 @@ import java.util.Locale;
 public abstract class QArrayAdapter<T> extends BaseAdapter implements Filterable {
 
     /**
-     * Contains the list of objects that represent the data of this ArrayAdapter. The content of this list is referred
+     * Contains the list of objects that represent the datas of this ArrayAdapter. The content of this list is referred
      * to as "the array" in the documentation.
      */
     protected List<T> mObjects;
     /**
      * Lock used to modify the content of {@link #mObjects}. Any write operation performed on the array should be
      * synchronized on this lock. This lock is also used by the filter (see {@link #getFilter()} to make a synchronized
-     * copy of the original array of data.
+     * copy of the original array of datas.
      */
     protected final Object mLock = new Object();
     /**

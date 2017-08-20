@@ -1,10 +1,10 @@
-package com.page.uc;
+package com.page.address.activity;
 
 import android.os.Bundle;
 
 import com.framework.activity.BaseActivity;
 import com.haolb.client.R;
-import com.page.uc.bean.Address;
+import com.page.address.Address;
 
 /**
  * Created by chenxi.cui on 2017/8/19.

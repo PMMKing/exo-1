@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import com.haolb.client.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
+import com.page.address.activity.AddressActivity;
 import com.page.orderdetails.activity.OrderDetailsActivity;
 
 import butterknife.BindView;
@@ -99,6 +100,7 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(AddressActivity.class);
                 break;
             case R.id.ll_list_3:
+                qStartActivity(SelectComActivity.class);
                 break;
             case R.id.ll_list_4:
                 break;

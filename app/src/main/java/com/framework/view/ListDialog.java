@@ -16,30 +16,37 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 
+import com.framework.domain.param.BaseParam;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.haolb.client.R;
+import com.page.uc.bean.ComBean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by shucheng.qu on 2017/8/7.
  */
 
-public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer> {
+public class ListDialog<T> extends Dialog implements OnItemClickListener<ComBean> {
     private final Context mContext;
     RecyclerView rcvListDialog;
     private int widthPixels;
     private int heightPixels;
+    private OnCellClick onCellClick;
+    private int type = -1;
 
     public ListDialog(@NonNull Context context) {
         this(context, 0);
 
     }
+
 
     public ListDialog(@NonNull Context context, @StyleRes int themeResId) {
         super(context, themeResId);
@@ -67,8 +74,6 @@ public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer
         getWindow().setAttributes(attributes);
         rcvListDialog = (RecyclerView) findViewById(R.id.rcv_list_dialog);
         rcvListDialog.addItemDecoration(new LineDecoration(mContext));
-        setListView();
-
         rcvListDialog.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -86,15 +91,11 @@ public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer
     }
 
 
-    private void setListView() {
+    public void setListView(List<ComBean> list) {
 
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            list.add(i);
-        }
-        MultiAdapter adapter = new MultiAdapter<Integer>(getContext(), list).addTypeView(new ITypeView<Integer>() {
+        MultiAdapter adapter = new MultiAdapter<ComBean>(getContext(), list).addTypeView(new ITypeView<ComBean>() {
             @Override
-            public boolean isForViewType(Integer item, int position) {
+            public boolean isForViewType(ComBean item, int position) {
                 return true;
             }
 
@@ -102,6 +103,7 @@ public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer
             public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
                 return new ViewHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_dialog_listdialog_item_layout, parent, false));
             }
+
         });
         rcvListDialog.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rcvListDialog.setAdapter(adapter);
@@ -109,20 +111,39 @@ public class ListDialog<T> extends Dialog implements OnItemClickListener<Integer
     }
 
     @Override
-    public void onItemClickListener(View view, Integer data, int position) {
-
+    public void onItemClickListener(View view, ComBean data, int position) {
+        if (onCellClick != null) {
+            dismiss();
+            onCellClick.onCellClick(data, position);
+        }
     }
 
+    public void setOnCellClick(OnCellClick onCellClick) {
+        this.onCellClick = onCellClick;
+    }
 
-    private class ViewHolder extends BaseViewHolder<Integer> {
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public interface OnCellClick{
+        void onCellClick(ComBean baseParam, int pos);
+    }
+
+    private class ViewHolder extends BaseViewHolder<ComBean> {
 
         public ViewHolder(Context context, View itemView) {
             super(context, itemView);
         }
 
         @Override
-        public void onBindViewHolder(BaseViewHolder holder, Integer data, int position) {
-
+        public void onBindViewHolder(BaseViewHolder holder, ComBean data, int position) {
+            TextView textView = (TextView) holder.itemView.findViewById(R.id.text_0);
+            textView.setText(data.name);
         }
     }
 

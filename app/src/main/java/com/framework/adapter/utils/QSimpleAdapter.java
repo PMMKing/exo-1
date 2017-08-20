@@ -48,7 +48,7 @@ public abstract class QSimpleAdapter<T> extends QArrayAdapter<T> {
     }
 
     /**
-     * Makes a new view to hold the data pointed to by arraylist.
+     * Makes a new view to hold the datas pointed to by arraylist.
      *
      * @param context Interface to application's global information
      * @param parent The parent to which the new view is attached to
@@ -57,7 +57,7 @@ public abstract class QSimpleAdapter<T> extends QArrayAdapter<T> {
     protected abstract View newView(Context context, ViewGroup parent);
 
     /**
-     * Bind an existing view to the data pointed to by arraylist
+     * Bind an existing view to the datas pointed to by arraylist
      *
      * @param view Existing view, returned earlier by newView
      * @param context Interface to application's global information

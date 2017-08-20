@@ -103,12 +103,14 @@
             android:textSize="@dimen/text_h20" />
 
         <TextView
-            android:visibility="gone"
-            android:layout_width="wrap_content"
+            android:textSize="14dp"
+            android:textColor="@color/pub_color_blue"
+            android:id="@+id/tv_rig"
+            android:layout_width="match_parent"
+            android:gravity="right"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/layout_left"
-            android:layout_marginRight="@dimen/layout_right"
             android:layout_marginTop="5dp"
+            android:padding="12dp"
             android:text="没有账号？请注册" />
 
     </LinearLayout>

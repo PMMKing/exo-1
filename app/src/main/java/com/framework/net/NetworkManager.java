@@ -271,7 +271,7 @@ public class NetworkManager implements TaskListener {
 ////            			FriendListResult friendListResult = (FriendListResult) baseResult;
 //            			String uidStr = UCUtils.getInstance().getUserid();
 //            			int myId = Integer.parseInt(uidStr);
-////            			friendListResult.data.friendList = FriendManager.sync(friendListResult.data.friendList,myId);
+////            			friendListResult.datas.friendList = FriendManager.sync(friendListResult.datas.friendList,myId);
 //            		}
 //            	}
                 return baseResult;

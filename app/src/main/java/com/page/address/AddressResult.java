@@ -1,4 +1,4 @@
-package com.page.uc.bean;
+package com.page.address;
 
 import com.framework.domain.response.BaseResult;
 
