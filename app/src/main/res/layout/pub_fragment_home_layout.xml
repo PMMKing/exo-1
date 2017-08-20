@@ -22,7 +22,7 @@
             app:banner_pointContainerBackground="#33000000"
             app:banner_pointContainerLeftRightPadding="10dp"
             app:banner_pointDrawable="@drawable/selector_banner_point"
-            app:banner_pointGravity="right"
+            app:banner_pointGravity="center_horizontal"
             app:banner_pointLeftRightMargin="3dp"
             app:banner_pointTopBottomMargin="6dp"
             app:banner_tipTextColor="#FFFFFF"

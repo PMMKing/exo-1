@@ -171,9 +171,9 @@ public class GridDecoration extends RecyclerView.ItemDecoration {
             outRect.set(0, 0, mDivider.getIntrinsicWidth(), 0);
         } else*/
         if (isLastColum(parent, itemPosition, spanCount, childCount)) {// 如果是最后一列，则需要绘制右边
-            outRect.set(mDivider.getIntrinsicHeight(), mDivider.getIntrinsicHeight(), mDivider.getIntrinsicHeight(), mDivider.getIntrinsicHeight());
+            outRect.set(mDivider.getIntrinsicHeight(), 0, mDivider.getIntrinsicHeight(), mDivider.getIntrinsicHeight());
         } else {
-            outRect.set(mDivider.getIntrinsicHeight(), mDivider.getIntrinsicHeight(), -mDivider.getIntrinsicHeight(), mDivider.getIntrinsicHeight());
+            outRect.set(mDivider.getIntrinsicHeight(), 0, -mDivider.getIntrinsicHeight(), mDivider.getIntrinsicHeight());
         }
     }
 }

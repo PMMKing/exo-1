@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="14dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:paddingRight="22dp"
+            android:text="资深吃货都在吃"
+            android:textColor="@color/pub_color_blue_588a9a"
+            android:textSize="@dimen/text_h16" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:paddingTop="3dp"
+            android:text="宅女吃货必备海外饮料"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h10" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/pub_btn_blue_selector"
+            android:gravity="center"
+            android:paddingBottom="2dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="2dp"
+            android:text="健力宝"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h12" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="86dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:background="@color/pub_color_white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pub_login_icon" />
+
+</LinearLayout>

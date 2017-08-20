@@ -10,7 +10,51 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <com.framework.view.tab.TabView
+            android:id="@+id/tv_collect"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.21" />
+
+        <com.framework.view.tab.TabView
+            android:id="@+id/tv_car"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.21" />
+
+        <TextView
+            android:id="@+id/tv_add_car"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.29"
+            android:background="@color/pub_color_yellow"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="加入购物车"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h15" />
+
+
+        <TextView
+            android:id="@+id/tv_buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.29"
+            android:background="@color/pub_color_blue"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="立即购买"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h15" />
+
+    </LinearLayout>
 
 </LinearLayout>

@@ -13,8 +13,8 @@ import android.widget.LinearLayout;
 import com.haolb.client.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
+import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.address.activity.AddressActivity;
-import com.page.orderdetails.activity.OrderDetailsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

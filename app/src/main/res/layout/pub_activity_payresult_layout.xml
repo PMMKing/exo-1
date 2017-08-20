@@ -25,6 +25,7 @@
 
 
     <TextView
+        android:id="@+id/tv_order_detail"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
@@ -33,10 +34,12 @@
         android:background="@drawable/pub_btn_blue_arc_selector"
         android:gravity="center"
         android:text="查看订单"
+        android:clickable="true"
         android:textColor="@color/pub_color_white"
         android:textSize="@dimen/text_h18" />
 
     <TextView
+        android:id="@+id/tv_go_shopping"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="15dp"
@@ -44,6 +47,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/pub_btn_blue_hollow_arc_selector"
         android:gravity="center"
+        android:clickable="true"
         android:text="继续购物"
         android:textColor="@color/pub_color_blue"
         android:textSize="@dimen/text_h18" />
