@@ -88,7 +88,7 @@ public class LoginActivity extends BaseActivity {
 
         String phone = tilUsername.getEditText().getText().toString();
         String psw = tilPassword.getEditText().getText().toString();
-        if (TextUtils.isEmpty(psw) || psw.length() != 6) {
+        if (TextUtils.isEmpty(psw)) {
             showToast("验证码有误");
         }
 

@@ -99,7 +99,7 @@ public class RegisterActivity extends BaseActivity {
                     showToast("请填写姓名");
                     return;
                 }
-                if (TextUtils.isEmpty(code) || code.length() != 6) {
+                if (TextUtils.isEmpty(code)) {
                     showToast("验证码有误");
                     return;
                 }
