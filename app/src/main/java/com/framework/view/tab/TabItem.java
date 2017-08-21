@@ -27,6 +27,13 @@ public class TabItem {
         this.tagFragmentClz = tagFragmentClz;
         this.bundle = bundle;
     }
+
+    public TabItem(String text, Class<? extends BaseFragment> tagFragmentClz, Bundle bundle, int... icon) {
+        this.icon = icon;
+        this.text = text;
+        this.tagFragmentClz = tagFragmentClz;
+        this.bundle = bundle;
+    }
 }
 
 

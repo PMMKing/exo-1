@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:lines="1"
+        android:paddingRight="22dp"
+        android:text="夏秋换季调理"
+        android:textColor="@color/pub_color_blue_588a9a"
+        android:textSize="@dimen/text_h14" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:gravity="center"
+        android:lines="1"
+        android:paddingRight="22dp"
+        android:text="名饮大折扣"
+        android:textColor="@color/pub_color_black"
+        android:textSize="@dimen/text_h10" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:layout_margin="5dp"
+        android:background="@color/pub_color_white"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pub_login_icon" />
+
+</LinearLayout>
