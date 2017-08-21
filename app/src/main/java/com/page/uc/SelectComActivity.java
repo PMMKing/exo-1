@@ -75,13 +75,18 @@ public class SelectComActivity extends BaseActivity {
                 } else if (type == 1) {
                     _buildingItem = baseParam;
                     _unitItem = null;
+                    _roomImte = null;
                     text1.setText(_buildingItem.name);
                     text2.setText("");
                     text3.setText("");
                 } else if (type == 2) {
                     _unitItem = baseParam;
+                    _roomImte = null;
                     text2.setText(_unitItem.name);
                     text3.setText("");
+                }else {
+                    _roomImte = baseParam;
+                    text3.setText(_roomImte.name);
                 }
             }
         });
@@ -116,19 +121,19 @@ public class SelectComActivity extends BaseActivity {
                 Request.startRequest(comParam1, ServiceMap.getUnits, mHandler, Request.RequestFeature.BLOCK);
                 break;
             case R.id.ll_3:
-                if (_buildingItem == null) {
+                if (_unitItem == null) {
                     showToast("先选择单元");
                     return;
                 }
                 ComParam comParam2 = new ComParam();
-                comParam2.pid = _buildingItem.id;
+                comParam2.pid = _unitItem.id;
                 Request.startRequest(comParam2, ServiceMap.getRooms, mHandler, Request.RequestFeature.BLOCK);
                 break;
             case R.id.tv_next:
-//                if (_buildingItem == null || _districtItem == null || _unitItem == null || _roomImte == null) {
-//                    showToast("信息不完整");
-//                    return;
-//                }
+                if (_buildingItem == null || _districtItem == null || _unitItem == null || _roomImte == null) {
+                    showToast("信息不完整");
+                    return;
+                }
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("key1", _districtItem);
                 bundle.putSerializable("key2", _buildingItem);

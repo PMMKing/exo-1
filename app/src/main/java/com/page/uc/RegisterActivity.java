@@ -142,6 +142,7 @@ public class RegisterActivity extends BaseActivity {
             RegiserResult regiserResult = (RegiserResult) param.result;
             if (regiserResult.bstatus.code == 0) {
                 qBackToActivity(LoginActivity.class, null);
+                showToast(regiserResult.bstatus.des);
             }
         }
         return super.onMsgSearchComplete(param);
