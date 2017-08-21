@@ -1,4 +1,4 @@
-package com.page.store.address.holder;
+package com.page.address.activity;
 
 import android.content.Context;
 import android.view.View;
@@ -9,9 +9,9 @@ import com.framework.rvadapter.holder.BaseViewHolder;
  * Created by shucheng.qu on 2017/8/17.
  */
 
-public class SeleDefaultHolder extends BaseViewHolder {
+public class SeleHolder extends BaseViewHolder {
 
-    public SeleDefaultHolder(Context context, View itemView) {
+    public SeleHolder(Context context, View itemView) {
         super(context, itemView);
     }
 

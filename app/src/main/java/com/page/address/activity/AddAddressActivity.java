@@ -1,4 +1,4 @@
-package com.page.store.address.activity;
+package com.page.address.activity;
 
 import android.os.Bundle;
 

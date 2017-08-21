@@ -15,10 +15,10 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.haolb.client.R;
+import com.page.address.activity.AddressActivity;
 import com.page.store.orderaffirm.holder.HeaderHolder;
 import com.page.store.orderaffirm.holder.ItemHolder;
 import com.page.store.payresult.activity.PayResultActivity;
-import com.page.uc.AddressActivity;
 
 import java.util.ArrayList;
 

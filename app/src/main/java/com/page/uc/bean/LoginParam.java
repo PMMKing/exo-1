@@ -8,5 +8,5 @@ import com.framework.domain.param.BaseParam;
 
 public class LoginParam extends BaseParam {
     public String phone;
-    public String password;
+    public String code;
 }

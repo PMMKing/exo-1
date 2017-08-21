@@ -16,10 +16,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BusinessUtils;
 import com.haolb.client.R;
-import com.page.community.details.activity.DetailsActivity;
 
-import java.util.Timer;
-import java.util.TimerTask;
 import com.page.uc.bean.LoginParam;
 import com.page.uc.bean.LoginResult;
 import com.page.uc.bean.LoginSendCodeParam;
@@ -93,7 +90,7 @@ public class LoginActivity extends BaseActivity {
         }
 
         LoginParam loginParam = new LoginParam();
-        loginParam.password = psw;
+        loginParam.code = psw;
         loginParam.phone = phone;
         Request.startRequest(loginParam, ServiceMap.customerLogin, mHandler, Request.RequestFeature.BLOCK);
     }

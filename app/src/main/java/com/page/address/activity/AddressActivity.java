@@ -52,7 +52,7 @@ public class AddressActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
         if (v.equals(tvAdd)) {
-            showToast("tianja");
+            qStartActivity(AddAddressActivity.class);
         }
     }
 
@@ -107,7 +107,7 @@ public class AddressActivity extends BaseActivity {
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("address", item);
-                    ((IBaseActFrag) context).qStartActivity(AddressEditActivity.class, bundle);
+                    ((IBaseActFrag) context).qStartActivity(AddAddressActivity.class, bundle);
                 }
             });
             textDefault.setOnClickListener(new View.OnClickListener() {
