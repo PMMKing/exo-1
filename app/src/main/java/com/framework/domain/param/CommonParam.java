@@ -14,4 +14,5 @@ public class CommonParam implements Serializable {
     public Integer userId;
     public String token;
     public String platform;
+    public String roomId;
 }

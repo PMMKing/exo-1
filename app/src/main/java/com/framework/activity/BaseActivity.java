@@ -74,7 +74,7 @@ public abstract class BaseActivity extends FragmentActivity implements
 
     private static final int COLOR_7000 = 0x77000000;
 
-    protected Handler mHandler;
+    public Handler mHandler;
     protected Bundle myBundle;
 
     protected ViewGroup mRoot;
@@ -677,7 +677,7 @@ public abstract class BaseActivity extends FragmentActivity implements
 
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
-        return false;
+        return true;
     }
 
     public void processAgentPhoneCall(String phoneNum) {

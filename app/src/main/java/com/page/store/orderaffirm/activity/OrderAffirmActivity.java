@@ -1,6 +1,7 @@
 package com.page.store.orderaffirm.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.haolb.client.R;
+import com.page.address.Address;
 import com.page.address.activity.AddressActivity;
 import com.page.store.orderaffirm.holder.HeaderHolder;
 import com.page.store.orderaffirm.holder.ItemHolder;
@@ -86,7 +88,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     public void onItemClickListener(View view, Object data, int position) {
 
         if(position ==0 ){
-            qStartActivity(AddressActivity.class);
+            qStartActivityForResult(AddressActivity.class, null, 100);
         }
     }
 
@@ -94,4 +96,14 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     public void onViewClicked() {
         qStartActivity(PayResultActivity.class);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 100) {
+            Address address = (Address) data.getExtras().getSerializable("address");
+            showToast(address.detail);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
 }

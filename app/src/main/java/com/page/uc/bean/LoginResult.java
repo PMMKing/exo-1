@@ -15,6 +15,7 @@ import com.framework.domain.response.BaseResult;
  08-21 23:06:47.386 2937-3061/com.haolb.client V/response: 		"hxpwd":"",
  08-21 23:06:47.386 2937-3061/com.haolb.client V/response: 		"portrait":"http://112.123.63.69:8081/yjwy/portrait",
  08-21 23:06:47.386 2937-3061/com.haolb.client V/response: 		"isActive":0
+
  *
  */
 
@@ -27,5 +28,6 @@ public class LoginResult extends BaseResult {
         public String portrait;
         public String userId;
         public String phone;
+        public String roomId;
     }
 }

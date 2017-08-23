@@ -97,7 +97,9 @@ public class UserCenterFragment extends BaseFragment {
                 break;
             case R.id.ll_list_2:
                 //收货地址
-                qStartActivity(AddressActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("isSelect", false);
+                qStartActivity(AddressActivity.class, bundle);
                 break;
             case R.id.ll_list_3:
                 qStartActivity(SelectComActivity.class);

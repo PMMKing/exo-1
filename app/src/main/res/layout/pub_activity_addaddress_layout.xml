@@ -67,6 +67,7 @@
 
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/pub_color_white"
@@ -103,10 +104,13 @@
 
     </LinearLayout>
 
-    <View style="@style/line_gray_h" />
+    <View
+        android:visibility="gone"
+        style="@style/line_gray_h" />
 
 
     <LinearLayout
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/pub_color_white"

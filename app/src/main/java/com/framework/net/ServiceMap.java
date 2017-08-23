@@ -19,6 +19,10 @@ public enum ServiceMap implements Enums.IType {
     getLinks("/getLinks.do", BaseResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
     getAddresses("/getAddresses.do", AddressResult.class),
+    submitAddress("/submitAddress.do", BaseResult.class),
+    updateAddress("/updateAddress.do", BaseResult.class),
+    deleteAddress("/deleteAddress.do", BaseResult.class),
+    setDefaultAddress("/setDefaultAddress.do", BaseResult.class),
     getDistricts("/getDistricts.do", DistrictsResult.class),//获取小区列表
     getBuildings("/getBuildings.do", BuidingsResult.class),//获取栋号列表
     getUnits("/getUnits.do", UnitsResult.class),//获取单元列表
