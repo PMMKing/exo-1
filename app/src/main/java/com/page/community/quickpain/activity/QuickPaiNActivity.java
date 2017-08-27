@@ -8,11 +8,16 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.framework.activity.BaseActivity;
+import com.framework.domain.param.BaseParam;
+import com.framework.net.NetworkParam;
+import com.framework.net.Request;
+import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
 import com.haolb.client.R;
+import com.page.community.quickpain.MySnapShotResult;
 import com.page.community.quickpain.holder.ContentHolder;
 import com.page.community.quickpain.holder.HeaderHolder;
 
@@ -36,6 +41,25 @@ public class QuickPaiNActivity extends BaseActivity {
         setContentView(R.layout.pub_activity_quickpain_layout);
         ButterKnife.bind(this);
         setListView();
+        MySnapshotParam param = new MySnapshotParam();
+        param.pageNo = 0;
+        param.pageSize = 10;
+        Request.startRequest(param, ServiceMap.getMySnapshots, mHandler, Request.RequestFeature.BLOCK);
+    }
+
+    @Override
+    public boolean onMsgSearchComplete(NetworkParam param) {
+        if (param.key.equals(ServiceMap.getMySnapshots)) {
+            if (param.result.bstatus.code == 0) {
+                MySnapShotResult result = (MySnapShotResult) param.result;
+            }
+        }
+        return super.onMsgSearchComplete(param);
+    }
+
+    public static class MySnapshotParam extends BaseParam {
+        public int pageNo;
+        public int pageSize;
     }
 
     private void setListView() {

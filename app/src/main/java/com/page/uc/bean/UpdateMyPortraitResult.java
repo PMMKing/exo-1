@@ -13,5 +13,6 @@ public class UpdateMyPortraitResult extends BaseResult {
     public static class UpdateMyPortraitData implements BaseData {
 
         public String portrait;
+        public String url;
     }
 }

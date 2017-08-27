@@ -11,7 +11,7 @@ public class UpLoadHeadImageDialog {
 
     public UpLoadHeadImageDialog(final FragmentActivity act) {
         builder = new AlertDialog.Builder(act);
-        builder.setTitle("设置头像");
+//        builder.setTitle("设置头像");
         String[] cities = new String[]{"相机", "相册"};
         builder.setItems(cities, new android.content.DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

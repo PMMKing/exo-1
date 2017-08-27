@@ -5,6 +5,7 @@ import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
 import com.page.address.AddressResult;
 import com.page.community.eventlist.model.EventListResult;
+import com.page.community.quickpain.MySnapShotResult;
 import com.page.community.serve.model.ServeResult;
 import com.page.home.model.LinksResult;
 import com.page.uc.bean.BuidingsResult;
@@ -40,6 +41,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     customerLogout("/customerLogout.do", BaseResult.class),
     updateNickname("/updateNickname.do", NickNameResult.class),
     UPDATE_MY_PROTRAIT("/updateMyPortrait.do", UpdateMyPortraitResult.class, ServiceMap.NET_TASKTYPE_FILE),
+    uploadPic("/uploadPic.do", UpdateMyPortraitResult.class, ServiceMap.NET_TASKTYPE_FILE),
 
     getWaters("/getWaters.do", ServeResult.class),//送水
     getHouses("/getHouses.do", ServeResult.class),//家政
@@ -47,7 +49,9 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getActivityList("/getActivityList.do", EventListResult.class),//首页活动列表
     getActivity("/getActivity.do", BaseResult.class),//活动详情
     submitActivity("/submitActivity.do", BaseResult.class),//添加活动
-    ;
+    submitSnapshot("/submitSnapshot.do", BaseResult.class),
+    getMySnapshots("/getMySnapshots.do", MySnapShotResult.class),;
+
 
     private final String mType;
     private final Class<? extends BaseResult> mClazz;

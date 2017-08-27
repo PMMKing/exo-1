@@ -186,7 +186,7 @@ public class UserInfoActivity extends BaseActivity {
             fos.close();
             UpdateMyPortraitParam param = new UpdateMyPortraitParam();
             param.byteLength = mCurrentPhotoFile.length();
-            param.ext = ".jpg";
+            param.ext = "jpg";
             NetworkParam np = Request.getRequest(param,
                     ServiceMap.UPDATE_MY_PROTRAIT, new Request.RequestFeature[]{
                             BLOCK, CANCELABLE});
