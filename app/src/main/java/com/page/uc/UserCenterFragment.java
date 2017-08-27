@@ -10,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.framework.utils.cache.ImageLoader;
 import com.haolb.client.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.address.activity.AddressActivity;
 import com.page.store.orderlist.activity.OrderListActivity;
+import com.page.uc.bean.LoginResult;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,6 +65,14 @@ public class UserCenterFragment extends BaseFragment {
         View view = inflater.inflate(R.layout.pub_fragment_user_center_layout, null);
         unbinder = ButterKnife.bind(this, view);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
+        ImageLoader.getInstance(getContext()).loadImage(instance.portrait, imageHead);
+
     }
 
     @Override

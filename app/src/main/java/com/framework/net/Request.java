@@ -4,6 +4,7 @@ import android.os.Handler;
 
 import com.framework.domain.param.BaseParam;
 import com.framework.utils.Enums;
+import com.page.uc.UserInfoActivity;
 
 import java.io.Serializable;
 
@@ -122,6 +123,8 @@ public final class Request {
     public final static int NET_ADD_CANCELSAMET = NET_ADD_CANCELPRE + 1; // 取消之前相同的请求再添加
 
     public static final RequestFeature[] DEFAULT_FEATURE = { RequestFeature.CANCELABLE, RequestFeature.ADD_CANCELSAMET, };
+
+
 
     public enum RequestFeature implements Enums.ITypeCode {
         BLOCK, //

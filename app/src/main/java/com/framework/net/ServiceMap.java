@@ -10,9 +10,11 @@ import com.page.home.model.LinksResult;
 import com.page.uc.bean.BuidingsResult;
 import com.page.uc.bean.DistrictsResult;
 import com.page.uc.bean.LoginResult;
+import com.page.uc.bean.NickNameResult;
 import com.page.uc.bean.RegiserResult;
 import com.page.uc.bean.RoomsResult;
 import com.page.uc.bean.UnitsResult;
+import com.page.uc.bean.UpdateMyPortraitResult;
 
 import java.io.Serializable;
 
@@ -36,6 +38,9 @@ public enum ServiceMap implements Enums.IType, Serializable {
     quickRegister("/quickRegister.do", RegiserResult.class),
     customerLogin("/customerLogin.do", LoginResult.class),
     customerLogout("/customerLogout.do", BaseResult.class),
+    updateNickname("/updateNickname.do", NickNameResult.class),
+    UPDATE_MY_PROTRAIT("/updateMyPortrait.do", UpdateMyPortraitResult.class, ServiceMap.NET_TASKTYPE_FILE),;
+
     getWaters("/getWaters.do", ServeResult.class),//送水
     getHouses("/getHouses.do", ServeResult.class),//家政
     getWashes("/getWashes.do", ServeResult.class),//洗衣

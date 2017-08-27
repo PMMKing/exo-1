@@ -59,9 +59,24 @@ public class UCUtils {
             return userInfo;
         }
         userInfo = (LoginData) SPUtils.get(MainApplication.getInstance(), userInfokey, new LoginData());
-        if (userInfo==null){
+        if (userInfo == null) {
             userInfo = new LoginData();
         }
         return userInfo;
+    }
+
+    public void savePortrait(String portrait) {
+        LoginData data = getUserInfo();
+        data.portrait = portrait;
+
+        saveUserInfo(data);
+    }
+
+    public void saveUsername(String username) {
+        LoginData data = getUserInfo();
+        data.roomId = username;
+
+        saveUserInfo(data);
+
     }
 }

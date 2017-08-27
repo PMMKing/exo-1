@@ -1,4 +1,6 @@
-package com.framework.domain.param;
+package com.page.uc.bean;
+
+import com.framework.domain.param.BaseParam;
 
 /**
  * portrait	是	用户头像内容	String	将图片的内容转成base64字符串

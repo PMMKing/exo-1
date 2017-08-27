@@ -1,4 +1,6 @@
-package com.framework.domain.param;
+package com.page.uc.bean;
+
+import com.framework.domain.param.BaseParam;
 
 /**
  * type	是	用户属性	String	nickname:表示更新的是密名
