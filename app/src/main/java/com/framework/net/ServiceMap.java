@@ -4,6 +4,9 @@ package com.framework.net;
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
 import com.page.address.AddressResult;
+import com.page.community.eventlist.model.EventListResult;
+import com.page.community.serve.model.ServeResult;
+import com.page.home.model.LinksResult;
 import com.page.uc.bean.BuidingsResult;
 import com.page.uc.bean.DistrictsResult;
 import com.page.uc.bean.LoginResult;
@@ -11,12 +14,14 @@ import com.page.uc.bean.RegiserResult;
 import com.page.uc.bean.RoomsResult;
 import com.page.uc.bean.UnitsResult;
 
+import java.io.Serializable;
+
 /**
  * @author zexu
  */
-public enum ServiceMap implements Enums.IType {
+public enum ServiceMap implements Enums.IType, Serializable {
     OPENGATE("/opengate.do", BaseResult.class), //获取通讯录联系人
-    getLinks("/getLinks.do", BaseResult.class),
+    getLinks("/getLinks.do", LinksResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
     getAddresses("/getAddresses.do", AddressResult.class),
     submitAddress("/submitAddress.do", BaseResult.class),
@@ -31,6 +36,12 @@ public enum ServiceMap implements Enums.IType {
     quickRegister("/quickRegister.do", RegiserResult.class),
     customerLogin("/customerLogin.do", LoginResult.class),
     customerLogout("/customerLogout.do", BaseResult.class),
+    getWaters("/getWaters.do", ServeResult.class),//送水
+    getHouses("/getHouses.do", ServeResult.class),//家政
+    getWashes("/getWashes.do", ServeResult.class),//洗衣
+    getActivityList("/getActivityList.do", EventListResult.class),//首页活动列表
+    getActivity("/getActivity.do", BaseResult.class),//活动详情
+    submitActivity("/submitActivity.do", BaseResult.class),//添加活动
     ;
 
     private final String mType;

@@ -15,6 +15,7 @@ import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.address.activity.AddressActivity;
+import com.page.store.orderlist.activity.OrderListActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -76,7 +77,7 @@ public class UserCenterFragment extends BaseFragment {
             case R.id.image_head:
                 if (UCUtils.getInstance().isLogin()) {
                     qStartActivity(UserInfoActivity.class);
-                }else {
+                } else {
                     qStartActivity(LoginActivity.class);
                 }
                 break;
@@ -84,12 +85,16 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(OrderDetailsActivity.class);
                 break;
             case R.id.ll_order_0:
+                qStartActivity(OrderListActivity.class);
                 break;
             case R.id.ll_order_1:
+                qStartActivity(OrderListActivity.class);
                 break;
             case R.id.ll_order_2:
+                qStartActivity(OrderListActivity.class);
                 break;
             case R.id.ll_order_3:
+                qStartActivity(OrderListActivity.class);
                 break;
             case R.id.ll_list_0:
                 break;

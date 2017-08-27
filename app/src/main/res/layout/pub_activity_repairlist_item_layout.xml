@@ -26,6 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lines="1"
             android:text="水龙头坏了"
             android:textColor="@color/pub_color_black"
             android:textSize="14dp" />
@@ -34,6 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lines="1"
             android:text="国购名城1号楼1单元101"
             android:textColor="@color/pub_color_gray_666"
             android:textSize="12dp" />
@@ -42,6 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lines="1"
             android:text="状态：正在派单"
             android:textColor="@color/pub_color_gray_666"
             android:textSize="12dp" />

@@ -13,7 +13,7 @@
         android:descendantFocusability="blocksDescendants"
         android:orientation="vertical">
 
-        <com.sivin.Banner
+        <com.framework.view.sivin.Banner
             android:id="@+id/banner"
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -138,9 +138,12 @@
                 android:textColor="@color/pub_color_black"
                 android:textSize="@dimen/text_h14" />
 
-            <com.framework.view.IFView
+            <TextView
+                android:id="@+id/tv_event"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:gravity="center"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="更多>"

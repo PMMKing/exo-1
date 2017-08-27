@@ -150,13 +150,57 @@ public class QunarImageDownloader implements Downloader {
 		if (snapshot != null) {
 			is = snapshot.getInputStream(DISK_CACHE_INDEX);
 		} else {
-			throw new ResponseException("download image error url is:" + uri);
+			throw new ResponseException("download image error url is:" + uri,0,0);
 		}
 
 		return new Response(is, fromCache);
 	}
 
-    @Override
+	@Override
+	public Response load(Uri uri, int networkPolicy) throws IOException {
+		// Wait here if work is paused and the task is not cancelled
+		synchronized (mPauseWorkLock) {
+			while (mPauseWork) {
+				try {
+					mPauseWorkLock.wait();
+				} catch (InterruptedException e) {
+				}
+			}
+		}
+
+		String url = uri.toString();
+		String key = hashKeyForDisk(url);
+		DiskLruCache.Snapshot snapshot = mHttpDiskCache.get(key);
+		InputStream is = null;
+		boolean fromCache = true;
+		if (snapshot == null) {
+			//磁盘没有
+			DiskLruCache.Editor editor = mHttpDiskCache.edit(key);
+			if (editor != null) {
+				runningTaskList.add(url);
+				try{
+					if (downloadUrlToStream(url, editor.newOutputStream(DISK_CACHE_INDEX))) {
+						editor.commit();
+						fromCache = false;
+						snapshot = mHttpDiskCache.get(key);
+					} else {
+						editor.abort();
+					}
+				} finally {
+					runningTaskList.remove(url);
+				}
+			}
+		}
+		if (snapshot != null) {
+			is = snapshot.getInputStream(DISK_CACHE_INDEX);
+		} else {
+			throw new ResponseException("download image error url is:" + uri,networkPolicy,0);
+		}
+
+		return new Response(is, fromCache);
+	}
+
+	@Override
     public void shutdown() {
 
     }

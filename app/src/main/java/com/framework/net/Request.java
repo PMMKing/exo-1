@@ -36,7 +36,6 @@ public final class Request {
      * @param param
      * @param serviceMap
      * @param handler
-     * @param title 进度框title
      * @param message 进度框message
      * @param features 请求的附加参数
      */

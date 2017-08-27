@@ -45,7 +45,7 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text=""
-        android:textColor="@color/pub_color_black"
+        android:textColor="@color/pub_color_blue"
         android:textSize="18dp" />
 
     <View

@@ -6,9 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.view.sivin.Banner;
+import com.framework.view.sivin.BannerAdapter;
 import com.haolb.client.R;
-import com.sivin.Banner;
-import com.sivin.BannerAdapter;
 
 import java.util.ArrayList;
 

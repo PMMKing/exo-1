@@ -17,14 +17,14 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.GridDecoration;
+import com.framework.view.sivin.Banner;
+import com.framework.view.sivin.BannerAdapter;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabView;
 import com.haolb.client.R;
 import com.page.store.classify.activity.ClassifyActivity;
 import com.page.home.holder.Shopping2Holder;
 import com.page.home.holder.Shopping3Holder;
-import com.sivin.Banner;
-import com.sivin.BannerAdapter;
 
 import java.util.ArrayList;
 

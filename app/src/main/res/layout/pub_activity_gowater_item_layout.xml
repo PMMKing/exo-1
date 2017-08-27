@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="60dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/pub_login_icon"
+        tools:background="@color/pub_color_gray_999" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="水龙头坏了"
+            android:textColor="@color/pub_color_black"
+            android:textSize="14dp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="国购名城1号楼1单元101"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/tv_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="状态：正在派单"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/btn_call"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_gravity="center_vertical"
+        android:clickable="true"
+        android:scaleType="fitCenter"
+        android:padding="15dp"
+        android:src="@drawable/pub_down_arrow" />
+
+</LinearLayout>

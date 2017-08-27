@@ -8,5 +8,6 @@ import java.io.Serializable;
 
 public class ClientBStatus implements Serializable {
     public int code;
+    public int hasmessage;
     public String des;
 }

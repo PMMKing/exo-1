@@ -56,4 +56,33 @@
         <attr name="clearableIcon" format="integer" />
     </declare-styleable>
 
+
+    <declare-styleable name="SivinBanner">
+        <attr name="banner_pointContainerBackground" format="reference|color" />
+        <attr name="banner_pointDrawable" format="reference" />
+        <attr name="banner_pointContainerLeftRightPadding" format="dimension" />
+        <attr name="banner_pointTopBottomMargin" format="dimension" />
+        <attr name="banner_pointLeftRightMargin" format="dimension" />
+        <attr name="banner_pointGravity">
+            <flag name="top" value="0x30" />
+            <flag name="bottom" value="0x50" />
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center_horizontal" value="0x01" />
+        </attr>
+        <attr name="banner_pointAutoPlayInterval" format="integer" />
+        <attr name="banner_pageChangeDuration" format="integer" />
+        <attr name="banner_tipTextColor" format="reference|color" />
+        <attr name="banner_tipTextSize" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="SwipRefreshLayout">
+        <attr name="direction">
+            <enum name="top" value="0" />
+            <enum name="bottom" value="1" />
+            <enum name="both" value="2" />
+        </attr>
+    </declare-styleable>
+
+
 </resources>

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_image"
+                android:layout_width="match_parent"
+                android:layout_height="280dp" />
+
+            <net.lucode.hackware.magicindicator.MagicIndicator
+                android:id="@+id/magic_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_gravity="center_horizontal|bottom" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingTop="16dp"
+            android:text="周末我们一起去超颜值书店逛逛吧"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h18" />
+
+        <TextView
+            android:id="@+id/tv_join_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            android:paddingTop="2dp"
+            android:text="50人已报名"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="@dimen/text_h12" />
+
+        <TextView
+            android:id="@+id/tv_join"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="17dp"
+            android:background="@drawable/pub_btn_blue_hollow_arc_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingBottom="13dp"
+            android:paddingTop="13dp"
+            android:text="我要报名"
+            android:textColor="@color/pub_color_blue"
+            android:textSize="@dimen/text_h18" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:paddingTop="22dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pub_login_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="活动时间"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h15" />
+
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="13dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="2017.07.28 周五"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h12" />
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/right_arrow_icon" />
+
+        </LinearLayout>
+
+        <View
+            style="@style/line_gray_h"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="26dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:paddingTop="22dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/pub_login_icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="举办地址"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h15" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="13dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:gravity="right"
+                android:lines="1"
+                android:text="浦东新区锦康路800号"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h12" />
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/right_arrow_icon" />
+
+        </LinearLayout>
+
+        <View
+            style="@style/line_gray_h"
+            android:layout_marginLeft="26dp"
+            android:layout_marginRight="26dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:paddingTop="16dp"
+            android:text="活动详情"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="@dimen/text_h12" />
+
+
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="26dp"
+            android:paddingRight="26dp"
+            android:paddingTop="8dp"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h12"
+            tools:text="7月底的上海，一家书店温暖一座城，在你心中是否也住着一家小书店，每个人心中都有理想书店的样子，它是浮华的的避难所，是心灵栖息地。一家书店温暖一座城，在你心中是否也住着一家小书店，每个人心中都有理想书店的样子，它是浮华的避难所是心灵栖息地。" />
+
+    </LinearLayout>
+
+
+</ScrollView>

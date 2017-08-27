@@ -168,17 +168,17 @@ public abstract class BaseActivity extends FragmentActivity implements
     }
 
     public void setContentView(View view, boolean autoInject) {
-        final ViewGroup realRoot = genRealRootView();
+//        final ViewGroup realRoot = genRealRootView();
         mRoot = genRootView();
         mTitleBar = new TitleBar(this);
         mRoot.addView(mTitleBar, -1, -2);
         mRoot.addView(view, -1, -1);
-        realRoot.addView(mRoot, -1, -1);
-        super.setContentView(realRoot);
+//        realRoot.addView(mRoot, -1, -1);
+        super.setContentView(mRoot);
         mTitleBar.setVisibility(View.GONE);
-        if (autoInject) {
-            Injector.inject(this);
-        }
+//        if (autoInject) {
+//            Injector.inject(this);
+//        }
     }
 
     public void setContentView(int layoutResID, boolean autoInject) {

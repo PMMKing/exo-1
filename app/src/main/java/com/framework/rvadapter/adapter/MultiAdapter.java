@@ -37,6 +37,11 @@ public class MultiAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
         mTypeViewManage = new TypeViewManage();
     }
 
+    public MultiAdapter(Context context) {
+        mContext = context;
+        mDatas = new ArrayList<T>();
+        mTypeViewManage = new TypeViewManage();
+    }
 
     private boolean multiLayout() {
         return mTypeViewManage.getManageSize() > 0;
