@@ -4,9 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,18 +15,16 @@ import android.widget.Toast;
 
 import com.framework.activity.BaseActivity;
 import com.framework.domain.param.BaseParam;
-import com.page.uc.bean.LoginResult;
-import com.page.uc.bean.NickNameResult;
-import com.page.uc.bean.UpdateMyPortraitParam;
-import com.framework.domain.response.BaseResult;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BitmapHelper;
-import com.framework.utils.MSystem;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.view.CircleImageView;
 import com.haolb.client.R;
+import com.page.uc.bean.LoginResult;
+import com.page.uc.bean.NickNameResult;
+import com.page.uc.bean.UpdateMyPortraitParam;
 import com.page.uc.bean.UpdateMyPortraitResult;
 import com.page.uc.chooseavatar.OnChoosePictureListener;
 import com.page.uc.chooseavatar.UpLoadHeadImageDialog;
@@ -37,8 +33,6 @@ import com.page.uc.chooseavatar.YCLTools;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -134,7 +128,7 @@ public class UserInfoActivity extends BaseActivity {
                         } else {
                             NickNameParam param = new NickNameParam();
                             param.nickname = input;
-                            Request.startRequest(param, ServiceMap.updateNickname, mHandler, BLOCK);
+                            Request.startRequest(param,input, ServiceMap.updateNickname, mHandler, BLOCK);
                         }
                     }
                 })
@@ -146,40 +140,31 @@ public class UserInfoActivity extends BaseActivity {
 
         public String nickname;
     }
+
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
-        if (super.onMsgSearchComplete(param)) {
-            // 父类已经处理了
-            return true;
-        }
-        switch (param.key) {
-            case updateNickname:
-                NickNameResult baseResult = (NickNameResult) param.result;
-                if (baseResult.bstatus.code == 0) {
-                    UCUtils.getInstance().saveUsername(baseResult.data.nickname);
-                    showToast(param.result.bstatus.des);
-                    setData();
-                } else {
-                    showToast(param.result.bstatus.des);
-                }
-                break;
-            case UPDATE_MY_PROTRAIT:
-                UpdateMyPortraitResult portraitResult = (UpdateMyPortraitResult) param.result;
-                if (portraitResult.bstatus.code == 0) {
-                    ImageLoader.getInstance(this).loadImage(portraitResult.data.portrait, imageHead, R.drawable.default_head);
-                    if (!TextUtils.isEmpty(portraitResult.data.portrait)) {
-                        UCUtils.getInstance().savePortrait(portraitResult.data.portrait);
-                    }
-                } else {
-                    showToast(param.result.bstatus.des);
-                }
-                break;
 
-            default:
-                break;
+        if (param.key.equals(ServiceMap.updateNickname)) {
+
+            if (param.result.bstatus.code == 0) {
+                UCUtils.getInstance().saveUsername((String) param.ext);
+                showToast(param.result.bstatus.des);
+                setData();
+            } else {
+                showToast(param.result.bstatus.des);
+            }
+        } else if (param.key.equals(ServiceMap.UPDATE_MY_PROTRAIT)) {
+            UpdateMyPortraitResult portraitResult = (UpdateMyPortraitResult) param.result;
+            if (portraitResult.bstatus.code == 0) {
+                ImageLoader.getInstance(this).loadImage(portraitResult.data.portrait, imageHead, R.drawable.default_head);
+                if (!TextUtils.isEmpty(portraitResult.data.portrait)) {
+                    UCUtils.getInstance().savePortrait(portraitResult.data.portrait);
+                }
+            } else {
+                showToast(param.result.bstatus.des);
+            }
         }
         return super.onMsgSearchComplete(param);
-
     }
 
     @Override

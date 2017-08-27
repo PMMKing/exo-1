@@ -39,7 +39,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     customerLogin("/customerLogin.do", LoginResult.class),
     customerLogout("/customerLogout.do", BaseResult.class),
     updateNickname("/updateNickname.do", NickNameResult.class),
-    UPDATE_MY_PROTRAIT("/updateMyPortrait.do", UpdateMyPortraitResult.class, ServiceMap.NET_TASKTYPE_FILE),;
+    UPDATE_MY_PROTRAIT("/updateMyPortrait.do", UpdateMyPortraitResult.class, ServiceMap.NET_TASKTYPE_FILE),
 
     getWaters("/getWaters.do", ServeResult.class),//送水
     getHouses("/getHouses.do", ServeResult.class),//家政

@@ -74,8 +74,7 @@ public class UCUtils {
 
     public void saveUsername(String username) {
         LoginData data = getUserInfo();
-        data.roomId = username;
-
+        data.nickname = username;
         saveUserInfo(data);
 
     }
