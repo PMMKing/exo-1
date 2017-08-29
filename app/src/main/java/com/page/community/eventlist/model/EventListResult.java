@@ -19,9 +19,9 @@ public class EventListResult extends BaseResult {
         public List<ActivityList> activityList;
 
         public static class ActivityList implements Serializable {
-            public int id;
+            public String id;
             public String title;
-            public Object pic;
+            public String pic;
             public String time;
             public int islimit;
             public int persons;

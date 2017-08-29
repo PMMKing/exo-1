@@ -8,6 +8,7 @@ import com.framework.domain.param.BaseParam;
 
 public class EventParam extends BaseParam {
 
+    public String id;
     public String title;
     public String pic;
     public String time;

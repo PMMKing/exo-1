@@ -4,6 +4,7 @@ package com.framework.net;
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
 import com.page.address.AddressResult;
+import com.page.community.eventdetails.model.EventDetailsResult;
 import com.page.community.eventlist.model.EventListResult;
 import com.page.community.quickpain.MySnapShotResult;
 import com.page.community.serve.model.ServeResult;
@@ -47,8 +48,13 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getHouses("/getHouses.do", ServeResult.class),//家政
     getWashes("/getWashes.do", ServeResult.class),//洗衣
     getActivityList("/getActivityList.do", EventListResult.class),//首页活动列表
-    getActivity("/getActivity.do", BaseResult.class),//活动详情
+    getMyActivityList("/getMyActivityList.do", EventListResult.class),//我的活动列表
+    getActivity("/getActivity.do", EventDetailsResult.class),//活动详情
     submitActivity("/submitActivity.do", BaseResult.class),//添加活动
+    joinActivity("/joinActivity.do", BaseResult.class),//参与活动
+    updateActivity("/updateActivity.do", BaseResult.class),//活动修改
+    canceljoinActivity("/canceljoinActivity.do", BaseResult.class),//取消参与活动
+    getActivityJoinerList("/getActivityJoinerList.do", BaseResult.class),//获取活动参与人
     submitSnapshot("/submitSnapshot.do", BaseResult.class),
     getMySnapshots("/getMySnapshots.do", MySnapShotResult.class),;
 

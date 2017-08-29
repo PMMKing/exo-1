@@ -1,6 +1,8 @@
 package com.page.community.serve.activity;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,7 +37,7 @@ import butterknife.ButterKnife;
  * Created by shucheng.qu on 2017/8/24.
  */
 
-public class ServeActivity extends BaseActivity implements OnItemClickListener, SwipRefreshLayout.OnRefreshListener {
+public class ServeActivity extends BaseActivity implements OnItemClickListener<WaterList>, SwipRefreshLayout.OnRefreshListener {
 
     public static String TITLE = "title";
     public static String SERVICEMAP = "serviceMap";
@@ -117,8 +119,10 @@ public class ServeActivity extends BaseActivity implements OnItemClickListener, 
     }
 
     @Override
-    public void onItemClickListener(View view, Object data, int position) {
-
+    public void onItemClickListener(View view, WaterList data, int position) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.phone));
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override

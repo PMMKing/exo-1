@@ -22,7 +22,6 @@ public class UpLoadHeadImageDialog {
                         break;
                     case 1:
                         YCLTools.getInstance().startChoose(act, 1);
-
                         break;
                     default:
                 }
