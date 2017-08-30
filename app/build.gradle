@@ -8,6 +8,10 @@ android {
         applicationId "com.haolb.client"
         minSdkVersion 15
         targetSdkVersion 22
+        ndk {
+            abiFilters "x86"
+            abiFilters "armeabi"
+        }
     }
 
 
@@ -49,4 +53,23 @@ dependencies {
     //banner
 //    compile 'com.xiwenhec:banner:1.0.4'
     compile 'com.squareup.picasso:picasso:2.5.2'
+
+
+//-------------------------------------------------------------
+    //weex 依赖 Android SDK version > 23
+    compile "com.facebook.fresco:fresco:0.10.0"
+//更新需要
+    compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    //weex chrome 调试相关 debug 引入
+    debugCompile 'com.google.code.findbugs:jsr305:2.0.1'
+    debugCompile 'com.squareup.okhttp:okhttp:2.3.0'
+    debugCompile 'com.squareup.okhttp:okhttp-ws:2.3.0'
+    debugCompile 'com.taobao.android:weex_inspector:0.10.0.5'
+    debugCompile 'com.journeyapps:zxing-android-embedded:3.4.0'
+
+// taobao weexsdk
+    compile 'com.ucar:weex_sdk:1.6@aar'
+
+// ucar weexsdk 拓展
+    compile 'com.ucar:weexext_sdk:1.0.8@aar'
 }

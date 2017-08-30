@@ -19,6 +19,8 @@ allprojects {
         maven {
             url "https://jitpack.io"
         }
+        maven { url 'https://raw.githubusercontent.com/weexext/sdklibs/master/repository' }
+
     }
 }
 

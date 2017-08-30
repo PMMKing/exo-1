@@ -18,6 +18,8 @@ import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.address.activity.AddressActivity;
 import com.page.store.orderlist.activity.OrderListActivity;
 import com.page.uc.bean.LoginResult;
+import com.ucar.weex.UWXPageManger;
+import com.ucar.weex.init.manager.WXActivityManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -141,6 +143,7 @@ public class UserCenterFragment extends BaseFragment {
 
                 break;
             case R.id.ll_list_7:
+                UWXPageManger.openPage(getContext(), "aboutUs.js");
                 break;
         }
     }
