@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
 import com.framework.net.NetworkParam;
@@ -20,6 +19,8 @@ import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
+import com.framework.view.tab.TabItem;
+import com.framework.view.tab.TabView;
 import com.haolb.client.R;
 import com.page.community.event.activity.EventActivity;
 import com.page.community.eventdetails.activity.EventDetailActivity;
@@ -36,30 +37,29 @@ import butterknife.OnClick;
  * Created by shucheng.qu on 2017/8/9.
  */
 
-public class EventListActivity extends BaseActivity implements OnItemClickListener<ActivityList>, SwipRefreshLayout.OnRefreshListener {
+public class MyEventListActivity extends BaseActivity implements OnItemClickListener<ActivityList>, SwipRefreshLayout.OnRefreshListener {
 
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
     @BindView(R.id.srl_down_refresh)
     SwipRefreshLayout srlDownRefresh;
-    @BindView(R.id.tv_add_event)
-    TextView tvAddEvent;
-    @BindView(R.id.tv_my_event)
-    TextView tvMyEvent;
-
     private MultiAdapter adapter;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.pub_activity_eventlist_layout);
+        setContentView(R.layout.pub_activity_myeventlist_layout);
         ButterKnife.bind(this);
-        setTitleBar("活动列表", true);
+        setTitleBar("我的活动", true, "发布", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qStartActivity(EventActivity.class);
+            }
+        });
         setListView();
     }
-
 
     @Override
     protected void onResume() {
@@ -89,12 +89,12 @@ public class EventListActivity extends BaseActivity implements OnItemClickListen
     private void startRequest(int page) {
         EventListParam param = new EventListParam();
         param.pageNo = page;
-        Request.startRequest(param, page, ServiceMap.getActivityList, mHandler);
+        Request.startRequest(param, page, ServiceMap.getMyActivityList, mHandler);
     }
 
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
-        if (param.key == ServiceMap.getActivityList) {
+        if (param.key == ServiceMap.getMyActivityList) {
             EventListResult result = (EventListResult) param.result;
             if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.activityList)) {
                 if ((int) param.ext == 1) {
@@ -113,8 +113,9 @@ public class EventListActivity extends BaseActivity implements OnItemClickListen
     @Override
     public void onItemClickListener(View view, ActivityList data, int position) {
         Bundle bundle = new Bundle();
-        bundle.putString(EventDetailActivity.ID, data.id);
-        qStartActivity(EventDetailActivity.class, bundle);
+        bundle.putString(EventActivity.URL, data.pic);
+        bundle.putString(EventActivity.ID, data.id);
+        qStartActivity(EventActivity.class, bundle);
     }
 
     @Override
@@ -127,15 +128,4 @@ public class EventListActivity extends BaseActivity implements OnItemClickListen
         startRequest(++index);
     }
 
-    @OnClick({R.id.tv_add_event, R.id.tv_my_event})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.tv_add_event:
-                qStartActivity(EventActivity.class);
-                break;
-            case R.id.tv_my_event:
-                qStartActivity(MyEventListActivity.class);
-                break;
-        }
-    }
 }

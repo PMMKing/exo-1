@@ -21,12 +21,17 @@ import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
+import com.framework.utils.DateFormatUtils;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.IFView;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
 import com.haolb.client.R;
 import com.page.community.eventlist.activity.EventListActivity;
+import com.page.community.eventlist.model.EventListParam;
+import com.page.community.eventlist.model.EventListResult;
+import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
 import com.page.community.serve.activity.ServeActivity;
 import com.page.home.holder.SMHolder;
 import com.page.home.model.HomeModel;
@@ -34,7 +39,6 @@ import com.page.home.model.LinksParam;
 import com.page.home.model.LinksResult;
 import com.page.home.model.LinksResult.Data.Links;
 import com.page.home.view.ModeView;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -91,7 +95,6 @@ public class HomeFragment extends BaseFragment {
         setBanner();
         setModel();
         set711();
-        setEvent();
     }
 
     @Override
@@ -101,10 +104,14 @@ public class HomeFragment extends BaseFragment {
         getEvents();
     }
 
-    private void setEvent() {
+    private void setEvent(List<ActivityList> activityList) {
         llEventList.removeAllViews();
-        for (int i = 0; i < 4; i++) {
+        for (ActivityList event : activityList) {
             View itemView = LayoutInflater.from(getContext()).inflate(R.layout.pub_fragment_home_event_item_layout, null, false);
+            TextView tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+            TextView tvTime = (TextView) itemView.findViewById(R.id.tv_time);
+            tvTitle.setText(event.title);
+            tvTime.setText(DateFormatUtils.format(event.createtime, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm"));
             llEventList.addView(itemView);
         }
     }
@@ -218,7 +225,10 @@ public class HomeFragment extends BaseFragment {
 
 
     public void getEvents() {
-
+        EventListParam param = new EventListParam();
+        param.pageNo = 1;
+        param.pageSize = 4;
+        Request.startRequest(param, ServiceMap.getActivityList, mHandler);
     }
 
     @Override
@@ -229,6 +239,11 @@ public class HomeFragment extends BaseFragment {
                 updataBanner(linksResult.data.links);
             }
 
+        } else if (param.key == ServiceMap.getActivityList) {
+            EventListResult result = (EventListResult) param.result;
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.activityList)) {
+                setEvent(result.data.activityList);
+            }
         }
 
 

@@ -9,7 +9,8 @@
     <com.framework.view.pull.SwipRefreshLayout
         android:id="@+id/srl_down_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:direction="both">
 
         <android.support.v7.widget.RecyclerView
@@ -18,5 +19,39 @@
             android:layout_height="match_parent" />
 
     </com.framework.view.pull.SwipRefreshLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/pub_color_blue"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_add_event"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="发布活动"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h18" />
+
+        <View
+            style="@style/line_gray_v"
+            android:background="@color/pub_color_white" />
+
+        <TextView
+            android:id="@+id/tv_my_event"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="我的活动"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h18" />
+
+    </LinearLayout>
 
 </LinearLayout>

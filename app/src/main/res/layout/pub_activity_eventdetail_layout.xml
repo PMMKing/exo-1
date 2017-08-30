@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <FrameLayout
+        <!--<FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -24,8 +24,16 @@
                 android:id="@+id/magic_indicator"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-                android:layout_gravity="center_horizontal|bottom" />
-        </FrameLayout>
+                android:layout_gravity="center_horizontal|bottom"
+                android:visibility="gone" />
+        </FrameLayout>-->
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/pub_login_icon" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -36,7 +44,7 @@
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:paddingTop="16dp"
-            android:text="周末我们一起去超颜值书店逛逛吧"
+            tools:text="周末我们一起去超颜值书店逛逛吧"
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h18" />
 
@@ -47,7 +55,7 @@
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:paddingTop="2dp"
-            android:text="50人已报名"
+            tools:text="50人已报名"
             android:textColor="@color/pub_color_gray_666"
             android:textSize="@dimen/text_h12" />
 
@@ -101,7 +109,7 @@
                 android:layout_marginRight="13dp"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="2017.07.28 周五"
+                tools:text="2017.07.28 周五"
                 android:textColor="@color/pub_color_gray_666"
                 android:textSize="@dimen/text_h12" />
 
@@ -152,7 +160,7 @@
                 android:ellipsize="end"
                 android:gravity="right"
                 android:lines="1"
-                android:text="浦东新区锦康路800号"
+                tools:text="浦东新区锦康路800号"
                 android:textColor="@color/pub_color_gray_666"
                 android:textSize="@dimen/text_h12" />
 

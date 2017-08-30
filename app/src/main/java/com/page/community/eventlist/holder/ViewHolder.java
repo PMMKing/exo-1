@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.utils.imageload.ImageLoad;
 import com.haolb.client.R;
 import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
 
@@ -37,10 +38,10 @@ public class ViewHolder extends BaseViewHolder<ActivityList> {
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, ActivityList data, int position) {
-
         tvTitle.setText(data.title);
         tvInitiator.setText("发起人：" + data.place);
         tvNumber.setText("参与人数：" + data.persons);
+        ImageLoad.load(mContext, data.pic, ivImage);
     }
 
 }
