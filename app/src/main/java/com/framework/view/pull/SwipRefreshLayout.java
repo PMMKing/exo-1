@@ -19,6 +19,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Transformation;
 import android.widget.AbsListView;
 
+import com.framework.utils.QLog;
 import com.haolb.client.R;
 
 
@@ -46,20 +47,26 @@ import com.haolb.client.R;
 
 /**
  * 下拉刷新、加载更多、分页索引
- * @author xutao
  *
+ * @author xutao
  */
 public class SwipRefreshLayout extends ViewGroup {
-	
-	/** 是不是下拉 **/
-	public boolean isTop;
-	
-	/** 第一页 **/
-	public int firstIndex = 0;
-	
-	/** 页数索引 **/
-	public int index = firstIndex;
-	
+
+    /**
+     * 是不是下拉
+     **/
+    public boolean isTop;
+
+    /**
+     * 第一页
+     **/
+    public int firstIndex = 0;
+
+    /**
+     * 页数索引
+     **/
+    public int index = firstIndex;
+
     // Maps to ProgressBar.Large style
     public static final int LARGE = MaterialProgressDrawable.LARGE;
     // Maps to ProgressBar default style
@@ -107,6 +114,7 @@ public class SwipRefreshLayout extends ViewGroup {
     private boolean mOriginalOffsetCalculated = false;
 
     private float mInitialMotionY;
+    private float mInitialMotionX;
     private boolean mIsBeingDragged;
     private int mActivePointerId = INVALID_POINTER;
     // Whether this item is scaled up rather than clipped
@@ -170,12 +178,12 @@ public class SwipRefreshLayout extends ViewGroup {
                 if (mNotify) {
                     if (mListener != null) {
                         if (isTop) {
-                        	index = firstIndex;
-                        	mListener.onRefresh(index);
-						}else {
-							index ++;
-							mListener.onLoad(index);
-						}
+                            index = firstIndex;
+                            mListener.onRefresh(index);
+                        } else {
+                            index++;
+                            mListener.onLoad(index);
+                        }
                     }
                 }
             } else {
@@ -314,12 +322,12 @@ public class SwipRefreshLayout extends ViewGroup {
         // the absolute offset has to take into account that the circle starts at an offset
         mSpinnerFinalOffset = DEFAULT_CIRCLE_TARGET * metrics.density;
         mTotalDragDistance = mSpinnerFinalOffset;
-        
+
         //设置刷新动画颜色
-        setColorSchemeResources(android.R.color.holo_blue_light, 
-        		android.R.color.holo_red_light, 
-        		android.R.color.holo_orange_light, 
-        		android.R.color.holo_green_light);
+        setColorSchemeResources(android.R.color.holo_blue_light,
+                android.R.color.holo_red_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_green_light);
     }
 
     protected int getChildDrawingOrder(int childCount, int i) {
@@ -448,11 +456,13 @@ public class SwipRefreshLayout extends ViewGroup {
         mCircleView.startAnimation(mScaleDownAnimation);
     }
 
-    @SuppressLint("NewApi") private void startProgressAlphaStartAnimation() {
+    @SuppressLint("NewApi")
+    private void startProgressAlphaStartAnimation() {
         mAlphaStartAnimation = startAlphaAnimation(mProgress.getAlpha(), STARTING_PROGRESS_ALPHA);
     }
 
-    @SuppressLint("NewApi") private void startProgressAlphaMaxAnimation() {
+    @SuppressLint("NewApi")
+    private void startProgressAlphaMaxAnimation() {
         mAlphaMaxAnimation = startAlphaAnimation(mProgress.getAlpha(), MAX_ALPHA);
     }
 
@@ -603,7 +613,7 @@ public class SwipRefreshLayout extends ViewGroup {
                     mCurrentTargetOffsetTop = mOriginalOffsetTop = getMeasuredHeight() - mCircleView.getMeasuredHeight();
                     break;
                 case TOP:
-                default:  
+                default:
                     mCurrentTargetOffsetTop = mOriginalOffsetTop = -mCircleView.getMeasuredHeight();
                     break;
             }
@@ -712,10 +722,12 @@ public class SwipRefreshLayout extends ViewGroup {
                 mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
                 mIsBeingDragged = false;
                 final float initialMotionY = getMotionEventY(ev, mActivePointerId);
+                final float initialMotionX = getMotionEventX(ev, mActivePointerId);
                 if (initialMotionY == -1) {
                     return false;
                 }
                 mInitialMotionY = initialMotionY;
+                mInitialMotionX = initialMotionX;
 
             case MotionEvent.ACTION_MOVE:
                 if (mActivePointerId == INVALID_POINTER) {
@@ -723,6 +735,7 @@ public class SwipRefreshLayout extends ViewGroup {
                 }
 
                 final float y = getMotionEventY(ev, mActivePointerId);
+                final float x = getMotionEventX(ev, mActivePointerId);
                 if (y == -1) {
                     return false;
                 }
@@ -737,7 +750,7 @@ public class SwipRefreshLayout extends ViewGroup {
                         return false;
                     }
                 }
-                float yDiff;
+                float yDiff, xDiff = Math.abs(mInitialMotionX - x);
                 switch (mDirection) {
                     case BOTTOM:
                         yDiff = mInitialMotionY - y;
@@ -747,7 +760,7 @@ public class SwipRefreshLayout extends ViewGroup {
                         yDiff = y - mInitialMotionY;
                         break;
                 }
-                if (yDiff > mTouchSlop && !mIsBeingDragged) {
+                if (xDiff < yDiff && yDiff > mTouchSlop && !mIsBeingDragged) {
                     mIsBeingDragged = true;
                     mProgress.setAlpha(STARTING_PROGRESS_ALPHA);
                 }
@@ -775,6 +788,14 @@ public class SwipRefreshLayout extends ViewGroup {
         return MotionEventCompat.getY(ev, index);
     }
 
+    private float getMotionEventX(MotionEvent ev, int activePointerId) {
+        final int index = MotionEventCompat.findPointerIndex(ev, activePointerId);
+        if (index < 0) {
+            return -1;
+        }
+        return MotionEventCompat.getX(ev, index);
+    }
+
     @Override
     public void requestDisallowInterceptTouchEvent(boolean b) {
         // Nope.
@@ -784,7 +805,8 @@ public class SwipRefreshLayout extends ViewGroup {
         return animation != null && animation.hasStarted() && !animation.hasEnded();
     }
 
-    @SuppressLint("NewApi") @Override
+    @SuppressLint("NewApi")
+    @Override
     public boolean onTouchEvent(MotionEvent ev) {
         final int action = MotionEventCompat.getActionMasked(ev);
 
@@ -810,11 +832,13 @@ public class SwipRefreshLayout extends ViewGroup {
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
+                QLog.d("ACTION_DOWN");
                 mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
                 mIsBeingDragged = false;
                 break;
 
             case MotionEvent.ACTION_MOVE: {
+                QLog.d("ACTION_MOVE");
                 final int pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
                 if (pointerIndex < 0) {
                     return false;
@@ -891,17 +915,20 @@ public class SwipRefreshLayout extends ViewGroup {
                 break;
             }
             case MotionEventCompat.ACTION_POINTER_DOWN: {
+                QLog.d("ACTION_POINTER_DOWN");
                 final int index = MotionEventCompat.getActionIndex(ev);
                 mActivePointerId = MotionEventCompat.getPointerId(ev, index);
                 break;
             }
 
             case MotionEventCompat.ACTION_POINTER_UP:
+                QLog.d("ACTION_POINTER_UP");
                 onSecondaryPointerUp(ev);
                 break;
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL: {
+                QLog.d("ACTION_CANCEL");
                 if (mActivePointerId == INVALID_POINTER) {
                     if (action == MotionEvent.ACTION_UP) {
                     }
@@ -1028,7 +1055,8 @@ public class SwipRefreshLayout extends ViewGroup {
         }
     };
 
-    @SuppressLint("NewApi") private void startScaleDownReturnToStartAnimation(int from,
+    @SuppressLint("NewApi")
+    private void startScaleDownReturnToStartAnimation(int from,
                                                       AnimationListener listener) {
         mFrom = from;
         if (isAlphaUsedForScale()) {
@@ -1078,6 +1106,7 @@ public class SwipRefreshLayout extends ViewGroup {
      */
     public interface OnRefreshListener {
         public void onRefresh(int index);
+
         public void onLoad(int index);
     }
 
@@ -1125,25 +1154,25 @@ public class SwipRefreshLayout extends ViewGroup {
     /**
      * @return 获得从第一页开始索引
      */
-	public int getFirstIndex() {
-		return firstIndex;
-	}
+    public int getFirstIndex() {
+        return firstIndex;
+    }
 
-	/**
-	 * 设置从第几页开始（默认值为0）
-	 * @param firstIndex 第几页
-	 */
-	public void setFirstIndex(int firstIndex) {
-		this.firstIndex = firstIndex;
-	}
+    /**
+     * 设置从第几页开始（默认值为0）
+     *
+     * @param firstIndex 第几页
+     */
+    public void setFirstIndex(int firstIndex) {
+        this.firstIndex = firstIndex;
+    }
 
-	/**
-	 * @return 获得当前索引
-	 */
-	public int getIndex() {
-		return index;
-	}
-	
-	
-    
+    /**
+     * @return 获得当前索引
+     */
+    public int getIndex() {
+        return index;
+    }
+
+
 }

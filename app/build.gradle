@@ -5,26 +5,113 @@ android {
     buildToolsVersion "25.0.3"
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
-        applicationId "com.haolb.client"
-        minSdkVersion 15
-        targetSdkVersion 22
+        applicationId "com.qfant.wuye"
+        minSdkVersion 16
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.0"
+        multiDexEnabled true
         ndk {
-            abiFilters "x86"
-            abiFilters "armeabi"
+            // 设置支持的 SO 库构架
+            abiFilters 'armeabi', 'x86'
+//,'armeabi-v7a'//, 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
         }
     }
 
+    dexOptions {
+        preDexLibraries true
+        javaMaxHeapSize "4g" //最主要是这句, 不过改成8g没有更显著的提升
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        disable 'DefaultLocale', 'SpUsage', 'SimpleDateFormat', 'IconMissingDensityFolder', 'ContentDescription', 'RtlSymmetry', 'RtlHardcoded', 'HardcodedText', 'RelativeOverlap', 'ClickableViewAccessibility', 'MissingRegistered'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("keystore.jks")
+            storePassword "qifan2013"
+            keyAlias "keystore"
+            keyPassword "qifan2013"
+            v2SigningEnabled true
+        }
+
+        bate {
+            storeFile file("keystore.jks")
+            storePassword "qifan2013"
+            keyAlias "keystore"
+            keyPassword "qifan2013"
+            v2SigningEnabled true
+        }
+
+        release {
+            storeFile file("keystore.jks")
+            storePassword "qifan2013"
+            keyAlias "keystore"
+            keyPassword "qifan2013"
+            v2SigningEnabled true
+        }
+    }
 
     buildTypes {
-        release {
+        debug {
+//            manifestPlaceholders = []
+            zipAlignEnabled false
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            versionNameSuffix '-dev'
+            debuggable true
+            jniDebuggable false
+            renderscriptDebuggable false
+        }
+        bete {
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.bate
+            versionNameSuffix '-beta'
+            debuggable true
+        }
+        release {
+            debuggable false
+            jniDebuggable false
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "wuye.apk"
+                    if (variant.buildType.name.equals("release")) {
+                        fileName = "wuye_v${defaultConfig.versionName}.apk"
+                    } else if (variant.buildType.name.equals("bate")) {
+                        fileName = "wuye_bate_v${defaultConfig.versionName}.apk"
+                    } else {
+                        fileName = "wuye_debug_v${defaultConfig.versionName}.apk"
+                    }
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+
 }
 
 dependencies {
-   // compile fileTree(dir: 'libs', include: ['*.jar'])
+    // compile fileTree(dir: 'libs', include: ['*.jar'])
     compile files('libs/baidumapapi_v3_2_0.jar')
 
     compile files('libs/locSDK_3.3.jar')

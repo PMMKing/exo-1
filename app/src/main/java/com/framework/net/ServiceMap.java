@@ -6,9 +6,11 @@ import com.framework.utils.Enums;
 import com.page.address.AddressResult;
 import com.page.community.eventdetails.model.EventDetailsResult;
 import com.page.community.eventlist.model.EventListResult;
-import com.page.community.quickpain.MySnapShotResult;
+import com.page.community.quickpain.model.QpDetailResult;
+import com.page.community.quickpain.model.ScommentsReault;
 import com.page.community.serve.model.ServeResult;
 import com.page.home.model.LinksResult;
+import com.page.home.model.QpListResult;
 import com.page.uc.bean.BuidingsResult;
 import com.page.uc.bean.DistrictsResult;
 import com.page.uc.bean.LoginResult;
@@ -55,8 +57,15 @@ public enum ServiceMap implements Enums.IType, Serializable {
     updateActivity("/updateActivity.do", BaseResult.class),//活动修改
     canceljoinActivity("/canceljoinActivity.do", BaseResult.class),//取消参与活动
     getActivityJoinerList("/getActivityJoinerList.do", BaseResult.class),//获取活动参与人
-    submitSnapshot("/submitSnapshot.do", BaseResult.class),
-    getMySnapshots("/getMySnapshots.do", MySnapShotResult.class),;
+    submitSnapshot("/submitSnapshot.do", BaseResult.class),//发布随手拍
+    getMySnapshots("/getMySnapshots.do", QpListResult.class),
+    deleteSnapshot("/deleteSnapshot.do", BaseResult.class),//删除
+    getSnapshots("/getSnapshots.do", QpListResult.class),
+    getSnapshot("/getSnapshot.do", QpDetailResult.class),//详情
+    updateSnapshot("/updateSnapshot.do", QpDetailResult.class),//编辑
+    scomment("/scomment.do", BaseResult.class),//评论
+    scomments("/scomments.do", ScommentsReault.class),//评论列表
+    ;
 
 
     private final String mType;

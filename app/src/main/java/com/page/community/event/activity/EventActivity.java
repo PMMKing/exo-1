@@ -54,8 +54,7 @@ public class EventActivity extends BaseActivity {
         ButterKnife.bind(this);
         url = myBundle.getString(URL);
         id = myBundle.getString(ID);
-        addView.setAddNumber(1);
-        if (TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(id)) {
             setTitleBar("活动发布", true);
         } else {
             setTitleBar("活动修改", true);
@@ -89,7 +88,7 @@ public class EventActivity extends BaseActivity {
         param.place = address;
         param.intro = details;
         param.id = id;
-        if (TextUtils.isEmpty(url)) {
+        if (TextUtils.isEmpty(id)) {
             Request.startRequest(param, ServiceMap.submitActivity, mHandler, Request.RequestFeature.BLOCK);
         } else {
             Request.startRequest(param, ServiceMap.updateActivity, mHandler, Request.RequestFeature.BLOCK);

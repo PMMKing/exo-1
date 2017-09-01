@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="icon_font_empty"></string>//返回
     <string name="icon_font_back">&#xe61d;</string>//返回
     <string name="icon_font_add">&#xe60f;</string>//十字添加
     <string name="icon_font_home">&#xe604;</string>//房子home icon

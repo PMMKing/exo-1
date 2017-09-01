@@ -1,11 +1,13 @@
 package com.page.community.quickpain.view;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import com.framework.activity.BaseActivity;
 import com.haolb.client.R;
 import com.page.community.quickpain.ScaleCircleNavigator;
 import com.page.community.quickpain.fragment.ImageFragment;
+import com.page.community.quickpain.model.QpDetailResult;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;
@@ -52,11 +55,33 @@ public class HeadderView extends LinearLayout {
     private void initView() {
         LinearLayout.inflate(getContext(), R.layout.pub_activity_quickpain_header_layout, this);
         ButterKnife.bind(this);
-        final ArrayList<Fragment> mTitleDataList = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            mTitleDataList.add(new ImageFragment());
-        }
+    }
 
+    public void updataView(QpDetailResult.Data hearderData) {
+        if (hearderData == null) return;
+        ArrayList<Fragment> mTitleDataList = new ArrayList<>();
+        if (!TextUtils.isEmpty(hearderData.pic1)) {
+            ImageFragment imageFragment = new ImageFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("imageUrl", hearderData.pic1);
+            imageFragment.setArguments(bundle);
+            mTitleDataList.add(imageFragment);
+        }
+        if (!TextUtils.isEmpty(hearderData.pic2)) {
+            ImageFragment imageFragment = new ImageFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("imageUrl", hearderData.pic2);
+            imageFragment.setArguments(bundle);
+            mTitleDataList.add(imageFragment);
+        }
+        if (!TextUtils.isEmpty(hearderData.pic3)) {
+            ImageFragment imageFragment = new ImageFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("imageUrl", hearderData.pic3);
+            imageFragment.setArguments(bundle);
+            mTitleDataList.add(imageFragment);
+        }
+        tvMsg.setText(hearderData.intro);
         ScaleCircleNavigator scaleCircleNavigator = new ScaleCircleNavigator(getContext());
         scaleCircleNavigator.setCircleCount(mTitleDataList.size());
         scaleCircleNavigator.setNormalCircleColor(getContext().getResources().getColor(R.color.pub_color_gray_999));
@@ -69,7 +94,8 @@ public class HeadderView extends LinearLayout {
         });
         magicIndicator.setNavigator(scaleCircleNavigator);
         ViewPagerHelper.bind(magicIndicator, vpImage);
-        vpImage.setAdapter(new PagerAdapter(((BaseActivity) getContext()).getSupportFragmentManager(), mTitleDataList));
+        PagerAdapter pagerAdapter = new PagerAdapter(((BaseActivity) getContext()).getSupportFragmentManager(), mTitleDataList);
+        vpImage.setAdapter(pagerAdapter);
     }
 
     static class PagerAdapter extends FragmentPagerAdapter {
@@ -79,6 +105,11 @@ public class HeadderView extends LinearLayout {
         public PagerAdapter(FragmentManager fm, List<Fragment> mFragments) {
             super(fm);
             this.mFragments = mFragments;
+        }
+
+        public void setData(List<Fragment> mFragments) {
+            this.mFragments = mFragments;
+            notifyDataSetChanged();
         }
 
         @Override

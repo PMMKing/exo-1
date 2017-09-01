@@ -10,16 +10,16 @@
         android:id="@+id/icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/icon_font_home"
         android:textColor="@color/pub_tab_color_selector"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        tools:text="@string/icon_font_home" />
 
     <TextView
         android:id="@+id/text"
-        android:textSize="13dp"
-        android:textColor="@color/pub_tab_color_selector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/pub_tab_color_selector"
+        android:textSize="13dp"
         tools:text="首页" />
 
 

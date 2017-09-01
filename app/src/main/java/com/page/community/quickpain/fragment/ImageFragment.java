@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.framework.activity.BaseFragment;
+import com.framework.utils.imageload.ImageLoad;
 import com.haolb.client.R;
 
 import butterknife.BindView;
@@ -23,20 +24,28 @@ public class ImageFragment extends BaseFragment {
     @BindView(R.id.iv_image)
     ImageView ivImage;
     Unbinder unbinder;
+    private String imageUrl;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.pub_fragment_quickpain_header_layout, container,false);
+        View view = inflater.inflate(R.layout.pub_fragment_quickpain_header_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        imageUrl = myBundle.getString("imageUrl");
+        ImageLoad.load(getContext(), imageUrl, ivImage);
+    }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myBundle.putString("imageUrl", imageUrl);
     }
 
     @Override

@@ -105,6 +105,7 @@ public class AddView extends LinearLayout implements View.OnClickListener {
         this.imageUrls = new String[number];
         llAdd.removeAllViews();
         for (int i = 0; i < number; i++) {
+            this.imageUrls[i] = imageUrls[i];
             ImageView imageView = new ImageView(getContext());
             LinearLayout.LayoutParams layoutParams = new LayoutParams(0, LayoutParams.MATCH_PARENT);
             layoutParams.weight = 1;

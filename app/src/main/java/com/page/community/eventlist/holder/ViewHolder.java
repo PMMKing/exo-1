@@ -6,12 +6,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.haolb.client.R;
 import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Created by shucheng.qu on 2017/8/9.

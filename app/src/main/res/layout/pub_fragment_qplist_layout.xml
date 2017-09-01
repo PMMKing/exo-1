@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <com.framework.view.pull.SwipRefreshLayout
+        android:id="@+id/spl_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:direction="both">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.framework.view.pull.SwipRefreshLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/pub_color_blue"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_add_qp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="发布随手拍"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h18" />
+
+        <View
+            style="@style/line_gray_v"
+            android:background="@color/pub_color_white" />
+
+        <TextView
+            android:id="@+id/tv_my_qp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="我的随手拍"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h18" />
+
+    </LinearLayout>
+
+</LinearLayout>

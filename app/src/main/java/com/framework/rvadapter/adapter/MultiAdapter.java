@@ -131,11 +131,21 @@ public class MultiAdapter<T> extends RecyclerView.Adapter<BaseViewHolder> {
         this.mDatas.add(t);
     }
 
+    public void addData(T t, int index) {
+        this.mDatas.add(index, t);
+    }
+
     public void addData(List<T> mDatas) {
         if (mDatas == null) return;
         this.mDatas.addAll(mDatas);
         notifyDataSetChanged();
     }
+
+    public void removeData(int index) {
+        if (mDatas.size() <= index) return;
+        this.mDatas.remove(index);
+    }
+
 
     public void clearData() {
         this.mDatas.clear();

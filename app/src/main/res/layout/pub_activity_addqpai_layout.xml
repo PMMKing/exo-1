@@ -15,10 +15,12 @@
             android:orientation="vertical">
 
             <com.framework.view.AddView
+                android:id="@+id/addView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/et_custom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -35,6 +37,7 @@
 
 
             <TextView
+                android:id="@+id/tv_commit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"

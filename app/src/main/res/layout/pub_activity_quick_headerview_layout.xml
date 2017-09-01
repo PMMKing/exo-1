@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.page.community.quickpain.view.HeadderView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/headerview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
