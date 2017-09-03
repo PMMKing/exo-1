@@ -137,10 +137,10 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
         startRequest(++index);
     }
 
-    @OnClick({R.id.tv_add_qp})
+    @OnClick({R.id.ll_add_qp})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_add_qp:
+            case R.id.ll_add_qp:
                 qStartActivity(AddQPaiActivity.class);
                 break;
 //            case R.id.tv_my_qp:

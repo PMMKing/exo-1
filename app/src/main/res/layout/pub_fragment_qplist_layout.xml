@@ -25,55 +25,57 @@
     </com.framework.view.pull.SwipRefreshLayout>
 
     <LinearLayout
+        android:id="@+id/ll_add_qp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="40dp"
         android:layout_marginRight="30dp"
-        android:gravity="center"
-        android:background="@drawable/pub_bg_send">
+        android:background="@drawable/pub_bg_send"
+        android:gravity="center">
 
         <com.framework.view.IFView
             android:id="@+id/tv_add_qp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textColor="@color/pub_color_white" />
+            android:gravity="center"
+            android:textColor="@color/pub_color_white"
+            android:textSize="18dp" />
 
     </LinearLayout>
 
     <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:background="@color/pub_color_blue"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:visibility="gone">-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:background="@color/pub_color_blue"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:visibility="gone">-->
 
-        <!--<TextView-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:clickable="true"-->
-            <!--android:gravity="center"-->
-            <!--android:text="发布随手拍"-->
-            <!--android:textColor="@color/pub_color_white"-->
-            <!--android:textSize="@dimen/text_h18" />-->
+    <!--<TextView-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:clickable="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="发布随手拍"-->
+    <!--android:textColor="@color/pub_color_white"-->
+    <!--android:textSize="@dimen/text_h18" />-->
 
-        <!--<View-->
-            <!--style="@style/line_gray_v"-->
-            <!--android:background="@color/pub_color_white" />-->
+    <!--<View-->
+    <!--style="@style/line_gray_v"-->
+    <!--android:background="@color/pub_color_white" />-->
 
-        <!--<TextView-->
-            <!--android:id="@+id/tv_my_qp"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:clickable="true"-->
-            <!--android:gravity="center"-->
-            <!--android:text="我的随手拍"-->
-            <!--android:textColor="@color/pub_color_white"-->
-            <!--android:textSize="@dimen/text_h18" />-->
+    <!--<TextView-->
+    <!--android:id="@+id/tv_my_qp"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_weight="1"-->
+    <!--android:clickable="true"-->
+    <!--android:gravity="center"-->
+    <!--android:text="我的随手拍"-->
+    <!--android:textColor="@color/pub_color_white"-->
+    <!--android:textSize="@dimen/text_h18" />-->
 
     <!--</LinearLayout>-->
 
