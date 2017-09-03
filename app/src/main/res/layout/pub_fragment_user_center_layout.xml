@@ -21,12 +21,12 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_centerInParent="true"
-                android:src="@drawable/ic_launcher" />
+                android:src="@drawable/default_head" />
 
             <ImageView
                 android:id="@+id/image_setting"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_margin="12dp"
                 android:src="@drawable/settings_normal" />
@@ -50,17 +50,17 @@
 
                 <ImageView
 
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ext_order_status_paying" />
 
                 <TextView
                     android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="待付款"
-                    android:textColor="@color/pub_color_black"
-                    android:textSize="16dp" />
+                    android:textColor="@color/pub_color_gray_999"
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -73,17 +73,17 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ext_order_status_sending" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="待发货"
-                    android:textColor="@color/pub_color_black"
+                    android:textColor="@color/pub_color_gray_999"
                     android:layout_marginTop="6dp"
-                    android:textSize="16dp" />
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -96,17 +96,17 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ext_order_status_re" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_marginTop="6dp"
                     android:layout_height="wrap_content"
                     android:text="待收货"
-                    android:textColor="@color/pub_color_black"
-                    android:textSize="16dp" />
+                    android:textColor="@color/pub_color_gray_999"
+                    android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -119,17 +119,17 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_launcher" />
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ext_order_status_no" />
 
                 <TextView
-                    android:textSize="16dp"
+                    android:textSize="14dp"
                     android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="退单"
-                    android:textColor="@color/pub_color_black" />
+                    android:textColor="@color/pub_color_gray_999" />
             </LinearLayout>
         </LinearLayout>
         <View

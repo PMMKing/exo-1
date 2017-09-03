@@ -20,6 +20,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BitmapHelper;
 import com.framework.utils.cache.ImageLoader;
+import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.CircleImageView;
 import com.haolb.client.R;
 import com.page.uc.bean.LoginResult;
@@ -87,7 +88,7 @@ public class UserInfoActivity extends BaseActivity {
 
     private void setData() {
         LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
-        ImageLoader.getInstance(this).loadImage(instance.portrait, imageHead);
+        ImageLoad.load(this,instance.portrait, imageHead);
         tvPhone.setText(instance.phone);
         tvNickname.setText(instance.nickname);
 //        tvSex.setText(instance.nickname);

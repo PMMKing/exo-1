@@ -25,6 +25,7 @@
         android:layout_alignParentBottom="true" />
 
     <ImageView
+        android:visibility="gone"
         android:id="@+id/image_pai"
         android:layout_width="60dp"
         android:layout_height="60dp"

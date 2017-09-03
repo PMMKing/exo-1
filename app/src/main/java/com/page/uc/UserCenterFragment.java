@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.framework.utils.cache.ImageLoader;
+import com.framework.utils.imageload.ImageLoad;
 import com.haolb.client.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
@@ -72,9 +73,9 @@ public class UserCenterFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+//        imageHead.setImageResource(R.drawable.ic_launcher);
         LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
-        ImageLoader.getInstance(getContext()).loadImage(instance.portrait, imageHead);
-
+        ImageLoad.loadPlaceholder(getContext(),instance.portrait, imageHead);
     }
 
     @Override
@@ -109,6 +110,7 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(OrderListActivity.class);
                 break;
             case R.id.ll_list_0:
+                qStartActivity(OrderListActivity.class);
                 break;
             case R.id.ll_list_1:
                 break;

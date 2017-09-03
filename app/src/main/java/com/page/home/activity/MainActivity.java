@@ -44,10 +44,10 @@ public class MainActivity extends MainTabActivity {
         ButterKnife.bind(this);
         tabLayout = tlTab;
         addTab("主页", HomeFragment.class, myBundle, R.string.icon_font_home);
-        addTab("商城", ShoppingFragment.class, myBundle, R.string.icon_font_home);
-        addTab("随手拍", QpListFragment.class, myBundle, R.string.icon_font_empty);
-        addTab("购物车", ShoppingCartFragment.class, myBundle, R.string.icon_font_home);
-        addTab("我的", UserCenterFragment.class, myBundle, R.string.icon_font_home);
+        addTab("商城", ShoppingFragment.class, myBundle, R.string.icon_font_shopping);
+        addTab("随手拍", QpListFragment.class, myBundle, R.string.icon_font_camera);
+        addTab("购物车", ShoppingCartFragment.class, myBundle, R.string.icon_font_buy_car);
+        addTab("我的", UserCenterFragment.class, myBundle, R.string.icon_font_my);
         onPostCreate();
     }
 
