@@ -53,8 +53,8 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     Unbinder unbinder;
     @BindView(R.id.tv_add_qp)
     TextView tvAddQp;
-    @BindView(R.id.tv_my_qp)
-    TextView tvMyQp;
+//    @BindView(R.id.tv_my_qp)
+//    TextView tvMyQp;
     private MultiAdapter mAdapter;
 
     @Nullable
@@ -63,6 +63,7 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
         View view = inflater.inflate(R.layout.pub_fragment_qplist_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
         mTitleBar = (TitleBar) view.findViewById(R.id.title_bar);
+        tvAddQp.setText(R.string.icon_font_add);
         return view;
     }
 
@@ -136,15 +137,15 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
         startRequest(++index);
     }
 
-    @OnClick({R.id.tv_add_qp, R.id.tv_my_qp})
+    @OnClick({R.id.tv_add_qp})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_add_qp:
                 qStartActivity(AddQPaiActivity.class);
                 break;
-            case R.id.tv_my_qp:
-                qStartActivity(QuickPaiActivity.class);
-                break;
+//            case R.id.tv_my_qp:
+//                qStartActivity(QuickPaiActivity.class);
+//                break;
         }
     }
 
