@@ -48,6 +48,8 @@ public class OrderListActivity extends BaseActivity {
         ButterKnife.bind(this);
 
         setViewPager();
+        setTitleBar("我的订单", true);
+
     }
 
     private void setViewPager() {

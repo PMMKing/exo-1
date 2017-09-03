@@ -28,13 +28,14 @@ public class ShoppingCartFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.pub_fragment_classify_layout, container, false);
+        return onCreateViewWithTitleBar(inflater,container,R.layout.pub_fragment_classify_layout);
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setListView();
+        setTitleBar("购物车",false);
     }
 
     private void setListView() {

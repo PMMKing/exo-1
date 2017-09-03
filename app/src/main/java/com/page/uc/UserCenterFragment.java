@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.haolb.client.R;
 import com.framework.activity.BaseFragment;
@@ -19,8 +18,6 @@ import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.address.activity.AddressActivity;
 import com.page.store.orderlist.activity.OrderListActivity;
 import com.page.uc.bean.LoginResult;
-import com.ucar.weex.UWXPageManger;
-import com.ucar.weex.init.manager.WXActivityManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -145,7 +142,8 @@ public class UserCenterFragment extends BaseFragment {
 
                 break;
             case R.id.ll_list_7:
-                UWXPageManger.openPage(getContext(), "aboutUs.js");
+                qStartActivity(AboutUsActivity.class);
+//                UWXPageManger.openPage(getContext(), "aboutUs.js");
                 break;
         }
     }

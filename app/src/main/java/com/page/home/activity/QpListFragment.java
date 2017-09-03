@@ -21,6 +21,7 @@ import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
+import com.framework.view.TitleBar;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.haolb.client.R;
 import com.page.community.quickpai.activity.AddQPaiActivity;
@@ -61,12 +62,14 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pub_fragment_qplist_layout, container, false);
         unbinder = ButterKnife.bind(this, view);
+        mTitleBar = (TitleBar) view.findViewById(R.id.title_bar);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setTitleBar("随手拍", false);
         setListView();
         startRequest(1);
     }
