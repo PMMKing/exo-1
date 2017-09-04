@@ -13,7 +13,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.view.ListDialog;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.uc.bean.BuidingsResult;
 import com.page.uc.bean.ComBean;
 import com.page.uc.bean.ComParam;

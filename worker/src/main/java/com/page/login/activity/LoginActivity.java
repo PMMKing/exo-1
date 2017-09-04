@@ -13,7 +13,7 @@ import com.framework.domain.param.BaseParam;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.home.activity.MainActivity;
 
 import java.util.Timer;

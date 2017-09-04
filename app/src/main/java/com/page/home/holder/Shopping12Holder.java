@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.Dimen;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

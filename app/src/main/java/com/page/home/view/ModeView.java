@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.home.model.HomeModel;
 
 import butterknife.BindView;

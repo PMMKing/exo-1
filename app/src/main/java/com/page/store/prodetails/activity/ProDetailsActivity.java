@@ -17,7 +17,7 @@ import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabView;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.store.orderaffirm.activity.OrderAffirmActivity;
 import com.page.store.prodetails.holder.HeaderHolder;
 import com.page.store.prodetails.holder.ItemHolder;

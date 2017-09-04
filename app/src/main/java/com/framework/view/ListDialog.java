@@ -24,7 +24,7 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.uc.bean.ComBean;
 
 import java.util.ArrayList;

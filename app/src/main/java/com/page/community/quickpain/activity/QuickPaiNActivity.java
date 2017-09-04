@@ -19,7 +19,6 @@ import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
-import com.haolb.client.R;
 import com.page.community.quickpain.holder.ContentHolder;
 import com.page.community.quickpain.holder.HeaderHolder;
 import com.page.community.quickpain.model.QpDetailParam;
@@ -28,6 +27,7 @@ import com.page.community.quickpain.model.ScommentParam;
 import com.page.community.quickpain.model.ScommentsParam;
 import com.page.community.quickpain.model.ScommentsReault;
 import com.page.community.quickpain.model.ScommentsReault.Data.Datas;
+import com.qfant.wuye.R;
 
 import java.util.ArrayList;
 

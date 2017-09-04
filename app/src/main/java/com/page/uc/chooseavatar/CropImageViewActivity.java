@@ -15,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import java.io.File;
 

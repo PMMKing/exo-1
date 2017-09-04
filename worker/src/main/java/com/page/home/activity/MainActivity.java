@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.framework.utils.ArrayUtils;
 import com.framework.view.tab.TabLayout;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.login.activity.LoginActivity;
 
 import java.util.List;

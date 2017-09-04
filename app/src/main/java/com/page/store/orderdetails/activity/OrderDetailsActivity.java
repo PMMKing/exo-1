@@ -3,7 +3,7 @@ package com.page.store.orderdetails.activity;
 import android.os.Bundle;
 
 import com.framework.activity.BaseActivity;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 /**
  * Created by shucheng.qu on 2017/8/18.

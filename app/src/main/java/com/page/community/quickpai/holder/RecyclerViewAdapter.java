@@ -20,11 +20,11 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.DateFormatUtils;
 import com.framework.utils.imageload.ImageLoad;
-import com.haolb.client.R;
 import com.page.community.quickpai.activity.AddQPaiActivity;
 import com.page.community.quickpai.model.DelQpParam;
 import com.page.home.model.QpListResult;
 import com.page.home.model.QpListResult.Data.Snapshots;
+import com.qfant.wuye.R;
 
 import java.io.Serializable;
 import java.util.ArrayList;

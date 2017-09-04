@@ -16,7 +16,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.IBaseActFrag;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.address.Address;
 import com.page.address.AddressResult;
 

@@ -23,12 +23,13 @@ import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.page.community.applyfor.activity.ApplyForActivity;
 import com.page.community.serve.holder.ViewHolder;
+import com.page.community.serve.model.RepairResult;
+import com.page.community.serve.model.RepairResult.Data.RepairList;
 import com.page.community.serve.model.ServeParam;
 import com.page.community.serve.model.ServeResult;
 import com.page.community.serve.model.ServeResult.Data.WaterList;
 import com.qfant.wuye.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -38,7 +39,7 @@ import butterknife.ButterKnife;
  * Created by shucheng.qu on 2017/8/24.
  */
 
-public class ServeActivity extends BaseActivity implements OnItemClickListener<WaterList>, SwipRefreshLayout.OnRefreshListener {
+public class RepairActivity extends BaseActivity implements OnItemClickListener<RepairList>, SwipRefreshLayout.OnRefreshListener {
 
     public static String TITLE = "title";
     public static String SERVICEMAP = "serviceMap";
@@ -74,10 +75,10 @@ public class ServeActivity extends BaseActivity implements OnItemClickListener<W
     }
 
     private void setListView() {
-        ArrayList<WaterList> list = new ArrayList<>();
-        adapter = new MultiAdapter<WaterList>(getContext(), list).addTypeView(new ITypeView<WaterList>() {
+        ArrayList<RepairList> list = new ArrayList<>();
+        adapter = new MultiAdapter<RepairList>(getContext(), list).addTypeView(new ITypeView<RepairList>() {
             @Override
-            public boolean isForViewType(WaterList item, int position) {
+            public boolean isForViewType(RepairList item, int position) {
                 return true;
             }
 
@@ -104,12 +105,12 @@ public class ServeActivity extends BaseActivity implements OnItemClickListener<W
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == serviceMap) {
-            ServeResult serveResult = (ServeResult) param.result;
-            if (serveResult != null && serveResult.data != null && !ArrayUtils.isEmpty(serveResult.data.waterList)) {
+            RepairResult serveResult = (RepairResult) param.result;
+            if (serveResult != null && serveResult.data != null && !ArrayUtils.isEmpty(serveResult.data.repairList)) {
                 if ((int) param.ext == 1) {
-                    adapter.setData(serveResult.data.waterList);
+                    adapter.setData(serveResult.data.repairList);
                 } else {
-                    adapter.addData(serveResult.data.waterList);
+                    adapter.addData(serveResult.data.repairList);
                 }
             } else {
                 if ((int) param.ext == 1) {
@@ -124,16 +125,10 @@ public class ServeActivity extends BaseActivity implements OnItemClickListener<W
     }
 
     @Override
-    public void onItemClickListener(View view, WaterList data, int position) {
-        if (serviceMap == ServiceMap.getMyRepairs) {
-            Bundle bundle = new Bundle();
-            bundle.putString("id", data.id);
-            qStartActivity(ApplyForActivity.class, bundle);
-        } else {
-            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.phone));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        }
+    public void onItemClickListener(View view, RepairList data, int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("id", data.id);
+        qStartActivity(ApplyForActivity.class, bundle);
     }
 
     @Override

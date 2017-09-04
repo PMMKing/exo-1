@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 /**
  * Created by shucheng.qu on 2017/8/19.

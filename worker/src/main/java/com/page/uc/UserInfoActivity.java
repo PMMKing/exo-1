@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.framework.activity.BaseActivity;
 import com.framework.view.CircleImageView;
 

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 /**
  * Created by shucheng.qu on 2017/8/13.

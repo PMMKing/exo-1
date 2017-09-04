@@ -12,11 +12,11 @@ import com.framework.net.ServiceMap;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
-import com.haolb.client.R;
 import com.page.community.quickpai.holder.RecyclerViewAdapter;
 import com.page.home.model.QpListParam;
 import com.page.home.model.QpListResult;
 import com.page.home.model.QpListResult.Data.Snapshots;
+import com.qfant.wuye.R;
 
 import java.util.ArrayList;
 

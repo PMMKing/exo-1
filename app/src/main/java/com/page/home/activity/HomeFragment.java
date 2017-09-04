@@ -27,11 +27,11 @@ import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.IFView;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
-import com.haolb.client.R;
 import com.page.community.eventlist.activity.EventListActivity;
 import com.page.community.eventlist.model.EventListParam;
 import com.page.community.eventlist.model.EventListResult;
 import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
+import com.page.community.serve.activity.RepairActivity;
 import com.page.community.serve.activity.ServeActivity;
 import com.page.home.holder.SMHolder;
 import com.page.home.model.HomeModel;
@@ -39,6 +39,7 @@ import com.page.home.model.LinksParam;
 import com.page.home.model.LinksResult;
 import com.page.home.model.LinksResult.Data.Links;
 import com.page.home.view.ModeView;
+import com.qfant.wuye.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -166,18 +167,23 @@ public class HomeFragment extends BaseFragment {
                     switch ((String) v.getTag()) {
                         case "维修":
                             bundle.putString(TITLE, "维修列表");
+                            bundle.putSerializable(SERVICEMAP, ServiceMap.getMyRepairs);
+                            qStartActivity(RepairActivity.class, bundle);
                             break;
                         case "送水":
                             bundle.putString(TITLE, "送水商家");
                             bundle.putSerializable(SERVICEMAP, ServiceMap.getWaters);
+                            qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "洗衣":
                             bundle.putString(TITLE, "洗衣店");
                             bundle.putSerializable(SERVICEMAP, ServiceMap.getWashes);
+                            qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "家政":
                             bundle.putString(TITLE, "家政");
                             bundle.putSerializable(SERVICEMAP, ServiceMap.getHouses);
+                            qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "缴费":
                             bundle.putString(TITLE, "缴费");
@@ -192,7 +198,6 @@ public class HomeFragment extends BaseFragment {
                             bundle.putString(TITLE, "电话");
                             break;
                     }
-                    qStartActivity(ServeActivity.class, bundle);
                 }
             });
             glMode.addView(itemView);

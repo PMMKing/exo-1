@@ -15,7 +15,7 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import java.util.Observable;
 import java.util.Observer;

@@ -23,7 +23,7 @@ import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 
 public class CropImageView extends ImageView {

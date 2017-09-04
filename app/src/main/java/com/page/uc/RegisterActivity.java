@@ -14,7 +14,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BusinessUtils;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.uc.bean.ComBean;
 import com.page.uc.bean.LoginParam;
 import com.page.uc.bean.LoginSendCodeParam;

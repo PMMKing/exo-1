@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.framework.activity.BaseFragment;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;

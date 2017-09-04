@@ -10,9 +10,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.haolb.client.R;
 import com.framework.utils.inject.From;
 import com.framework.utils.inject.Injector;
+import com.qfant.wuye.R;
 
 
 /**

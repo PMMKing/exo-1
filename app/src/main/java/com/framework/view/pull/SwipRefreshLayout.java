@@ -20,7 +20,7 @@ import android.view.animation.Transformation;
 import android.widget.AbsListView;
 
 import com.framework.utils.QLog;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 
 /**

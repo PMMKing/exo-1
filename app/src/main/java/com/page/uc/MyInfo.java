@@ -30,7 +30,7 @@
 //import android.widget.PopupWindow;
 //import android.widget.TextView;
 //
-//import com.haolb.client.R;
+//import com.qfant.wuye.R;
 //import com.haolb.client.domain.Community;
 //import com.haolb.client.domain.param.SetDefCommunityParam;
 //import com.haolb.client.domain.param.UpdateMyPortraitParam;

@@ -3,7 +3,7 @@ package com.page.uc;
 import android.os.Bundle;
 
 import com.framework.activity.BaseActivity;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 /**
  * Created by chenxi.cui on 2017/9/3.

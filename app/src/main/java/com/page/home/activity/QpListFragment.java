@@ -23,7 +23,7 @@ import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.TitleBar;
 import com.framework.view.pull.SwipRefreshLayout;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.community.quickpai.activity.AddQPaiActivity;
 import com.page.community.quickpai.activity.QuickPaiActivity;
 import com.page.community.quickpai.holder.RecyclerViewAdapter;

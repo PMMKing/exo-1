@@ -11,10 +11,10 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.view.AddView;
-import com.haolb.client.R;
 import com.page.community.quickpai.model.AddQpParam;
 import com.page.home.model.QpListResult;
 import com.page.home.model.QpListResult.Data.Snapshots;
+import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

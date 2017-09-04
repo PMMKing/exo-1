@@ -14,7 +14,7 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.GridDecoration;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.store.classifylist.holder.ViewHolder;
 import com.page.store.prodetails.activity.ProDetailsActivity;
 

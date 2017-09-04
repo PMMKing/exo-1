@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 
 import butterknife.BindView;

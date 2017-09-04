@@ -22,7 +22,7 @@ import com.framework.utils.BitmapHelper;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.CircleImageView;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.uc.bean.LoginResult;
 import com.page.uc.bean.NickNameResult;
 import com.page.uc.bean.UpdateMyPortraitParam;

@@ -182,10 +182,10 @@ public class NetworkManager implements TaskListener {
             String token = UCUtils.getInstance().getToken();
             networkTask.param.param.cparam.token = TextUtils.isEmpty(token) ? "" : token;
             networkTask.param.param.cparam.platform = "1";
-            networkTask.param.param.cparam.roomId =UCUtils.getInstance().getUserInfo().userId;
+            networkTask.param.param.cparam.roomId = UCUtils.getInstance().getUserInfo().userId;
             String bjson = JSON.toJSONString(networkTask.param.param);
             String b = SecureUtil.encode(bjson, networkTask.param.ke);
-            networkTask.param.url = "b=" + b + "&key=" + networkTask.param.ke + "&ver=1" ;
+            networkTask.param.url = "b=" + b + "&key=" + networkTask.param.ke + "&ver=1";
             if (networkTask.cancel) {
                 return null;
             }
@@ -202,14 +202,14 @@ public class NetworkManager implements TaskListener {
             try {
                 HttpPost request;
 
-                if(networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_CONTROL) {
+                if (networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_CONTROL) {
                     request = new HttpPost(hostUrl);
                     request.addHeader("Content-Type", "application/x-www-form-urlencoded");
                     // request.addHeader("User-Agent",
                     // "Mozilla/5.0 (Linux; U; Android 2.2) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1");
                     request.setEntity(new StringEntity(networkTask.param.url));
-                } else if(networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_FILE) {
-                    if(TextUtils.isEmpty(networkTask.param.filePath)) {
+                } else if (networkTask.param.key.getCode() == ServiceMap.NET_TASKTYPE_FILE) {
+                    if (TextUtils.isEmpty(networkTask.param.filePath)) {
                         request = new HttpPost(hostUrl);
                         request.addHeader("Content-Type", "application/x-www-form-urlencoded");
                         // request.addHeader("User-Agent",
@@ -217,7 +217,7 @@ public class NetworkManager implements TaskListener {
                         request.setEntity(new StringEntity(networkTask.param.url));
                     } else {
                         String url = hostUrl;
-                        if(url.lastIndexOf("?") != -1) {
+                        if (url.lastIndexOf("?") != -1) {
                             url += "&";
                         } else {
                             url += "?";
@@ -250,7 +250,7 @@ public class NetworkManager implements TaskListener {
                 if (httpClient != null) {
                     httpClient.getConnectionManager().shutdown();
                 }
-                if(fis != null) {
+                if (fis != null) {
                     try {
                         fis.close();
                     } catch (IOException e) {
@@ -668,7 +668,12 @@ public class NetworkManager implements TaskListener {
     public static String getIMEI() {
         TelephonyManager telephonyManager = (TelephonyManager) MainApplication.getInstance().getSystemService(
                 Context.TELEPHONY_SERVICE);
-        String ret = telephonyManager.getDeviceId();
+        String ret = "";
+        try {
+            ret = telephonyManager.getDeviceId();
+        } catch (Exception e) {
+
+        }
         return ret;
     }
 
@@ -683,14 +688,13 @@ public class NetworkManager implements TaskListener {
     }
 
     /**
-     *
      * @param proxyHost 代理host
      * @param proxyPort 代理port
-     *
-     *            <pre>
-     *   CMWAP 10.0.0.172:80
-     *   CTWAP 10.0.0.200
-     * </pre>
+     *                  <p>
+     *                  <pre>
+     *                                     CMWAP 10.0.0.172:80
+     *                                     CTWAP 10.0.0.200
+     *                                   </pre>
      * @return httpClient
      */
     public static HttpClient getHttpClient(String proxyHost, int proxyPort) {
@@ -734,7 +738,7 @@ public class NetworkManager implements TaskListener {
         String apnName = "";
         try {
             Cursor cursor = MainApplication.getInstance().getContentResolver()
-                    .query(PREFERRED_APN_URI, new String[] { "_id", "apn", "type" }, null, null, null);
+                    .query(PREFERRED_APN_URI, new String[]{"_id", "apn", "type"}, null, null, null);
             if (cursor != null) {
                 cursor.moveToFirst();
                 int counts = cursor.getCount();

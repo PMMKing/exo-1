@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.framework.activity.BaseFragment;
 import com.framework.utils.imageload.ImageLoad;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -44,7 +44,6 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.haolb.client.R;
 import com.framework.net.NetworkListener;
 import com.framework.net.NetworkManager;
 import com.framework.net.NetworkParam;
@@ -59,6 +58,7 @@ import com.framework.utils.tuski.Tuski;
 import com.framework.view.QProgressDialogFragment;
 import com.framework.view.SystemBarTintManager;
 import com.framework.view.TitleBar;
+import com.qfant.wuye.R;
 
 import java.util.List;
 

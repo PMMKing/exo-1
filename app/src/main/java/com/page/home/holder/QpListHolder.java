@@ -8,7 +8,7 @@ import android.widget.TextView;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.DateFormatUtils;
 import com.framework.utils.imageload.ImageLoad;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.home.model.QpListResult;
 import com.page.home.model.QpListResult.Data.Snapshots;
 

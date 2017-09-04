@@ -11,9 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.framework.utils.imageload.ImageLoad;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
+import com.page.community.applyfor.activity.ApplyForActivity;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.address.activity.AddressActivity;
 import com.page.store.orderlist.activity.OrderListActivity;
@@ -123,6 +124,7 @@ public class UserCenterFragment extends BaseFragment {
             case R.id.ll_list_4:
                 break;
             case R.id.ll_list_5:
+                qStartActivity(ApplyForActivity.class);
                 break;
             case R.id.ll_list_6:
                 final String phone = "10086";

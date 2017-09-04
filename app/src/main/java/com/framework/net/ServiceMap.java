@@ -8,6 +8,7 @@ import com.page.community.eventdetails.model.EventDetailsResult;
 import com.page.community.eventlist.model.EventListResult;
 import com.page.community.quickpain.model.QpDetailResult;
 import com.page.community.quickpain.model.ScommentsReault;
+import com.page.community.serve.model.RepairResult;
 import com.page.community.serve.model.ServeResult;
 import com.page.home.model.LinksResult;
 import com.page.home.model.QpListResult;
@@ -65,6 +66,9 @@ public enum ServiceMap implements Enums.IType, Serializable {
     updateSnapshot("/updateSnapshot.do", QpDetailResult.class),//编辑
     scomment("/scomment.do", BaseResult.class),//评论
     scomments("/scomments.do", ScommentsReault.class),//评论列表
+    submitRepair("/submitRepair.do", BaseResult.class),//add维修
+    getRepair("/getRepair.do", BaseResult.class),//维修detail
+    getMyRepairs("/getMyRepairs.do", RepairResult.class),//修list
     ;
 
 

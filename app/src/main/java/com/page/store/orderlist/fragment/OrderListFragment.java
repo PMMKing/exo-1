@@ -14,7 +14,7 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.store.orderlist.holder.OrderListHolder;
 
 import java.util.ArrayList;

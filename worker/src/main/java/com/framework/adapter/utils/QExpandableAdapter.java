@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.framework.utils.CompatUtil;
 
 /**

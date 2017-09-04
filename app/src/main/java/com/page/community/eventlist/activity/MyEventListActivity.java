@@ -21,7 +21,7 @@ import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabView;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.community.event.activity.EventActivity;
 import com.page.community.eventdetails.activity.EventDetailActivity;
 import com.page.community.eventlist.holder.ViewHolder;

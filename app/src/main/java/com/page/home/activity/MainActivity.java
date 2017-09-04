@@ -12,7 +12,7 @@ import com.framework.activity.BaseFragment;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabLayout;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.community.quickpai.activity.AddQPaiActivity;
 import com.page.uc.UserCenterFragment;
 

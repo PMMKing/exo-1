@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

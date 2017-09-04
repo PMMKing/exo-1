@@ -15,7 +15,7 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.store.classify.holder.NavHolder;
 import com.page.store.classify.holder.ProHolder;
 import com.page.store.classify.model.ClassifyModel;

@@ -13,10 +13,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
-import com.haolb.client.R;
 import com.page.community.quickpain.ScaleCircleNavigator;
 import com.page.community.quickpain.fragment.ImageFragment;
 import com.page.community.quickpain.model.QpDetailResult;
+import com.qfant.wuye.R;
 
 import net.lucode.hackware.magicindicator.MagicIndicator;
 import net.lucode.hackware.magicindicator.ViewPagerHelper;

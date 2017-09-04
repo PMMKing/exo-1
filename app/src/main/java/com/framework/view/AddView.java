@@ -18,7 +18,7 @@ import com.framework.net.ServiceMap;
 import com.framework.utils.Dimen;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.uc.bean.UpdateMyPortraitParam;
 import com.page.uc.bean.UpdateMyPortraitResult;
 import com.page.uc.chooseavatar.OnChoosePictureListener;

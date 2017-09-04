@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.framework.activity.BaseFragment;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

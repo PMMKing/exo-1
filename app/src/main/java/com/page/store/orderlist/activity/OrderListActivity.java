@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
 import com.framework.activity.BaseActivity;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.store.orderlist.fragment.OrderListFragment;
 
 import net.lucode.hackware.magicindicator.FragmentContainerHelper;

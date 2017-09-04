@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.framework.app.NetConnChangeReceiver;
 import com.framework.utils.QLog;
 import com.squareup.picasso.Cache;

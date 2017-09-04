@@ -8,8 +8,8 @@ import android.widget.TextView;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
-import com.haolb.client.R;
 import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
+import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -12,7 +12,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.view.AddView;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.page.community.event.model.EventParam;
 
 import butterknife.BindView;

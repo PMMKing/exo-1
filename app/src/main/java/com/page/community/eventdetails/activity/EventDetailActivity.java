@@ -11,11 +11,11 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.DateFormatUtils;
 import com.framework.utils.imageload.ImageLoad;
-import com.haolb.client.R;
 import com.page.community.eventdetails.adapter.ImagePagerAdapter;
 import com.page.community.eventdetails.model.EventDetailParam;
 import com.page.community.eventdetails.model.EventDetailsResult;
 import com.page.community.eventdetails.model.JoinEventParam;
+import com.qfant.wuye.R;
 
 import java.util.ArrayList;
 

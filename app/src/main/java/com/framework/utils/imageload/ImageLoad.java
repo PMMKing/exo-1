@@ -4,7 +4,7 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.framework.utils.Dimen;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 import com.squareup.picasso.Picasso;
 
 /**
@@ -43,6 +43,13 @@ public class ImageLoad {
     public static void loadCircle(Context context, String url, ImageView imageView) {
         Picasso.with(context)
                 .load(url)
+                .transform(new CircleImageTransformation())
+                .into(imageView);
+    }
+
+    public static void loadCircle(Context context, int resourceId, ImageView imageView) {
+        Picasso.with(context)
+                .load(resourceId)
                 .transform(new CircleImageTransformation())
                 .into(imageView);
     }

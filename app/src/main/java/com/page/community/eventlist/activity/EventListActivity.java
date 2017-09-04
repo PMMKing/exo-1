@@ -20,13 +20,13 @@ import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
-import com.haolb.client.R;
 import com.page.community.event.activity.EventActivity;
 import com.page.community.eventdetails.activity.EventDetailActivity;
 import com.page.community.eventlist.holder.ViewHolder;
 import com.page.community.eventlist.model.EventListParam;
 import com.page.community.eventlist.model.EventListResult;
 import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
+import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

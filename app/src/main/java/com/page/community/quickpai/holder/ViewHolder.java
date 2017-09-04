@@ -6,7 +6,7 @@ import android.widget.LinearLayout;
 
 import com.daimajia.swipe.SwipeLayout;
 import com.framework.rvadapter.holder.BaseViewHolder;
-import com.haolb.client.R;
+import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
