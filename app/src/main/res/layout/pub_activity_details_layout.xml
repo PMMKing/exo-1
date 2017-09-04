@@ -15,11 +15,13 @@
             android:orientation="vertical">
 
             <com.framework.view.AddView
+                android:id="@+id/addView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
 
             <LinearLayout
+                android:id="@+id/ll_repair_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -33,6 +35,7 @@
                     android:textSize="@dimen/text_h16" />
 
                 <TextView
+                    android:id="@+id/tv_repair_mame"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -49,6 +52,7 @@
                 android:layout_marginLeft="26dp" />
 
             <LinearLayout
+                android:id="@+id/ll_repair_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -62,6 +66,7 @@
                     android:textSize="@dimen/text_h16" />
 
                 <TextView
+                    android:id="@+id/tv_repair_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -92,6 +97,7 @@
                     android:textSize="@dimen/text_h14" />
 
                 <TextView
+                    android:id="@+id/tv_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="6dp"
@@ -105,6 +111,7 @@
             <View style="@style/line_gray_h" />
 
             <LinearLayout
+                android:id="@+id/ll_accendant_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/pub_color_white"
@@ -121,6 +128,7 @@
                     android:textSize="@dimen/text_h14" />
 
                 <TextView
+                    android:id="@+id/tv_accendant_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="6dp"
@@ -131,9 +139,12 @@
 
             </LinearLayout>
 
-            <View style="@style/line_gray_h" />
+            <View
+                android:id="@+id/line_accendant_name"
+                style="@style/line_gray_h" />
 
             <LinearLayout
+                android:id="@+id/ll_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/pub_color_white"
@@ -150,6 +161,7 @@
                     android:textSize="@dimen/text_h14" />
 
                 <TextView
+                    android:id="@+id/tv_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="6dp"
@@ -160,9 +172,12 @@
 
             </LinearLayout>
 
-            <View style="@style/line_gray_h" />
+            <View
+                android:id="@+id/line_phone"
+                style="@style/line_gray_h" />
 
             <LinearLayout
+                android:id="@+id/ll_evaluate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/pub_color_white"
@@ -179,12 +194,15 @@
                     android:textSize="@dimen/text_h14" />
 
                 <CheckBox
+                    android:id="@+id/cb_evaluate_ok"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="满意"
+                    android:checked="true"
                     android:textColor="@color/pub_color_black" />
 
                 <CheckBox
+                    android:id="@+id/cb_evaluate_no"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
@@ -196,6 +214,7 @@
             <View style="@style/line_gray_h" />
 
             <EditText
+                android:id="@+id/et_no_cause"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/pub_color_white"
@@ -211,6 +230,7 @@
 
 
             <TextView
+                android:id="@+id/tv_commit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"

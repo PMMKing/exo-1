@@ -42,16 +42,9 @@ public class AddView extends LinearLayout implements View.OnClickListener {
 
     @BindView(R.id.ll_add)
     LinearLayout llAdd;
-    @BindView(R.id.add1)
-    ImageView add1;
-    @BindView(R.id.add2)
-    ImageView add2;
-    @BindView(R.id.add3)
-    ImageView add3;
-    @BindView(R.id.add4)
-    ImageView add4;
     private int id = 0;
     private String[] imageUrls;
+    private boolean isClick = true;
 
     public AddView(Context context) {
         this(context, null);
@@ -125,6 +118,10 @@ public class AddView extends LinearLayout implements View.OnClickListener {
         }
     }
 
+    public void setClickable(boolean isClick) {
+        this.isClick = isClick;
+    }
+
     private void sendImage(String filePath) {
         try {
             File file = new File(filePath);
@@ -150,6 +147,7 @@ public class AddView extends LinearLayout implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        if (!isClick) return;
         id = (int) v.getTag();
         new UpLoadHeadImageDialog((BaseActivity) getContext()).show();
     }

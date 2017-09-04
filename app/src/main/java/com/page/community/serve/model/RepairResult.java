@@ -22,7 +22,7 @@ public class RepairResult extends BaseResult {
             public String id;
             public String address;
             public String createtime;
-            public String status;
+            public int status;
             public String phone;
             public String pic;
             public String intro;

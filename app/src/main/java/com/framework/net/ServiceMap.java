@@ -4,6 +4,7 @@ package com.framework.net;
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
 import com.page.address.AddressResult;
+import com.page.community.details.model.RepairDetailResult;
 import com.page.community.eventdetails.model.EventDetailsResult;
 import com.page.community.eventlist.model.EventListResult;
 import com.page.community.quickpain.model.QpDetailResult;
@@ -67,7 +68,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     scomment("/scomment.do", BaseResult.class),//评论
     scomments("/scomments.do", ScommentsReault.class),//评论列表
     submitRepair("/submitRepair.do", BaseResult.class),//add维修
-    getRepair("/getRepair.do", BaseResult.class),//维修detail
+    getRepair("/getRepair.do", RepairDetailResult.class),//维修detail
     getMyRepairs("/getMyRepairs.do", RepairResult.class),//修list
     ;
 

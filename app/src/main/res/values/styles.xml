@@ -17,9 +17,11 @@
         <!--是否模糊-->
         <item name="android:backgroundDimEnabled">true</item>
     </style>
+
     <style name="pub_edit">
         <item name="android:background">@color/pub_color_white</item>
     </style>
+
     <style name="line_gray_h">
         <item name="android:background">@color/pub_color_gray_line</item>
         <item name="android:layout_height">0.5dp</item>
@@ -32,8 +34,8 @@
         <item name="android:layout_width">0.5dp</item>
     </style>
 
-    <style name="pub_list">
-    </style>
+    <style name="pub_list"></style>
+
     <style name="titleBarStyle">
         <item name="android:id">@+id/title_bar</item>
         <item name="android:background">@color/pub_color_white</item>

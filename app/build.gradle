@@ -31,11 +31,11 @@ android {
 
     signingConfigs {
         debug {
-//            storeFile file("keystore.jks")
-//            storePassword "qifan2013"
-//            keyAlias "keystore"
-//            keyPassword "qifan2013"
-//            v2SigningEnabled true
+            storeFile file("keystore.jks")
+            storePassword "qifan2013"
+            keyAlias "keystore"
+            keyPassword "qifan2013"
+            v2SigningEnabled true
         }
 
         bate {
@@ -140,7 +140,8 @@ dependencies {
     //banner
 //    compile 'com.xiwenhec:banner:1.0.4'
     compile 'com.squareup.picasso:picasso:2.5.2'
-
+//不包含微信统计
+    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
 //-------------------------------------------------------------
     //weex 依赖 Android SDK version > 23

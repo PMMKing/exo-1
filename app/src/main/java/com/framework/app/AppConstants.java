@@ -15,9 +15,10 @@ public class AppConstants {
 
 //	public final static String COMMON_URL = "http://123.59.33.179:8080/bang2/customer";
 
-        public final static String COMMON_URL = "http://115.28.235.86:8081/yjwy/customer";
+    public final static String COMMON_URL = "http://115.28.235.86:8081/yjwy/customer";
 //    public final static String COMMON_URL = "http://112.123.63.69:8081/yjwy/customer";
 
     public static final boolean DEBUG = BuildConfig.DEBUG;
 
+    public static final String WXAPPID = "wxb4f5998bd885e481";
 }

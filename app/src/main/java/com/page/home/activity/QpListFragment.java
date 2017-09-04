@@ -53,7 +53,7 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     Unbinder unbinder;
     @BindView(R.id.tv_add_qp)
     TextView tvAddQp;
-//    @BindView(R.id.tv_my_qp)
+    //    @BindView(R.id.tv_my_qp)
 //    TextView tvMyQp;
     private MultiAdapter mAdapter;
 
@@ -70,7 +70,12 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setTitleBar("随手拍", false);
+        setTitleBar("随手拍", false, "我的", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qStartActivity(QuickPaiActivity.class);
+            }
+        });
         setListView();
         startRequest(1);
     }

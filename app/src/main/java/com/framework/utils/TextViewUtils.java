@@ -1,4 +1,4 @@
-package com.justravel.flight.framework.utils;
+package com.framework.utils;
 
 import android.graphics.Typeface;
 import android.text.Spannable;

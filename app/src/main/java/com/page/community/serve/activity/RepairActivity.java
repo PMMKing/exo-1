@@ -22,6 +22,8 @@ import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.page.community.applyfor.activity.ApplyForActivity;
+import com.page.community.details.activity.DetailsActivity;
+import com.page.community.serve.holder.RepairHolder;
 import com.page.community.serve.holder.ViewHolder;
 import com.page.community.serve.model.RepairResult;
 import com.page.community.serve.model.RepairResult.Data.RepairList;
@@ -84,7 +86,7 @@ public class RepairActivity extends BaseActivity implements OnItemClickListener<
 
             @Override
             public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
-                return new ViewHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_activity_serve_item_layout, parent, false));
+                return new RepairHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_activity_serve_item_layout, parent, false));
             }
         });
         rvList.addItemDecoration(new LineDecoration(this));
@@ -128,7 +130,7 @@ public class RepairActivity extends BaseActivity implements OnItemClickListener<
     public void onItemClickListener(View view, RepairList data, int position) {
         Bundle bundle = new Bundle();
         bundle.putString("id", data.id);
-        qStartActivity(ApplyForActivity.class, bundle);
+        qStartActivity(DetailsActivity.class, bundle);
     }
 
     @Override
