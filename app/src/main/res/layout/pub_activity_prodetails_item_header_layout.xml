@@ -73,7 +73,9 @@
 
     </LinearLayout>
 
-    <View style="@style/line_gray_h" />
+    <View
+        android:id="@+id/line_explain"
+        style="@style/line_gray_h" />
 
     <TextView
         android:id="@+id/tv_intro"
@@ -88,7 +90,9 @@
         android:textColor="@color/pub_color_gray_666"
         android:textSize="@dimen/text_h12" />
 
-    <View style="@style/line_gray_h" />
+    <View
+        android:id="@+id/line_intro"
+        style="@style/line_gray_h" />
 
     <LinearLayout
         android:id="@+id/ll_evaluate"

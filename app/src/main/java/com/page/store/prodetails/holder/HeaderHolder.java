@@ -14,7 +14,6 @@ import com.framework.utils.imageload.ImageLoad;
 import com.framework.utils.viewutils.ViewUtils;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
-import com.page.store.prodetails.model.PDResult;
 import com.page.store.prodetails.model.PDResult.Data;
 import com.qfant.wuye.R;
 
@@ -42,6 +41,10 @@ public class HeaderHolder extends BaseViewHolder<Data> {
     TextView tvIntro;
     @BindView(R.id.ll_evaluate)
     LinearLayout llEvaluate;
+    @BindView(R.id.line_explain)
+    View lineExplain;
+    @BindView(R.id.line_intro)
+    View lineIntro;
 
     public HeaderHolder(Context context, View itemView) {
         super(context, itemView);
@@ -57,10 +60,14 @@ public class HeaderHolder extends BaseViewHolder<Data> {
         ViewUtils.setOrGone(tvTitle, data.name);
         if (TextUtils.isEmpty(data.intro)) {
             llExplain.setVisibility(View.GONE);
+            lineExplain.setVisibility(View.GONE);
             tvIntro.setVisibility(View.GONE);
+            lineIntro.setVisibility(View.GONE);
         } else {
             llExplain.setVisibility(View.VISIBLE);
+            lineExplain.setVisibility(View.VISIBLE);
             tvIntro.setVisibility(View.VISIBLE);
+            lineIntro.setVisibility(View.VISIBLE);
             tvIntro.setText(data.intro);
         }
     }
@@ -102,8 +109,10 @@ public class HeaderHolder extends BaseViewHolder<Data> {
             case R.id.ll_explain:
                 if (tvTitle.getVisibility() == View.GONE) {
                     tvTitle.setVisibility(View.VISIBLE);
+                    lineIntro.setVisibility(View.VISIBLE);
                 } else {
                     tvTitle.setVisibility(View.GONE);
+                    lineIntro.setVisibility(View.GONE);
                 }
                 break;
             case R.id.ll_evaluate:

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:lines="1"
         android:paddingLeft="40dp"
         android:paddingTop="19dp"
-        android:text="收货人：豆豆小朋友"
         android:textColor="@color/pub_color_black"
-        android:textSize="@dimen/text_h14" />
+        android:textSize="@dimen/text_h14"
+        tools:text="收货人：豆豆小朋友" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -30,13 +32,14 @@
             android:src="@drawable/pub_login_icon" />
 
         <TextView
+            android:id="@+id/tv_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:paddingRight="37dp"
-            android:text="收货地址：上海市浦东新区锦康路\n800号世纪公园888室"
             android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h14" />
+            android:textSize="@dimen/text_h14"
+            tools:text="收货地址：上海市浦东新区锦康路\n800号世纪公园888室" />
 
     </LinearLayout>
 

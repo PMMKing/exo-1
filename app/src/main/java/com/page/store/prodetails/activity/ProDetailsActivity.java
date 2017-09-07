@@ -1,12 +1,16 @@
 package com.page.store.prodetails.activity;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
@@ -17,9 +21,13 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.BusinessUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabView;
+import com.page.store.orderaffirm.model.CommitOrderParam;
+import com.page.store.orderaffirm.model.CommitOrderParam.Product;
+import com.page.store.prodetails.model.CollectParam;
 import com.page.store.prodetails.model.PDParam;
 import com.page.store.prodetails.model.PDResult;
 import com.page.store.prodetails.model.PDResult.Data;
@@ -65,6 +73,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         if (myBundle == null) finish();
         id = myBundle.getString(ID);
         ButterKnife.bind(this);
+        setTitleBar("商品详情", true);
         setTabView();
         setListView();
         startRequest();
@@ -81,6 +90,14 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         param.id = id;
         Request.startRequest(param, ServiceMap.getProduct, mHandler, Request.RequestFeature.BLOCK);
     }
+
+    private void collect() {
+        CollectParam param = new CollectParam();
+        param.id = id;
+        param.type = true ? 2 : 1;
+        Request.startRequest(param, ServiceMap.fav, mHandler, Request.RequestFeature.BLOCK);
+    }
+
 
     private void setTabView() {
         tvCollect.initData(new TabItem("收藏", null, null, R.string.icon_font_home));
@@ -127,6 +144,12 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                 dataList.add(0, result.data);
                 adapter.notifyItemChanged(0);
             }
+        } else if (param.key == ServiceMap.fav) {
+            if (param.result.bstatus.code == 0) {
+                showToast("成功");
+            } else {
+                showToast(param.result.bstatus.des);
+            }
         }
         return false;
     }
@@ -140,14 +163,96 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_collect:
+                collect();
                 break;
             case R.id.tv_car:
                 break;
             case R.id.tv_add_car:
+                addShopCar(dataList.get(0), 1);
                 break;
             case R.id.tv_buy:
-                qStartActivity(OrderAffirmActivity.class);
+                addShopCar(dataList.get(0), 2);
                 break;
         }
     }
+
+
+    private void addShopCar(final Data data, int type) {
+        if (data == null || data.price <= 0) return;
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        final AlertDialog dialog = builder.show();
+        Window dialogWindow = dialog.getWindow();
+        WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        lp.gravity = Gravity.BOTTOM;
+        dialogWindow.setAttributes(lp);
+        dialogWindow.setBackgroundDrawableResource(android.R.color.transparent);
+        View view = View.inflate(this, R.layout.pub_activity_prodetail_addcar_layout, null);
+        dialogWindow.setContentView(view);
+        TextView tvPrice = (TextView) view.findViewById(R.id.tv_price);
+        TextView tvSub = (TextView) view.findViewById(R.id.tv_sub);
+        final TextView tvNumber = (TextView) view.findViewById(R.id.tv_number);
+        TextView tvAdd = (TextView) view.findViewById(R.id.tv_add);
+        TextView tvOk = (TextView) view.findViewById(R.id.tv_ok);
+
+        tvPrice.setText("单价￥：" + BusinessUtils.formatDouble2String(data.price));
+        tvSub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int number = Integer.parseInt(tvNumber.getText().toString().trim());
+                if (number > 1) {
+                    tvNumber.setText(--number + "");
+                } else {
+                    showToast("不能再少了");
+                }
+            }
+        });
+
+        tvAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int number = Integer.parseInt(tvNumber.getText().toString().trim());
+                if (number > 100) {
+                    showToast("库存不足");
+                } else {
+                    tvNumber.setText(++number + "");
+                }
+            }
+        });
+
+        switch (type) {
+            case 1:
+                tvOk.setText("加入购物车车");
+                tvOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                break;
+            case 2:
+                tvOk.setText("立即购买");
+                tvOk.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Product product = new Product();
+                        ArrayList<Product> products = new ArrayList<Product>();
+                        int number = Integer.parseInt(tvNumber.getText().toString().trim());
+                        product.id = data.id;
+                        product.price = data.price;
+                        product.name = data.name;
+                        product.num = number;
+                        product.pic = data.pic1;
+                        Bundle bundle = new Bundle();
+                        products.add(product);
+                        bundle.putSerializable(OrderAffirmActivity.PROLIST, products);
+                        qStartActivity(OrderAffirmActivity.class, bundle);
+                    }
+                });
+                break;
+        }
+
+    }
+
 }

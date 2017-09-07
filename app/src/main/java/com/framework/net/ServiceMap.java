@@ -15,6 +15,7 @@ import com.page.home.model.LinksResult;
 import com.page.home.model.QpListResult;
 import com.page.store.classify.model.ClassifyResult;
 import com.page.store.classifylist.model.ClassifyListResult;
+import com.page.store.orderaffirm.model.DefaultAddressResult;
 import com.page.store.prodetails.model.PDResult;
 import com.page.uc.bean.BuidingsResult;
 import com.page.uc.bean.DistrictsResult;
@@ -80,6 +81,8 @@ public enum ServiceMap implements Enums.IType, Serializable {
     submitOrder("/submitOrder.do", BaseResult.class),//提交订单
     getMyOrders("/getMyOrders.do", BaseResult.class),//订单list
     getOrder("/getOrder.do", BaseResult.class),//订单详情
+    fav("/fav.do", BaseResult.class),//收藏or取消
+    getDefaultAddress("/getDefaultAddress.do", DefaultAddressResult.class),//默认收货地址
     ;
 
 

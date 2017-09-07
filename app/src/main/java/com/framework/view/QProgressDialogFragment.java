@@ -33,7 +33,7 @@ public class QProgressDialogFragment extends DialogFragment implements Observer 
     private final ObservedString mMessage = new ObservedString();
 
     public static QProgressDialogFragment newInstance(String message, boolean cancelable,
-            OnCancelListener cancelListener) {
+                                                      OnCancelListener cancelListener) {
         QProgressDialogFragment frag = new QProgressDialogFragment();
         frag.setCancelable(cancelable);
         frag.setCancelListener(cancelListener);
@@ -45,15 +45,15 @@ public class QProgressDialogFragment extends DialogFragment implements Observer 
 
     @Override
     public void show(FragmentManager manager, String tag) {
-		try {
-			super.show(manager, tag);
-		} catch(IllegalStateException ise) {
-			try {
-				FragmentTransaction ft = manager.beginTransaction();
-				ft.commitAllowingStateLoss();
-			} catch(IllegalStateException e) {
-			}
-		}
+        try {
+            super.show(manager, tag);
+        } catch (IllegalStateException ise) {
+            try {
+                FragmentTransaction ft = manager.beginTransaction();
+                ft.commitAllowingStateLoss();
+            } catch (IllegalStateException e) {
+            }
+        }
     }
 
     @Override

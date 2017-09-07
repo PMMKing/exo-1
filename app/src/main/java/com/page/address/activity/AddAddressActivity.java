@@ -45,7 +45,7 @@ public class AddAddressActivity extends BaseActivity {
         setContentView(R.layout.pub_activity_addaddress_layout);
         ButterKnife.bind(this);
         isEidt = true;
-        address = (Address)myBundle.getSerializable("address");
+        address = (Address) myBundle.getSerializable("address");
         isEidt = address != null;
         String title = isEidt ? "编辑收货地址" : "添加收货地址";
         setTitleBar(title, true, "保存", new View.OnClickListener() {
@@ -67,7 +67,7 @@ public class AddAddressActivity extends BaseActivity {
     }
 
     private void saveData() {
-        String name =editName.getText().toString();
+        String name = editName.getText().toString();
         if (TextUtils.isEmpty(name)) {
             showToast("请输入姓名");
             return;
@@ -89,11 +89,13 @@ public class AddAddressActivity extends BaseActivity {
         addressParam.tel = tel;
         addressParam.detail = detail;
         addressParam.isdefault = cbSelect.isChecked() ? 1 : 0;
-        addressParam.id = this.address.id;
-        if (isEidt){
-            Request.startRequest(addressParam , ServiceMap.updateAddress ,mHandler, Request.RequestFeature.BLOCK);
-        }else {
-            Request.startRequest(addressParam , ServiceMap.submitAddress ,mHandler, Request.RequestFeature.BLOCK);
+        if (address != null) {
+            addressParam.id = address.id;
+        }
+        if (isEidt) {
+            Request.startRequest(addressParam, ServiceMap.updateAddress, mHandler, Request.RequestFeature.BLOCK);
+        } else {
+            Request.startRequest(addressParam, ServiceMap.submitAddress, mHandler, Request.RequestFeature.BLOCK);
         }
     }
 
@@ -104,7 +106,7 @@ public class AddAddressActivity extends BaseActivity {
                 showToast(param.result.bstatus.des);
                 finish();
             }
-        }else if (param.key == ServiceMap.updateAddress) {
+        } else if (param.key == ServiceMap.updateAddress) {
             if (param.result.bstatus.code == 0) {
                 showToast(param.result.bstatus.des);
                 finish();

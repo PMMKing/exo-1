@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.framework.activity.BaseFragment;
 import com.framework.rvadapter.adapter.MultiAdapter;
+import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.GridDecoration;
@@ -159,6 +160,12 @@ public class ShoppingFragment extends BaseFragment {
         rvRecommend2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvRecommend2.setHasFixedSize(true);
         rvRecommend2.setAdapter(adapter);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClickListener(View view, Object data, int position) {
+
+            }
+        });
     }
 
     private void setRecommend3() {
@@ -181,6 +188,12 @@ public class ShoppingFragment extends BaseFragment {
         rvRecommend3.setHasFixedSize(true);
         rvRecommend3.addItemDecoration(new GridDecoration(getContext()));
         rvRecommend3.setAdapter(adapter);
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClickListener(View view, Object data, int position) {
+
+            }
+        });
     }
 
     @Override

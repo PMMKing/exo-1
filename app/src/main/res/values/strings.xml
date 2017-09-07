@@ -1,6 +1,9 @@
 <resources>
 
     <string name="app_name">幸福宜居</string>
+    <string name="rmb">￥</string>
+
+
     <string name="share_content">指尖一按轻松到家，社区公告尽在掌握，好友来访再也不必繁琐登记啦！下载链接: http://dwz.cn/1JON8C</string>
     <string name="app_ip">www.halobang.com</string>
     <string name="app_com">北京乐邦网景科技有限公司</string>
@@ -62,7 +65,7 @@
 
     <string name="name_order_list">订单列表</string>
     <string name="name_message_list">我的消息</string>
-    <string name ="name_info">我的资料</string>
+    <string name="name_info">我的资料</string>
     <string name="name_communit">我的社区</string>
     <string name="name_accounts">我的账户</string>
     <string name="name_setting">设置</string>

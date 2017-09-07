@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-import com.framework.view.AlwaysFocusedTextView;
 import com.framework.view.IFView;
 import com.qfant.wuye.R;
 
@@ -26,6 +24,8 @@ public class TabView extends LinearLayout implements View.OnClickListener {
     IFView icon;
     @BindView(R.id.text)
     TextView text;
+    @BindView(R.id.tv_number)
+    TextView tvNumber;
     private TabItem tabItem;
 
     public TabView(Context context) {
@@ -66,6 +66,16 @@ public class TabView extends LinearLayout implements View.OnClickListener {
         text.setText(tabItem.text);
         icon.setText(getResources().getString(tabItem.icon[0]));
     }
+
+    public void setNumber(int number) {
+        if (number > 0) {
+            tvNumber.setVisibility(VISIBLE);
+            tvNumber.setText(number + "");
+        } else {
+            tvNumber.setVisibility(GONE);
+        }
+    }
+
 
     @Override
     public void onClick(View v) {
