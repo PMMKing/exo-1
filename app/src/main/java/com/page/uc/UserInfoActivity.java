@@ -88,7 +88,7 @@ public class UserInfoActivity extends BaseActivity {
 
     private void setData() {
         LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
-        ImageLoad.load(this,instance.portrait, imageHead);
+        ImageLoad.loadPlaceholder(this,instance.portrait, imageHead);
         tvPhone.setText(instance.phone);
         tvNickname.setText(instance.nickname);
 //        tvSex.setText(instance.nickname);

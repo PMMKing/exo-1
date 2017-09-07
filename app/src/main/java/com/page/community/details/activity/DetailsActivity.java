@@ -17,6 +17,7 @@ import com.framework.view.AddView;
 import com.page.community.details.model.RepairDetailParam;
 import com.page.community.details.model.RepairDetailResult;
 import com.page.community.details.model.RepairDetailResult.Data;
+import com.page.community.details.model.RepairEvaParam;
 import com.qfant.wuye.R;
 
 import butterknife.BindView;
@@ -92,6 +93,12 @@ public class DetailsActivity extends BaseActivity {
         Request.startRequest(param, ServiceMap.getRepair, mHandler, Request.RequestFeature.BLOCK);
     }
 
+    private void evaluateRepair() {
+        RepairEvaParam param = new RepairEvaParam();
+        Request.startRequest(param, ServiceMap.evaluateRepair, mHandler, Request.RequestFeature.BLOCK);
+    }
+
+
     private void updatView(Data data) {
         addView.setAddNumber(new String[]{data.pic});
         tvRepairAddress.setText(data.address);
@@ -110,7 +117,6 @@ public class DetailsActivity extends BaseActivity {
             tvPhone.setText(data.workerphone);
         }
 
-
     }
 
     @Override
@@ -120,22 +126,26 @@ public class DetailsActivity extends BaseActivity {
             if (result != null && result.data != null) {
                 updatView(result.data);
             }
+        } else if (param.key == ServiceMap.evaluateRepair) {
+            if (param.result.bstatus.code == 0) {
+                showToast("评价成功");
+            } else {
+                showToast(param.result.bstatus.des);
+            }
         }
         return false;
     }
 
     @OnClick(R.id.tv_commit)
     public void onViewClicked() {
-
+        evaluateRepair();
     }
-
 
     /*
     * 1 未处理 2 正在派单 3派单完成 4已接单 5维修中 6已完成 7已评价
     * // 1 未处理 2 正在派单 3派单完成 4已接单 5维修中 6已完成 7已评价
     *
     * */
-
     private CharSequence getState(int state) {
 
         String temp = "状态：";

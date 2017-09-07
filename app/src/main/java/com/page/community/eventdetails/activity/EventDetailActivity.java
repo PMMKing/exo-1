@@ -105,7 +105,7 @@ public class EventDetailActivity extends BaseActivity {
         tvTime.setText(DateFormatUtils.format(data.time, "yyyy.MM.dd EE"));
         tvAddress.setText(data.place);
         tvDetail.setText(data.customername);
-        ImageLoad.load(getContext(), data.pic, ivImage);
+        ImageLoad.loadPlaceholder(getContext(), data.pic, ivImage);
     }
 
 

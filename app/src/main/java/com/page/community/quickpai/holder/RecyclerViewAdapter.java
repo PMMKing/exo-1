@@ -76,7 +76,7 @@ public class RecyclerViewAdapter extends RecyclerSwipeAdapter<RecyclerViewAdapte
         final Snapshots snapshots = mDataset.get(position);
         viewHolder.tvTitle.setText(snapshots.intro);
         viewHolder.tvTime.setText("发布时间：" + DateFormatUtils.format(snapshots.createtime, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd"));
-        ImageLoad.load(mContext, snapshots.pic1, viewHolder.ivImage);
+        ImageLoad.loadPlaceholder(mContext, snapshots.pic1, viewHolder.ivImage);
         viewHolder.tvDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {//删除

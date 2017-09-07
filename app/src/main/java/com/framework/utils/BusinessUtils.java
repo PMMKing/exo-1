@@ -34,7 +34,6 @@ public class BusinessUtils {
 	 *
 	 * @param beReplaceStr
 	 *            被替换String
-	 * @param price
 	 *            原价：dprice+rprice
 	 * @param totalPrice
 	 *            订单总价 售卖价

@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
+import com.framework.net.NetworkParam;
+import com.framework.net.Request;
+import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
@@ -17,12 +20,15 @@ import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabView;
+import com.page.store.prodetails.model.PDParam;
+import com.page.store.prodetails.model.PDResult;
+import com.page.store.prodetails.model.PDResult.Data;
 import com.qfant.wuye.R;
 import com.page.store.orderaffirm.activity.OrderAffirmActivity;
 import com.page.store.prodetails.holder.HeaderHolder;
 import com.page.store.prodetails.holder.ItemHolder;
-import com.page.store.prodetails.holder.TitleHolder;
 import com.page.store.productevaluate.activity.ProEvaluateActivity;
+import com.taobao.weex.devtools.common.android.ViewUtil;
 
 import java.util.ArrayList;
 
@@ -36,6 +42,8 @@ import butterknife.OnClick;
 
 public class ProDetailsActivity extends BaseActivity implements OnItemClickListener {
 
+    public static final String ID = "id";
+
     @BindView(R.id.rv_list)
     RecyclerView rvList;
     @BindView(R.id.tv_collect)
@@ -46,14 +54,32 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     TextView tvAddCar;
     @BindView(R.id.tv_buy)
     TextView tvBuy;
+    private String id;
+    private final ArrayList<Data> dataList = new ArrayList<Data>();
+    private MultiAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_prodetails_layout);
+        if (myBundle == null) finish();
+        id = myBundle.getString(ID);
         ButterKnife.bind(this);
         setTabView();
         setListView();
+        startRequest();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myBundle.putString(ID, id);
+    }
+
+    private void startRequest() {
+        PDParam param = new PDParam();
+        param.id = id;
+        Request.startRequest(param, ServiceMap.getProduct, mHandler, Request.RequestFeature.BLOCK);
     }
 
     private void setTabView() {
@@ -62,16 +88,10 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     }
 
     private void setListView() {
-
-        ArrayList<Integer> list = new ArrayList<>();
-
-        for (int i = 0; i < 20; i++) {
-            list.add(i);
-        }
-
-        MultiAdapter adapter = new MultiAdapter(getContext(), list).addTypeView(new ITypeView() {
+        dataList.add(new Data());//占位
+        adapter = new MultiAdapter<Data>(getContext(), dataList).addTypeView(new ITypeView<Data>() {
             @Override
-            public boolean isForViewType(Object item, int position) {
+            public boolean isForViewType(Data item, int position) {
                 return position == 0;
             }
 
@@ -79,20 +99,10 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
             public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
                 return new HeaderHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_activity_prodetails_item_header_layout, parent, false));
             }
-        }).addTypeView(new ITypeView() {
+        }).addTypeView(new ITypeView<Data>() {
             @Override
-            public boolean isForViewType(Object item, int position) {
-                return position < 3 && position > 0;
-            }
-
-            @Override
-            public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
-                return new TitleHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_activity_prodetails_item_title_layout, parent, false));
-            }
-        }).addTypeView(new ITypeView() {
-            @Override
-            public boolean isForViewType(Object item, int position) {
-                return position >= 3;
+            public boolean isForViewType(Data item, int position) {
+                return position > 0;
             }
 
             @Override
@@ -106,6 +116,19 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         rvList.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
 
+    }
+
+    @Override
+    public boolean onMsgSearchComplete(NetworkParam param) {
+        if (param.key == ServiceMap.getProduct) {
+            PDResult result = (PDResult) param.result;
+            if (result != null && result.data != null) {
+                dataList.remove(0);
+                dataList.add(0, result.data);
+                adapter.notifyItemChanged(0);
+            }
+        }
+        return false;
     }
 
     @Override

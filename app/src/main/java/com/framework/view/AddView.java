@@ -110,7 +110,7 @@ public class AddView extends LinearLayout implements View.OnClickListener {
             if (TextUtils.isEmpty(imageUrls[i])) {
                 imageView.setImageResource(R.drawable.pub_add_picture);
             } else {
-                ImageLoad.load(getContext(), imageUrls[i], imageView);
+                ImageLoad.loadPlaceholder(getContext(), imageUrls[i], imageView);
             }
             imageView.setOnClickListener(this);
             imageView.setTag(i);

@@ -39,7 +39,7 @@ public class ImageFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         imageUrl = myBundle.getString("imageUrl");
-        ImageLoad.load(getContext(), imageUrl, ivImage);
+        ImageLoad.loadPlaceholder(getContext(), imageUrl, ivImage);
     }
 
     @Override

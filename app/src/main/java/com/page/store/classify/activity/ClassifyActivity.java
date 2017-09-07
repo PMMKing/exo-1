@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.framework.activity.BaseActivity;
+import com.framework.domain.param.BaseParam;
+import com.framework.net.Request;
+import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
@@ -44,10 +47,13 @@ public class ClassifyActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_classify_layout);
         ButterKnife.bind(this);
-
         setLeftListView();
         setRightListView();
+        startRequest();
+    }
 
+    private void startRequest() {
+        Request.startRequest(new BaseParam(), ServiceMap.getCategorys, mHandler, Request.RequestFeature.BLOCK);
     }
 
 

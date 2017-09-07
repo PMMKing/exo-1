@@ -44,7 +44,7 @@ public class ViewHolder extends BaseViewHolder<ActivityList> {
         tvTitle.setText(data.title);
         tvInitiator.setText("发起人：" + data.place);
         tvNumber.setText("参与人数：" + data.persons);
-        ImageLoad.load(mContext, data.pic, ivImage);
+        ImageLoad.loadPlaceholder(mContext, data.pic, ivImage);
     }
 
 }

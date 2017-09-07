@@ -46,20 +46,22 @@ public class OrderListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_orderlist_layout);
         ButterKnife.bind(this);
-
         setViewPager();
         setTitleBar("我的订单", true);
 
     }
 
+    /*
+    * 1全部 2待付款 3待发货4待收货5退单
+    * */
     private void setViewPager() {
 
         final ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(new OrderListFragment());
-        fragments.add(new OrderListFragment());
-        fragments.add(new OrderListFragment());
-        fragments.add(new OrderListFragment());
-        fragments.add(new OrderListFragment());
+        fragments.add(getFragment(1));
+        fragments.add(getFragment(2));
+        fragments.add(getFragment(3));
+        fragments.add(getFragment(4));
+        fragments.add(getFragment(5));
 
         final ArrayList<String> titles = new ArrayList<>();
         titles.add("全部");
@@ -114,6 +116,15 @@ public class OrderListActivity extends BaseActivity {
         vpOrderList.setAdapter(new PagerAdapter(((BaseActivity) getContext()).getSupportFragmentManager(), fragments));
 
     }
+
+    private OrderListFragment getFragment(int type) {
+        OrderListFragment orderListFragment = new OrderListFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt("type", type);
+        orderListFragment.setArguments(bundle);
+        return orderListFragment;
+    }
+
 
     static class PagerAdapter extends FragmentPagerAdapter {
 

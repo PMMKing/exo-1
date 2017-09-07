@@ -832,13 +832,11 @@ public class SwipRefreshLayout extends ViewGroup {
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                QLog.d("ACTION_DOWN");
                 mActivePointerId = MotionEventCompat.getPointerId(ev, 0);
                 mIsBeingDragged = false;
                 break;
 
             case MotionEvent.ACTION_MOVE: {
-                QLog.d("ACTION_MOVE");
                 final int pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
                 if (pointerIndex < 0) {
                     return false;
@@ -915,20 +913,17 @@ public class SwipRefreshLayout extends ViewGroup {
                 break;
             }
             case MotionEventCompat.ACTION_POINTER_DOWN: {
-                QLog.d("ACTION_POINTER_DOWN");
                 final int index = MotionEventCompat.getActionIndex(ev);
                 mActivePointerId = MotionEventCompat.getPointerId(ev, index);
                 break;
             }
 
             case MotionEventCompat.ACTION_POINTER_UP:
-                QLog.d("ACTION_POINTER_UP");
                 onSecondaryPointerUp(ev);
                 break;
 
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL: {
-                QLog.d("ACTION_CANCEL");
                 if (mActivePointerId == INVALID_POINTER) {
                     if (action == MotionEvent.ACTION_UP) {
                     }
