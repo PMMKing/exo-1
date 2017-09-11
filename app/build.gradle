@@ -57,7 +57,11 @@ android {
 
     buildTypes {
         debug {
-//            manifestPlaceholders = []
+            manifestPlaceholders = [
+                    GETUI_APP_ID    : "zrCloUNS3jAGFgkPkG9397",
+                    GETUI_APP_KEY   : "Ngq0xOTlzo6vyy0iIBkCw3",
+                    GETUI_APP_SECRET: "dgBUwwmp3l8fW8k07OXZK6"
+            ]
             zipAlignEnabled false
             minifyEnabled false
             shrinkResources false
@@ -69,6 +73,11 @@ android {
             renderscriptDebuggable false
         }
         bete {
+            manifestPlaceholders = [
+                    GETUI_APP_ID    : "zrCloUNS3jAGFgkPkG9397",
+                    GETUI_APP_KEY   : "Ngq0xOTlzo6vyy0iIBkCw3",
+                    GETUI_APP_SECRET: "dgBUwwmp3l8fW8k07OXZK6"
+            ]
             zipAlignEnabled true
             minifyEnabled true
             shrinkResources true
@@ -78,6 +87,11 @@ android {
             debuggable true
         }
         release {
+            manifestPlaceholders = [
+                    GETUI_APP_ID    : "lKQLBlK75I8qLrhyXDqAoA",
+                    GETUI_APP_KEY   : "f7cpXWtyrW9zzYTQV1bvj9",
+                    GETUI_APP_SECRET: "r352zIhlxtAuBktJCwRrn8"
+            ]
             debuggable false
             jniDebuggable false
             zipAlignEnabled true
@@ -142,6 +156,8 @@ dependencies {
     compile 'com.squareup.picasso:picasso:2.5.2'
 //不包含微信统计
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+    //个推
+    compile 'com.getui:sdk:2.11.1.0'
 
 //-------------------------------------------------------------
     //weex 依赖 Android SDK version > 23

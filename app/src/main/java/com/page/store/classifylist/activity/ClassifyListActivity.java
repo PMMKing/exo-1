@@ -51,7 +51,7 @@ public class ClassifyListActivity extends BaseActivity implements OnItemClickLis
         if (myBundle == null) {
             finish();
         }
-        categoryid = myBundle.getString("CATEGORYID");
+        categoryid = myBundle.getString(CATEGORYID);
         ButterKnife.bind(this);
         setTitleBar("分类商品列表", true);
         setListView();
@@ -66,9 +66,9 @@ public class ClassifyListActivity extends BaseActivity implements OnItemClickLis
 
     private void startRequest(int pager) {
         ClassifyListParam param = new ClassifyListParam();
-        param.categoryId = "1";
+        param.categoryId = categoryid;
         param.pageNo = pager;
-        Request.startRequest(param, pager, ServiceMap.getProducts, mHandler, Request.RequestFeature.BLOCK);
+        Request.startRequest(param, pager, ServiceMap.getProducts, mHandler);
     }
 
     private void setListView() {

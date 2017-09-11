@@ -20,6 +20,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 
 import com.framework.utils.ArrayUtils;
+import com.igexin.sdk.PushManager;
+import com.igexin.sdk.PushService;
 import com.ucar.weex.UWXInit;
 import com.ucar.weex.update.UWXResManager;
 
@@ -52,6 +54,7 @@ public class MainApplication extends Application {
          * assets/weex/ucar-weex_3_20170828123442
          */
         UWXResManager.getInstance().addWXResFromAssert(this, getWXPackageFileName("weex"));
+        PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
     }
 
     public static String getWXPackageFileName(String weexFileName) {

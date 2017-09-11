@@ -223,5 +223,14 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" />
 
+
+        <!--个推-->
+
+        <service
+            android:name=".push.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice" />
+
     </application>
 </manifest>

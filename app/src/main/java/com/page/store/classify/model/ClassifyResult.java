@@ -11,7 +11,6 @@ import java.util.List;
 
 public class ClassifyResult extends BaseResult {
 
-
     public Data data;
 
     public static class Data implements Serializable {
@@ -21,8 +20,25 @@ public class ClassifyResult extends BaseResult {
             public int id;
             public String name;
             public int sort;
-            public int recommend;
+            public Object recommend;
             public String imgurl;
+            public List<Produts> produts;
+
+            public boolean isSelect;
+
+            public static class Produts implements Serializable {
+                public String id;
+                public String name;
+                public String pic1;
+                public String pic2;
+                public String pic3;
+                public String intro;
+                public int praise;
+                public double price;
+                public double marketprice;
+                public int category;
+                public int comments;
+            }
         }
     }
 }

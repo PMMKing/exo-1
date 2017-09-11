@@ -58,6 +58,8 @@ import com.framework.utils.tuski.Tuski;
 import com.framework.view.QProgressDialogFragment;
 import com.framework.view.SystemBarTintManager;
 import com.framework.view.TitleBar;
+import com.igexin.sdk.PushManager;
+import com.igexin.sdk.PushService;
 import com.qfant.wuye.R;
 
 import java.util.List;

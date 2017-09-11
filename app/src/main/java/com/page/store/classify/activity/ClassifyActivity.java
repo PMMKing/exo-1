@@ -11,17 +11,25 @@ import android.view.ViewGroup;
 
 import com.framework.activity.BaseActivity;
 import com.framework.domain.param.BaseParam;
+import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
+import com.page.store.classify.model.ClassifyResult;
+import com.page.store.classify.model.ClassifyResult.Data.Datas;
+import com.page.store.classify.model.ClassifyResult.Data.Datas.Produts;
+import com.page.store.classifylist.model.ClassifyListResult;
+import com.page.store.orderaffirm.model.CommitOrderParam;
+import com.page.store.orderaffirm.model.CommitOrderParam.Product;
+import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.qfant.wuye.R;
 import com.page.store.classify.holder.NavHolder;
 import com.page.store.classify.holder.ProHolder;
-import com.page.store.classify.model.ClassifyModel;
 import com.page.store.classifylist.activity.ClassifyListActivity;
 
 import java.util.ArrayList;
@@ -41,12 +49,14 @@ public class ClassifyActivity extends BaseActivity {
     @BindView(R.id.rv_list)
     RecyclerView rvList;
     private MultiAdapter multiAdapter;
+    private MultiAdapter parentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_classify_layout);
         ButterKnife.bind(this);
+        setTitleBar("商品分类", true);
         setLeftListView();
         setRightListView();
         startRequest();
@@ -58,20 +68,7 @@ public class ClassifyActivity extends BaseActivity {
 
 
     private void setLeftListView() {
-
-        ArrayList<ClassifyModel> list = new ArrayList<>();
-        ArrayList<String> types = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            types.add("纯牛奶");
-        }
-        for (int i = 0; i < 6; i++) {
-            ClassifyModel classifyModel = new ClassifyModel();
-            classifyModel.title = "零食";
-            classifyModel.types = (List<String>) types.clone();
-            list.add(classifyModel);
-        }
-
-        MultiAdapter adapter = new MultiAdapter(getContext(), list).addTypeView(new ITypeView() {
+        parentAdapter = new MultiAdapter<Datas>(getContext()).addTypeView(new ITypeView() {
             @Override
             public boolean isForViewType(Object item, int position) {
                 return true;
@@ -86,12 +83,15 @@ public class ClassifyActivity extends BaseActivity {
         rvNavList.setHasFixedSize(true);
         rvNavList.setLayoutManager(new LinearLayoutManager(getContext()));
         rvNavList.addItemDecoration(new LineDecoration(getContext(), LineDecoration.VERTICAL_LIST, R.drawable.pub_white_line));
-        rvNavList.setAdapter(adapter);
-        adapter.setOnItemClickListener(new OnItemClickListener<ClassifyModel>() {
+        rvNavList.setAdapter(parentAdapter);
+        parentAdapter.setOnItemClickListener(new OnItemClickListener<Datas>() {
             @Override
-            public void onItemClickListener(View view, ClassifyModel data, int position) {
-                multiAdapter.setData(data.types);
-                multiAdapter.notifyDataSetChanged();
+            public void onItemClickListener(View view, Datas data, int position) {
+                for (Datas item : (ArrayList<Datas>) parentAdapter.getData()) {
+                    item.isSelect = item == data;
+                }
+                multiAdapter.setData(data.produts);
+                parentAdapter.notifyDataSetChanged();
             }
         });
 
@@ -99,7 +99,7 @@ public class ClassifyActivity extends BaseActivity {
 
     private void setRightListView() {
 
-        multiAdapter = new MultiAdapter(getContext(), null).addTypeView(new ITypeView() {
+        multiAdapter = new MultiAdapter<Product>(getContext()).addTypeView(new ITypeView() {
             @Override
             public boolean isForViewType(Object item, int position) {
                 return true;
@@ -112,12 +112,31 @@ public class ClassifyActivity extends BaseActivity {
         });
         rvList.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rvList.setAdapter(multiAdapter);
-        multiAdapter.setOnItemClickListener(new OnItemClickListener() {
+        multiAdapter.setOnItemClickListener(new OnItemClickListener<Produts>() {
             @Override
-            public void onItemClickListener(View view, Object data, int position) {
-                qStartActivity(ClassifyListActivity.class);
+            public void onItemClickListener(View view, Produts data, int position) {
+//                Bundle bundle = new Bundle();
+//                bundle.putString(ClassifyListActivity.CATEGORYID, data.id);
+//                qStartActivity(ClassifyListActivity.class, bundle);
+
+                Bundle bundle = new Bundle();
+                bundle.putString(ProDetailsActivity.ID, data.id);
+                qStartActivity(ProDetailsActivity.class, bundle);
             }
         });
     }
 
+    @Override
+    public boolean onMsgSearchComplete(NetworkParam param) {
+        if (param.key == ServiceMap.getCategorys) {
+            ClassifyResult result = (ClassifyResult) param.result;
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.datas) && !ArrayUtils.isEmpty(result.data.datas.get(0).produts)) {
+                Datas datas = result.data.datas.get(0);
+                datas.isSelect = true;
+                parentAdapter.setData(result.data.datas);
+                multiAdapter.setData(result.data.datas.get(0).produts);
+            }
+        }
+        return false;
+    }
 }

@@ -15,6 +15,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BusinessUtils;
+import com.igexin.sdk.PushManager;
 import com.qfant.wuye.R;
 
 import com.page.uc.bean.LoginParam;
@@ -53,7 +54,7 @@ public class LoginActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.text_send_code, R.id.text_login,R.id.tv_rig})
+    @OnClick({R.id.text_send_code, R.id.text_login, R.id.tv_rig})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.text_send_code:
@@ -135,6 +136,7 @@ public class LoginActivity extends BaseActivity {
                 //登录成功
                 LoginResult result = (LoginResult) param.result;
                 UCUtils.getInstance().saveUserInfo(result.data);
+                PushManager.getInstance().bindAlias(getContext(), result.data.phone);
                 finish();
             } else {
                 showToast(param.result.bstatus.des);

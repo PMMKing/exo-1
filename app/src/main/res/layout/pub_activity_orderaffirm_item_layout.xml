@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
 
@@ -30,9 +30,9 @@
             android:layout_marginLeft="126dp"
             android:paddingRight="22dp"
             android:paddingTop="17dp"
-            tools:text="越南进口Tipo牛奶面包干饼干300g办公室零食大礼包"
             android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h12" />
+            android:textSize="@dimen/text_h12"
+            tools:text="越南进口Tipo牛奶面包干饼干300g办公室零食大礼包" />
 
 
         <TextView
@@ -42,9 +42,9 @@
             android:layout_gravity="bottom"
             android:layout_marginBottom="18dp"
             android:layout_marginLeft="126dp"
-            tools:text="￥100.00"
             android:textColor="@color/pub_color_blue"
-            android:textSize="@dimen/text_h18" />
+            android:textSize="@dimen/text_h18"
+            tools:text="￥100.00" />
 
         <TextView
             android:id="@+id/tv_number"
@@ -53,9 +53,9 @@
             android:layout_gravity="bottom|right"
             android:layout_marginBottom="18dp"
             android:paddingRight="22dp"
-            tools:text="X1"
             android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h18" />
+            android:textSize="@dimen/text_h18"
+            tools:text="X1" />
 
 
     </FrameLayout>
@@ -70,7 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="10dp">
+        android:paddingBottom="10dp"
+        android:visibility="gone">
 
 
         <TextView
@@ -96,11 +97,11 @@
                 android:id="@+id/tv_sub"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:clickable="true"
                 android:gravity="center"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="-"
-                android:clickable="true"
                 android:textColor="@color/pub_color_black"
                 android:textSize="@dimen/text_h18" />
 
@@ -113,9 +114,9 @@
                 android:gravity="center"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
-                tools:text="12666"
                 android:textColor="@color/pub_color_black"
-                android:textSize="@dimen/text_h18" />
+                android:textSize="@dimen/text_h18"
+                tools:text="12666" />
 
             <View style="@style/line_gray_v" />
 

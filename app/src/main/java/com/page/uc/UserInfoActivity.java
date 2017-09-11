@@ -22,6 +22,7 @@ import com.framework.utils.BitmapHelper;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.CircleImageView;
+import com.igexin.sdk.PushManager;
 import com.qfant.wuye.R;
 import com.page.uc.bean.LoginResult;
 import com.page.uc.bean.NickNameResult;
@@ -88,7 +89,7 @@ public class UserInfoActivity extends BaseActivity {
 
     private void setData() {
         LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
-        ImageLoad.loadPlaceholder(this,instance.portrait, imageHead);
+        ImageLoad.loadPlaceholder(this, instance.portrait, imageHead);
         tvPhone.setText(instance.phone);
         tvNickname.setText(instance.nickname);
 //        tvSex.setText(instance.nickname);
@@ -109,6 +110,7 @@ public class UserInfoActivity extends BaseActivity {
             case R.id.ll_phone:
                 break;
             case R.id.btn_logout:
+                PushManager.getInstance().unBindAlias(getContext(), UCUtils.getInstance().getUserInfo().phone, false);
                 UCUtils.getInstance().saveUserInfo(null);
                 finish();
 //                Request.startRequest(new BaseParam(), ServiceMap.customerLogout, mHandler);
@@ -129,7 +131,7 @@ public class UserInfoActivity extends BaseActivity {
                         } else {
                             NickNameParam param = new NickNameParam();
                             param.nickname = input;
-                            Request.startRequest(param,input, ServiceMap.updateNickname, mHandler, BLOCK);
+                            Request.startRequest(param, input, ServiceMap.updateNickname, mHandler, BLOCK);
                         }
                     }
                 })
