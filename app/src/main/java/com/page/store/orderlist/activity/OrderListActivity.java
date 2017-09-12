@@ -40,6 +40,7 @@ public class OrderListActivity extends BaseActivity {
     MagicIndicator magicIndicator;
     @BindView(R.id.vp_order_list)
     ViewPager vpOrderList;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,14 +49,20 @@ public class OrderListActivity extends BaseActivity {
         ButterKnife.bind(this);
         setViewPager();
         setTitleBar("我的订单", true);
+        index = myBundle.getInt("index", 0);
+        vpOrderList.setCurrentItem(index, true);
+    }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myBundle.putInt("index", index);
     }
 
     /*
-    * 1全部 2待付款 3待发货4待收货5退单
-    * */
+        * 1全部 2待付款 3待发货4待收货5退单
+        * */
     private void setViewPager() {
-
         final ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(getFragment(1));
         fragments.add(getFragment(2));

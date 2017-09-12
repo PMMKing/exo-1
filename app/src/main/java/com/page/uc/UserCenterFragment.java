@@ -73,7 +73,7 @@ public class UserCenterFragment extends BaseFragment {
         super.onResume();
 //        imageHead.setImageResource(R.drawable.ic_launcher);
         LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
-        ImageLoad.loadPlaceholder(getContext(),instance.portrait, imageHead);
+        ImageLoad.loadPlaceholder(getContext(), instance.portrait, imageHead);
     }
 
     @Override
@@ -84,6 +84,9 @@ public class UserCenterFragment extends BaseFragment {
 
     @OnClick({R.id.image_head, R.id.image_setting, R.id.ll_order_0, R.id.ll_order_1, R.id.ll_order_2, R.id.ll_order_3, R.id.ll_list_0, R.id.ll_list_1, R.id.ll_list_2, R.id.ll_list_3, R.id.ll_list_4, R.id.ll_list_5, R.id.ll_list_6, R.id.ll_list_7})
     public void onClick(View view) {
+
+        Bundle bundle = new Bundle();
+
         switch (view.getId()) {
             case R.id.image_head:
                 if (UCUtils.getInstance().isLogin()) {
@@ -96,16 +99,20 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(OrderDetailsActivity.class);
                 break;
             case R.id.ll_order_0:
-                qStartActivity(OrderListActivity.class);
+                bundle.putInt("index", 1);
+                qStartActivity(OrderListActivity.class, bundle);
                 break;
             case R.id.ll_order_1:
-                qStartActivity(OrderListActivity.class);
+                bundle.putInt("index", 2);
+                qStartActivity(OrderListActivity.class, bundle);
                 break;
             case R.id.ll_order_2:
-                qStartActivity(OrderListActivity.class);
+                bundle.putInt("index", 3);
+                qStartActivity(OrderListActivity.class, bundle);
                 break;
             case R.id.ll_order_3:
-                qStartActivity(OrderListActivity.class);
+                bundle.putInt("index", 4);
+                qStartActivity(OrderListActivity.class, bundle);
                 break;
             case R.id.ll_list_0:
                 qStartActivity(OrderListActivity.class);
@@ -114,7 +121,6 @@ public class UserCenterFragment extends BaseFragment {
                 break;
             case R.id.ll_list_2:
                 //收货地址
-                Bundle bundle = new Bundle();
                 bundle.putBoolean("isSelect", false);
                 qStartActivity(AddressActivity.class, bundle);
                 break;

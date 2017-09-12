@@ -17,10 +17,13 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.page.store.orderlist.holder.OrderListHolder;
 import com.page.store.orderlist.model.OrderListParam;
+import com.page.store.orderlist.model.OrderListResult;
+import com.page.store.orderlist.model.OrderListResult.Data.OrderList;
 import com.qfant.wuye.R;
 
 import butterknife.BindView;
@@ -31,7 +34,7 @@ import butterknife.Unbinder;
  * Created by shucheng.qu on 2017/8/18.
  */
 
-public class OrderListFragment extends BaseFragment implements OnItemClickListener, SwipRefreshLayout.OnRefreshListener {
+public class OrderListFragment extends BaseFragment implements OnItemClickListener<OrderList>, SwipRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
@@ -54,6 +57,12 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
         super.onActivityCreated(savedInstanceState);
         type = myBundle.getInt("type", 1);
         setListView();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         startRequest(1);
     }
 
@@ -61,7 +70,7 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
         OrderListParam param = new OrderListParam();
         param.type = type;
         param.pageNo = pager;
-        Request.startRequest(param, pager, ServiceMap.getMyOrders, mHandler);
+        Request.startRequest(param, pager, ServiceMap.getMyOrders, mHandler, Request.RequestFeature.CANCELABLE);
     }
 
     @Override
@@ -94,6 +103,20 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.getMyOrders) {
+            OrderListResult result = (OrderListResult) param.result;
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.orderList)) {
+                if ((int) param.ext == 1) {
+                    adapter.setData(result.data.orderList);
+                } else {
+                    adapter.addData(result.data.orderList);
+                }
+            } else {
+                if ((int) param.ext == 1) {
+                    showToast("没有数据");
+                } else {
+                    showToast("没有更多了");
+                }
+            }
             refreshLayout.setRefreshing(false);
         }
         return false;
@@ -106,7 +129,7 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
     }
 
     @Override
-    public void onItemClickListener(View view, Object data, int position) {
+    public void onItemClickListener(View view, OrderList data, int position) {
 
     }
 
