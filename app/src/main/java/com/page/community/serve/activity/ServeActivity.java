@@ -97,7 +97,6 @@ public class ServeActivity extends BaseActivity implements OnItemClickListener<W
         if (serviceMap == null) return;
         ServeParam param = new ServeParam();
         param.pageNo = pager;
-        param.pageSize = 7;
         Request.startRequest(param, pager, serviceMap, mHandler);
     }
 

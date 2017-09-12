@@ -141,7 +141,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.submitOrder) {
-
+            qStartActivity(PayResultActivity.class);
         } else if (param.key == ServiceMap.getDefaultAddress) {
             DefaultAddressResult result = (DefaultAddressResult) param.result;
             if (result != null && result.data != null) {

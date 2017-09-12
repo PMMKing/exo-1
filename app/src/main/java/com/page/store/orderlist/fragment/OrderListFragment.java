@@ -20,6 +20,7 @@ import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
+import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.store.orderlist.holder.OrderListHolder;
 import com.page.store.orderlist.model.OrderListParam;
 import com.page.store.orderlist.model.OrderListResult;
@@ -130,7 +131,9 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
 
     @Override
     public void onItemClickListener(View view, OrderList data, int position) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString(OrderDetailsActivity.ID, data.id);
+        qStartActivity(OrderDetailsActivity.class, bundle);
     }
 
     @Override

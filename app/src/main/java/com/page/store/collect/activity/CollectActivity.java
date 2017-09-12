@@ -8,12 +8,17 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.framework.activity.BaseActivity;
+import com.framework.net.NetworkParam;
+import com.framework.net.Request;
+import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.view.LineDecoration;
-import com.qfant.wuye.R;
+import com.framework.view.pull.SwipRefreshLayout;
 import com.page.community.quickpain.holder.ContentHolder;
+import com.page.store.collect.model.CollectParam;
+import com.qfant.wuye.R;
 
 import java.util.ArrayList;
 
@@ -24,25 +29,33 @@ import butterknife.ButterKnife;
  * Created by shucheng.qu on 2017/8/18.
  */
 
-public class CollectActivity extends BaseActivity {
+public class CollectActivity extends BaseActivity implements SwipRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
+    @BindView(R.id.refreshLayout)
+    SwipRefreshLayout refreshLayout;
+    private MultiAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_collect_layout);
         ButterKnife.bind(this);
+        setTitleBar("我的收藏", true);
         setListView();
+        startRequest(1);
+    }
+
+    private void startRequest(int pager) {
+        CollectParam param = new CollectParam();
+        param.pageNo = pager;
+        param.pageSize = 7;
+        Request.startRequest(param, pager, ServiceMap.getFavList, mHandler);
     }
 
     private void setListView() {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(i);
-        }
-        MultiAdapter adapter = new MultiAdapter(getContext(), list).addTypeView(new ITypeView() {
+        adapter = new MultiAdapter(getContext()).addTypeView(new ITypeView() {
             @Override
             public boolean isForViewType(Object item, int position) {
                 return true;
@@ -57,5 +70,24 @@ public class CollectActivity extends BaseActivity {
         rvList.setLayoutManager(new LinearLayoutManager(getContext()));
         rvList.setHasFixedSize(true);
         rvList.setAdapter(adapter);
+        refreshLayout.setOnRefreshListener(this);
+    }
+
+    @Override
+    public boolean onMsgSearchComplete(NetworkParam param) {
+        if (param.key == ServiceMap.getFavList) {
+
+        }
+        return false;
+    }
+
+    @Override
+    public void onRefresh(int index) {
+        startRequest(1);
+    }
+
+    @Override
+    public void onLoad(int index) {
+        startRequest(++index);
     }
 }

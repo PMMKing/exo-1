@@ -53,6 +53,7 @@ import com.framework.utils.Globals;
 import com.framework.utils.HandlerCallbacks;
 import com.framework.utils.IBaseActFrag;
 import com.framework.utils.QLog;
+import com.framework.utils.ToastUtils;
 import com.framework.utils.inject.Injector;
 import com.framework.utils.tuski.Tuski;
 import com.framework.view.QProgressDialogFragment;
@@ -217,9 +218,11 @@ public abstract class BaseActivity extends FragmentActivity implements
     @Override
     public void showToast(String message) {
         // showToast(message, 2000);
-        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
         // Tuski.makeText(getContext(), message,
         // Appearance.DEFAULT_BOTTOM).show();
+
+        ToastUtils.toastSth(getContext(), message);
     }
 
     /**

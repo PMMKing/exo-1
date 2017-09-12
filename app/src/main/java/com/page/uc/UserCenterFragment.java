@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.framework.utils.imageload.ImageLoad;
+import com.page.store.collect.activity.CollectActivity;
 import com.qfant.wuye.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
@@ -118,6 +119,7 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(OrderListActivity.class);
                 break;
             case R.id.ll_list_1:
+                qStartActivity(CollectActivity.class);
                 break;
             case R.id.ll_list_2:
                 //收货地址
