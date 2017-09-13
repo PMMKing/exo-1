@@ -19,6 +19,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BitmapHelper;
+import com.framework.utils.ShopCarUtils;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.CircleImageView;
@@ -112,6 +113,7 @@ public class UserInfoActivity extends BaseActivity {
             case R.id.btn_logout:
                 PushManager.getInstance().unBindAlias(getContext(), UCUtils.getInstance().getUserInfo().phone, false);
                 UCUtils.getInstance().saveUserInfo(null);
+                ShopCarUtils.getInstance().clearData();//清空购物车
                 finish();
 //                Request.startRequest(new BaseParam(), ServiceMap.customerLogout, mHandler);
                 break;

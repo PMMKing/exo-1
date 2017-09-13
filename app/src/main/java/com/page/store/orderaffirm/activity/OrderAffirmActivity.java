@@ -20,6 +20,7 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.BusinessUtils;
+import com.framework.utils.ShopCarUtils;
 import com.page.address.Address;
 import com.page.address.activity.AddressActivity;
 import com.page.store.orderaffirm.holder.HeaderHolder;
@@ -141,6 +142,13 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.submitOrder) {
+            if (param.result.bstatus.code == 0) {
+                if (products.size() > 1) {
+                    ShopCarUtils.getInstance().clearData();//清空购物车
+                }
+            }
+
+
             qStartActivity(PayResultActivity.class);
         } else if (param.key == ServiceMap.getDefaultAddress) {
             DefaultAddressResult result = (DefaultAddressResult) param.result;
