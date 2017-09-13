@@ -94,7 +94,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     private void collect() {
         CollectParam param = new CollectParam();
         param.id = id;
-        param.type = true ? 2 : 1;
+        param.type = true ? 1 : 2;
         Request.startRequest(param, ServiceMap.fav, mHandler, Request.RequestFeature.BLOCK);
     }
 
@@ -145,11 +145,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                 adapter.notifyItemChanged(0);
             }
         } else if (param.key == ServiceMap.fav) {
-            if (param.result.bstatus.code == 0) {
-                showToast("成功");
-            } else {
-                showToast(param.result.bstatus.des);
-            }
+            showToast(param.result.bstatus.des);
         }
         return false;
     }
@@ -227,7 +223,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                 tvOk.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        dialog.dismiss();
                     }
                 });
                 break;
@@ -248,6 +244,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                         products.add(product);
                         bundle.putSerializable(OrderAffirmActivity.PROLIST, products);
                         qStartActivity(OrderAffirmActivity.class, bundle);
+                        dialog.dismiss();
                     }
                 });
                 break;

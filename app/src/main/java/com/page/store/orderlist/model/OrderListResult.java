@@ -19,7 +19,7 @@ public class OrderListResult extends BaseResult {
         public List<OrderList> orderList;
 
         public static class OrderList implements Serializable {
-            public int id;
+            public String id;
             public String orderno;
             public int totalprice;
             public String createtime;

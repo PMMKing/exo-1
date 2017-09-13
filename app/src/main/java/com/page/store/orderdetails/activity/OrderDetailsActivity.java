@@ -10,7 +10,13 @@ import com.framework.activity.BaseActivity;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
+import com.framework.utils.ArrayUtils;
 import com.page.store.orderdetails.model.OrderDetailParam;
+import com.page.store.orderdetails.model.OrderDetailResult;
+import com.page.store.orderdetails.model.OrderDetailResult.Data;
+import com.page.store.orderlist.model.OrderListResult;
+import com.page.store.orderlist.model.OrderListResult.Data.OrderList.Products;
+import com.page.store.orderlist.view.ProductView;
 import com.qfant.wuye.R;
 
 import butterknife.BindView;
@@ -45,6 +51,8 @@ public class OrderDetailsActivity extends BaseActivity {
     TextView tvCancle;
     @BindView(R.id.tv_pay)
     TextView tvPay;
+    @BindView(R.id.ll_products)
+    LinearLayout llProducts;
     private String id;
 
     @Override
@@ -53,6 +61,7 @@ public class OrderDetailsActivity extends BaseActivity {
         setContentView(R.layout.pub_activity_orderdetail_layout);
         if (myBundle == null) finish();
         ButterKnife.bind(this);
+        setTitleBar("订单详情", true);
         id = myBundle.getString(ID);
         startRequest();
     }
@@ -69,9 +78,30 @@ public class OrderDetailsActivity extends BaseActivity {
         Request.startRequest(param, ServiceMap.getOrder, mHandler, Request.RequestFeature.BLOCK);
     }
 
+
+    private void updataView(Data data) {
+        tvStatus.setText(data.status);
+        tvAddress.setText(String.format("收货地址：%s", data.address));
+        tvName.setText(String.format("收货人：%s", data.receiver));
+        llProducts.removeAllViews();
+        for (Products product : data.products) {
+            ProductView productView = new ProductView(getContext());
+            productView.updataView(product);
+            llProducts.setBackgroundColor(getResources().getColor(R.color.pub_color_white));
+            llProducts.addView(productView);
+        }
+    }
+
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
-
+        if (param.key == ServiceMap.getOrder) {
+            OrderDetailResult result = (OrderDetailResult) param.result;
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.products)) {
+                updataView(result.data);
+            } else {
+                showToast(param.result.bstatus.des);
+            }
+        }
         return false;
     }
 
