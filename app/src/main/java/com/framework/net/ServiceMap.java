@@ -14,6 +14,7 @@ import com.page.community.serve.model.ServeResult;
 import com.page.home.model.LinksResult;
 import com.page.home.model.NoticeResult;
 import com.page.home.model.QpListResult;
+import com.page.pay.PayResult;
 import com.page.store.classify.model.ClassifyResult;
 import com.page.store.classifylist.model.ClassifyListResult;
 import com.page.store.collect.model.CollectResult;
@@ -40,6 +41,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     OPENGATE("/opengate.do", BaseResult.class), //获取通讯录联系人
     getLinks("/getLinks.do", LinksResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
+    alipayPayProduct("/alipayPayProduct.do", PayResult.class),
     getAddresses("/getAddresses.do", AddressResult.class),
     submitAddress("/submitAddress.do", BaseResult.class),
     updateAddress("/updateAddress.do", BaseResult.class),

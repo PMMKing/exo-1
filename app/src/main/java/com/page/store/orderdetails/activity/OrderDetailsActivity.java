@@ -11,6 +11,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.ArrayUtils;
+import com.page.pay.PayActivity;
 import com.page.store.orderdetails.model.OrderDetailParam;
 import com.page.store.orderdetails.model.OrderDetailResult;
 import com.page.store.orderdetails.model.OrderDetailResult.Data;
@@ -54,6 +55,7 @@ public class OrderDetailsActivity extends BaseActivity {
     @BindView(R.id.ll_products)
     LinearLayout llProducts;
     private String id;
+    private OrderDetailResult result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +97,7 @@ public class OrderDetailsActivity extends BaseActivity {
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.getOrder) {
-            OrderDetailResult result = (OrderDetailResult) param.result;
+             result = (OrderDetailResult) param.result;
             if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.products)) {
                 updataView(result.data);
             } else {
@@ -115,6 +117,9 @@ public class OrderDetailsActivity extends BaseActivity {
             case R.id.tv_cancle:
                 break;
             case R.id.tv_pay:
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("order",result.data);
+                qStartActivity(PayActivity.class, bundle);
                 break;
         }
     }

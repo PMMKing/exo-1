@@ -4,10 +4,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.widget.Button;
 
 import com.alipay.sdk.app.PayTask;
 import com.framework.activity.BaseActivity;
+import com.framework.net.NetworkParam;
+import com.framework.net.Request;
+import com.framework.net.ServiceMap;
+import com.page.store.orderdetails.model.OrderDetailResult;
 import com.qfant.wuye.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by chenxi.cui on 2017/9/11.
@@ -15,11 +24,20 @@ import com.qfant.wuye.R;
 
 public class PayActivity extends BaseActivity {
     protected static final int SDK_PAY_FLAG = 0x35;
+    @BindView(R.id.btn_pay)
+    Button btnPay;
+    private PayResult payResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_pay_activity);
+        ButterKnife.bind(this);
+        OrderDetailResult.Data order = (OrderDetailResult.Data) myBundle.getSerializable("order");
+        PayParam payParam = new PayParam();
+        payParam.orderid = order.id;
+        payParam.price = order.totalprice;
+        Request.startRequest(payParam, ServiceMap.alipayPayProduct, mHandler, Request.RequestFeature.BLOCK);
     }
 
     @Override
@@ -67,5 +85,23 @@ public class PayActivity extends BaseActivity {
         // 必须异步调用
         Thread payThread = new Thread(payRunnable);
         payThread.start();
+    }
+
+    @Override
+    public boolean onMsgSearchComplete(NetworkParam param) {
+        if (param.key == ServiceMap.alipayPayProduct) {
+
+            if (param.result.bstatus.code == 0) {
+                 payResult = (PayResult) param.result;
+
+            }
+        }
+
+        return super.onMsgSearchComplete(param);
+    }
+
+    @OnClick(R.id.btn_pay)
+    public void onClick() {
+        airPay(payResult.data.params);
     }
 }
