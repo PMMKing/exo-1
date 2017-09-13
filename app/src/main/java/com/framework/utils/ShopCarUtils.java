@@ -15,7 +15,7 @@ import java.util.Iterator;
 
 public class ShopCarUtils {
 
-    public static final String SHOPCAR = "shopcar";
+    private static final String SHOPCAR = "shopcar";
     private static ShopCarUtils instance = null;
     private ShopCarData shopCarData;
 

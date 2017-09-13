@@ -48,7 +48,6 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
     TextView tvCommit;
     Unbinder unbinder;
     private double totalPrice;
-    private ShopCarData shopCarData;
     private boolean back;
     private MultiAdapter<Product> adapter;
 
@@ -88,12 +87,11 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
     @Override
     public void onResume() {
         super.onResume();
-
-        adapter.notifyDataSetChanged();
+        adapter.setData(ShopCarUtils.getInstance().getShopCarData().products);
     }
 
     private void setListView() {
-        shopCarData = ShopCarUtils.getInstance().getShopCarData();
+        ShopCarData shopCarData = ShopCarUtils.getInstance().getShopCarData();
         adapter = new MultiAdapter<Product>(getContext(), shopCarData.products).addTypeView(new ITypeView() {
             @Override
             public boolean isForViewType(Object item, int position) {
@@ -115,7 +113,7 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
 
     public void refreshPrice() {
         totalPrice = 0;
-        for (Product product : shopCarData.products) {
+        for (Product product : adapter.getData()) {
             if (product != null && product.price > 0) {
                 totalPrice += product.num * product.price;
             }
@@ -133,7 +131,7 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
     @OnClick(R.id.tv_commit)
     public void onViewClicked() {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(OrderAffirmActivity.PROLIST, shopCarData.products);
+        bundle.putSerializable(OrderAffirmActivity.PROLIST, ShopCarUtils.getInstance().getShopCarData().products);
         qStartActivity(OrderAffirmActivity.class, bundle);
     }
 
