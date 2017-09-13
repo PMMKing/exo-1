@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="60dp"
+            android:layout_height="70dp" />
+
+        <LinearLayout
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="睡龙头坏了"
+                android:textColor="#333"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="sssss了"
+                android:textColor="#666"
+                android:textSize="13dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="4dp"
+                    android:text="状态:"
+                    android:textColor="#666"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/btn_detail"
+                    android:layout_width="80dp"
+                    android:layout_height="36dp"
+                    android:text="详情"
+                    android:textColor="@color/pub_color_blue"
+                    android:textSize="12dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/pub_color_gray_line" />
+
+    <TextView
+        android:layout_width="80dp"
+        android:layout_height="36dp"
+        android:padding="10dp"
+        android:text="详情:"
+        android:textColor="#666"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/tv_intro"
+        android:layout_width="80dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingLeft="20dp"
+        android:text="详情"
+        android:textColor="#666"
+        android:textSize="12dp" />
+
+    <Button
+        android:layout_marginBottom="100dp"
+        android:id="@+id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/pub_btn_blue_arc_selector"
+        android:gravity="center"
+        android:text="开始处理"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+
+    <Button
+        android:id="@+id/btn_end"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/pub_btn_yellow_selector"
+        android:gravity="center"
+        android:text="完成处理"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+</LinearLayout>

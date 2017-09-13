@@ -6,12 +6,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.framework.app.MainApplication;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.tab.TabLayout;
-import com.qfant.wuye.R;
+import com.haolb.client.R;
 import com.page.login.activity.LoginActivity;
+import com.page.uc.UserInfoActivity;
 
 import java.util.List;
 import java.util.Timer;
@@ -29,6 +32,8 @@ public class MainActivity extends MainTabActivity {
 
     @BindView(R.id.tl_tab)
     TabLayout tlTab;
+    @BindView(R.id.tv_right)
+    TextView tv_right;
     private boolean mIsExit;
 
     @Override
@@ -41,10 +46,12 @@ public class MainActivity extends MainTabActivity {
         addTab("已接单", HomeFragment.class, myBundle, R.string.icon_font_home);
         addTab("已完成", HomeFragment.class, myBundle, R.string.icon_font_home);
         onPostCreate();
-        setTitleBar("主页", false, "个人中心", new View.OnClickListener() {
+        tv_right.setTypeface(MainApplication.getIconFont());
+        tv_right.setText(R.string.icon_font_my);
+        tv_right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                qStartActivity(LoginActivity.class);
+                qStartActivity(UserInfoActivity.class);
             }
         });
     }

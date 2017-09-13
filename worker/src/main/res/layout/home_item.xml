@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#fff"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="70dp"
+        android:layout_height="70dp" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="睡龙头坏了"
+            android:layout_marginTop="2dp"
+            android:textColor="#333"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="sssss了"
+            android:textColor="#666"
+            android:textSize="13dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btn_detail"
+        android:layout_width="80dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/pub_btn_blue_arc_selector"
+        android:gravity="center"
+        android:text="详情"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+</LinearLayout>

@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
 
-import com.qfant.wuye.R;
+import com.haolb.client.R;
 
 
 /**

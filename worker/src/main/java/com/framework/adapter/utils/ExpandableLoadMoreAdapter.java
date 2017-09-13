@@ -6,7 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
-import com.qfant.wuye.R;
+import com.haolb.client.R;
+
 
 /**
  * @author zitian.zhang

@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
-import com.qfant.wuye.R;
 import com.framework.utils.CompatUtil;
+import com.haolb.client.R;
 
 /**
  * @author zitian.zhang

@@ -11,9 +11,9 @@ import android.view.View;
 
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabLayout;
-import com.qfant.wuye.R;
 import com.framework.activity.BaseActivity;
 import com.framework.activity.BaseFragment;
+import com.haolb.client.R;
 
 import java.util.ArrayList;
 
@@ -49,10 +49,11 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
         viewPage.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
-                BaseFragment fragment = null;
+                HomeFragment fragment = null;
                 try {
                     TabItem tabItem = mTabs.get(position);
-                    fragment = tabItem.tagFragmentClz.newInstance();
+                    fragment = (HomeFragment) tabItem.tagFragmentClz.newInstance();
+                    fragment.setType(position);
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {

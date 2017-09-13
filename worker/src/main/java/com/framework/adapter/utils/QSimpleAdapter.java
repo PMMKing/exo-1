@@ -4,7 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.qfant.wuye.R;
+
+import com.haolb.client.R;
 
 import java.util.List;
 

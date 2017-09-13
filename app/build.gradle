@@ -125,10 +125,10 @@ android {
 }
 
 dependencies {
-    // compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile files('libs/baidumapapi_v3_2_0.jar')
-
-    compile files('libs/locSDK_3.3.jar')
+     compile fileTree(dir: 'libs', include: ['*.jar'])
+//    compile files('libs/baidumapapi_v3_2_0.jar')
+//
+//    compile files('libs/locSDK_3.3.jar')
 //    compile files('libs/picasso-2.4.0.jar')
 
     compile 'com.android.support:support-v4:25.3.1'
@@ -172,8 +172,9 @@ dependencies {
     debugCompile 'com.journeyapps:zxing-android-embedded:3.4.0'
 
 // taobao weexsdk
-    compile 'com.ucar:weex_sdk:1.6@aar'
+//    compile 'com.ucar:weex_sdk:1.6@aar'
 
 // ucar weexsdk 拓展
-    compile 'com.ucar:weexext_sdk:1.0.8@aar'
+//    compile 'com.ucar:weexext_sdk:1.0.8@aar'
+//    compile 'com.weexext:imagepicker:1.0.1'
 }

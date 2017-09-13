@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.framework.view.AlwaysFocusedTextView;
 import com.framework.view.IFView;
-import com.qfant.wuye.R;
+import com.haolb.client.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
