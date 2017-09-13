@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.framework.activity.BaseActivity;
@@ -12,12 +13,17 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
+import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.page.community.quickpain.holder.ContentHolder;
+import com.page.store.collect.holder.CollectHolder;
 import com.page.store.collect.model.CollectParam;
+import com.page.store.collect.model.CollectResult;
+import com.page.store.collect.model.CollectResult.Data;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -29,7 +35,7 @@ import butterknife.ButterKnife;
  * Created by shucheng.qu on 2017/8/18.
  */
 
-public class CollectActivity extends BaseActivity implements SwipRefreshLayout.OnRefreshListener {
+public class CollectActivity extends BaseActivity implements SwipRefreshLayout.OnRefreshListener, OnItemClickListener<Data> {
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
@@ -63,20 +69,35 @@ public class CollectActivity extends BaseActivity implements SwipRefreshLayout.O
 
             @Override
             public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
-                return new ContentHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_activity_collect_item_layout, parent, false));
+                return new CollectHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_activity_collect_item_layout, parent, false));
             }
         });
         rvList.addItemDecoration(new LineDecoration(getContext()));
         rvList.setLayoutManager(new LinearLayoutManager(getContext()));
         rvList.setHasFixedSize(true);
         rvList.setAdapter(adapter);
+        adapter.setOnItemClickListener(this);
         refreshLayout.setOnRefreshListener(this);
     }
 
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.getFavList) {
-
+            CollectResult result = (CollectResult) param.result;
+            if (result != null && !ArrayUtils.isEmpty(result.datas)) {
+                if ((int) param.ext == 1) {
+                    adapter.setData(result.datas);
+                } else {
+                    adapter.addData(result.datas);
+                }
+            } else {
+                if ((int) param.ext == 1) {
+                    showToast("没有数据");
+                } else {
+                    showToast("没有更多了");
+                }
+            }
+            refreshLayout.setRefreshing(false);
         }
         return false;
     }
@@ -89,5 +110,10 @@ public class CollectActivity extends BaseActivity implements SwipRefreshLayout.O
     @Override
     public void onLoad(int index) {
         startRequest(++index);
+    }
+
+    @Override
+    public void onItemClickListener(View view, Data data, int position) {
+
     }
 }

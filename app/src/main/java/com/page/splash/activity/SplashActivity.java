@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 
 import com.framework.activity.BaseActivity;
 import com.page.home.activity.MainActivity;
+import com.page.uc.LoginActivity;
+import com.page.uc.UCUtils;
 
 
 /**
@@ -18,7 +20,12 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
 
 //        qStartActivity(LoginActivity.class);
-        startMainActivity();
+        if (UCUtils.getInstance().isLogin()) {
+            startMainActivity();
+        } else {
+            qStartActivity(LoginActivity.class);
+        }
+        finish();
     }
 
 
@@ -28,6 +35,5 @@ public class SplashActivity extends BaseActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
                 | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         qStartActivity(intent);
-        finish();
     }
 }

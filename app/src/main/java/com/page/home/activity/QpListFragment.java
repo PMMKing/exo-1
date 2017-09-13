@@ -1,6 +1,7 @@
 package com.page.home.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,6 +46,8 @@ import butterknife.Unbinder;
  */
 
 public class QpListFragment extends BaseFragment implements SwipRefreshLayout.OnRefreshListener, OnItemClickListener<Snapshots> {
+
+    private static final int ADDQP_REQUEST_CODE = 0x01;
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
@@ -146,7 +149,8 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_add_qp:
-                qStartActivity(AddQPaiActivity.class);
+//                qStartActivity(AddQPaiActivity.class);
+                qStartActivityForResult(AddQPaiActivity.class, null, ADDQP_REQUEST_CODE);
                 break;
 //            case R.id.tv_my_qp:
 //                qStartActivity(QuickPaiActivity.class);
@@ -159,5 +163,19 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
         Bundle bundle = new Bundle();
         bundle.putString(QuickPaiNActivity.ID, data.id);
         qStartActivity(QuickPaiNActivity.class, bundle);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case ADDQP_REQUEST_CODE:
+                if (data != null) {
+                    if (data.getBooleanExtra("refresh", false)) {
+                        startRequest(1);
+                    }
+                }
+                break;
+        }
     }
 }

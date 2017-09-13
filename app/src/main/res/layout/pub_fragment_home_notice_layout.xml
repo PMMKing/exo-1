@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <com.framework.view.IFView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="19dp"
+        android:text="@string/icon_font_add"
+        android:textColor="@color/pub_color_blue"
+        android:textSize="@dimen/text_h18" />
+
+    <TextView
+        android:id="@+id/tv_tips"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="marquee"
+        android:lines="1"
+        android:paddingBottom="14dp"
+        android:paddingTop="14dp"
+        android:text="绿城城院小区7月24号停水停电通知"
+        android:textColor="@color/pub_color_black"
+        android:textSize="@dimen/text_h14" />
+
+    <com.framework.view.IFView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="@string/icon_font_add"
+        android:textColor="@color/pub_color_gray_666"
+        android:textSize="@dimen/text_h18" />
+
+</LinearLayout>

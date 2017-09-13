@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.framework.activity.BaseFragment;
 import com.framework.domain.param.BaseParam;
@@ -38,6 +39,7 @@ import com.page.home.model.HomeModel;
 import com.page.home.model.LinksParam;
 import com.page.home.model.LinksResult;
 import com.page.home.model.LinksResult.Data.Links;
+import com.page.home.model.NoticeResult;
 import com.page.home.view.ModeView;
 import com.qfant.wuye.R;
 
@@ -59,10 +61,11 @@ import static com.page.community.serve.activity.ServeActivity.TITLE;
 
 public class HomeFragment extends BaseFragment {
 
-    @BindView(R.id.tv_tips)
-    TextView tvTips;
-    @BindView(R.id.ll_tips)
-    LinearLayout llTips;
+
+    @BindView(R.id.banner)
+    Banner banner;
+    @BindView(R.id.flipper)
+    ViewFlipper flipper;
     @BindView(R.id.gl_mode)
     GridLayout glMode;
     @BindView(R.id.ifv_711_more)
@@ -71,16 +74,15 @@ public class HomeFragment extends BaseFragment {
     LinearLayout ll711;
     @BindView(R.id.rv_711_list)
     RecyclerView rv711List;
+    @BindView(R.id.tv_event)
+    TextView tvEvent;
     @BindView(R.id.ll_event)
     LinearLayout llEvent;
     @BindView(R.id.ll_event_list)
     LinearLayout llEventList;
-    Unbinder unbinder;
-    @BindView(R.id.banner)
-    Banner banner;
-    @BindView(R.id.tv_event)
-    TextView tvEvent;
     private BannerAdapter bannerAdapter;
+    private Unbinder unbinder;
+    private Object notices;
 
     @Nullable
     @Override
@@ -101,6 +103,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+        getNotices();
         getLinks();
         getEvents();
     }
@@ -222,6 +225,11 @@ public class HomeFragment extends BaseFragment {
         banner.setBannerAdapter(bannerAdapter);
     }
 
+    public void getNotices() {
+        Request.startRequest(new BaseParam(), ServiceMap.getNoticeList, mHandler);
+    }
+
+
     public void getLinks() {
         LinksParam param = new LinksParam();
         param.type = 1;
@@ -248,6 +256,25 @@ public class HomeFragment extends BaseFragment {
             EventListResult result = (EventListResult) param.result;
             if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.activityList)) {
                 setEvent(result.data.activityList);
+            }
+        } else if (param.key == ServiceMap.getNoticeList) {
+            NoticeResult result = (NoticeResult) param.result;
+            flipper.removeAllViews();
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.datas)) {
+                for (final NoticeResult.Data.Datas item : result.data.datas) {
+                    View view = LayoutInflater.from(getContext()).inflate(R.layout.pub_fragment_home_notice_layout, null);
+                    TextView tvTips = (TextView) view.findViewById(R.id.tv_tips);
+                    tvTips.setText(item.title);
+                    view.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString("content", item.content);
+                            qStartActivity(TextViewActivity.class, bundle);
+                        }
+                    });
+                    flipper.addView(view);
+                }
             }
         }
 

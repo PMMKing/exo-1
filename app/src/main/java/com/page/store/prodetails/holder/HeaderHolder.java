@@ -15,6 +15,7 @@ import com.framework.utils.viewutils.ViewUtils;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
 import com.page.store.prodetails.model.PDResult.Data;
+import com.page.store.prodetails.model.PEResult;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import butterknife.OnClick;
  * Created by shucheng.qu on 2017/8/16.
  */
 
-public class HeaderHolder extends BaseViewHolder<Data> {
+public class HeaderHolder extends BaseViewHolder<PEResult.Evaluate> {
 
     @BindView(R.id.banner)
     Banner banner;
@@ -53,12 +54,12 @@ public class HeaderHolder extends BaseViewHolder<Data> {
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, Data data, int position) {
-        if (data == null || TextUtils.isEmpty(data.name)) return;
-        setBanner(data);
-        tvMoney.setText("¥ " + BusinessUtils.formatDouble2String(data.price));
-        ViewUtils.setOrGone(tvTitle, data.name);
-        if (TextUtils.isEmpty(data.intro)) {
+    public void onBindViewHolder(BaseViewHolder holder, PEResult.Evaluate data, int position) {
+        if (data == null || data.product == null || TextUtils.isEmpty(data.product.name)) return;
+        setBanner(data.product);
+        tvMoney.setText("¥ " + BusinessUtils.formatDouble2String(data.product.price));
+        ViewUtils.setOrGone(tvTitle, data.product.name);
+        if (TextUtils.isEmpty(data.product.intro)) {
             llExplain.setVisibility(View.GONE);
             lineExplain.setVisibility(View.GONE);
             tvIntro.setVisibility(View.GONE);
@@ -68,8 +69,11 @@ public class HeaderHolder extends BaseViewHolder<Data> {
             lineExplain.setVisibility(View.VISIBLE);
             tvIntro.setVisibility(View.VISIBLE);
             lineIntro.setVisibility(View.VISIBLE);
-            tvIntro.setText(data.intro);
+            tvIntro.setText(data.product.intro);
         }
+
+        ViewUtils.setOrGone(llEvaluate, holder.getCount() > 1);
+
     }
 
     private void setBanner(Data data) {

@@ -83,13 +83,17 @@ public class AddQPaiActivity extends BaseActivity {
             addView.onMsgSearchComplete(param);
         } else if (param.key == ServiceMap.submitSnapshot) {
             if (param.result.bstatus.code == 0) {
-                finish();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("refresh", true);
+                qBackForResult(RESULT_OK, bundle);
             } else {
                 showToast(param.result.bstatus.des);
             }
         } else if (param.key == ServiceMap.updateSnapshot) {
             if (param.result.bstatus.code == 0) {
-                finish();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("refresh", true);
+                qBackForResult(RESULT_OK, bundle);
             } else {
                 showToast(param.result.bstatus.des);
             }

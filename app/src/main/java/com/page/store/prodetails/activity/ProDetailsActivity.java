@@ -21,22 +21,29 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
 import com.framework.utils.BusinessUtils;
+import com.framework.utils.ShopCarUtils;
 import com.framework.view.LineDecoration;
+import com.framework.view.pull.SwipRefreshLayout;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabView;
-import com.page.store.orderaffirm.model.CommitOrderParam;
+import com.page.community.quickpain.model.ScommentsReault;
+import com.page.store.orderaffirm.activity.OrderAffirmActivity;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
+import com.page.store.prodetails.holder.HeaderHolder;
+import com.page.store.prodetails.holder.ItemHolder;
 import com.page.store.prodetails.model.CollectParam;
 import com.page.store.prodetails.model.PDParam;
 import com.page.store.prodetails.model.PDResult;
 import com.page.store.prodetails.model.PDResult.Data;
-import com.qfant.wuye.R;
-import com.page.store.orderaffirm.activity.OrderAffirmActivity;
-import com.page.store.prodetails.holder.HeaderHolder;
-import com.page.store.prodetails.holder.ItemHolder;
+import com.page.store.prodetails.model.PEParam;
+import com.page.store.prodetails.model.PEResult;
+import com.page.store.prodetails.model.PEResult.Evaluate;
+import com.page.store.prodetails.utils.CheckRepertoryUtils;
 import com.page.store.productevaluate.activity.ProEvaluateActivity;
-import com.taobao.weex.devtools.common.android.ViewUtil;
+import com.page.store.shopcar.activity.ShopCarActivity;
+import com.qfant.wuye.R;
 
 import java.util.ArrayList;
 
@@ -48,7 +55,7 @@ import butterknife.OnClick;
  * Created by shucheng.qu on 2017/8/16.
  */
 
-public class ProDetailsActivity extends BaseActivity implements OnItemClickListener {
+public class ProDetailsActivity extends BaseActivity implements OnItemClickListener, SwipRefreshLayout.OnRefreshListener {
 
     public static final String ID = "id";
 
@@ -62,8 +69,10 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     TextView tvAddCar;
     @BindView(R.id.tv_buy)
     TextView tvBuy;
+    @BindView(R.id.refreshLayout)
+    SwipRefreshLayout refreshLayout;
     private String id;
-    private final ArrayList<Data> dataList = new ArrayList<Data>();
+    private final ArrayList<Evaluate> dataList = new ArrayList<Evaluate>();
     private MultiAdapter adapter;
 
     @Override
@@ -77,6 +86,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         setTabView();
         setListView();
         startRequest();
+        evaluate(1);
     }
 
     @Override
@@ -98,17 +108,27 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         Request.startRequest(param, ServiceMap.fav, mHandler, Request.RequestFeature.BLOCK);
     }
 
+    private void evaluate(int pager) {
+        PEParam param = new PEParam();
+        param.pageNo = pager;
+        Request.startRequest(param, pager, ServiceMap.pcomments, mHandler);
+    }
 
     private void setTabView() {
         tvCollect.initData(new TabItem("收藏", null, null, R.string.icon_font_home));
         tvCar.initData(new TabItem("购物车", null, null, R.string.icon_font_home));
+        refreshTabView();
+    }
+
+    private void refreshTabView() {
+        tvCar.setNumber(ShopCarUtils.getInstance().getShopCarSize());
     }
 
     private void setListView() {
-        dataList.add(new Data());//占位
-        adapter = new MultiAdapter<Data>(getContext(), dataList).addTypeView(new ITypeView<Data>() {
+        dataList.add(new Evaluate());//占位
+        adapter = new MultiAdapter<Evaluate>(getContext(), dataList).addTypeView(new ITypeView<Evaluate>() {
             @Override
-            public boolean isForViewType(Data item, int position) {
+            public boolean isForViewType(Evaluate item, int position) {
                 return position == 0;
             }
 
@@ -116,9 +136,9 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
             public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
                 return new HeaderHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_activity_prodetails_item_header_layout, parent, false));
             }
-        }).addTypeView(new ITypeView<Data>() {
+        }).addTypeView(new ITypeView<Evaluate>() {
             @Override
-            public boolean isForViewType(Data item, int position) {
+            public boolean isForViewType(Evaluate item, int position) {
                 return position > 0;
             }
 
@@ -132,6 +152,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         rvList.setHasFixedSize(true);
         rvList.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
+        refreshLayout.setOnRefreshListener(this);
 
     }
 
@@ -140,14 +161,44 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         if (param.key == ServiceMap.getProduct) {
             PDResult result = (PDResult) param.result;
             if (result != null && result.data != null) {
+                Evaluate evaluate = new Evaluate();
+                evaluate.product = result.data;
                 dataList.remove(0);
-                dataList.add(0, result.data);
+                dataList.add(0, evaluate);
                 adapter.notifyItemChanged(0);
             }
         } else if (param.key == ServiceMap.fav) {
             showToast(param.result.bstatus.des);
+        } else if (param.key == ServiceMap.pcomments) {
+            PEResult result = (PEResult) param.result;
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.datas)) {
+                if ((int) param.ext == 1) {
+                    Evaluate temp = dataList.get(0);
+                    dataList.clear();
+                    dataList.add(temp);
+                    dataList.addAll(1, result.data.datas);
+                    adapter.notifyDataSetChanged();
+
+                } else {
+                    adapter.addData(result.data.datas);
+                }
+            } else {
+                if ((int) param.ext == 1) {
+                    showToast("没有数据");
+                } else {
+                    showToast("没有更多了");
+                }
+            }
         }
         return false;
+    }
+
+    @Override
+    public void onNetEnd(NetworkParam param) {
+        super.onNetEnd(param);
+        if (param.key == ServiceMap.pcomments) {
+            refreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
@@ -162,6 +213,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                 collect();
                 break;
             case R.id.tv_car:
+                qStartActivity(ShopCarActivity.class);
                 break;
             case R.id.tv_add_car:
                 addShopCar(dataList.get(0), 1);
@@ -173,8 +225,8 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     }
 
 
-    private void addShopCar(final Data data, int type) {
-        if (data == null || data.price <= 0) return;
+    private void addShopCar(final Evaluate evaluate, int type) {
+        if (evaluate == null || evaluate.product == null || evaluate.product.price <= 0) return;
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         final AlertDialog dialog = builder.show();
         Window dialogWindow = dialog.getWindow();
@@ -192,7 +244,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         TextView tvAdd = (TextView) view.findViewById(R.id.tv_add);
         TextView tvOk = (TextView) view.findViewById(R.id.tv_ok);
 
-        tvPrice.setText("单价￥：" + BusinessUtils.formatDouble2String(data.price));
+        tvPrice.setText("单价￥：" + BusinessUtils.formatDouble2String(evaluate.product.price));
         tvSub.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,11 +261,20 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
             @Override
             public void onClick(View v) {
                 int number = Integer.parseInt(tvNumber.getText().toString().trim());
-                if (number > 100) {
-                    showToast("库存不足");
-                } else {
-                    tvNumber.setText(++number + "");
-                }
+                CheckRepertoryUtils.getInstance().check(++number, evaluate.product.id, new CheckRepertoryUtils.CheckCallBack() {
+                    @Override
+                    public void result(int number, int code, String des) {
+                        //0库存充足 -1失败 1库存不足
+                        switch (code) {
+                            case 0:
+                                tvNumber.setText(String.format("%d", number));
+                                break;
+                            default:
+                                showToast(des);
+                                break;
+                        }
+                    }
+                });
             }
         });
 
@@ -223,6 +284,15 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                 tvOk.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Product product = new Product();
+                        int number = Integer.parseInt(tvNumber.getText().toString().trim());
+                        product.id = evaluate.product.id;
+                        product.price = evaluate.product.price;
+                        product.name = evaluate.product.name;
+                        product.num = number;
+                        product.pic = evaluate.product.pic1;
+                        ShopCarUtils.getInstance().saveProduct(product);
+                        refreshTabView();
                         dialog.dismiss();
                     }
                 });
@@ -235,11 +305,11 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                         Product product = new Product();
                         ArrayList<Product> products = new ArrayList<Product>();
                         int number = Integer.parseInt(tvNumber.getText().toString().trim());
-                        product.id = data.id;
-                        product.price = data.price;
-                        product.name = data.name;
+                        product.id = evaluate.product.id;
+                        product.price = evaluate.product.price;
+                        product.name = evaluate.product.name;
                         product.num = number;
-                        product.pic = data.pic1;
+                        product.pic = evaluate.product.pic1;
                         Bundle bundle = new Bundle();
                         products.add(product);
                         bundle.putSerializable(OrderAffirmActivity.PROLIST, products);
@@ -252,4 +322,13 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
 
     }
 
+    @Override
+    public void onRefresh(int index) {
+        evaluate(1);
+    }
+
+    @Override
+    public void onLoad(int index) {
+        evaluate(++index);
+    }
 }

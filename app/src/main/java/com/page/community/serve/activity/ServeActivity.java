@@ -123,6 +123,14 @@ public class ServeActivity extends BaseActivity implements OnItemClickListener<W
     }
 
     @Override
+    public void onNetEnd(NetworkParam param) {
+        super.onNetEnd(param);
+        if (param.key == serviceMap) {
+            refreshLayout.setRefreshing(false);
+        }
+    }
+
+    @Override
     public void onItemClickListener(View view, WaterList data, int position) {
         if (serviceMap == ServiceMap.getMyRepairs) {
             Bundle bundle = new Bundle();

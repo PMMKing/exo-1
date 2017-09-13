@@ -12,13 +12,16 @@ import com.page.community.quickpain.model.ScommentsReault;
 import com.page.community.serve.model.RepairResult;
 import com.page.community.serve.model.ServeResult;
 import com.page.home.model.LinksResult;
+import com.page.home.model.NoticeResult;
 import com.page.home.model.QpListResult;
 import com.page.store.classify.model.ClassifyResult;
 import com.page.store.classifylist.model.ClassifyListResult;
+import com.page.store.collect.model.CollectResult;
 import com.page.store.orderaffirm.model.DefaultAddressResult;
 import com.page.store.orderdetails.model.OrderDetailResult;
 import com.page.store.orderlist.model.OrderListResult;
 import com.page.store.prodetails.model.PDResult;
+import com.page.store.prodetails.model.PEResult;
 import com.page.uc.bean.BuidingsResult;
 import com.page.uc.bean.DistrictsResult;
 import com.page.uc.bean.LoginResult;
@@ -84,8 +87,11 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getMyOrders("/getMyOrders.do", OrderListResult.class),//订单list
     getOrder("/getOrder.do", OrderDetailResult.class),//订单详情
     fav("/fav.do", BaseResult.class),//收藏or取消
-    getFavList("/getFavList.do", BaseResult.class),//收藏list
+    getFavList("/getFavList.do", CollectResult.class),//收藏list
     getDefaultAddress("/getDefaultAddress.do", DefaultAddressResult.class),//默认收货地址
+    validStorage("/validStorage.do", BaseResult.class),//验证库存
+    pcomments("/pcomments.do", PEResult.class),//商品评论list
+    getNoticeList("/getNoticeList.do", NoticeResult.class),//首页公告
     ;
 
 

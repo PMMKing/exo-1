@@ -127,6 +127,14 @@ public class RepairActivity extends BaseActivity implements OnItemClickListener<
     }
 
     @Override
+    public void onNetEnd(NetworkParam param) {
+        super.onNetEnd(param);
+        if (param.key == serviceMap) {
+            refreshLayout.setRefreshing(false);
+        }
+    }
+
+    @Override
     public void onItemClickListener(View view, RepairList data, int position) {
         Bundle bundle = new Bundle();
         bundle.putString("id", data.id);

@@ -1,5 +1,6 @@
 package com.page.uc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
@@ -16,6 +17,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BusinessUtils;
 import com.igexin.sdk.PushManager;
+import com.page.home.activity.MainActivity;
 import com.qfant.wuye.R;
 
 import com.page.uc.bean.LoginParam;
@@ -137,6 +139,13 @@ public class LoginActivity extends BaseActivity {
                 LoginResult result = (LoginResult) param.result;
                 UCUtils.getInstance().saveUserInfo(result.data);
                 PushManager.getInstance().bindAlias(getContext(), result.data.phone);
+
+                Intent intent = new Intent();
+                intent.setClass(getContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                qStartActivity(intent);
+
                 finish();
             } else {
                 showToast(param.result.bstatus.des);

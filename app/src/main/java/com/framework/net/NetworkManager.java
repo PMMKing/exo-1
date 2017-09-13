@@ -15,6 +15,7 @@ import com.framework.app.AppConstants;
 import com.framework.app.MainApplication;
 import com.framework.app.NetConnChangeReceiver;
 import com.haolb.client.utils.SecureUtil;
+import com.igexin.sdk.PushManager;
 import com.page.uc.UCUtils;
 import com.framework.domain.param.CommonParam;
 import com.framework.domain.response.BaseResult;
@@ -183,6 +184,7 @@ public class NetworkManager implements TaskListener {
             networkTask.param.param.cparam.token = TextUtils.isEmpty(token) ? "" : token;
             networkTask.param.param.cparam.platform = "1";
             networkTask.param.param.cparam.roomId = UCUtils.getInstance().getUserInfo().userId;
+            networkTask.param.param.cparam.cid = PushManager.getInstance().getClientid(MainApplication.applicationContext);
             String bjson = JSON.toJSONString(networkTask.param.param);
             String b = SecureUtil.encode(bjson, networkTask.param.ke);
             networkTask.param.url = "b=" + b + "&key=" + networkTask.param.ke + "&ver=1";
@@ -692,9 +694,9 @@ public class NetworkManager implements TaskListener {
      * @param proxyPort 代理port
      *                  <p>
      *                  <pre>
-     *                                     CMWAP 10.0.0.172:80
-     *                                     CTWAP 10.0.0.200
-     *                                   </pre>
+     *                                                                       CMWAP 10.0.0.172:80
+     *                                                                       CTWAP 10.0.0.200
+     *                                                                     </pre>
      * @return httpClient
      */
     public static HttpClient getHttpClient(String proxyHost, int proxyPort) {

@@ -1,24 +1,56 @@
 package com.page.home.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.framework.activity.BaseFragment;
+import com.framework.rvadapter.adapter.MultiAdapter;
+import com.framework.rvadapter.click.OnItemClickListener;
+import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.BusinessUtils;
+import com.framework.utils.ShopCarUtils;
+import com.framework.view.LineDecoration;
+import com.page.home.holder.ShopCarHolder;
+import com.page.home.model.ShopCarData;
+import com.page.store.orderaffirm.activity.OrderAffirmActivity;
+import com.page.store.orderaffirm.model.CommitOrderParam;
+import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 import com.qfant.wuye.R;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
  * Created by chenxi.cui on 2017/8/13.
  */
 
-public class ShoppingCartFragment extends BaseFragment {
+public class ShoppingCartFragment extends BaseFragment implements OnItemClickListener<Product> {
+
+    @BindView(R.id.rv_list)
+    RecyclerView rvList;
+    @BindView(R.id.tv_money)
+    TextView tvMoney;
+    @BindView(R.id.tv_commit)
+    TextView tvCommit;
+    Unbinder unbinder;
+    private double totalPrice;
+    private ShopCarData shopCarData;
+    private boolean back;
+    private MultiAdapter<Product> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,18 +60,84 @@ public class ShoppingCartFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return onCreateViewWithTitleBar(inflater,container,R.layout.pub_fragment_classify_layout);
+        View view = onCreateViewWithTitleBar(inflater, container, R.layout.pub_fragment_classify_layout);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        back = myBundle.getBoolean("back", false);
+        setTitleBar("购物车", back, "清空", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShopCarUtils.getInstance().clearData();
+            }
+        });
         setListView();
-        setTitleBar("购物车",false);
+        refreshPrice();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myBundle.putBoolean("back", back);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        shopCarData = ShopCarUtils.getInstance().getShopCarData();
+        adapter.notifyDataSetChanged();
     }
 
     private void setListView() {
+        adapter = new MultiAdapter<Product>(getContext(), shopCarData.products).addTypeView(new ITypeView() {
+            @Override
+            public boolean isForViewType(Object item, int position) {
+                return true;
+            }
+
+            @Override
+            public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
+                return new ShopCarHolder(mContext, ShoppingCartFragment.this, LayoutInflater.from(mContext).inflate(R.layout.pub_fragment_shopcar_item_layout, parent, false));
+            }
+        });
+        rvList.setHasFixedSize(true);
+        rvList.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvList.addItemDecoration(new LineDecoration(getContext()));
+        rvList.setAdapter(adapter);
+        adapter.setOnItemClickListener(this);
 
     }
 
+    public void refreshPrice() {
+        totalPrice = 0;
+        for (Product product : shopCarData.products) {
+            if (product != null && product.price > 0) {
+                totalPrice += product.num * product.price;
+            }
+        }
+        tvMoney.setText("合计：￥" + BusinessUtils.formatDouble2String(totalPrice));
+    }
+
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick(R.id.tv_commit)
+    public void onViewClicked() {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(OrderAffirmActivity.PROLIST, shopCarData.products);
+        qStartActivity(OrderAffirmActivity.class, bundle);
+    }
+
+    @Override
+    public void onItemClickListener(View view, Product data, int position) {
+
+    }
 }
