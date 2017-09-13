@@ -88,11 +88,12 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
     @Override
     public void onResume() {
         super.onResume();
-        shopCarData = ShopCarUtils.getInstance().getShopCarData();
+
         adapter.notifyDataSetChanged();
     }
 
     private void setListView() {
+        shopCarData = ShopCarUtils.getInstance().getShopCarData();
         adapter = new MultiAdapter<Product>(getContext(), shopCarData.products).addTypeView(new ITypeView() {
             @Override
             public boolean isForViewType(Object item, int position) {
