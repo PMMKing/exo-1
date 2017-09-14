@@ -13,19 +13,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.activity.BaseFragment;
+import com.framework.domain.param.BaseParam;
+import com.framework.net.NetworkParam;
+import com.framework.net.Request;
+import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
+import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.GridDecoration;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
 import com.page.home.holder.Shopping2Holder;
 import com.page.home.holder.Shopping3Holder;
+import com.page.home.model.LinksParam;
+import com.page.home.model.LinksResult;
+import com.page.home.model.LinksResult.Data.Links;
+import com.page.home.model.ShopRecResult;
+import com.page.home.model.ShopRecResult.Data.ProductList;
 import com.page.store.classify.activity.ClassifyActivity;
+import com.page.store.home.model.FoodRecResult;
+import com.page.store.home.model.FoodRecResult.Data.Products;
+import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,6 +66,9 @@ public class ShopHomeFragment extends BaseFragment {
     @BindView(R.id.rv_recommend3)
     RecyclerView rvRecommend3;
     Unbinder unbinder;
+    private BannerAdapter bannerAdapter;
+    private MultiAdapter rec2Adapter;
+    private MultiAdapter rec3Adapter;
 
     @Nullable
     @Override
@@ -70,67 +88,50 @@ public class ShopHomeFragment extends BaseFragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getLinks();
+        getHome();
+        getRecommend();
+    }
+
+
+    private void getLinks() {
+        LinksParam param = new LinksParam();
+        param.type = 2;
+        Request.startRequest(param, ServiceMap.getLinks, mHandler);
+    }
+
+    private void getHome() {
+        Request.startRequest(new BaseParam(), ServiceMap.getRecommendCategorys, mHandler, Request.RequestFeature.BLOCK);
+    }
+
+    private void getRecommend() {
+        Request.startRequest(new BaseParam(), ServiceMap.getParticularProducts, mHandler);
+    }
+
     private void setBanner() {
-        ArrayList<String> arrayList = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            arrayList.add("" + i);
-        }
-        BannerAdapter adapter = new BannerAdapter<String>(arrayList) {
+        ArrayList<Links> arrayList = new ArrayList<>();
+        bannerAdapter = new BannerAdapter<Links>(arrayList) {
             @Override
-            protected void bindTips(TextView tv, String bannerModel) {
+            protected void bindTips(TextView tv, Links bannerModel) {
 //                tv.setText(bannerModel.getTips());
             }
 
             @Override
-            public void bindImage(ImageView imageView, String bannerModel) {
-                imageView.setImageResource(R.drawable.pub_login_icon);
+            public void bindImage(ImageView imageView, Links bannerModel) {
+                ImageLoad.loadPlaceholder(getContext(), bannerModel.link + bannerModel.imgurl, imageView);
             }
 
         };
-        banner.setBannerAdapter(adapter);
-        banner.notifyDataHasChanged();
+        banner.setBannerAdapter(bannerAdapter);
     }
 
-//    private void setRecommend1() {
-//        ArrayList<Integer> list = new ArrayList<>();
-//        for (int i = 0; i < 6; i++) {
-//            list.add(i);
-//        }
-//        MultiAdapter adapter = new MultiAdapter<Integer>(getContext(), list).addTypeView(new ITypeView<Integer>() {
-//            @Override
-//            public boolean isForViewType(Integer item, int position) {
-//                return position < 2;
-//            }
-//
-//            @Override
-//            public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
-//                return new Shopping11Holder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_fragment_shopping_11_layout, parent, false));
-//            }
-//        }).addTypeView(new ITypeView() {
-//            @Override
-//            public boolean isForViewType(Object item, int position) {
-//                return position > 1;
-//            }
-//
-//            @Override
-//            public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
-//                return new Shopping12Holder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_fragment_shopping_12_layout, parent, false));
-//            }
-//        });
-////        rvRecommend1.addItemDecoration(new GridHalfDecoration(getContext()));
-//        rvRecommend1.setLayoutManager(new StaggeredGridLayoutManager(4, StaggeredGridLayoutManager.HORIZONTAL));
-//        rvRecommend1.setHasFixedSize(true);
-//        rvRecommend1.setAdapter(adapter);
-//    }
-
     private void setRecommend2() {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            list.add(i);
-        }
-        MultiAdapter adapter = new MultiAdapter<Integer>(getContext(), list).addTypeView(new ITypeView<Integer>() {
+        rec2Adapter = new MultiAdapter<Products>(getContext()).addTypeView(new ITypeView() {
             @Override
-            public boolean isForViewType(Integer item, int position) {
+            public boolean isForViewType(Object item, int position) {
                 return true;
             }
 
@@ -141,21 +142,19 @@ public class ShopHomeFragment extends BaseFragment {
         });
         rvRecommend2.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rvRecommend2.setHasFixedSize(true);
-        rvRecommend2.setAdapter(adapter);
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        rvRecommend2.setAdapter(rec2Adapter);
+        rec2Adapter.setOnItemClickListener(new OnItemClickListener<Products>() {
             @Override
-            public void onItemClickListener(View view, Object data, int position) {
-
+            public void onItemClickListener(View view, Products data, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString(ProDetailsActivity.ID, data.id);
+                qStartActivity(ProDetailsActivity.class, bundle);
             }
         });
     }
 
     private void setRecommend3() {
-        ArrayList<String> list = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
-            list.add("" + i);
-        }
-        MultiAdapter adapter = new MultiAdapter(getContext(), list).addTypeView(new ITypeView() {
+        rec3Adapter = new MultiAdapter<ProductList>(getContext()).addTypeView(new ITypeView() {
             @Override
             public boolean isForViewType(Object item, int position) {
                 return true;
@@ -169,13 +168,56 @@ public class ShopHomeFragment extends BaseFragment {
         rvRecommend3.setLayoutManager(new GridLayoutManager(getContext(), 3));
         rvRecommend3.setHasFixedSize(true);
         rvRecommend3.addItemDecoration(new GridDecoration(getContext()));
-        rvRecommend3.setAdapter(adapter);
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        rvRecommend3.setAdapter(rec3Adapter);
+        rec3Adapter.setOnItemClickListener(new OnItemClickListener<ProductList>() {
             @Override
-            public void onItemClickListener(View view, Object data, int position) {
-
+            public void onItemClickListener(View view, ProductList data, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString(ProDetailsActivity.ID, data.id);
+                qStartActivity(ProDetailsActivity.class, bundle);
             }
         });
+    }
+
+    @Override
+    public boolean onMsgSearchComplete(NetworkParam param) {
+        if (param.key == ServiceMap.getLinks) {
+            LinksResult linksResult = (LinksResult) param.result;
+            if (linksResult != null && linksResult.data != null && linksResult.data.links != null) {
+                updataBanner(linksResult.data.links);
+            }
+
+        } else if (param.key == ServiceMap.getRecommendCategorys) {
+            FoodRecResult result = (FoodRecResult) param.result;
+            updataFoodRec(result);
+        } else if (param.key == ServiceMap.getParticularProducts) {
+            ShopRecResult result = (ShopRecResult) param.result;
+            updataList(result);
+        }
+        return false;
+    }
+
+    private void updataBanner(List<Links> links) {
+        bannerAdapter.setImages(links);
+        banner.notifyDataHasChanged();
+    }
+
+    private void updataFoodRec(FoodRecResult result) {
+        if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.products)) {
+            rvRecommend2.setVisibility(View.VISIBLE);
+            rec2Adapter.setData(result.data.products);
+        } else {
+            rvRecommend2.setVisibility(View.GONE);
+        }
+    }
+
+    private void updataList(ShopRecResult result) {
+        if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.productList)) {
+            rvRecommend3.setVisibility(View.VISIBLE);
+            rec3Adapter.setData(result.data.productList);
+        } else {
+            rvRecommend3.setVisibility(View.GONE);
+        }
     }
 
     @Override

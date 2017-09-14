@@ -37,7 +37,7 @@
             android:background="@color/pub_color_white"
             android:flipInterval="4000"
             android:inAnimation="@anim/in"
-            android:outAnimation="@anim/go"/>
+            android:outAnimation="@anim/go" />
 
 
         <android.support.v7.widget.GridLayout
@@ -85,7 +85,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_711_list"
             android:layout_width="match_parent"
-            android:layout_height="147dp" />
+            android:layout_height="147dp"
+            android:visibility="gone" />
 
 
         <LinearLayout

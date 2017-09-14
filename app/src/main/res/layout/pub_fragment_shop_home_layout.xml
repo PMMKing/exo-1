@@ -36,6 +36,7 @@
             android:paddingBottom="11dp"
             android:paddingLeft="15dp"
             android:paddingTop="11dp"
+            android:visibility="gone"
             android:text="饮料推荐"
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h16" />
@@ -45,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:visibility="gone"
             android:background="@color/pub_color_blue_F5FCFF"
             android:orientation="vertical">
 

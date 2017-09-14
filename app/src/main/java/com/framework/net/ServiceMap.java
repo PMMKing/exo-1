@@ -14,10 +14,12 @@ import com.page.community.serve.model.ServeResult;
 import com.page.home.model.LinksResult;
 import com.page.home.model.NoticeResult;
 import com.page.home.model.QpListResult;
+import com.page.home.model.ShopRecResult;
 import com.page.pay.ProductPayResult;
 import com.page.store.classify.model.ClassifyResult;
 import com.page.store.classifylist.model.ClassifyListResult;
 import com.page.store.collect.model.CollectResult;
+import com.page.store.home.model.FoodRecResult;
 import com.page.store.orderaffirm.model.DefaultAddressResult;
 import com.page.store.orderdetails.model.OrderDetailResult;
 import com.page.store.orderlist.model.OrderListResult;
@@ -31,6 +33,7 @@ import com.page.uc.bean.RegiserResult;
 import com.page.uc.bean.RoomsResult;
 import com.page.uc.bean.UnitsResult;
 import com.page.uc.bean.UpdateMyPortraitResult;
+import com.page.uc.payfee.model.WaitFeeResult;
 
 import java.io.Serializable;
 
@@ -94,6 +97,10 @@ public enum ServiceMap implements Enums.IType, Serializable {
     validStorage("/validStorage.do", BaseResult.class),//验证库存
     pcomments("/pcomments.do", PEResult.class),//商品评论list
     getNoticeList("/getNoticeList.do", NoticeResult.class),//首页公告
+    getRecommendCategorys("/getRecommendCategorys.do", FoodRecResult.class),//超时首页视频推荐
+    getParticularProducts("/getParticularProducts.do", ShopRecResult.class),//首页
+    getMyWuyeFees("/getMyWuyeFees.do", WaitFeeResult.class),//物业代缴费
+    submitWuyeFee("/submitWuyeFee.do", BaseResult.class),//物业代缴费
     ;
 
 

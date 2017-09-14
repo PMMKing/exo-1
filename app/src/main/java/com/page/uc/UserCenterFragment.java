@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.framework.utils.imageload.ImageLoad;
 import com.page.store.collect.activity.CollectActivity;
+import com.page.uc.payfee.activity.WaitPayFeeActivity;
 import com.qfant.wuye.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;
@@ -130,6 +131,7 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(SelectComActivity.class);
                 break;
             case R.id.ll_list_4:
+                qStartActivity(WaitPayFeeActivity.class);
                 break;
             case R.id.ll_list_5:
                 qStartActivity(ApplyForActivity.class);

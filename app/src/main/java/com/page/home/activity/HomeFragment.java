@@ -20,6 +20,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
+import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
@@ -40,7 +41,12 @@ import com.page.home.model.LinksParam;
 import com.page.home.model.LinksResult;
 import com.page.home.model.LinksResult.Data.Links;
 import com.page.home.model.NoticeResult;
+import com.page.home.model.ShopRecResult;
+import com.page.home.model.ShopRecResult.Data.ProductList;
 import com.page.home.view.ModeView;
+import com.page.store.home.model.FoodRecResult;
+import com.page.store.home.model.FoodRecResult.Data.Products;
+import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -83,6 +89,7 @@ public class HomeFragment extends BaseFragment {
     private BannerAdapter bannerAdapter;
     private Unbinder unbinder;
     private Object notices;
+    private MultiAdapter adapter711;
 
     @Nullable
     @Override
@@ -106,6 +113,7 @@ public class HomeFragment extends BaseFragment {
         getNotices();
         getLinks();
         getEvents();
+        getRecommend();
     }
 
     private void setEvent(List<ActivityList> activityList) {
@@ -121,13 +129,9 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void set711() {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            list.add(i);
-        }
-        MultiAdapter adapter = new MultiAdapter<Integer>(getContext(), list).addTypeView(new ITypeView<Integer>() {
+        adapter711 = new MultiAdapter<Products>(getContext()).addTypeView(new ITypeView() {
             @Override
-            public boolean isForViewType(Integer item, int position) {
+            public boolean isForViewType(Object item, int position) {
                 return true;
             }
 
@@ -138,7 +142,15 @@ public class HomeFragment extends BaseFragment {
         });
         rv711List.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rv711List.setHasFixedSize(true);
-        rv711List.setAdapter(adapter);
+        rv711List.setAdapter(adapter711);
+        adapter711.setOnItemClickListener(new OnItemClickListener<Products>() {
+            @Override
+            public void onItemClickListener(View view, Products data, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString(ProDetailsActivity.ID, data.id);
+                qStartActivity(ProDetailsActivity.class, bundle);
+            }
+        });
     }
 
     @Override
@@ -230,18 +242,22 @@ public class HomeFragment extends BaseFragment {
     }
 
 
-    public void getLinks() {
+    private void getLinks() {
         LinksParam param = new LinksParam();
         param.type = 1;
-        Request.startRequest(new BaseParam(), ServiceMap.getLinks, mHandler);
+        Request.startRequest(param, ServiceMap.getLinks, mHandler);
     }
 
 
-    public void getEvents() {
+    private void getEvents() {
         EventListParam param = new EventListParam();
         param.pageNo = 1;
         param.pageSize = 4;
         Request.startRequest(param, ServiceMap.getActivityList, mHandler);
+    }
+
+    private void getRecommend() {
+        Request.startRequest(new BaseParam(), ServiceMap.getRecommendCategorys, mHandler);
     }
 
     @Override
@@ -276,15 +292,25 @@ public class HomeFragment extends BaseFragment {
                     flipper.addView(view);
                 }
             }
+        } else if (param.key == ServiceMap.getRecommendCategorys) {
+            FoodRecResult result = (FoodRecResult) param.result;
+            updataList(result);
         }
-
-
         return false;
     }
 
     private void updataBanner(List<Links> links) {
         bannerAdapter.setImages(links);
         banner.notifyDataHasChanged();
+    }
+
+    private void updataList(FoodRecResult result) {
+        if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.products)) {
+            rv711List.setVisibility(View.VISIBLE);
+            adapter711.setData(result.data.products);
+        } else {
+            rv711List.setVisibility(View.GONE);
+        }
     }
 
     @OnClick(R.id.tv_event)

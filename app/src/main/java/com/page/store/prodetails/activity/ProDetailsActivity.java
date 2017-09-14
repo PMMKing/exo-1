@@ -28,7 +28,6 @@ import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabView;
-import com.page.community.quickpain.model.ScommentsReault;
 import com.page.store.orderaffirm.activity.OrderAffirmActivity;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 import com.page.store.prodetails.holder.HeaderHolder;
@@ -36,7 +35,6 @@ import com.page.store.prodetails.holder.ItemHolder;
 import com.page.store.prodetails.model.CollectParam;
 import com.page.store.prodetails.model.PDParam;
 import com.page.store.prodetails.model.PDResult;
-import com.page.store.prodetails.model.PDResult.Data;
 import com.page.store.prodetails.model.PEParam;
 import com.page.store.prodetails.model.PEResult;
 import com.page.store.prodetails.model.PEResult.Evaluate;
@@ -110,8 +108,8 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     private void collect() {
         CollectParam param = new CollectParam();
         param.id = id;
-        param.type = true ? 1 : 2;
-        Request.startRequest(param, ServiceMap.fav, mHandler, Request.RequestFeature.BLOCK);
+        param.type = tvCollect.isSelected() ? 2 : 1;
+        Request.startRequest(param, param.type, ServiceMap.fav, mHandler, Request.RequestFeature.BLOCK);
     }
 
     private void evaluate(int pager) {
@@ -171,8 +169,13 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                 dataList.remove(0);
                 dataList.add(0, evaluate);
                 adapter.notifyItemChanged(0);
+                tvCollect.setSelected(result.data.isFav != 0);
             }
         } else if (param.key == ServiceMap.fav) {
+            if (param.result.bstatus.code == 0) {
+                int type = (int) param.ext;
+                tvCollect.setSelected(type == 1);
+            }
             showToast(param.result.bstatus.des);
         } else if (param.key == ServiceMap.pcomments) {
             PEResult result = (PEResult) param.result;
@@ -189,7 +192,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                 }
             } else {
                 if ((int) param.ext == 1) {
-                    showToast("没有数据");
+//                    showToast("没有数据");
                 } else {
                     showToast("没有更多了");
                 }
@@ -208,7 +211,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
 
     @Override
     public void onItemClickListener(View view, Object data, int position) {
-        qStartActivity(ProEvaluateActivity.class);
+//        qStartActivity(ProEvaluateActivity.class);
     }
 
     @OnClick({R.id.tv_collect, R.id.tv_car, R.id.tv_add_car, R.id.tv_buy})
@@ -266,20 +269,11 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
             @Override
             public void onClick(View v) {
                 int number = Integer.parseInt(tvNumber.getText().toString().trim());
-                CheckRepertoryUtils.getInstance().check(++number, evaluate.product.id, new CheckRepertoryUtils.CheckCallBack() {
-                    @Override
-                    public void result(int number, int code, String des) {
-                        //0库存充足 -1失败 1库存不足
-                        switch (code) {
-                            case 0:
-                                tvNumber.setText(String.format("%d", number));
-                                break;
-                            default:
-                                showToast(des);
-                                break;
-                        }
-                    }
-                });
+                if (number < evaluate.product.storage) {
+                    tvNumber.setText(String.format("%d", ++number));
+                } else {
+                    showToast("库存不足");
+                }
             }
         });
 
@@ -296,7 +290,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
                         product.name = evaluate.product.name;
                         product.num = number;
                         product.pic = evaluate.product.pic1;
-                        ShopCarUtils.getInstance().saveProduct(product);
+                        ShopCarUtils.getInstance().addProduct(product);
                         refreshTabView();
                         dialog.dismiss();
                     }

@@ -28,7 +28,7 @@
             android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:maxLines="2"
-            android:text="蒙牛纯甄常温酸奶 200\ng*24盒进口菌种"
+            tools:text="蒙牛纯甄常温酸奶 200\ng*24盒进口菌种"
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h12" />
 
@@ -43,7 +43,7 @@
             android:ellipsize="end"
             android:lines="1"
             android:maxLines="1"
-            android:text="月销售16件 好评率100%"
+            tools:text="月销售16件 好评率100%"
             android:textColor="@color/pub_color_gray_999"
             android:textSize="@dimen/text_h12" />
 
@@ -64,17 +64,37 @@
             android:textSize="@dimen/text_h15"
             tools:text="X1" />
 
-        <ImageView
-            android:id="@+id/iv_add_car"
-            android:layout_width="22dp"
-            android:layout_height="22dp"
+
+        <TextView
+            android:id="@+id/tv_sub"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="30dp"
-            android:clickable="true"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pub_login_icon" />
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/pub_circle_blue"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h15" />
+
+        <TextView
+            android:id="@+id/tv_add"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/pub_circle_blue"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h15" />
+
 
     </FrameLayout>
 

@@ -26,6 +26,8 @@
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h14" />
 
+        <View style="@style/line_gray_h" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_list"
             android:layout_width="match_parent"

@@ -24,5 +24,7 @@ public class PDResult extends BaseResult {
         public double marketprice;
         public String category_id;
         public String categoryName;
+        public int storage;
+        public int isFav;//0 no 1 have
     }
 }

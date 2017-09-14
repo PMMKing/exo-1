@@ -23,6 +23,7 @@ public class CommitOrderParam extends BaseParam {
         public double price;
         public String name;
         public String pic;
+        public int storage;
 
         public DefaultAddressResult.Address address;
     }

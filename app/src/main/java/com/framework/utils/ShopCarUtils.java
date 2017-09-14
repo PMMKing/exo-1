@@ -7,7 +7,10 @@ import com.page.home.model.ShopCarData;
 import com.page.store.orderaffirm.model.CommitOrderParam;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by shucheng.qu on 2017/9/13.
@@ -52,39 +55,45 @@ public class ShopCarUtils {
         return shopCarData;
     }
 
-    public void saveProduct(Product product) {
+    public void addProduct(Product product) {
         if (product == null || TextUtils.isEmpty(product.id)) return;
         ShopCarData shopCarData = getShopCarData();
-        Iterator<Product> iterator = shopCarData.products.iterator();
-        boolean isHave = false;
-        while (iterator.hasNext()) {
-            Product next = iterator.next();
-            if (TextUtils.equals(next.id, product.id)) {
-                next.num += product.num;
-                isHave = true;
-                break;
-            }
-        }
-        if (!isHave) {
-            shopCarData.products.add(product);
+        Product temp = shopCarData.products.get(product.id);
+        if (temp != null) {
+            temp.num += product.num;
+        } else {
+            shopCarData.products.put(product.id, product);
         }
         saveShopCardData(shopCarData);
     }
 
-    public boolean removeProduct(Product product) {
+    public void subProduct(Product product) {
+        if (product == null || TextUtils.isEmpty(product.id)) return;
         ShopCarData shopCarData = getShopCarData();
-        if (shopCarData != null && !ArrayUtils.isEmpty(shopCarData.products)) {
-            Iterator<Product> iterator = shopCarData.products.iterator();
-            while (iterator.hasNext()) {
-                Product next = iterator.next();
-                if (next != null && TextUtils.equals(next.id, product.id)) {
-                    iterator.remove();
-                    saveShopCardData(shopCarData);
-                    return true;
-                }
-            }
+        Product temp = shopCarData.products.get(product.id);
+        if (temp != null) {
+            temp.num -= product.num;
+        } else {
+            shopCarData.products.put(product.id, product);
         }
-        return false;
+        saveShopCardData(shopCarData);
+    }
+
+    public void saveProduct(Product product) {
+        if (product == null || TextUtils.isEmpty(product.id)) return;
+        ShopCarData shopCarData = getShopCarData();
+        shopCarData.products.put(product.id, product);
+        saveShopCardData(shopCarData);
+    }
+
+    public void removeProduct(Product product) {
+        ShopCarData shopCarData = getShopCarData();
+        shopCarData.products.remove(product.id);
+    }
+
+    public Product getProductForId(String id) {
+        ShopCarData shopCarData = getShopCarData();
+        return shopCarData.products.get(id);
     }
 
     public void clearData() {
@@ -93,11 +102,17 @@ public class ShopCarUtils {
 
     public int getShopCarSize() {
         ShopCarData shopCarData = getShopCarData();
-        if (shopCarData != null && !ArrayUtils.isEmpty(shopCarData.products)) {
-            return shopCarData.products.size();
-        } else {
-            return 0;
+        return shopCarData.products.size();
+    }
+
+    public ArrayList<Product> getShopCarList() {
+        ShopCarData shopCarData = getShopCarData();
+        ArrayList<Product> products = new ArrayList<>();
+        Iterator<Map.Entry<String, Product>> iterator = shopCarData.products.entrySet().iterator();
+        while (iterator.hasNext()) {
+            products.add(iterator.next().getValue());
         }
+        return products;
     }
 
 }
