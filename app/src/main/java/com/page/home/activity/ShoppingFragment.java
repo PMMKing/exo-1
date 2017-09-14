@@ -73,6 +73,10 @@ public class ShoppingFragment extends BaseFragment {
             }
         });
         rbHome.setChecked(true);
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+        ShopHomeFragment fragment = new ShopHomeFragment();
+        fragmentTransaction.replace(R.id.fl_fragment, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 
     @Override
