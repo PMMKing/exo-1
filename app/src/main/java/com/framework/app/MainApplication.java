@@ -20,6 +20,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 
 import com.framework.utils.ArrayUtils;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 import java.io.IOException;
 
@@ -45,27 +47,11 @@ public class MainApplication extends Application {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-//        UWXInit.init(this);
-//        /**
-//         * assets/weex/ucar-weex_3_20170828123442
-//         */
-//        UWXResManager.getInstance().addWXResFromAssert(this, getWXPackageFileName("weex"));
+        final IWXAPI msgApi = WXAPIFactory.createWXAPI(this, null);
+// 将该app注册到微信
+        msgApi.registerApp(AppConstants.APP_ID);
     }
 
-    public static String getWXPackageFileName(String weexFileName) {
-        try {
-            String[] assets = instance.getAssets().list(weexFileName);
-            if (!ArrayUtils.isEmpty(assets)) {
-                String asset = assets[0];
-                int i = asset.indexOf(".");
-                String rnName = asset.substring(0, i);
-                weexFileName = weexFileName + "/" + rnName;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return weexFileName;
-    }
 
     public static MainApplication getInstance() {
         return instance;
