@@ -2,26 +2,80 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="110dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_image"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        tools:src="@drawable/pub_login_icon" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tv_name"
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="centerInside"
+            tools:src="@drawable/pub_login_icon" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="蒙牛纯甄常温酸奶 200\ng*24盒进口菌种"
+            android:textColor="@color/pub_color_black"
+            android:textSize="@dimen/text_h12" />
+
+        <TextView
+            android:id="@+id/tv_sales_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="90dp"
+            android:layout_marginTop="16dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:maxLines="1"
+            android:text="月销售16件 好评率100%"
+            android:textColor="@color/pub_color_gray_999"
+            android:textSize="@dimen/text_h12" />
+
+    </FrameLayout>
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="17dp"
-        android:paddingTop="5dp"
-        android:textColor="@color/pub_color_black"
-        android:textSize="@dimen/text_h12"
-        tools:text="纯牛奶" />
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_car_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="90dp"
+            android:gravity="center"
+            android:textColor="@color/pub_color_blue"
+            android:textSize="@dimen/text_h15"
+            tools:text="X1" />
+
+        <ImageView
+            android:id="@+id/iv_add_car"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="30dp"
+            android:clickable="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pub_login_icon" />
+
+    </FrameLayout>
 
 </LinearLayout>

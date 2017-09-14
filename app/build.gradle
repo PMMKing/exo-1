@@ -155,7 +155,7 @@ dependencies {
 //    compile 'com.xiwenhec:banner:1.0.4'
     compile 'com.squareup.picasso:picasso:2.5.2'
 //不包含微信统计
-    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+//    compile 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     //个推
     compile 'com.getui:sdk:2.11.1.0'
 

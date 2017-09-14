@@ -95,6 +95,12 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
         myBundle.putString(ID, id);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshTabView();
+    }
+
     private void startRequest() {
         PDParam param = new PDParam();
         param.id = id;
@@ -117,7 +123,6 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
     private void setTabView() {
         tvCollect.initData(new TabItem("收藏", null, null, R.string.icon_font_home));
         tvCar.initData(new TabItem("购物车", null, null, R.string.icon_font_home));
-        refreshTabView();
     }
 
     private void refreshTabView() {

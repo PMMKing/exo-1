@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.BusinessUtils;
+import com.framework.utils.ShopCarUtils;
 import com.framework.utils.ToastUtils;
 import com.framework.utils.imageload.ImageLoad;
 import com.page.home.activity.ShoppingCartFragment;
@@ -70,7 +71,8 @@ public class ShopCarHolder extends BaseViewHolder<Product> {
                     data.num = number;
                     fragment.refreshPrice();
                 } else {
-                    ToastUtils.toastSth(mContext, "不能再少了");
+                    ShopCarUtils.getInstance().removeProduct(data);
+                    fragment.refreshAdapter();
                 }
                 break;
             case R.id.tv_add:

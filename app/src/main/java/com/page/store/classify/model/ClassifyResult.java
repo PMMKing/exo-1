@@ -34,10 +34,12 @@ public class ClassifyResult extends BaseResult {
                 public String pic3;
                 public String intro;
                 public int praise;
+                public int storage;
                 public double price;
                 public double marketprice;
                 public int category;
                 public int comments;
+
             }
         }
     }

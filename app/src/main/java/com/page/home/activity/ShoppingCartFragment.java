@@ -72,10 +72,10 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
             @Override
             public void onClick(View v) {
                 ShopCarUtils.getInstance().clearData();
+                refreshAdapter();
             }
         });
         setListView();
-        refreshPrice();
     }
 
     @Override
@@ -87,12 +87,17 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
     @Override
     public void onResume() {
         super.onResume();
+        refreshAdapter();
+    }
+
+    public void refreshAdapter() {
         adapter.setData(ShopCarUtils.getInstance().getShopCarData().products);
+        refreshPrice();
     }
 
     private void setListView() {
         ShopCarData shopCarData = ShopCarUtils.getInstance().getShopCarData();
-        adapter = new MultiAdapter<Product>(getContext(), shopCarData.products).addTypeView(new ITypeView() {
+        adapter = new MultiAdapter<Product>(getContext()).addTypeView(new ITypeView() {
             @Override
             public boolean isForViewType(Object item, int position) {
                 return true;
