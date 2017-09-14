@@ -48,11 +48,11 @@ public class PayActivity extends BaseActivity {
             public boolean handleMessage(Message msg) {
                 switch (msg.what) {
                     case SDK_PAY_FLAG: {
-                        PayResult payResult = new PayResult((String) msg.obj);
-                        String resultStatus = payResult.getResultStatus();
+//                        PayResult payResult = new PayResult((String) msg.obj);
+//                        String resultStatus = payResult.getResultStatus();
                         // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
-                        if (TextUtils.equals(resultStatus, "9000") || TextUtils.equals(resultStatus, "8000")) {
-                        }
+//                        if (TextUtils.equals(resultStatus, "9000") || TextUtils.equals(resultStatus, "8000")) {
+//                        }
 //                        basePayControl.goOrderDetail(aliPayResult);
                         break;
                     }
