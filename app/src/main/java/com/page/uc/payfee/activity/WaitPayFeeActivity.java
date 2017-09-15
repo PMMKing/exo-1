@@ -20,6 +20,8 @@ import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
+import com.page.pay.PayActivity;
+import com.page.pay.PayData;
 import com.page.uc.payfee.holder.WaitPayHolder;
 import com.page.uc.payfee.model.WaitFeeParam;
 import com.page.uc.payfee.model.WaitFeeResult;
@@ -134,6 +136,13 @@ public class WaitPayFeeActivity extends BaseActivity implements OnItemClickListe
                 showToast(param.result.bstatus.des);
             }
         } else if (param.key == ServiceMap.submitWuyeFee) {
+            ubmitWuyeFeeResult result = (ubmitWuyeFeeResult) param.result;
+            Bundle bundle = new Bundle();
+            PayData payData = new PayData();
+            payData.id = result.data.orderid;
+            payData.price = result.data.totalprice;
+            bundle.putSerializable("order",result.data);
+            qStartActivity(PayActivity.class, bundle);
             showToast(param.result.bstatus.des);
         }
         return false;

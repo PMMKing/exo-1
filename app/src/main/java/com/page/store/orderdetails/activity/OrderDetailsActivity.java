@@ -13,6 +13,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.ArrayUtils;
 import com.page.pay.PayActivity;
+import com.page.pay.PayData;
 import com.page.store.orderdetails.model.OrderDetailParam;
 import com.page.store.orderdetails.model.OrderDetailResult;
 import com.page.store.orderdetails.model.OrderDetailResult.Data;
@@ -125,6 +126,9 @@ public class OrderDetailsActivity extends BaseActivity {
                 break;
             case R.id.tv_pay:
                 Bundle bundle = new Bundle();
+                PayData payData = new PayData();
+                payData.id = result.data.id;
+                payData.price = result.data.totalprice;
                 bundle.putSerializable("order",result.data);
                 qStartActivity(PayActivity.class, bundle);
                 break;

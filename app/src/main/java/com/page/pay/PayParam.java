@@ -8,5 +8,5 @@ import com.framework.domain.param.BaseParam;
 
 public class PayParam extends BaseParam {
     public int orderid;
-    public int price;
+    public double price;
 }

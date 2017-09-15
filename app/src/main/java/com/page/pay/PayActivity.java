@@ -51,7 +51,7 @@ public class PayActivity extends BaseActivity {
     LinearLayout llPayWechat;
     private ProductPayResult payResult;
     private int payType;
-    private OrderDetailResult.Data order;
+    private PayData order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +59,13 @@ public class PayActivity extends BaseActivity {
         setContentView(R.layout.pub_pay_activity);
         setTitleBar("支付方式", true);
         ButterKnife.bind(this);
-        order = (OrderDetailResult.Data) myBundle.getSerializable("order");
+        order = (PayData) myBundle.getSerializable("PayData");
         PayParam payParam = new PayParam();
         payParam.orderid = order.id;
-        payParam.price = order.totalprice;
+        payParam.price = order.price;
         Request.startRequest(payParam, ServiceMap.alipayPayProduct, mHandler, Request.RequestFeature.BLOCK);
         llPayAri.performClick();
-        textPrice.setText(String.format("总共支付:%s元",order.totalprice));
+        textPrice.setText(String.format("总共支付:%s元",order.price));
     }
 
     @Override

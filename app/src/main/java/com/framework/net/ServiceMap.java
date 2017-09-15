@@ -34,6 +34,7 @@ import com.page.uc.bean.RegiserResult;
 import com.page.uc.bean.RoomsResult;
 import com.page.uc.bean.UnitsResult;
 import com.page.uc.bean.UpdateMyPortraitResult;
+import com.page.uc.payfee.activity.ubmitWuyeFeeResult;
 import com.page.uc.payfee.model.WaitFeeResult;
 
 import java.io.Serializable;
@@ -101,7 +102,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getRecommendCategorys("/getRecommendCategorys.do", FoodRecResult.class),//超时首页视频推荐
     getParticularProducts("/getParticularProducts.do", ShopRecResult.class),//首页
     getMyWuyeFees("/getMyWuyeFees.do", WaitFeeResult.class),//物业代缴费
-    submitWuyeFee("/submitWuyeFee.do", BaseResult.class),//物业代缴费
+    submitWuyeFee("/submitWuyeFee.do", ubmitWuyeFeeResult.class),//物业代缴费
     ;
 
 
