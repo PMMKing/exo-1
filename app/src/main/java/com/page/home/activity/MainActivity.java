@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -12,6 +13,7 @@ import com.framework.activity.BaseFragment;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabLayout;
+import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.qfant.wuye.R;
 import com.page.community.quickpai.activity.AddQPaiActivity;
 import com.page.uc.UserCenterFragment;
@@ -49,6 +51,22 @@ public class MainActivity extends MainTabActivity {
         addTab("购物车", ShoppingCartFragment.class, myBundle, R.string.icon_font_buy_car);
         addTab("我的", UserCenterFragment.class, myBundle, R.string.icon_font_my);
         onPostCreate();
+
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+        if (intent != null && intent.getExtras() != null) {
+            String aGoto = intent.getExtras().getString("goto");
+            if (TextUtils.equals(aGoto, "orderDetail")) {
+                String id = intent.getExtras().getString("id");
+                Bundle bundle = new Bundle();
+                bundle.putString(OrderDetailsActivity.ID, "" + id);
+                qBackToActivity(OrderDetailsActivity.class, bundle);
+            }
+        }
     }
 
     @Override
