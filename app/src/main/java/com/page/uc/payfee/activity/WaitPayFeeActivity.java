@@ -105,7 +105,14 @@ public class WaitPayFeeActivity extends BaseActivity implements OnItemClickListe
         if (!ArrayUtils.isEmpty(datas)) {
             for (Datas temp : datas) {
                 if (temp.isSelect) {
-                    param.params.add(temp);
+                    WaitFeeParam.WaitFeeItem item = new WaitFeeParam.WaitFeeItem();
+//                    item.isSelect = temp.isSelect ? 1 : 0;
+//                    item.roomId = temp.roomid;
+                    item.startdate = temp.startdate;
+                    item.enddate = temp.enddate;
+                    item.yearmonth = temp.yearmonth;
+                    item.price = temp.price;
+                    param.params.add(item);
                 }
             }
         }

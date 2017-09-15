@@ -1,5 +1,6 @@
 package com.page.store.orderdetails.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -66,6 +67,12 @@ public class OrderDetailsActivity extends BaseActivity {
         setTitleBar("订单详情", true);
         id = myBundle.getString(ID);
         startRequest();
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
     }
 
     @Override

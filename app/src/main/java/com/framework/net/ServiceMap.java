@@ -20,6 +20,7 @@ import com.page.store.classify.model.ClassifyResult;
 import com.page.store.classifylist.model.ClassifyListResult;
 import com.page.store.collect.model.CollectResult;
 import com.page.store.home.model.FoodRecResult;
+import com.page.store.orderaffirm.activity.SubmitResult;
 import com.page.store.orderaffirm.model.DefaultAddressResult;
 import com.page.store.orderdetails.model.OrderDetailResult;
 import com.page.store.orderlist.model.OrderListResult;
@@ -88,7 +89,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getCategorys("/getCategorys.do", ClassifyResult.class),//商品分类
     getProducts("/getProducts.do", ClassifyListResult.class),//商品分类列表
     getProduct("/getProduct.do", PDResult.class),//商品分类详情
-    submitOrder("/submitOrder.do", BaseResult.class),//提交订单
+    submitOrder("/submitOrder.do", SubmitResult.class),//提交订单
     getMyOrders("/getMyOrders.do", OrderListResult.class),//订单list
     getOrder("/getOrder.do", OrderDetailResult.class),//订单详情
     fav("/fav.do", BaseResult.class),//收藏or取消

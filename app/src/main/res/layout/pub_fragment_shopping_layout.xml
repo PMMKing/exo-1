@@ -8,13 +8,14 @@
     <RadioGroup
         android:id="@+id/rg_group"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/rb_home"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/pub_blue_check"
             android:button="@null"
@@ -24,12 +25,12 @@
             android:paddingTop="8dp"
             android:text="主页"
             android:textColor="@color/pub_color_check_selector"
-            android:textSize="@dimen/text_h13" />
+            android:textSize="@dimen/text_h16" />
 
         <RadioButton
             android:id="@+id/rb_class"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/pub_blue_check"
             android:button="@null"
@@ -39,10 +40,14 @@
             android:paddingTop="8dp"
             android:text="分类"
             android:textColor="@color/pub_color_check_selector"
-            android:textSize="@dimen/text_h13" />
+            android:textSize="@dimen/text_h16" />
 
     </RadioGroup>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/pub_color_gray_line" />
 
     <FrameLayout
         android:id="@+id/fl_fragment"

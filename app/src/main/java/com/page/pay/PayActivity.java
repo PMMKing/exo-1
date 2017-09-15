@@ -19,6 +19,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.store.orderdetails.model.OrderDetailResult;
+import com.page.store.payresult.activity.PayResultActivity;
 import com.qfant.wuye.R;
 import com.tencent.mm.opensdk.modelpay.PayReq;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
@@ -50,6 +51,7 @@ public class PayActivity extends BaseActivity {
     LinearLayout llPayWechat;
     private ProductPayResult payResult;
     private int payType;
+    private OrderDetailResult.Data order;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class PayActivity extends BaseActivity {
         setContentView(R.layout.pub_pay_activity);
         setTitleBar("支付方式", true);
         ButterKnife.bind(this);
-        OrderDetailResult.Data order = (OrderDetailResult.Data) myBundle.getSerializable("order");
+        order = (OrderDetailResult.Data) myBundle.getSerializable("order");
         PayParam payParam = new PayParam();
         payParam.orderid = order.id;
         payParam.price = order.totalprice;
@@ -137,7 +139,10 @@ public class PayActivity extends BaseActivity {
     }
 
     private void goOrderDetail() {
-        qBackToActivity(OrderDetailsActivity.class, null);
+        Bundle bundle = new Bundle();
+        bundle.putString("id", order.id+"");
+        qBackToActivity(PayResultActivity.class, bundle);
+        finish();
     }
 
     @Override

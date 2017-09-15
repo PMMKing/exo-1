@@ -28,6 +28,7 @@ import com.page.store.orderaffirm.holder.ItemHolder;
 import com.page.store.orderaffirm.model.CommitOrderParam;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 import com.page.store.orderaffirm.model.DefaultAddressResult;
+import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.store.payresult.activity.PayResultActivity;
 import com.qfant.wuye.R;
 
@@ -143,13 +144,14 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.submitOrder) {
             if (param.result.bstatus.code == 0) {
+                SubmitResult result = (SubmitResult) param.result;
                 if (products.size() > 1) {
                     ShopCarUtils.getInstance().clearData();//清空购物车
                 }
+                Bundle bundle = new Bundle();
+                bundle.putString(OrderDetailsActivity.ID, "" + result.data.id);
+                qStartActivity(OrderDetailsActivity.class, bundle);
             }
-
-
-            qStartActivity(PayResultActivity.class);
         } else if (param.key == ServiceMap.getDefaultAddress) {
             DefaultAddressResult result = (DefaultAddressResult) param.result;
             if (result != null && result.data != null) {

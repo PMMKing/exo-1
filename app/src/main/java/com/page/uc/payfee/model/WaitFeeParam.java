@@ -11,6 +11,14 @@ import java.util.ArrayList;
  */
 
 public class WaitFeeParam extends BaseParam {
-    public ArrayList<Datas> params = new ArrayList<Datas>();
 
+    public ArrayList<WaitFeeItem> params = new ArrayList<WaitFeeItem>();
+    public static class WaitFeeItem implements Serializable {
+//        public int roomId;
+        public String startdate;
+        public String enddate;
+        public String yearmonth;
+        public double price;
+//        public int isSelect;
+    }
 }
