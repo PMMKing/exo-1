@@ -47,6 +47,7 @@ import com.page.home.view.ModeView;
 import com.page.store.home.model.FoodRecResult;
 import com.page.store.home.model.FoodRecResult.Data.Products;
 import com.page.store.prodetails.activity.ProDetailsActivity;
+import com.page.uc.payfee.activity.WaitPayFeeActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -202,6 +203,7 @@ public class HomeFragment extends BaseFragment {
                             break;
                         case "缴费":
                             bundle.putString(TITLE, "缴费");
+                            qStartActivity(WaitPayFeeActivity.class);
                             break;
                         case "超市":
                             bundle.putString(TITLE, "超市");
