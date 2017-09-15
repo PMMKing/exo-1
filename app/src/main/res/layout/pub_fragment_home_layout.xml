@@ -44,6 +44,7 @@
             android:id="@+id/gl_mode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:background="@color/pub_color_blue_F5FCFF"
             app:columnCount="4"
             app:orientation="horizontal"

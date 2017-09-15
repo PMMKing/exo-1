@@ -63,6 +63,7 @@ public class PayActivity extends BaseActivity {
         payParam.price = order.totalprice;
         Request.startRequest(payParam, ServiceMap.alipayPayProduct, mHandler, Request.RequestFeature.BLOCK);
         llPayAri.performClick();
+        textPrice.setText(String.format("总共支付:%s元",order.totalprice));
     }
 
     @Override
@@ -142,10 +143,8 @@ public class PayActivity extends BaseActivity {
     @Override
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.alipayPayProduct) {
-
             if (param.result.bstatus.code == 0) {
                 payResult = (ProductPayResult) param.result;
-
             }
         }
 

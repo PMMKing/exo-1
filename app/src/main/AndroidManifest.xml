@@ -37,7 +37,7 @@
     <application
         android:name="com.framework.app.MainApplication"
         android:allowBackup="true"
-        android:icon="@drawable/default_head"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
 
@@ -65,6 +65,7 @@
             android:name="com.page.uc.LoginActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name="com.page.uc.UserInfoActivity"

@@ -162,14 +162,14 @@ public class HomeFragment extends BaseFragment {
 
     private void setModel() {
         ArrayList<HomeModel> list = new ArrayList<>();
-        list.add(new HomeModel("维修"));
-        list.add(new HomeModel("送水"));
-        list.add(new HomeModel("洗衣"));
-        list.add(new HomeModel("家政"));
-        list.add(new HomeModel("缴费"));
-        list.add(new HomeModel("超市"));
-        list.add(new HomeModel("周边"));
-        list.add(new HomeModel("电话"));
+        list.add(new HomeModel("维修",R.drawable.weixiu));
+        list.add(new HomeModel("送水",R.drawable.songshui));
+        list.add(new HomeModel("洗衣",R.drawable.xiyi));
+        list.add(new HomeModel("家政",R.drawable.baojie));
+        list.add(new HomeModel("缴费",R.drawable.jiaofei));
+        list.add(new HomeModel("超市",R.drawable.chaoshi));
+        list.add(new HomeModel("周边",R.drawable.zhoubian));
+        list.add(new HomeModel("电话",R.drawable.dianhua));
 
         for (HomeModel homeModel : list) {
             ModeView itemView = new ModeView(getContext());

@@ -6,9 +6,12 @@ package com.page.home.model;
 
 public class HomeModel {
 
-    public HomeModel(String title) {
+    public int icon;
+    public String title;
+    public HomeModel(String title,int icon) {
         this.title = title;
+        this.icon = icon;
     }
 
-    public String title;
+
 }

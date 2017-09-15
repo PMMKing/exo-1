@@ -18,7 +18,7 @@ public class ImageLoad {
     }
 
     public static void loadPlaceholder(Context context, String url, ImageView imageView) {
-        loadPlaceholder(context, url, imageView, R.drawable.default_head, R.drawable.default_head);
+        loadPlaceholder(context, url, imageView, R.drawable.moren, R.drawable.moren);
     }
 
     public static void loadPlaceholder(Context context, String url, ImageView imageView, int placeholderResId, int errorResId) {

@@ -46,5 +46,6 @@ public class ModeView extends LinearLayout {
 
     public void setData(HomeModel homeModel) {
         tvTitle.setText(homeModel.title);
+        ivImage.setImageResource(homeModel.icon);
     }
 }
