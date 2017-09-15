@@ -47,6 +47,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getLinks("/getLinks.do", LinksResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),
     alipayPayProduct("/alipayPayProduct.do", ProductPayResult.class),
+    alipayPayWuyeFee("/alipayPayWuyeFee.do", ProductPayResult.class),
     getAddresses("/getAddresses.do", AddressResult.class),
     submitAddress("/submitAddress.do", BaseResult.class),
     updateAddress("/updateAddress.do", BaseResult.class),

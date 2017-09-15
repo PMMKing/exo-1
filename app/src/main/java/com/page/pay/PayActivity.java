@@ -17,6 +17,7 @@ import com.framework.app.AppConstants;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
+import com.page.home.activity.MainActivity;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.store.orderdetails.model.OrderDetailResult;
 import com.page.store.payresult.activity.PayResultActivity;
@@ -52,6 +53,7 @@ public class PayActivity extends BaseActivity {
     private ProductPayResult payResult;
     private int payType;
     private PayData order;
+    private int form;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,13 +61,21 @@ public class PayActivity extends BaseActivity {
         setContentView(R.layout.pub_pay_activity);
         setTitleBar("支付方式", true);
         ButterKnife.bind(this);
-        order = (PayData) myBundle.getSerializable("PayData");
+        order = (PayData) myBundle.getSerializable("order");
+        if (order == null) {
+            return;
+        }
+        form = order.from;
         PayParam payParam = new PayParam();
         payParam.orderid = order.id;
         payParam.price = order.price;
-        Request.startRequest(payParam, ServiceMap.alipayPayProduct, mHandler, Request.RequestFeature.BLOCK);
+        if (form == -1) {
+            Request.startRequest(payParam, ServiceMap.alipayPayWuyeFee, mHandler, Request.RequestFeature.BLOCK);
+        } else {
+            Request.startRequest(payParam, ServiceMap.alipayPayProduct, mHandler, Request.RequestFeature.BLOCK);
+        }
         llPayAri.performClick();
-        textPrice.setText(String.format("总共支付:%s元",order.price));
+        textPrice.setText(String.format("总共支付:%s元", order.price));
     }
 
     @Override
@@ -139,9 +149,13 @@ public class PayActivity extends BaseActivity {
     }
 
     private void goOrderDetail() {
-        Bundle bundle = new Bundle();
-        bundle.putString("id", order.id+"");
-        qBackToActivity(PayResultActivity.class, bundle);
+        if (form == -1) {
+            qBackToActivity(MainActivity.class, null);
+        }else {
+            Bundle bundle = new Bundle();
+            bundle.putString("id", order.id + "");
+            qBackToActivity(PayResultActivity.class, bundle);
+        }
         finish();
     }
 
@@ -151,8 +165,11 @@ public class PayActivity extends BaseActivity {
             if (param.result.bstatus.code == 0) {
                 payResult = (ProductPayResult) param.result;
             }
+        } else if (param.key == ServiceMap.alipayPayWuyeFee) {
+            if (param.result.bstatus.code == 0) {
+                payResult = (ProductPayResult) param.result;
+            }
         }
-
         return super.onMsgSearchComplete(param);
     }
 

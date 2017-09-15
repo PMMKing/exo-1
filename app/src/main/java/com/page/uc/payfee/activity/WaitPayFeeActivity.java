@@ -141,7 +141,8 @@ public class WaitPayFeeActivity extends BaseActivity implements OnItemClickListe
             PayData payData = new PayData();
             payData.id = result.data.orderid;
             payData.price = result.data.totalprice;
-            bundle.putSerializable("order",result.data);
+            payData.from = -1;
+            bundle.putSerializable("order",payData);
             qStartActivity(PayActivity.class, bundle);
             showToast(param.result.bstatus.des);
         }

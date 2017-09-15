@@ -129,7 +129,7 @@ public class OrderDetailsActivity extends BaseActivity {
                 PayData payData = new PayData();
                 payData.id = result.data.id;
                 payData.price = result.data.totalprice;
-                bundle.putSerializable("order",result.data);
+                bundle.putSerializable("order",payData);
                 qStartActivity(PayActivity.class, bundle);
                 break;
         }
