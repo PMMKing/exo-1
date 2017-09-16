@@ -51,7 +51,8 @@ public class ClassifyFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pub_activity_classify_layout, container, false);
+//        View view = inflater.inflate(R.layout.pub_activity_classify_layout, container, false);
+        View view = onCreateViewWithTitleBar(inflater, container, R.layout.pub_activity_classify_layout);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -59,6 +60,7 @@ public class ClassifyFragment extends BaseFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setTitleBar("商品分类", true);
         setLeftListView();
         setRightListView();
         startRequest();

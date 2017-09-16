@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="15dp"
         android:background="@color/pub_color_white"
-        android:scaleType="centerInside"
+        android:scaleType="centerCrop"
         android:src="@drawable/pub_login_icon" />
 
     <TextView
