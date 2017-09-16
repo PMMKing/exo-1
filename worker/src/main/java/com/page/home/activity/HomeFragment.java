@@ -125,7 +125,9 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onNetEnd(NetworkParam param) {
-        mainSrl.setRefreshing(false);
+        if (mainSrl != null) {
+            mainSrl.setRefreshing(false);
+        }
         super.onNetEnd(param);
     }
 

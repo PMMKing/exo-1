@@ -8,6 +8,6 @@ import com.framework.domain.param.BaseParam;
 
 public class WorkerRepairParam extends BaseParam {
     public int pageNo = 1;
-    public int pageSize = 10;
+    public int pageSize = 100;
     public int type;
 }
