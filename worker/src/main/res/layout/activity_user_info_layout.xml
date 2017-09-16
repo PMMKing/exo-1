@@ -89,4 +89,16 @@
         android:layout_height="1dp"
         android:background="@color/pub_color_gray_line" />
 
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="240dp"
+        android:textColor="#fff"
+        android:textSize="16dp"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_height="44dp"
+        android:background="@drawable/pub_btn_blue_arc_selector"
+        android:text="退出" />
+
 </LinearLayout>

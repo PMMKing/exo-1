@@ -101,12 +101,14 @@ public class HomeFragment extends BaseFragment {
         }
         if (param.key == ServiceMap.getWorkerRepairs) {
             WorkerRepairResult result = (WorkerRepairResult) param.result;
-            if (adapter != null) {
-                adapter.setType(type);
-                adapter.setData(result.data.repairList);
-            }
-            if (mainSrl != null) {
-                mainSrl.setRefreshing(false);
+            if (result.bstatus.code == 0) {
+                if (adapter != null) {
+                    adapter.setType(type);
+                    adapter.setData(result.data.repairList);
+                }
+                if (mainSrl != null) {
+                    mainSrl.setRefreshing(false);
+                }
             }
         } else if (param.key == ServiceMap.getRepair) {
             if (param.result.bstatus.code == 0) {
@@ -115,9 +117,8 @@ public class HomeFragment extends BaseFragment {
                 bundle.putSerializable("repair", result.data);
                 qStartActivity(DetailActivity.class, bundle);
             } else {
-
+                showToast(param.result.bstatus.des);
             }
-            showToast(param.result.bstatus.des);
         }
         return super.onMsgSearchComplete(param);
     }

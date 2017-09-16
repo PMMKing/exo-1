@@ -16,6 +16,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.BusinessUtils;
 import com.haolb.client.R;
+import com.page.home.activity.MainActivity;
 import com.page.login.UCUtils;
 
 import butterknife.BindView;
@@ -133,6 +134,7 @@ public class LoginActivity extends BaseActivity {
                 //登录成功
                 LoginResult result = (LoginResult) param.result;
                 UCUtils.getInstance().saveUserInfo(result.data);
+                qBackToActivity(MainActivity.class, null);
                 finish();
             } else {
                 showToast(param.result.bstatus.des);

@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="40dp"
-    android:gravity="center"
     android:orientation="vertical">
 
     <com.framework.view.IFView
@@ -11,17 +10,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/icon_font_home"
-        android:visibility="gone"
         android:textColor="@color/pub_tab_color_selector"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/text"
-        android:textSize="13dp"
-        android:textColor="@color/pub_tab_color_selector"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="@color/pub_tab_color_selector"
+        android:textSize="13dp"
+        android:gravity="center"
         tools:text="首页" />
 
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp" />
 
 </LinearLayout>

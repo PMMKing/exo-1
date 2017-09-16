@@ -33,7 +33,6 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tabLayout = (TabLayout) findViewById(R.id.title_bar);
-
     }
 
     protected void addTab(String text, Class<? extends BaseFragment> clss, Bundle bundle, int... icon) {

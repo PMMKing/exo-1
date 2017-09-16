@@ -34,7 +34,7 @@ public class HomeAdapter extends QSimpleAdapter<WorkerRepairResult.repair> {
         TextView tvInfo = (TextView) view.findViewById(R.id.tv_info);
         TextView tvAddress = (TextView) view.findViewById(R.id.tv_address);
         TextView btnDetail = (TextView) view.findViewById(R.id.btn_detail);
-        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.default_head);
+        ImageLoader.getInstance(context).loadImage(item.pic, imageView,R.drawable.moren);
         tvAddress.setText(item.address);
         tvInfo.setText(item.intro);
         btnDetail.setText(type == 0 ? "接单" : "详情");

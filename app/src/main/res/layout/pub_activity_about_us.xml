@@ -24,7 +24,7 @@
         android:layout_alignRight="@+id/about_iv_icon"
         android:layout_marginTop="170dp"
         android:gravity="center_horizontal"
-        android:text="v1.3.0"
+        android:text="v1.0.0"
         android:textColor="@color/pub_color_gray_666"
         android:textSize="@dimen/text_h14" />
 

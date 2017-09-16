@@ -53,7 +53,7 @@ public class DetailActivity extends BaseActivity {
     }
 
     private void setData() {
-        ImageLoader.getInstance(this).loadImage(item.pic, image, R.drawable.default_head);
+        ImageLoader.getInstance(this).loadImage(item.pic, image, R.drawable.moren);
         tvAddress.setText(item.address);
         tvTitle.setText(item.intro);
         btnDetail.setText(item.statusCN);

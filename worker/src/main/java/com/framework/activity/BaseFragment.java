@@ -50,6 +50,7 @@ import com.framework.view.QProgressDialogFragment;
 import com.framework.view.SystemBarTintManager;
 import com.framework.view.TitleBar;
 import com.haolb.client.R;
+import com.page.login.activity.LoginActivity;
 
 
 /**
@@ -421,8 +422,11 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
 	}
     @Override
     public boolean onMsgSearchComplete(final NetworkParam param) {
-
-        return false;
+		if (param.result.bstatus.code == 6) {
+			qStartActivity(LoginActivity.class);
+			return true;
+		}
+		return false;
     }
 
 	@Override

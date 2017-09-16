@@ -2,6 +2,7 @@ package com.page.uc;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
@@ -28,6 +29,9 @@ public class UserInfoActivity extends BaseActivity {
     @BindView(R.id.tv_phone)
     TextView tvPhone;
 
+    @BindView(R.id.btn_logout)
+    Button btnLogout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +41,14 @@ public class UserInfoActivity extends BaseActivity {
         tvPhone.setText(UCUtils.getInstance().getUserInfo().phone);
     }
 
-    @OnClick({R.id.text_back})
+    @OnClick({R.id.text_back, R.id.btn_logout})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.text_back:
+                finish();
+                break;
+            case R.id.btn_logout:
+                UCUtils.getInstance().saveUserInfo(null);
                 finish();
                 break;
         }

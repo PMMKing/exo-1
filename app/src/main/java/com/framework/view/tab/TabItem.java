@@ -10,7 +10,7 @@ public class TabItem {
 
     private final Bundle bundle;
     /**
-     * icon
+     * logo
      */
     public int[] icon;
     /**
