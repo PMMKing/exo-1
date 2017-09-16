@@ -1,6 +1,7 @@
 package com.page.store.home.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
@@ -33,7 +34,7 @@ import com.page.home.model.LinksResult;
 import com.page.home.model.LinksResult.Data.Links;
 import com.page.home.model.ShopRecResult;
 import com.page.home.model.ShopRecResult.Data.ProductList;
-import com.page.store.classify.activity.ClassifyActivity;
+import com.page.store.home.ClassifyActivity;
 import com.page.store.home.model.FoodRecResult;
 import com.page.store.home.model.FoodRecResult.Data.Products;
 import com.page.store.prodetails.activity.ProDetailsActivity;
@@ -66,6 +67,8 @@ public class ShopHomeFragment extends BaseFragment {
     @BindView(R.id.rv_recommend3)
     RecyclerView rvRecommend3;
     Unbinder unbinder;
+    @BindView(R.id.tv_arr)
+    TextView tvArr;
     private BannerAdapter bannerAdapter;
     private MultiAdapter rec2Adapter;
     private MultiAdapter rec3Adapter;
@@ -74,6 +77,7 @@ public class ShopHomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pub_fragment_shop_home_layout, container, false);
+//        View view = onCreateViewWithTitleBar(inflater, container, R.layout.pub_fragment_shop_home_layout);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -81,6 +85,8 @@ public class ShopHomeFragment extends BaseFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+//        setTitleBar("商城", false);
+        tvArr.setText("更多分类 " + getContext().getString(R.string.icon_font_right_arrows));
         setBanner();
 //        setRecommend1();
         setRecommend2();
@@ -224,5 +230,10 @@ public class ShopHomeFragment extends BaseFragment {
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @OnClick(R.id.tv_arr)
+    public void onViewClicked() {
+        startActivity(new Intent(getContext(), ClassifyActivity.class));
     }
 }
