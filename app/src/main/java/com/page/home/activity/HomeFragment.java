@@ -206,13 +206,18 @@ public class HomeFragment extends BaseFragment {
                             qStartActivity(WaitPayFeeActivity.class);
                             break;
                         case "超市":
-                            bundle.putString(TITLE, "超市");
+//                            bundle.putString(TITLE, "超市");
+                            ((MainActivity) getContext()).setCurrentTab(1);
                             break;
                         case "周边":
                             bundle.putString(TITLE, "周边");
+                            bundle.putSerializable(SERVICEMAP, ServiceMap.getMerchants);
+                            qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "电话":
-                            bundle.putString(TITLE, "电话");
+//                            bundle.putString(TITLE, "电话");
+//                            bundle.putSerializable(SERVICEMAP, ServiceMap.contact);
+                            qStartActivity(WebActivity.class, bundle);
                             break;
                     }
                 }

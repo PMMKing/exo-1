@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.utils.cache.ImageLoader;
+import com.framework.utils.imageload.ImageLoad;
 import com.page.community.serve.model.ServeResult;
 import com.page.community.serve.model.ServeResult.Data.WaterList;
 import com.qfant.wuye.R;
@@ -48,6 +50,7 @@ public class ViewHolder extends BaseViewHolder<WaterList> {
             title.setText(data.title);
             tvContent.setText("联系电话：" + data.phone);
             tvState.setText("联系地址：" + data.address);
+            ImageLoader.getInstance(mContext).loadImage(data.pic, ivImage, R.drawable.moren);
         }
     }
 

@@ -11,6 +11,7 @@ import com.page.community.quickpain.model.QpDetailResult;
 import com.page.community.quickpain.model.ScommentsReault;
 import com.page.community.serve.model.RepairResult;
 import com.page.community.serve.model.ServeResult;
+import com.page.home.model.ContactResult;
 import com.page.home.model.LinksResult;
 import com.page.home.model.NoticeResult;
 import com.page.home.model.QpListResult;
@@ -68,6 +69,8 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getWaters("/getWaters.do", ServeResult.class),//送水
     getHouses("/getHouses.do", ServeResult.class),//家政
     getWashes("/getWashes.do", ServeResult.class),//洗衣
+    getMerchants("/getMerchants.do", ServeResult.class),//周边
+    contact("/contact.do", ContactResult.class),//周边
     getActivityList("/getActivityList.do", EventListResult.class),//首页活动列表
     getMyActivityList("/getMyActivityList.do", EventListResult.class),//我的活动列表
     getActivity("/getActivity.do", EventDetailsResult.class),//活动详情

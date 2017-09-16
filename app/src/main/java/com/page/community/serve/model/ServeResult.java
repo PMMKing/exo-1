@@ -17,6 +17,12 @@ public class ServeResult extends BaseResult {
     public static class Data implements Serializable {
         public int totalNum;
         public List<WaterList> waterList;
+        public List<WaterList> houseResult;
+
+        public void setHouseResult(List<WaterList> houseResult) {
+            this.houseResult = houseResult;
+            this.waterList = houseResult;
+        }
 
         public static class WaterList implements Serializable {
             public String id;
@@ -24,6 +30,7 @@ public class ServeResult extends BaseResult {
             public String phone;
             public String address;
             public String content;
+            public String pic = "";
         }
 
 

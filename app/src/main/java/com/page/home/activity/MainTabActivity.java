@@ -53,4 +53,8 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
             e.printStackTrace();
         }
     }
+    public void setCurrentTab(int index ){
+        tabLayout.setCurrentTab(index);
+
+    }
 }
