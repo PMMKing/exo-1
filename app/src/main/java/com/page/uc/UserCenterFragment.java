@@ -4,11 +4,13 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.framework.utils.imageload.ImageLoad;
 import com.page.store.collect.activity.CollectActivity;
@@ -60,6 +62,8 @@ public class UserCenterFragment extends BaseFragment {
     LinearLayout llList6;
     @BindView(R.id.ll_list_7)
     LinearLayout llList7;
+    @BindView(R.id.tv_mycomm)
+    TextView tvMyComm;
     Unbinder unbinder;
 
     @Nullable
@@ -76,6 +80,7 @@ public class UserCenterFragment extends BaseFragment {
 //        imageHead.setImageResource(R.drawable.ic_launcher);
         LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
         ImageLoad.loadPlaceholder(getContext(), instance.portrait, imageHead);
+//        tvMyComm.setText(instance.nickname);
     }
 
     @Override
