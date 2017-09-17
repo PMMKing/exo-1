@@ -50,7 +50,7 @@
             android:layout_height="16dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="6dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/pub_login_icon" />
 
         <TextView
@@ -66,7 +66,7 @@
             android:layout_height="16dp"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="6dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/pub_login_icon" />
 
         <TextView

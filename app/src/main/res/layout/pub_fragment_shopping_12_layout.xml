@@ -32,7 +32,7 @@
         android:layout_height="76dp"
         android:layout_margin="5dp"
         android:background="@color/pub_color_white"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/pub_login_icon" />
 
 </LinearLayout>

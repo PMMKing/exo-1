@@ -4,6 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="50dp"
     android:gravity="center"
+    android:background="@color/pub_color_white_fff3f3f3"
     android:orientation="vertical">
 
     <LinearLayout
@@ -27,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/pub_tab_color_selector"
-            android:textSize="13dp"
+            android:textSize="12dp"
             tools:text="首页" />
 
     </LinearLayout>

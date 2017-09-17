@@ -71,7 +71,7 @@
                             android:layout_height="16dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18dp"
-                            android:scaleType="fitCenter"
+                            android:scaleType="centerCrop"
                             tools:src="@drawable/pub_login_icon" />
 
 
@@ -136,7 +136,7 @@
                             android:layout_height="16dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="18dp"
-                            android:scaleType="fitCenter"
+                            android:scaleType="centerCrop"
                             tools:src="@drawable/pub_login_icon" />
 
 

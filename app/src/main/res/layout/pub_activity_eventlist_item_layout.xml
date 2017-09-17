@@ -13,7 +13,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/pub_login_icon"
         tools:background="@color/pub_color_gray_999" />
 

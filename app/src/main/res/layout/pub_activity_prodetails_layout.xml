@@ -29,6 +29,7 @@
         <com.framework.view.tab.TabView
             android:id="@+id/tv_collect"
             android:layout_width="0dp"
+            android:background="@color/pub_color_white_fff3f3f3"
             android:layout_height="match_parent"
             android:layout_weight="0.21" />
 
@@ -37,6 +38,7 @@
         <com.framework.view.tab.TabView
             android:id="@+id/tv_car"
             android:layout_width="0dp"
+            android:background="@color/pub_color_white_fff3f3f3"
             android:layout_height="match_parent"
             android:layout_weight="0.21" />
 

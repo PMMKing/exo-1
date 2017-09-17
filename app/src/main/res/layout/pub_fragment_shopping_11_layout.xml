@@ -53,7 +53,7 @@
         android:layout_marginTop="5dp"
         android:layout_weight="1"
         android:background="@color/pub_color_white"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/pub_login_icon" />
 
 </LinearLayout>

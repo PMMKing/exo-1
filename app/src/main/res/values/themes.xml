@@ -12,7 +12,7 @@
         <item name="android:windowSoftInputMode">adjustPan</item>
         <item name="android:colorBackgroundCacheHint">@android:color/transparent</item>
     </style>
-    <style name="Theme.Dialog.Router" parent="android:Theme">
+    <style name="Theme.Dialog.Router" parent="@android:style/Theme.Holo.Light.Dialog">
         <item name="android:windowFullscreen">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>

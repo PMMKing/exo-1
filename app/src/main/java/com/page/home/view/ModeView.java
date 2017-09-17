@@ -40,8 +40,9 @@ public class ModeView extends LinearLayout {
         GridLayout.LayoutParams layoutParams = new GridLayout.LayoutParams(
                 GridLayout.spec(GridLayout.UNDEFINED, 1f),
                 GridLayout.spec(GridLayout.UNDEFINED, 1f));
-        layoutParams.setMargins(8, 8, 8, 8);
+        layoutParams.setMargins(1, 1, 1, 1);
         setLayoutParams(layoutParams);
+//        setBackgroundResource(R.drawable.pub_grid_layout_background_selected);
     }
 
     public void setData(HomeModel homeModel) {

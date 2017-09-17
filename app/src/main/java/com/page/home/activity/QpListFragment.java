@@ -80,7 +80,12 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
             }
         });
         setListView();
+    }
+
+    @Override
+    public void onResume() {
         startRequest(1);
+        super.onResume();
     }
 
     private void startRequest(int pager) {

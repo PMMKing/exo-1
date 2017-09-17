@@ -19,6 +19,7 @@
 
 
     <com.framework.view.tab.TabLayout
+        android:background="@color/pub_color_white_fff3f3f3"
         android:id="@+id/tl_tab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

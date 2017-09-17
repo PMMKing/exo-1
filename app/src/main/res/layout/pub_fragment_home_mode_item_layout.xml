@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:background="@color/pub_color_blue_F5FCFF"
     android:orientation="vertical">
 
     <TextView
@@ -10,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingBottom="10dp"
+        android:paddingBottom="5dp"
         android:paddingTop="12dp"
         android:text="维修"
         android:textColor="@color/pub_color_black"
@@ -18,9 +19,9 @@
 
     <ImageView
         android:id="@+id/iv_image"
-        android:layout_width="match_parent"
+        android:layout_width="70dp"
         android:layout_height="70dp"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         android:src="@drawable/jiaofei" />
 
 </LinearLayout>

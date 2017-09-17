@@ -28,7 +28,7 @@
             android:layout_width="15dp"
             android:layout_height="17dp"
             android:layout_marginLeft="15dp"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:src="@drawable/pub_login_icon" />
 
         <TextView

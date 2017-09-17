@@ -90,7 +90,7 @@
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/pub_login_icon" />
 
             <TextView
@@ -116,7 +116,7 @@
             <ImageView
                 android:layout_width="13dp"
                 android:layout_height="13dp"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/right_arrow_icon" />
 
         </LinearLayout>
@@ -139,7 +139,7 @@
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/pub_login_icon" />
 
             <TextView
@@ -167,7 +167,7 @@
             <ImageView
                 android:layout_width="13dp"
                 android:layout_height="13dp"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 android:src="@drawable/right_arrow_icon" />
 
         </LinearLayout>

@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.page.store.collect.activity.CollectActivity;
 import com.page.uc.payfee.activity.WaitPayFeeActivity;
@@ -79,8 +80,8 @@ public class UserCenterFragment extends BaseFragment {
         super.onResume();
 //        imageHead.setImageResource(R.drawable.ic_launcher);
         LoginResult.LoginData instance = UCUtils.getInstance().getUserInfo();
-        ImageLoad.loadPlaceholder(getContext(), instance.portrait, imageHead);
-//        tvMyComm.setText(instance.nickname);
+        ImageLoader.getInstance(getContext()).loadImage(instance.portrait, imageHead, R.drawable.default_head);
+        tvMyComm.setText(instance.info);
     }
 
     @Override
@@ -133,7 +134,7 @@ public class UserCenterFragment extends BaseFragment {
                 qStartActivity(AddressActivity.class, bundle);
                 break;
             case R.id.ll_list_3:
-                qStartActivity(SelectComActivity.class);
+//                qStartActivity(SelectComActivity.class);
                 break;
             case R.id.ll_list_4:
                 qStartActivity(WaitPayFeeActivity.class);

@@ -106,7 +106,7 @@ public class AddView extends LinearLayout implements View.OnClickListener {
             layoutParams.setMargins(dp7, dp7, dp7, dp7);
             imageView.setLayoutParams(layoutParams);
             imageView.setClickable(true);
-            imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             if (TextUtils.isEmpty(imageUrls[i])) {
                 imageView.setImageResource(R.drawable.pub_add_picture);
             } else {
