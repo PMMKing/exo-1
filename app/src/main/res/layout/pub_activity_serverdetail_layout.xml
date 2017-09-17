@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@drawable/pub_gray_line"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:showDividers="middle">
+
+        <LinearLayout
+            android:id="@+id/ll_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="名称"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h16" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h16"
+                tools:text="就回家反馈" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="电话"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h16" />
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h16"
+                tools:text="就回家反馈" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="地址"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h16" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h16"
+                tools:text="就回家反馈" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:text="详情"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h16" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="15dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h16"
+                tools:text="就回家反馈" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

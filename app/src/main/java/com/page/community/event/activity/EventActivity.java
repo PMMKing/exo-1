@@ -12,6 +12,8 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.view.AddView;
+import com.page.community.eventlist.model.EventListResult;
+import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
 import com.qfant.wuye.R;
 import com.page.community.event.model.EventParam;
 
@@ -58,9 +60,22 @@ public class EventActivity extends BaseActivity {
             setTitleBar("活动发布", true);
         } else {
             setTitleBar("活动修改", true);
+            ActivityList data = (ActivityList) myBundle.getSerializable("data");
+            if (data != null) {
+                updataView(data);
+            }
         }
         addView.setAddNumber(new String[]{url});
 
+    }
+
+    private void updataView(ActivityList data) {
+        etTitle.setText(data.title);
+        etEventTime.setText(data.time);
+        etEventAddress.setText(data.place);
+        etEventPeople.setText(data.persons + "人");
+        cbLimit.setChecked(data.islimit == 1);
+        etEventDetail.setText(data.intro);
     }
 
     @Override
@@ -78,13 +93,22 @@ public class EventActivity extends BaseActivity {
         String persons = etEventPeople.getText().toString().trim();
         String details = etEventDetail.getText().toString().trim();
         String[] imageUrls = addView.getImageUrls();
-
+        int number;
+        try {
+            number = Integer.parseInt(persons.replace("人", ""));
+            if (number <= 0) {
+                showToast("请输入正确人数，如10人");
+            }
+        } catch (Exception e) {
+            showToast("请输入正确人数，如10人");
+            return;
+        }
         EventParam param = new EventParam();
         param.pic = imageUrls[0];
         param.title = title;
         param.time = time;
-        param.islimit = 1;
-        param.persons = 10;
+        param.islimit = cbLimit.isChecked() ? 1 : 0;
+        param.persons = number;
         param.place = address;
         param.intro = details;
         param.id = id;

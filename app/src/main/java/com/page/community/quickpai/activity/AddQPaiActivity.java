@@ -63,6 +63,14 @@ public class AddQPaiActivity extends BaseActivity {
     private void startRequest() {
         String[] imageUrls = addView.getImageUrls();
         String intro = etCustom.getText().toString();
+        if (TextUtils.isEmpty(intro)) {
+            showToast("写一些随手拍描述在分享吧~");
+            return;
+        }
+        if (TextUtils.isEmpty(imageUrls[0]) || TextUtils.isEmpty(imageUrls[1]) || TextUtils.isEmpty(imageUrls[2])) {
+            showToast("看的不过瘾，多分享几张吧~");
+            return;
+        }
         AddQpParam param = new AddQpParam();
         param.id = snapshots == null ? "" : snapshots.id;
         param.pic1 = imageUrls[0];

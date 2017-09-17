@@ -42,6 +42,11 @@ public class QuickPaiActivity extends BaseActivity implements SwipRefreshLayout.
         ButterKnife.bind(this);
         setTitleBar("我的随手拍", true);
         setListView();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         startRequest(1);
     }
 

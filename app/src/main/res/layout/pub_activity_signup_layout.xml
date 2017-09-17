@@ -5,8 +5,6 @@
     android:background="@color/pub_color_gray_f5f5f5"
     android:orientation="vertical">
 
-    <com.framework.view.TitleBar style="@style/titleBarStyle" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_list"
         android:layout_width="match_parent"

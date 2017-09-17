@@ -31,22 +31,34 @@ import butterknife.ButterKnife;
 
 public class SignupActivity extends BaseActivity {
 
+    public static final String ID = "id";
+
     @BindView(R.id.rv_list)
     RecyclerView rvList;
     private MultiAdapter adapter;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pub_activity_signup_layout);
         ButterKnife.bind(this);
+        if (myBundle == null) finish();
+        id = myBundle.getString(ID);
         setListView();
         startRequest();
+        setTitleBar("参与人员", true);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myBundle.putString(ID, id);
     }
 
     private void startRequest() {
         SignUpParam param = new SignUpParam();
-        param.id = "";
+        param.id = id;
         Request.startRequest(param, ServiceMap.getActivityJoinerList, mHandler, Request.RequestFeature.BLOCK);
     }
 

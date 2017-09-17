@@ -2,6 +2,7 @@ package com.page.community.eventdetails.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,6 +16,7 @@ import com.page.community.eventdetails.adapter.ImagePagerAdapter;
 import com.page.community.eventdetails.model.EventDetailParam;
 import com.page.community.eventdetails.model.EventDetailsResult;
 import com.page.community.eventdetails.model.JoinEventParam;
+import com.page.community.signup.activity.SignupActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -31,10 +33,6 @@ public class EventDetailActivity extends BaseActivity {
 
     public static String ID = "id";
 
-    //    @BindView(R.id.vp_image)
-//    ViewPager vpImage;
-//    @BindView(R.id.magic_indicator)
-//    MagicIndicator magicIndicator;
     @BindView(R.id.tv_join_number)
     TextView tvJoinNumber;
     @BindView(R.id.tv_join)
@@ -78,36 +76,35 @@ public class EventDetailActivity extends BaseActivity {
         Request.startRequest(param, ServiceMap.getActivity, mHandler, Request.RequestFeature.BLOCK);
     }
 
-//    private void setViewPager() {
-//        mTitleDataList = new ArrayList<>();
-//        ScaleCircleNavigator scaleCircleNavigator = new ScaleCircleNavigator(getContext());
-//        scaleCircleNavigator.setCircleCount(mTitleDataList.size());
-//        scaleCircleNavigator.setNormalCircleColor(getContext().getResources().getColor(R.color.pub_color_gray_999));
-//        scaleCircleNavigator.setSelectedCircleColor(getContext().getResources().getColor(R.color.pub_color_blue));
-//        scaleCircleNavigator.setCircleClickListener(new ScaleCircleNavigator.OnCircleClickListener() {
-//            @Override
-//            public void onClick(int index) {
-//                vpImage.setCurrentItem(index);
-//            }
-//        });
-//        magicIndicator.setNavigator(scaleCircleNavigator);
-//        ViewPagerHelper.bind(magicIndicator, vpImage);
-//        imagePagerAdapter = new ImagePagerAdapter(((BaseActivity) getContext()).getSupportFragmentManager(), mTitleDataList);
-//        vpImage.setAdapter(imagePagerAdapter);
-//    }
-
-
     private void updataView(EventDetailsResult result) {
         if (result == null || result.data == null) return;
         EventDetailsResult.Data data = result.data;
         tvTitle.setText(data.title);
-        tvJoinNumber.setText(data.persons);
         tvTime.setText(DateFormatUtils.format(data.time, "yyyy.MM.dd EE"));
         tvAddress.setText(data.place);
         tvDetail.setText(data.customername);
         ImageLoad.loadPlaceholder(getContext(), data.pic, ivImage);
+        tvJoin.setVisibility(View.VISIBLE);
+        refreshJoin(data.ismine == 1 ? 2 : data.isjoin == 0 ? 0 : 1);
     }
 
+    private void refreshJoin(int isjoin) {
+
+        switch (isjoin) {
+            case 0:
+                tvJoin.setText("参与活动");
+                tvJoin.setTag(0);
+                break;
+            case 1:
+                tvJoin.setText("取消参与");
+                tvJoin.setTag(1);
+                break;
+            case 2:
+                tvJoin.setText("查看参与人员");
+                tvJoin.setTag(1);
+                break;
+        }
+    }
 
     private void joinEvent() {
         JoinEventParam param = new JoinEventParam();
@@ -129,14 +126,14 @@ public class EventDetailActivity extends BaseActivity {
         } else if (param.key == ServiceMap.joinActivity) {
             if (param.result.bstatus.code == 0) {
                 showToast("成功参与活动");
-                startRequest();
+                refreshJoin(1);
             } else {
                 showToast(param.result.bstatus.des);
             }
         } else if (param.key == ServiceMap.canceljoinActivity) {
             if (param.result.bstatus.code == 0) {
                 showToast("成功取消参与活动");
-                startRequest();
+                refreshJoin(0);
             } else {
                 showToast(param.result.bstatus.des);
             }
@@ -146,6 +143,19 @@ public class EventDetailActivity extends BaseActivity {
 
     @OnClick(R.id.tv_join)
     public void onViewClicked() {
-        //三种
+        int tag = (int) tvJoin.getTag();
+        switch (tag) {
+            case 0:
+                joinEvent();
+                break;
+            case 1:
+                cancleJoinEvent();
+                break;
+            case 2:
+                Bundle bundle = new Bundle();
+                bundle.putString(SignupActivity.ID, id);
+                qStartActivity(SignupActivity.class, bundle);
+                break;
+        }
     }
 }

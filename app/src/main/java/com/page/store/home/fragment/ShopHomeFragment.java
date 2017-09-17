@@ -77,7 +77,6 @@ public class ShopHomeFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.pub_fragment_shop_home_layout, container, false);
-//        View view = onCreateViewWithTitleBar(inflater, container, R.layout.pub_fragment_shop_home_layout);
         unbinder = ButterKnife.bind(this, view);
         return view;
     }
@@ -127,7 +126,7 @@ public class ShopHomeFragment extends BaseFragment {
 
             @Override
             public void bindImage(ImageView imageView, Links bannerModel) {
-                ImageLoad.loadPlaceholder(getContext(), bannerModel.link + bannerModel.imgurl, imageView);
+                ImageLoad.loadPlaceholder(getContext(), bannerModel.imgurl, imageView);
             }
 
         };
@@ -183,6 +182,7 @@ public class ShopHomeFragment extends BaseFragment {
                 qStartActivity(ProDetailsActivity.class, bundle);
             }
         });
+        rvRecommend3.setNestedScrollingEnabled(false);
     }
 
     @Override

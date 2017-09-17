@@ -58,15 +58,4 @@
 
     </LinearLayout>
 
-
-    <ImageView
-        android:id="@+id/btn_call"
-        android:layout_width="54dp"
-        android:layout_height="54dp"
-        android:layout_gravity="center_vertical"
-        android:clickable="true"
-        android:scaleType="fitCenter"
-        android:padding="15dp"
-        android:src="@drawable/pub_down_arrow" />
-
 </LinearLayout>

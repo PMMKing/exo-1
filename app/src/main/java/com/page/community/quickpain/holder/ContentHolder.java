@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.utils.DateFormatUtils;
 import com.framework.view.IFView;
 import com.page.community.quickpain.model.ScommentsReault.Data.Datas;
 import com.qfant.wuye.R;
@@ -38,10 +39,10 @@ public class ContentHolder extends BaseViewHolder<Datas> {
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, Datas data, int position) {
-        if(data == null)return;
+        if (data == null) return;
         tvName.setText(data.nickname);
         tvContent.setText(data.content);
-
+        tvTime.setText(DateFormatUtils.format(data.createtime, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm"));
     }
 
     @OnClick(R.id.tv_zan)

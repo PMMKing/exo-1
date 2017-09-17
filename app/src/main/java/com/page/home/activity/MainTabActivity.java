@@ -20,7 +20,7 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
 
     protected final ArrayList<TabItem> mTabs = new ArrayList<TabItem>();
 
-//    @BindView(R.id.tl_tab)
+    //    @BindView(R.id.tl_tab)
     TabLayout tabLayout;
 
     @Override
@@ -44,17 +44,21 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
     @Override
     public void onTabClick(TabItem tabItem) {
         try {
+            int index = mTabs.indexOf(tabItem);
+            if (index == tabLayout.getCurrentTab()) {
+                return;
+            }
             BaseFragment fragment = tabItem.tagFragmentClz.newInstance();
             getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, fragment).commitAllowingStateLoss();
-            tabLayout.setCurrentTab(mTabs.indexOf(tabItem));
+            setCurrentTab(index);
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
     }
-    public void setCurrentTab(int index ){
-        tabLayout.setCurrentTab(index);
 
+    public void setCurrentTab(int index) {
+        tabLayout.setCurrentTab(index);
     }
 }

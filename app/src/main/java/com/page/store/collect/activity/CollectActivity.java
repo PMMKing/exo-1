@@ -24,6 +24,7 @@ import com.page.store.collect.holder.CollectHolder;
 import com.page.store.collect.model.CollectParam;
 import com.page.store.collect.model.CollectResult;
 import com.page.store.collect.model.CollectResult.Data;
+import com.page.store.collect.model.CollectResult.Data.PraiseList;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ import butterknife.ButterKnife;
  * Created by shucheng.qu on 2017/8/18.
  */
 
-public class CollectActivity extends BaseActivity implements SwipRefreshLayout.OnRefreshListener, OnItemClickListener<Data> {
+public class CollectActivity extends BaseActivity implements SwipRefreshLayout.OnRefreshListener, OnItemClickListener<PraiseList> {
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
@@ -84,11 +85,11 @@ public class CollectActivity extends BaseActivity implements SwipRefreshLayout.O
     public boolean onMsgSearchComplete(NetworkParam param) {
         if (param.key == ServiceMap.getFavList) {
             CollectResult result = (CollectResult) param.result;
-            if (result != null && !ArrayUtils.isEmpty(result.datas)) {
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.praiseList)) {
                 if ((int) param.ext == 1) {
-                    adapter.setData(result.datas);
+                    adapter.setData(result.data.praiseList);
                 } else {
-                    adapter.addData(result.datas);
+                    adapter.addData(result.data.praiseList);
                 }
             } else {
                 if ((int) param.ext == 1) {
@@ -113,7 +114,7 @@ public class CollectActivity extends BaseActivity implements SwipRefreshLayout.O
     }
 
     @Override
-    public void onItemClickListener(View view, Data data, int position) {
+    public void onItemClickListener(View view, PraiseList data, int position) {
 
     }
 }

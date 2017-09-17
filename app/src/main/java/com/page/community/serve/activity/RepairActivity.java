@@ -64,7 +64,12 @@ public class RepairActivity extends BaseActivity implements OnItemClickListener<
         }
         title = myBundle.getString("title");
         serviceMap = (ServiceMap) myBundle.getSerializable(SERVICEMAP);
-        setTitleBar(title, true);
+        setTitleBar(title, true, " + ", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                qStartActivity(ApplyForActivity.class);
+            }
+        });
         setListView();
         startRequest(1);
     }

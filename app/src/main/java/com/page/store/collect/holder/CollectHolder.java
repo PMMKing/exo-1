@@ -8,8 +8,10 @@ import android.widget.TextView;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.BusinessUtils;
 import com.framework.utils.imageload.ImageLoad;
+import com.framework.utils.viewutils.ViewUtils;
 import com.page.store.collect.model.CollectResult;
 import com.page.store.collect.model.CollectResult.Data;
+import com.page.store.collect.model.CollectResult.Data.PraiseList;
 import com.qfant.wuye.R;
 
 import butterknife.BindView;
@@ -19,7 +21,7 @@ import butterknife.ButterKnife;
  * Created by shucheng.qu on 2017/8/18.
  */
 
-public class CollectHolder extends BaseViewHolder<Data> {
+public class CollectHolder extends BaseViewHolder<PraiseList> {
 
     @BindView(R.id.iv_image)
     ImageView ivImage;
@@ -35,10 +37,14 @@ public class CollectHolder extends BaseViewHolder<Data> {
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, Data data, int position) {
+    public void onBindViewHolder(BaseViewHolder holder, PraiseList data, int position) {
         ImageLoad.loadPlaceholder(mContext, data.pic1, ivImage);
         tvName.setText(data.name);
-        tvPrice.setText(String.format("%s %s", mContext.getResources().getString(R.string.rmb), BusinessUtils.formatDouble2String(data.price)));
+        if (data.price > 0) {
+            tvPrice.setText(String.format("%s %s", mContext.getResources().getString(R.string.rmb), BusinessUtils.formatDouble2String(data.price)));
+        } else {
+            tvPrice.setText("");
+        }
 
     }
 }

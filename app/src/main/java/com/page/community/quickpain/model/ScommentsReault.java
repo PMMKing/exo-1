@@ -28,6 +28,7 @@ public class ScommentsReault extends BaseResult {
             public String headimg;
             public String nickname;
             public String refcontent;
+            public String createtime;
 
 
             public QpDetailResult.Data hearderData;

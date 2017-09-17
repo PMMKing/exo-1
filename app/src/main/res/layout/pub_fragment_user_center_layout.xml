@@ -55,9 +55,9 @@
                     android:src="@drawable/ext_order_status_paying" />
 
                 <TextView
-                    android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:text="待付款"
                     android:textColor="@color/pub_color_gray_999"
                     android:textSize="14dp" />
@@ -80,9 +80,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:text="待发货"
                     android:textColor="@color/pub_color_gray_999"
-                    android:layout_marginTop="6dp"
                     android:textSize="14dp" />
             </LinearLayout>
 
@@ -102,8 +102,8 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:text="待收货"
                     android:textColor="@color/pub_color_gray_999"
                     android:textSize="14dp" />
@@ -124,18 +124,20 @@
                     android:src="@drawable/ext_order_status_no" />
 
                 <TextView
-                    android:textSize="14dp"
-                    android:layout_marginTop="6dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
                     android:text="退单"
-                    android:textColor="@color/pub_color_gray_999" />
+                    android:textColor="@color/pub_color_gray_999"
+                    android:textSize="14dp" />
             </LinearLayout>
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
             android:background="@color/pub_color_gray_line" />
+
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
@@ -144,9 +146,9 @@
 
         <LinearLayout
             android:id="@+id/ll_list_0"
-            android:background="@color/pub_color_white"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
@@ -157,8 +159,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="我的订单"
-                android:textSize="14dp"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"
@@ -174,9 +176,9 @@
 
         <LinearLayout
             android:id="@+id/ll_list_1"
-            android:background="@color/pub_color_white"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
@@ -187,8 +189,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="我的收藏"
-                android:textSize="14dp"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"
@@ -204,9 +206,9 @@
 
         <LinearLayout
             android:id="@+id/ll_list_2"
-            android:background="@color/pub_color_white"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
@@ -214,11 +216,11 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:textSize="14dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="收货地址"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"
@@ -234,30 +236,30 @@
 
         <LinearLayout
             android:id="@+id/ll_list_3"
-            android:background="@color/pub_color_white"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:textSize="14dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
-            android:paddingRight="14dp">
+            android:paddingRight="14dp"
+            android:textSize="14dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="我的小区"
-                android:textSize="14dp"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <TextView
                 android:id="@+id/tv_mycomm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="14dp"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"
@@ -273,9 +275,9 @@
 
         <LinearLayout
             android:id="@+id/ll_list_4"
-            android:background="@color/pub_color_white"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
@@ -286,8 +288,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="缴费记录"
-                android:textSize="14dp"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"
@@ -304,9 +306,9 @@
         <LinearLayout
             android:id="@+id/ll_list_5"
 
-            android:background="@color/pub_color_white"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
@@ -316,9 +318,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="维修申请"
-                android:textSize="14dp"
-                android:textColor="@color/pub_color_gray_666" />
+                android:text="维修记录"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"
@@ -334,9 +336,9 @@
 
         <LinearLayout
             android:id="@+id/ll_list_6"
-            android:background="@color/pub_color_white"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
@@ -347,8 +349,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="联系客服"
-                android:textSize="14dp"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"
@@ -363,10 +365,10 @@
             android:background="@color/pub_color_gray_line" />
 
         <LinearLayout
-            android:background="@color/pub_color_white"
             android:id="@+id/ll_list_7"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/pub_color_white"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="14dp"
@@ -376,9 +378,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textSize="14dp"
                 android:text="关于我们"
-                android:textColor="@color/pub_color_gray_666" />
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="14dp" />
 
             <ImageView
                 android:layout_width="12dp"

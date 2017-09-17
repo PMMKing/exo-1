@@ -115,6 +115,7 @@ public class MyEventListActivity extends BaseActivity implements OnItemClickList
         Bundle bundle = new Bundle();
         bundle.putString(EventActivity.URL, data.pic);
         bundle.putString(EventActivity.ID, data.id);
+        bundle.putSerializable("data",data);
         qStartActivity(EventActivity.class, bundle);
     }
 
