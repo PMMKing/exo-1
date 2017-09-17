@@ -104,6 +104,10 @@ public enum ServiceMap implements Enums.IType, Serializable {
     submitOrder("/submitOrder.do", SubmitResult.class),//提交订单
     getMyOrders("/getMyOrders.do", OrderListResult.class),//订单list
     getOrder("/getOrder.do", OrderDetailResult.class),//订单详情
+    cancelOrder("/cancelOrder.do", BaseResult.class),//订单
+    updateOrderConfirm("/orderEvaluate.do", BaseResult.class),//订单
+    orderEvaluate("/updateOrderConfirm.do", BaseResult.class),//订单
+    orderRefund("/orderRefund.do", BaseResult.class),//订单
     fav("/fav.do", BaseResult.class),//收藏or取消
     getFavList("/getFavList.do", CollectResult.class),//收藏list
     getDefaultAddress("/getDefaultAddress.do", DefaultAddressResult.class),//默认收货地址

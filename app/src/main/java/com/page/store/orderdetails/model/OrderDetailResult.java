@@ -24,6 +24,7 @@ public class OrderDetailResult extends BaseResult {
         public String address;
         public String receiver;
         public String phone;
+        public String logistics;
         public List<Products> products;
 
     }

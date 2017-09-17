@@ -20,6 +20,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_order_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="right"
@@ -28,6 +29,7 @@
         android:paddingLeft="16dp"
         android:paddingRight="16dp"
         android:paddingTop="7dp">
+<!--
 
         <TextView
             android:id="@+id/tv_evalate"
@@ -51,6 +53,7 @@
             android:text="评价"
             android:textColor="@color/pub_color_blue"
             android:textSize="@dimen/text_h15" />
+-->
 
 
     </LinearLayout>

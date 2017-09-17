@@ -40,7 +40,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="40dp"
                     android:scaleType="center"
-                    tools:src="@drawable/pub_login_icon" />
+                    tools:src="@drawable/pub_icon_car" />
 
             </LinearLayout>
 
@@ -51,6 +51,15 @@
                 android:background="@color/pub_color_white"
                 android:orientation="horizontal">
 
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="14dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pub_icon_car" />
+
                 <LinearLayout
                     android:id="@+id/ll_logistics"
                     android:layout_width="0dp"
@@ -60,37 +69,22 @@
                     android:paddingBottom="12dp"
                     android:paddingTop="14dp">
 
-                    <FrameLayout
-                        android:layout_width="wrap_content"
+
+                    <TextView
+                        android:id="@+id/tv_logistics_msg"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_marginLeft="15dp"
+                        android:textColor="@color/pub_color_green_7ed321"
+                        android:textSize="@dimen/text_h12"
+                        tools:text="已签收，签收人是收发室，感谢使用天天快递，期待再次为您服务" />
 
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="18dp"
-                            android:scaleType="centerCrop"
-                            tools:src="@drawable/pub_login_icon" />
-
-
-                        <TextView
-                            android:id="@+id/tv_logistics_msg"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="45dp"
-                            android:textColor="@color/pub_color_green_7ed321"
-                            android:textSize="@dimen/text_h12"
-                            tools:text="已签收，签收人是收发室，感谢使用天天快递，期待再次为您服务" />
-
-                    </FrameLayout>
 
                     <TextView
                         android:id="@+id/tv_logistics_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="45dp"
+                        android:layout_marginLeft="15dp"
                         android:paddingTop="4dp"
                         android:textColor="@color/pub_color_gray_999"
                         android:textSize="@dimen/text_h12"
@@ -117,6 +111,14 @@
                 android:background="@color/pub_color_white"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginTop="14dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/pub_icon_location" />
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -125,37 +127,20 @@
                     android:paddingBottom="12dp"
                     android:paddingTop="14dp">
 
-                    <FrameLayout
-                        android:layout_width="wrap_content"
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="18dp"
-                            android:scaleType="centerCrop"
-                            tools:src="@drawable/pub_login_icon" />
-
-
-                        <TextView
-                            android:id="@+id/tv_name"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="45dp"
-                            android:textColor="@color/pub_color_gray_666"
-                            android:textSize="@dimen/text_h12"
-                            tools:text="收货人：豆木" />
-
-                    </FrameLayout>
+                        android:layout_marginLeft="15dp"
+                        android:textColor="@color/pub_color_gray_666"
+                        android:textSize="@dimen/text_h12"
+                        tools:text="收货人：豆木" />
 
                     <TextView
                         android:id="@+id/tv_address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="45dp"
+                        android:layout_marginLeft="15dp"
                         android:paddingTop="4dp"
                         android:textColor="@color/pub_color_gray_666"
                         android:textSize="@dimen/text_h12"
@@ -189,6 +174,7 @@
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/ll_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/pub_color_white"
@@ -199,29 +185,29 @@
         android:paddingRight="15dp"
         android:paddingTop="8dp">
 
-        <TextView
-            android:id="@+id/tv_cancle"
-            android:layout_width="80dp"
-            android:layout_height="33dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/pub_btn_blue_box_selector"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="取消订单"
-            android:textColor="@color/pub_color_blue"
-            android:textSize="@dimen/text_h15" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_cancle"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="33dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:background="@drawable/pub_btn_blue_box_selector"-->
+            <!--android:clickable="true"-->
+            <!--android:gravity="center"-->
+            <!--android:text="取消订单"-->
+            <!--android:textColor="@color/pub_color_blue"-->
+            <!--android:textSize="@dimen/text_h15" />-->
 
-        <TextView
-            android:id="@+id/tv_pay"
-            android:layout_width="80dp"
-            android:layout_height="33dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/pub_btn_blue_box_selector"
-            android:clickable="true"
-            android:gravity="center"
-            android:text="付款"
-            android:textColor="@color/pub_color_blue"
-            android:textSize="@dimen/text_h15" />
+        <!--<TextView-->
+            <!--android:id="@+id/tv_pay"-->
+            <!--android:layout_width="80dp"-->
+            <!--android:layout_height="33dp"-->
+            <!--android:layout_marginLeft="10dp"-->
+            <!--android:background="@drawable/pub_btn_blue_box_selector"-->
+            <!--android:clickable="true"-->
+            <!--android:gravity="center"-->
+            <!--android:text="付款"-->
+            <!--android:textColor="@color/pub_color_blue"-->
+            <!--android:textSize="@dimen/text_h15" />-->
 
     </LinearLayout>
 

@@ -23,7 +23,7 @@ public class OrderListResult extends BaseResult {
             public String orderno;
             public int totalprice;
             public String createtime;
-            public String status;
+            public int status;
             public Object paystatus;
             public List<Products> products;
 

@@ -20,11 +20,17 @@ import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
+import com.page.community.event.activity.EventActivity;
+import com.page.pay.PayActivity;
+import com.page.pay.PayData;
+import com.page.store.orderback.activity.OrderBackActivity;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.page.store.orderlist.holder.OrderListHolder;
+import com.page.store.orderlist.inteface.OnOrderStatusCallBack;
 import com.page.store.orderlist.model.OrderListParam;
 import com.page.store.orderlist.model.OrderListResult;
 import com.page.store.orderlist.model.OrderListResult.Data.OrderList;
+import com.page.store.orderlist.model.OrderStatusParam;
 import com.qfant.wuye.R;
 
 import butterknife.BindView;
@@ -58,7 +64,6 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
         super.onActivityCreated(savedInstanceState);
         type = myBundle.getInt("type", 1);
         setListView();
-
     }
 
     @Override
@@ -89,7 +94,32 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
 
             @Override
             public BaseViewHolder createViewHolder(Context mContext, ViewGroup parent) {
-                return new OrderListHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_fragment_orderlist_item_layout, parent, false));
+                return new OrderListHolder(mContext, LayoutInflater.from(mContext).inflate(R.layout.pub_fragment_orderlist_item_layout, parent, false), new OnOrderStatusCallBack() {
+                    @Override
+                    public void orderCancle(String id) {
+                        OrderListFragment.this.orderCancle(id);
+                    }
+
+                    @Override
+                    public void orderPay(String id, double totalprice) {
+                        OrderListFragment.this.orderPay(id, totalprice);
+                    }
+
+                    @Override
+                    public void orderEvaluate(String id) {
+                        OrderListFragment.this.orderEvaluate(id);
+                    }
+
+                    @Override
+                    public void orderBack(String id) {
+                        OrderListFragment.this.orderBack(id);
+                    }
+
+                    @Override
+                    public void orderConfirm(String id) {
+                        OrderListFragment.this.orderConfirm(id);
+                    }
+                });
             }
         });
 
@@ -99,6 +129,39 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
         rvList.setAdapter(adapter);
         adapter.setOnItemClickListener(this);
         refreshLayout.setOnRefreshListener(this);
+    }
+
+    private void orderCancle(String id) {
+        OrderStatusParam param = new OrderStatusParam();
+        param.id = id;
+        Request.startRequest(param, ServiceMap.cancelOrder, mHandler, Request.RequestFeature.BLOCK);
+    }
+
+    private void orderPay(String id, double totalprice) {
+        Bundle bundle = new Bundle();
+        PayData payData = new PayData();
+        payData.id = Integer.parseInt(id);
+        payData.price = totalprice;
+        bundle.putSerializable("order", payData);
+        qStartActivity(PayActivity.class, bundle);
+    }
+
+    private void orderEvaluate(String id) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(EventActivity.ID, id);
+        qStartActivity(EventActivity.class, bundle);
+    }
+
+    private void orderConfirm(String id) {
+        OrderStatusParam param = new OrderStatusParam();
+        param.id = id;
+        Request.startRequest(param, ServiceMap.updateOrderConfirm, mHandler, Request.RequestFeature.BLOCK);
+    }
+
+    private void orderBack(String id) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(OrderBackActivity.ID, id);
+        qStartActivity(OrderBackActivity.class, bundle);
     }
 
     @Override
@@ -119,6 +182,14 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
                 }
             }
             refreshLayout.setRefreshing(false);
+        } else if (param.key == ServiceMap.cancelOrder) {
+            if (param.result.bstatus.code == 0) {
+                showToast("订单取消成功");
+            } else {
+                showToast(param.result.bstatus.des);
+            }
+        } else if (param.key == ServiceMap.updateOrderConfirm) {
+            showToast(param.result.bstatus.des);
         }
         return false;
     }
@@ -133,6 +204,7 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
     public void onItemClickListener(View view, OrderList data, int position) {
         Bundle bundle = new Bundle();
         bundle.putString(OrderDetailsActivity.ID, data.id);
+        bundle.putInt(OrderDetailsActivity.ID, data.status);
         qStartActivity(OrderDetailsActivity.class, bundle);
     }
 

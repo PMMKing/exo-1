@@ -15,6 +15,7 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
 import com.framework.utils.BusinessUtils;
 import com.framework.utils.ShopCarUtils;
 import com.framework.view.LineDecoration;
@@ -134,6 +135,11 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
 
     @OnClick(R.id.tv_commit)
     public void onViewClicked() {
+        ArrayList<Product> shopCarList = ShopCarUtils.getInstance().getShopCarList();
+        if (ArrayUtils.isEmpty(shopCarList)) {
+            showToast("先添加商品再下单吧~");
+            return;
+        }
         Bundle bundle = new Bundle();
         bundle.putSerializable(OrderAffirmActivity.PROLIST, ShopCarUtils.getInstance().getShopCarList());
         qStartActivity(OrderAffirmActivity.class, bundle);

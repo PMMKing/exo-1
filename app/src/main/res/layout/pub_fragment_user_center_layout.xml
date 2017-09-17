@@ -29,7 +29,8 @@
                 android:layout_height="20dp"
                 android:layout_alignParentRight="true"
                 android:layout_margin="12dp"
-                android:src="@drawable/settings_normal" />
+                android:src="@drawable/settings_normal"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
