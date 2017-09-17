@@ -1,87 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pub_color_gray_f5f5f5"
     android:orientation="vertical">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-            android:text="月份"
-            android:textColor="@color/pub_color_gray_666"
-            android:textSize="@dimen/text_h13" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="214dp"
-            android:paddingBottom="4dp"
-            android:paddingTop="4dp"
-            android:text="费用"
-            android:textColor="@color/pub_color_gray_666"
-            android:textSize="@dimen/text_h13" />
-
-
-    </FrameLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/pub_color_white" />
-
-    <View style="@style/line_gray_h" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:background="@color/pub_color_white"
-        android:gravity="right|center_vertical"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                android:text="月份"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h13" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="214dp"
+                android:paddingBottom="4dp"
+                android:paddingTop="4dp"
+                android:text="费用"
+                android:textColor="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h13" />
+
+
+        </FrameLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pub_color_white" />
+
+        <View style="@style/line_gray_h" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:background="@color/pub_color_white"
+            android:gravity="right|center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="合计："
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h14" />
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="13dp"
+                android:text="￥0"
+                android:textColor="@color/pub_color_blue"
+                android:textSize="@dimen/text_h20" />
+
+        </LinearLayout>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_go_pay"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="合计："
-            android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h14" />
-
-        <TextView
-            android:id="@+id/tv_money"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="13dp"
-            android:textColor="@color/pub_color_blue"
-            android:textSize="@dimen/text_h20"
-            android:text="￥0" />
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/pub_btn_blue_arc_selector"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp"
+            android:text="去支付"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h18" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_go_pay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/pub_btn_blue_arc_selector"
-        android:clickable="true"
-        android:gravity="center"
-        android:paddingBottom="12dp"
-        android:paddingTop="12dp"
-        android:text="去支付"
-        android:textColor="@color/pub_color_white"
-        android:textSize="@dimen/text_h18" />
-
-</LinearLayout>
+</ScrollView>

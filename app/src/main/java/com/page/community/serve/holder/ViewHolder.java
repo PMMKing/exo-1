@@ -3,6 +3,7 @@ package com.page.community.serve.holder;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
+import com.framework.utils.viewutils.ViewUtils;
 import com.page.community.serve.model.ServeResult;
 import com.page.community.serve.model.ServeResult.Data.WaterList;
 import com.qfant.wuye.R;
@@ -38,7 +40,6 @@ public class ViewHolder extends BaseViewHolder<WaterList> {
 
     public ViewHolder(Context context, View itemView) {
         super(context, itemView);
-//        R.layout.pub_activity_gowater_item_layout;
         ButterKnife.bind(this, itemView);
     }
 
@@ -50,7 +51,8 @@ public class ViewHolder extends BaseViewHolder<WaterList> {
             title.setText(data.title);
             tvContent.setText("联系电话：" + data.phone);
             tvState.setText("联系地址：" + data.address);
-            ImageLoader.getInstance(mContext).loadImage(data.pic, ivImage, R.drawable.moren);
+            ImageLoad.loadPlaceholder(mContext, data.pic, ivImage);
+            ViewUtils.setOrGone(btnCall, !TextUtils.isEmpty(data.phone));
         }
     }
 

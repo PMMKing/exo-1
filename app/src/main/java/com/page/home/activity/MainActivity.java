@@ -36,8 +36,6 @@ public class MainActivity extends MainTabActivity {
 
     @BindView(R.id.tl_tab)
     TabLayout tlTab;
-    @BindView(R.id.image_pai)
-    ImageView imagePai;
     private boolean mIsExit;
 
     @Override
@@ -75,29 +73,15 @@ public class MainActivity extends MainTabActivity {
         super.onResume();
     }
 
-    @Override
-    public void onTabClick(TabItem tabItem) {
-//        if ("随手拍".equals(tabItem.text)) {
-//            qStartActivity(AddQPaiActivity.class);
-//        } else {
-        super.onTabClick(tabItem);
-//        }
-    }
+//    @Override
+//    public void onTabClick(TabItem tabItem) {
+////        if ("随手拍".equals(tabItem.text)) {
+////            qStartActivity(AddQPaiActivity.class);
+////        } else {
+//        super.onTabClick(tabItem);
+////        }
+//    }
 
-    @OnClick(R.id.image_pai)
-    public void onViewClicked() {
-
-        try {
-            BaseFragment fragment = QpListFragment.class.newInstance();
-            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, fragment).commitAllowingStateLoss();
-            tabLayout.setCurrentTab(2);
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-//        qStartActivity(AddQPaiActivity.class);
-    }
 
     @Override
     public void onBackPressed() {

@@ -13,16 +13,18 @@ public class EventDetailsResult extends BaseResult {
 
     public Data data;
 
-    public static class Data implements Serializable {
+    public static class Data implements Serializable{
         public int id;
         public String title;
         public String pic;
         public String time;
         public int islimit;
-        public String persons;
+        public int persons;
         public String place;
         public String intro;
         public String createtime;
         public String customername;
+        public int isjoin;
+        public int ismine;
     }
 }

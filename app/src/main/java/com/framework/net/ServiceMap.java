@@ -10,6 +10,7 @@ import com.page.community.eventlist.model.EventListResult;
 import com.page.community.quickpain.model.QpDetailResult;
 import com.page.community.quickpain.model.ScommentsReault;
 import com.page.community.serve.model.RepairResult;
+import com.page.community.serve.model.SerDetailResult;
 import com.page.community.serve.model.ServeResult;
 import com.page.home.model.ContactResult;
 import com.page.home.model.LinksResult;
@@ -36,6 +37,8 @@ import com.page.uc.bean.RoomsResult;
 import com.page.uc.bean.UnitsResult;
 import com.page.uc.bean.UpdateMyPortraitResult;
 import com.page.uc.payfee.activity.ubmitWuyeFeeResult;
+import com.page.uc.payfee.model.FeeListResult;
+import com.page.uc.payfee.model.FeeMonthResult;
 import com.page.uc.payfee.model.WaitFeeResult;
 
 import java.io.Serializable;
@@ -67,10 +70,13 @@ public enum ServiceMap implements Enums.IType, Serializable {
     uploadPic("/uploadPic.do", UpdateMyPortraitResult.class, ServiceMap.NET_TASKTYPE_FILE),
 
     getWaters("/getWaters.do", ServeResult.class),//送水
+    getWaterDetail("/getWaterDetail.do", SerDetailResult.class),//送水
     getHouses("/getHouses.do", ServeResult.class),//家政
+    getHouseDetail("/getHouseDetail.do", SerDetailResult.class),//家政
     getWashes("/getWashes.do", ServeResult.class),//洗衣
     getMerchants("/getMerchants.do", ServeResult.class),//周边
     contact("/contact.do", ContactResult.class),//周边
+    getWashDetail("/getWashDetail.do", SerDetailResult.class),//洗衣
     getActivityList("/getActivityList.do", EventListResult.class),//首页活动列表
     getMyActivityList("/getMyActivityList.do", EventListResult.class),//我的活动列表
     getActivity("/getActivity.do", EventDetailsResult.class),//活动详情
@@ -107,6 +113,8 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getParticularProducts("/getParticularProducts.do", ShopRecResult.class),//首页
     getMyWuyeFees("/getMyWuyeFees.do", WaitFeeResult.class),//物业代缴费
     submitWuyeFee("/submitWuyeFee.do", ubmitWuyeFeeResult.class),//物业代缴费
+    wuyeFeeMonths("/wuyeFeeMonths.do", FeeMonthResult.class),//物业代缴费
+    wuyeFeeOrders("/wuyeFeeOrders.do", FeeListResult.class),//物业代缴费
     ;
 
 

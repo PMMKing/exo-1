@@ -64,7 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:clickable="true"
-        android:padding="14dp"
-        android:src="@drawable/ic_launcher" />
+        android:padding="19dp"
+        android:src="@drawable/pub_icon_phone"
+        android:visibility="gone" />
 
 </LinearLayout>

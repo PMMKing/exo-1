@@ -13,8 +13,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.framework.utils.cache.ImageLoader;
+import com.framework.net.ServiceMap;
 import com.framework.utils.imageload.ImageLoad;
+import com.page.community.serve.activity.RepairActivity;
 import com.page.store.collect.activity.CollectActivity;
+import com.page.uc.payfee.activity.PayFeeHistoryActivity;
 import com.page.uc.payfee.activity.WaitPayFeeActivity;
 import com.qfant.wuye.R;
 import com.framework.activity.BaseFragment;
@@ -29,6 +32,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+
+import static com.page.community.serve.activity.ServeActivity.SERVICEMAP;
+import static com.page.community.serve.activity.ServeActivity.TITLE;
 
 /**
  * Created by chenxi.cui on 2017/8/13.
@@ -104,7 +110,7 @@ public class UserCenterFragment extends BaseFragment {
                 }
                 break;
             case R.id.image_setting:
-                qStartActivity(OrderDetailsActivity.class);
+//                qStartActivity(OrderDetailsActivity.class);
                 break;
             case R.id.ll_order_0:
                 bundle.putInt("index", 1);
@@ -137,10 +143,12 @@ public class UserCenterFragment extends BaseFragment {
 //                qStartActivity(SelectComActivity.class);
                 break;
             case R.id.ll_list_4:
-                qStartActivity(WaitPayFeeActivity.class);
+                qStartActivity(PayFeeHistoryActivity.class);
                 break;
             case R.id.ll_list_5:
-                qStartActivity(ApplyForActivity.class);
+                bundle.putString(TITLE, "维修列表");
+                bundle.putSerializable(SERVICEMAP, ServiceMap.getMyRepairs);
+                qStartActivity(RepairActivity.class, bundle);
                 break;
             case R.id.ll_list_6:
                 final String phone = "10086";

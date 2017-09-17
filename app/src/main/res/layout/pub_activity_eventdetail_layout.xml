@@ -11,23 +11,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--<FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v4.view.ViewPager
-                android:id="@+id/vp_image"
-                android:layout_width="match_parent"
-                android:layout_height="280dp" />
-
-            <net.lucode.hackware.magicindicator.MagicIndicator
-                android:id="@+id/magic_indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="20dp"
-                android:layout_gravity="center_horizontal|bottom"
-                android:visibility="gone" />
-        </FrameLayout>-->
-
         <ImageView
             android:id="@+id/iv_image"
             android:layout_width="match_parent"
@@ -44,9 +27,9 @@
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:paddingTop="16dp"
-            tools:text="周末我们一起去超颜值书店逛逛吧"
             android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h18" />
+            android:textSize="@dimen/text_h18"
+            tools:text="周末我们一起去超颜值书店逛逛吧" />
 
         <TextView
             android:id="@+id/tv_join_number"
@@ -55,9 +38,10 @@
             android:paddingLeft="14dp"
             android:paddingRight="14dp"
             android:paddingTop="2dp"
-            tools:text="50人已报名"
             android:textColor="@color/pub_color_gray_666"
-            android:textSize="@dimen/text_h12" />
+            android:textSize="@dimen/text_h12"
+            android:visibility="gone"
+            tools:text="50人已报名" />
 
         <TextView
             android:id="@+id/tv_join"
@@ -74,7 +58,9 @@
             android:paddingTop="13dp"
             android:text="我要报名"
             android:textColor="@color/pub_color_blue"
-            android:textSize="@dimen/text_h18" />
+            android:textSize="@dimen/text_h18"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
 
         <LinearLayout
@@ -90,8 +76,9 @@
             <ImageView
                 android:layout_width="18dp"
                 android:layout_height="18dp"
+                android:src="@drawable/pub_icon_calendar" />
                 android:scaleType="centerCrop"
-                android:src="@drawable/pub_login_icon" />
+              />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -109,9 +96,9 @@
                 android:layout_marginRight="13dp"
                 android:layout_weight="1"
                 android:gravity="right"
-                tools:text="2017.07.28 周五"
                 android:textColor="@color/pub_color_gray_666"
-                android:textSize="@dimen/text_h12" />
+                android:textSize="@dimen/text_h12"
+                tools:text="2017.07.28 周五" />
 
             <ImageView
                 android:layout_width="13dp"
@@ -140,7 +127,7 @@
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/pub_login_icon" />
+                android:src="@drawable/pub_icon_location" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -160,9 +147,9 @@
                 android:ellipsize="end"
                 android:gravity="right"
                 android:lines="1"
-                tools:text="浦东新区锦康路800号"
                 android:textColor="@color/pub_color_gray_666"
-                android:textSize="@dimen/text_h12" />
+                android:textSize="@dimen/text_h12"
+                tools:text="浦东新区锦康路800号" />
 
             <ImageView
                 android:layout_width="13dp"

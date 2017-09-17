@@ -14,8 +14,8 @@
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/pub_login_icon"
-        tools:background="@color/pub_color_gray_999" />
+        tools:background="@color/pub_color_gray_999"
+        tools:src="@drawable/pub_login_icon" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -67,6 +67,7 @@
         android:clickable="true"
         android:scaleType="centerCrop"
         android:padding="15dp"
-        android:src="@drawable/pub_down_arrow" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/pub_icon_phone" />
 
 </LinearLayout>

@@ -98,7 +98,7 @@ public class RepairHolder extends BaseViewHolder<RepairList> {
                 temp += "订单异常";
                 break;
         }
-        return TextViewUtils.genericColorfulText(temp, color, new int[]{3, temp.length() - 1});
+        return TextViewUtils.genericColorfulText(temp, color, new int[]{3, temp.length()});
     }
 
 

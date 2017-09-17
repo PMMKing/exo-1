@@ -39,8 +39,8 @@
             android:layout_weight="1"
             android:ellipsize="end"
             android:lines="1"
-            android:paddingBottom="14dp"
-            android:paddingTop="14dp"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
             android:textColor="@color/pub_color_gray_999"
             android:textSize="@dimen/text_h12"
             tools:text="2017-07-24 16:24" />
@@ -53,6 +53,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:lines="1"
+            android:visibility="gone"
             android:paddingLeft="11dp"
             android:paddingRight="11dp"
             android:textColor="@color/pub_color_gray_666"

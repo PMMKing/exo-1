@@ -27,10 +27,12 @@
 
     <CheckBox
         android:id="@+id/cb_select"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_gravity="right|center_vertical"
         android:layout_marginRight="14dp"
+        android:background="@drawable/pub_check_selector"
+        android:button="@null"
         android:clickable="false" />
 
 </FrameLayout>

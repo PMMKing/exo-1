@@ -70,9 +70,9 @@
                 android:textSize="@dimen/text_h14" />
 
             <com.framework.view.IFView
-                android:id="@+id/ifv_711_more"
+                android:id="@+id/tv_711_more"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="更多>"

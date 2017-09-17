@@ -145,7 +145,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
         if (param.key == ServiceMap.submitOrder) {
             if (param.result.bstatus.code == 0) {
                 SubmitResult result = (SubmitResult) param.result;
-                if (products.size() > 1) {
+                if (products.size() > 2) {
                     ShopCarUtils.getInstance().clearData();//清空购物车
                 }
                 Bundle bundle = new Bundle();
@@ -182,6 +182,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 100) {
+            if (data == null) return;
             Address address = (Address) data.getExtras().getSerializable("address");
             products.remove(0);
             Product product = new Product();

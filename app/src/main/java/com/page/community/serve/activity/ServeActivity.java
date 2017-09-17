@@ -132,15 +132,8 @@ public class ServeActivity extends BaseActivity implements OnItemClickListener<W
 
     @Override
     public void onItemClickListener(View view, WaterList data, int position) {
-        if (serviceMap == ServiceMap.getMyRepairs || serviceMap == ServiceMap.getMerchants) {
-            Bundle bundle = new Bundle();
-            bundle.putString("id", data.id);
-            qStartActivity(ApplyForActivity.class, bundle);
-        } else {
-            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + data.phone));
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-        }
+        myBundle.putString("id", data.id);
+        qStartActivity(ServerDetailActivity.class, myBundle);
     }
 
     @Override

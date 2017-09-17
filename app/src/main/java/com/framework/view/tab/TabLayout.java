@@ -19,6 +19,7 @@ public class TabLayout extends LinearLayout implements View.OnClickListener {
     private OnTabClickListener listener;
     private View selectView;
     private int tabCount;
+    private int index = -1;
 
     public TabLayout(Context context) {
         super(context);
@@ -49,6 +50,7 @@ public class TabLayout extends LinearLayout implements View.OnClickListener {
                 }
                 selectView = view;
                 listener.onTabClick(tabs.get(i));
+                this.index = i;
             }
         }
     }
@@ -82,6 +84,9 @@ public class TabLayout extends LinearLayout implements View.OnClickListener {
 
     }
 
+    public int getCurrentTab() {
+        return index;
+    }
 
     @Override
     public void onClick(View v) {

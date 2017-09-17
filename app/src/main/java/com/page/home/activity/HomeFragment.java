@@ -29,6 +29,7 @@ import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.IFView;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
+import com.page.community.eventdetails.activity.EventDetailActivity;
 import com.page.community.eventlist.activity.EventListActivity;
 import com.page.community.eventlist.model.EventListParam;
 import com.page.community.eventlist.model.EventListResult;
@@ -47,6 +48,7 @@ import com.page.home.view.ModeView;
 import com.page.store.home.model.FoodRecResult;
 import com.page.store.home.model.FoodRecResult.Data.Products;
 import com.page.store.prodetails.activity.ProDetailsActivity;
+import com.page.uc.payfee.activity.PayFeeHistoryActivity;
 import com.page.uc.payfee.activity.WaitPayFeeActivity;
 import com.qfant.wuye.R;
 
@@ -60,6 +62,7 @@ import butterknife.Unbinder;
 
 import static com.page.community.serve.activity.ServeActivity.SERVICEMAP;
 import static com.page.community.serve.activity.ServeActivity.TITLE;
+import static com.page.community.serve.activity.ServerDetailActivity.CLICKMAP;
 
 /**
  * Created by chenxi.cui on 2017/8/13.
@@ -75,8 +78,6 @@ public class HomeFragment extends BaseFragment {
     ViewFlipper flipper;
     @BindView(R.id.gl_mode)
     GridLayout glMode;
-    @BindView(R.id.ifv_711_more)
-    IFView ifv711More;
     @BindView(R.id.ll_711)
     LinearLayout ll711;
     @BindView(R.id.rv_711_list)
@@ -119,12 +120,20 @@ public class HomeFragment extends BaseFragment {
 
     private void setEvent(List<ActivityList> activityList) {
         llEventList.removeAllViews();
-        for (ActivityList event : activityList) {
+        for (final ActivityList event : activityList) {
             View itemView = LayoutInflater.from(getContext()).inflate(R.layout.pub_fragment_home_event_item_layout, null, false);
             TextView tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
             TextView tvTime = (TextView) itemView.findViewById(R.id.tv_time);
             tvTitle.setText(event.title);
             tvTime.setText(DateFormatUtils.format(event.createtime, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm"));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString(EventDetailActivity.ID, event.id);
+                    qStartActivity(EventDetailActivity.class, bundle);
+                }
+            });
             llEventList.addView(itemView);
         }
     }
@@ -163,14 +172,14 @@ public class HomeFragment extends BaseFragment {
 
     private void setModel() {
         ArrayList<HomeModel> list = new ArrayList<>();
-        list.add(new HomeModel("维修",R.drawable.weixiu));
-        list.add(new HomeModel("送水",R.drawable.songshui));
-        list.add(new HomeModel("洗衣",R.drawable.xiyi));
-        list.add(new HomeModel("家政",R.drawable.baojie));
-        list.add(new HomeModel("缴费",R.drawable.jiaofei));
-        list.add(new HomeModel("超市",R.drawable.chaoshi));
-        list.add(new HomeModel("周边",R.drawable.zhoubian));
-        list.add(new HomeModel("电话",R.drawable.dianhua));
+        list.add(new HomeModel("维修", R.drawable.weixiu));
+        list.add(new HomeModel("送水", R.drawable.songshui));
+        list.add(new HomeModel("洗衣", R.drawable.xiyi));
+        list.add(new HomeModel("家政", R.drawable.baojie));
+        list.add(new HomeModel("缴费", R.drawable.jiaofei));
+        list.add(new HomeModel("超市", R.drawable.chaoshi));
+        list.add(new HomeModel("周边", R.drawable.zhoubian));
+        list.add(new HomeModel("电话", R.drawable.dianhua));
 
         for (HomeModel homeModel : list) {
             ModeView itemView = new ModeView(getContext());
@@ -189,21 +198,24 @@ public class HomeFragment extends BaseFragment {
                         case "送水":
                             bundle.putString(TITLE, "送水商家");
                             bundle.putSerializable(SERVICEMAP, ServiceMap.getWaters);
+                            bundle.putSerializable(CLICKMAP, ServiceMap.getWaterDetail);
                             qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "洗衣":
                             bundle.putString(TITLE, "洗衣店");
                             bundle.putSerializable(SERVICEMAP, ServiceMap.getWashes);
+                            bundle.putSerializable(CLICKMAP, ServiceMap.getWashDetail);
                             qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "家政":
                             bundle.putString(TITLE, "家政");
                             bundle.putSerializable(SERVICEMAP, ServiceMap.getHouses);
+                            bundle.putSerializable(CLICKMAP, ServiceMap.getHouseDetail);
                             qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "缴费":
                             bundle.putString(TITLE, "缴费");
-                            qStartActivity(WaitPayFeeActivity.class);
+                            qStartActivity(PayFeeHistoryActivity.class);
                             break;
                         case "超市":
 //                            bundle.putString(TITLE, "超市");
@@ -237,7 +249,7 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void bindImage(ImageView imageView, Links bannerModel) {
-                ImageLoad.loadPlaceholder(getContext(), bannerModel.link + bannerModel.imgurl, imageView);
+                ImageLoad.loadPlaceholder(getContext(), bannerModel.imgurl, imageView);
             }
 
         };
@@ -321,8 +333,13 @@ public class HomeFragment extends BaseFragment {
     }
 
     @OnClick(R.id.tv_event)
-    public void onViewClicked() {
+    public void onViewClicked(View view) {
         qStartActivity(EventListActivity.class);
+    }
+
+    @OnClick(R.id.tv_711_more)
+    public void onShopMore() {
+        ((MainTabActivity) getContext()).setCurrentTab(1);
     }
 
 }
