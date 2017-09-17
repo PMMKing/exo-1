@@ -77,6 +77,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     getMerchants("/getMerchants.do", ServeResult.class),//周边
     contact("/contact.do", ContactResult.class),//周边
     getWashDetail("/getWashDetail.do", SerDetailResult.class),//洗衣
+    getMerchantDetail("/getMerchantDetail.do", SerDetailResult.class),//洗衣
     getActivityList("/getActivityList.do", EventListResult.class),//首页活动列表
     getMyActivityList("/getMyActivityList.do", EventListResult.class),//我的活动列表
     getActivity("/getActivity.do", EventDetailsResult.class),//活动详情

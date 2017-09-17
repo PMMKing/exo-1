@@ -224,6 +224,7 @@ public class HomeFragment extends BaseFragment {
                         case "周边":
                             bundle.putString(TITLE, "周边");
                             bundle.putSerializable(SERVICEMAP, ServiceMap.getMerchants);
+                            bundle.putSerializable(CLICKMAP, ServiceMap.getMerchantDetail);
                             qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "电话":
