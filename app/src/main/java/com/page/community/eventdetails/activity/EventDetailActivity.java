@@ -82,7 +82,7 @@ public class EventDetailActivity extends BaseActivity {
         tvTitle.setText(data.title);
         tvTime.setText(DateFormatUtils.format(data.time, "yyyy.MM.dd EE"));
         tvAddress.setText(data.place);
-        tvDetail.setText(data.customername);
+        tvDetail.setText(data.intro);
         ImageLoad.loadPlaceholder(getContext(), data.pic, ivImage);
         tvJoin.setVisibility(View.VISIBLE);
         refreshJoin(data.ismine == 1 ? 2 : data.isjoin == 0 ? 0 : 1);
@@ -101,7 +101,7 @@ public class EventDetailActivity extends BaseActivity {
                 break;
             case 2:
                 tvJoin.setText("查看参与人员");
-                tvJoin.setTag(1);
+                tvJoin.setTag(2);
                 break;
         }
     }
