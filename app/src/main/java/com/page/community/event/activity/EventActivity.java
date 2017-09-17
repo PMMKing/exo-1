@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
@@ -12,10 +13,10 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.view.AddView;
-import com.page.community.eventlist.model.EventListResult;
+import com.framework.view.DatePickerDialog;
+import com.page.community.event.model.EventParam;
 import com.page.community.eventlist.model.EventListResult.Data.ActivityList;
 import com.qfant.wuye.R;
-import com.page.community.event.model.EventParam;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,8 +33,6 @@ public class EventActivity extends BaseActivity {
 
     @BindView(R.id.et_title)
     EditText etTitle;
-    @BindView(R.id.et_event_time)
-    EditText etEventTime;
     @BindView(R.id.et_event_address)
     EditText etEventAddress;
     @BindView(R.id.et_event_people)
@@ -46,6 +45,10 @@ public class EventActivity extends BaseActivity {
     TextView tvCommit;
     @BindView(R.id.addView)
     AddView addView;
+    @BindView(R.id.et_event_time)
+    TextView etEventTime;
+    @BindView(R.id.ll_event_time)
+    LinearLayout llEventTime;
     private String url;
     private String id;
 
@@ -151,5 +154,21 @@ public class EventActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         addView.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @OnClick(R.id.ll_event_time)
+    public void onClickedTime() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this);
+        datePickerDialog.showDatePickerDialog(new DatePickerDialog.DatePickerDialogInterface() {
+            @Override
+            public void sure(int year, int month, int day) {
+                etEventTime.setText(String.format("%d-%d-%d",year,month,day));
+            }
+
+            @Override
+            public void cancle() {
+
+            }
+        });
     }
 }

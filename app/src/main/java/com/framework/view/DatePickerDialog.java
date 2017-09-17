@@ -15,6 +15,8 @@ import android.widget.NumberPicker;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class DatePickerDialog {
@@ -23,12 +25,10 @@ public class DatePickerDialog {
     private AlertDialog.Builder mAlertDialog;
     private DatePickerDialogInterface datePickerDialogInterface;
     private DatePicker mDatePicker;
-    private int mYear, mDay, mMonth;
 
     public DatePickerDialog(Context context) {
         super();
         mContext = context;
-        datePickerDialogInterface = (DatePickerDialogInterface) context;
     }
 
     /**
@@ -57,8 +57,9 @@ public class DatePickerDialog {
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         dialog.dismiss();
-                        getDatePickerValue();
-                        datePickerDialogInterface.positiveListener();
+                        if(datePickerDialogInterface != null){
+                            datePickerDialogInterface.sure(mDatePicker.getYear(),mDatePicker.getMonth()+1,mDatePicker.getDayOfMonth());
+                        }
 
                     }
                 });
@@ -68,7 +69,9 @@ public class DatePickerDialog {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        datePickerDialogInterface.negativeListener();
+                        if(datePickerDialogInterface != null){
+                            datePickerDialogInterface.cancle();
+                        }
                         dialog.dismiss();
                     }
                 });
@@ -78,40 +81,23 @@ public class DatePickerDialog {
     /**
      * 显示日期选择器
      */
-    public void showDatePickerDialog() {
+    public void showDatePickerDialog(DatePickerDialogInterface datePickerDialogInterface) {
+        this.datePickerDialogInterface = datePickerDialogInterface;
         View view = initDatePicker();
+        Calendar calendar = Calendar.getInstance();
+        mDatePicker.setMinDate(calendar.getTimeInMillis());
+        mDatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH),null);
         mAlertDialog = new AlertDialog.Builder(mContext);
         mAlertDialog.setTitle("选择时间");
         initDialog(view);
         mAlertDialog.show();
     }
 
-    public int getYear() {
-        return mYear;
-    }
-
-    public int getDay() {
-        return mDay;
-    }
-
-    public int getMonth() {
-        //返回的时间是0-11
-        return mMonth + 1;
-    }
-
-    /**
-     * 获取日期选择的值
-     */
-    private void getDatePickerValue() {
-        mYear = mDatePicker.getYear();
-        mMonth = mDatePicker.getMonth();
-        mDay = mDatePicker.getDayOfMonth();
-    }
 
     public interface DatePickerDialogInterface {
-        public void positiveListener();
-
-        public void negativeListener();
+        void sure(int year,int month,int day);
+        void cancle();
     }
 
 }
