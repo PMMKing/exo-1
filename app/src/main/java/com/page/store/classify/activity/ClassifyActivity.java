@@ -115,10 +115,6 @@ public class ClassifyActivity extends BaseActivity {
         multiAdapter.setOnItemClickListener(new OnItemClickListener<Produts>() {
             @Override
             public void onItemClickListener(View view, Produts data, int position) {
-//                Bundle bundle = new Bundle();
-//                bundle.putString(ClassifyListActivity.CATEGORYID, data.id);
-//                qStartActivity(ClassifyListActivity.class, bundle);
-
                 Bundle bundle = new Bundle();
                 bundle.putString(ProDetailsActivity.ID, data.id);
                 qStartActivity(ProDetailsActivity.class, bundle);

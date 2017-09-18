@@ -1,17 +1,19 @@
 package com.framework.utils;
 
+import android.content.Intent;
 import android.os.Handler.Callback;
 import android.os.Message;
 import android.view.WindowManager.BadTokenException;
 
+import com.framework.app.MainApplication;
 import com.framework.net.NetworkListener;
 import com.framework.net.NetworkParam;
 import com.framework.net.ServiceMap;
 import com.framework.net.TaskStatus;
+import com.page.uc.LoginActivity;
 
 
 /**
- *
  * @author zexu.ge
  * @time 2013-4-18 下午4:37:25
  */
@@ -70,49 +72,56 @@ public class HandlerCallbacks {
 
                 NetworkParam param = (NetworkParam) msg.obj;
                 switch (msg.what) {
-                case TaskStatus.START:
-                    try {
+                    case TaskStatus.START:
+                        try {
+                            synchronized (this) {
+                                if (listener != null) {
+                                    listener.onNetStart(param);
+                                }
+                            }
+                        } catch (BadTokenException e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    case TaskStatus.RUNNING:
+                        break;
+                    case TaskStatus.ERROR:
                         synchronized (this) {
                             if (listener != null) {
-                                listener.onNetStart(param);
+                                listener.onNetError(param, MESSAGE_ERROR);
                             }
                         }
-                    } catch (BadTokenException e) {
-                        e.printStackTrace();
-                    }
-                    break;
-                case TaskStatus.RUNNING:
-                    break;
-                case TaskStatus.ERROR:
-                    synchronized (this) {
-                        if (listener != null) {
-                            listener.onNetError(param, MESSAGE_ERROR);
+                        break;
+                    case TaskStatus.SUCCESS:
+                        ServiceMap type = param.key;
+                        if (type == null) {
+                            synchronized (this) {
+                                if (listener != null) {
+                                    listener.onNetError(param, MESSAGE_ERROR_NO_SERVICE_TYPE);
+                                }
+                            }
+                        } else {
+                            synchronized (this) {
+                                if (param.result.bstatus.code == 6) {
+                                    Intent intent = new Intent();
+                                    intent.setClass(MainApplication.applicationContext, LoginActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    MainApplication.applicationContext.startActivity(intent);
+                                } else {
+                                    if (listener != null) {
+                                        listener.onMsgSearchComplete(param);
+                                    }
+                                }
+                            }
                         }
-                    }
-                    break;
-                case TaskStatus.SUCCESS:
-                    ServiceMap type = param.key;
-                    if (type == null) {
+                        break;
+                    case TaskStatus.END:
                         synchronized (this) {
                             if (listener != null) {
-                                listener.onNetError(param, MESSAGE_ERROR_NO_SERVICE_TYPE);
+                                listener.onNetEnd(param);
                             }
                         }
-                    } else {
-                        synchronized (this) {
-                            if (listener != null) {
-                                listener.onMsgSearchComplete(param);
-                            }
-                        }
-                    }
-                    break;
-                case TaskStatus.END:
-                    synchronized (this) {
-                        if (listener != null) {
-                            listener.onNetEnd(param);
-                        }
-                    }
-                    break;
+                        break;
                 }
                 return false;
             }

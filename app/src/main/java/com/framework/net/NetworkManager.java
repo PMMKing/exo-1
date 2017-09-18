@@ -288,6 +288,7 @@ public class NetworkManager implements TaskListener {
             Message m = null;
             if (!networkTask.cancel) {
                 networkTask.param.result = result;
+
                 if (networkTask.handler != null) {
                     if (networkTask.param.result != null) {
                         m = networkTask.handler.obtainMessage(TaskStatus.SUCCESS, networkTask.param);
