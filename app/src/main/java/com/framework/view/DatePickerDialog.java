@@ -57,8 +57,8 @@ public class DatePickerDialog {
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         dialog.dismiss();
-                        if(datePickerDialogInterface != null){
-                            datePickerDialogInterface.sure(mDatePicker.getYear(),mDatePicker.getMonth()+1,mDatePicker.getDayOfMonth());
+                        if (datePickerDialogInterface != null) {
+                            datePickerDialogInterface.sure(mDatePicker.getYear(), mDatePicker.getMonth() + 1, mDatePicker.getDayOfMonth());
                         }
 
                     }
@@ -69,7 +69,7 @@ public class DatePickerDialog {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        if(datePickerDialogInterface != null){
+                        if (datePickerDialogInterface != null) {
                             datePickerDialogInterface.cancle();
                         }
                         dialog.dismiss();
@@ -82,12 +82,32 @@ public class DatePickerDialog {
      * 显示日期选择器
      */
     public void showDatePickerDialog(DatePickerDialogInterface datePickerDialogInterface) {
+        showDatePickerDialog(0, datePickerDialogInterface);
+    }
+
+    public void showDatePickerDialog(long timeInMillis, DatePickerDialogInterface datePickerDialogInterface) {
+        this.datePickerDialogInterface = datePickerDialogInterface;
+        Calendar calendar = Calendar.getInstance();
+        View view = initDatePicker();
+        mDatePicker.setMinDate(timeInMillis > 0 ? timeInMillis : calendar.getTimeInMillis());
+        mDatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH), null);
+        mAlertDialog = new AlertDialog.Builder(mContext);
+        mAlertDialog.setTitle("选择时间");
+        initDialog(view);
+        mAlertDialog.show();
+    }
+
+
+    /**
+     * 显示日期选择器
+     */
+    public void showDatePickerDialogNo(DatePickerDialogInterface datePickerDialogInterface) {
         this.datePickerDialogInterface = datePickerDialogInterface;
         View view = initDatePicker();
         Calendar calendar = Calendar.getInstance();
-        mDatePicker.setMinDate(calendar.getTimeInMillis());
         mDatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
-                calendar.get(Calendar.DAY_OF_MONTH),null);
+                calendar.get(Calendar.DAY_OF_MONTH), null);
         mAlertDialog = new AlertDialog.Builder(mContext);
         mAlertDialog.setTitle("选择时间");
         initDialog(view);
@@ -96,7 +116,8 @@ public class DatePickerDialog {
 
 
     public interface DatePickerDialogInterface {
-        void sure(int year,int month,int day);
+        void sure(int year, int month, int day);
+
         void cancle();
     }
 

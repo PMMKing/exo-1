@@ -23,14 +23,12 @@ import com.framework.view.LineDecoration;
 import com.page.store.classify.model.ClassifyResult;
 import com.page.store.classify.model.ClassifyResult.Data.Datas;
 import com.page.store.classify.model.ClassifyResult.Data.Datas.Produts;
-import com.page.store.classifylist.model.ClassifyListResult;
 import com.page.store.orderaffirm.model.CommitOrderParam;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.qfant.wuye.R;
 import com.page.store.classify.holder.NavHolder;
 import com.page.store.classify.holder.ProHolder;
-import com.page.store.classifylist.activity.ClassifyListActivity;
 
 import java.util.ArrayList;
 import java.util.List;

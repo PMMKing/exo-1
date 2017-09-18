@@ -64,7 +64,7 @@ public class RepairActivity extends BaseActivity implements OnItemClickListener<
         }
         title = myBundle.getString("title");
         serviceMap = (ServiceMap) myBundle.getSerializable(SERVICEMAP);
-        setTitleBar(title, true, " + ", new View.OnClickListener() {
+        setTitleBar(title, true, getResources().getString(R.string.icon_font_add), new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 qStartActivity(ApplyForActivity.class);

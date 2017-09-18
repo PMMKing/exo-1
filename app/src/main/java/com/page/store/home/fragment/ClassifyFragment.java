@@ -3,10 +3,12 @@ package com.page.store.home.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -38,7 +40,7 @@ import butterknife.Unbinder;
  * Created by shucheng.qu on 2017/9/14.
  */
 
-public class ClassifyFragment extends BaseFragment {
+public class ClassifyFragment extends BaseFragment implements View.OnTouchListener {
 
     @BindView(R.id.rv_nav_list)
     RecyclerView rvNavList;
@@ -51,16 +53,16 @@ public class ClassifyFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        View view = inflater.inflate(R.layout.pub_activity_classify_layout, container, false);
         View view = onCreateViewWithTitleBar(inflater, container, R.layout.pub_activity_classify_layout);
         unbinder = ButterKnife.bind(this, view);
+        view.setOnTouchListener(this);
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        setTitleBar("商品分类", true);
+        setTitleBar("商品分类", false);
         setLeftListView();
         setRightListView();
         startRequest();
@@ -146,9 +148,33 @@ public class ClassifyFragment extends BaseFragment {
         return false;
     }
 
+
+    /**
+     * @param v
+     * @param event
+     * @return 防止击穿
+     */
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        return true;
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        FragmentTransaction fragmentTransaction = getContext().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.back_left_in_show
+                , R.anim.back_right_out_dismiss
+                , R.anim.back_left_in_show
+                , R.anim.back_right_out_dismiss);
+        fragmentTransaction.remove(this);
+        fragmentTransaction.commitAllowingStateLoss();
+        return true;
     }
 }

@@ -176,7 +176,7 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
                 }
             } else {
                 if ((int) param.ext == 1) {
-                    showToast("没有数据");
+//                    showToast("没有数据");
                 } else {
                     showToast("没有更多了");
                 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.framework.app.MainApplication;
 import com.framework.utils.inject.From;
 import com.framework.utils.inject.Injector;
 import com.qfant.wuye.R;
@@ -126,6 +127,7 @@ public class TitleBar extends LinearLayout {
 		} else {
 			tvRightText.setVisibility(VISIBLE);
 			tvRightText.setText(type ==0 ? titleRightText : "");
+			tvRightText.setTypeface(MainApplication.getIconFont());
 //			tvRightText.setBackgroundResource(type ==0 ? R.drawable.titlebar_right : rightIconResId);
 			if(rightListener != null) {
 				tvRightText.setOnClickListener(rightListener);

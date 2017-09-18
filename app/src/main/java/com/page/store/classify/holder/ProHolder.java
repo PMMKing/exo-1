@@ -1,6 +1,7 @@
 package com.page.store.classify.holder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -9,6 +10,7 @@ import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.ShopCarUtils;
 import com.framework.utils.ToastUtils;
 import com.framework.utils.imageload.ImageLoad;
+import com.page.home.activity.MainActivity;
 import com.page.store.classify.model.ClassifyResult.Data.Datas.Produts;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 import com.qfant.wuye.R;
@@ -97,6 +99,7 @@ public class ProHolder extends BaseViewHolder<Produts> {
 
                 break;
         }
+        mContext.sendBroadcast(new Intent(MainActivity.REFRESH_TAB_ACTION));
     }
 
 }

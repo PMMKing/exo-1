@@ -80,6 +80,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:background="@null"
+                    android:digits="1234567890"
                     android:hint="联系电话"
                     android:inputType="phone"
                     android:lines="1"

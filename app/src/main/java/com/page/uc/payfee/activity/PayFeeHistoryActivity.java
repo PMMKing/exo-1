@@ -65,8 +65,8 @@ public class PayFeeHistoryActivity extends BaseActivity {
 
         final ArrayList<String> titles = new ArrayList<>();
         titles.add("待缴费");
-        titles.add("已缴费");
         titles.add("缴费订单");
+        titles.add("已缴费月份");
 
         CommonNavigator commonNavigator = new CommonNavigator(this);
         commonNavigator.setAdjustMode(true);

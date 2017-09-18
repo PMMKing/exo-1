@@ -1,211 +1,221 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.framework.view.sivin.Banner
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            app:banner_pageChangeDuration="800"
-            app:banner_pointAutoPlayInterval="3"
-            app:banner_pointContainerBackground="#33000000"
-            app:banner_pointContainerLeftRightPadding="10dp"
-            app:banner_pointDrawable="@drawable/pub_banner_gray_blue_point"
-            app:banner_pointGravity="center_horizontal"
-            app:banner_pointLeftRightMargin="3dp"
-            app:banner_pointTopBottomMargin="6dp"
-            app:banner_tipTextColor="#FFFFFF"
-            app:banner_tipTextSize="12sp" />
-
-        <TextView
-            android:id="@+id/tv_recommend1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="11dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="11dp"
-            android:text="饮料推荐"
-            android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h16"
-            android:visibility="gone" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/pub_color_blue_F5FCFF"
-            android:orientation="vertical"
-            android:visibility="gone">
+            android:orientation="vertical">
 
-            <include layout="@layout/pub_fragment_shopping_11_layout" />
+            <com.framework.view.sivin.Banner
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                app:banner_pageChangeDuration="800"
+                app:banner_pointAutoPlayInterval="3"
+                app:banner_pointContainerBackground="#33000000"
+                app:banner_pointContainerLeftRightPadding="10dp"
+                app:banner_pointDrawable="@drawable/pub_banner_gray_blue_point"
+                app:banner_pointGravity="center_horizontal"
+                app:banner_pointLeftRightMargin="3dp"
+                app:banner_pointTopBottomMargin="6dp"
+                app:banner_tipTextColor="#FFFFFF"
+                app:banner_tipTextSize="12sp" />
 
-            <View
-                style="@style/line_gray_h"
-                android:layout_height="5dp"
-                android:background="@color/pub_color_white" />
+            <TextView
+                android:id="@+id/tv_recommend1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="11dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="11dp"
+                android:text="饮料推荐"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h16"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/pub_color_blue_F5FCFF"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <include layout="@layout/pub_fragment_shopping_11_layout" />
+
+                <View
+                    style="@style/line_gray_h"
+                    android:layout_height="5dp"
+                    android:background="@color/pub_color_white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:paddingRight="22dp"
+                            android:text="夏秋换季调理"
+                            android:textColor="@color/pub_color_blue_588a9a"
+                            android:textSize="@dimen/text_h14" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:paddingRight="22dp"
+                            android:text="名饮大折扣"
+                            android:textColor="@color/pub_color_black"
+                            android:textSize="@dimen/text_h10" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="76dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/pub_color_white"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/pub_login_icon" />
+
+                    </LinearLayout>
+
+                    <View
+                        style="@style/line_gray_v"
+                        android:layout_width="5dp"
+                        android:background="@color/pub_color_white" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:paddingRight="22dp"
+                            android:text="夏秋换季调理"
+                            android:textColor="@color/pub_color_blue_588a9a"
+                            android:textSize="@dimen/text_h14" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:paddingRight="22dp"
+                            android:text="名饮大折扣"
+                            android:textColor="@color/pub_color_black"
+                            android:textSize="@dimen/text_h10" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="76dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/pub_color_white"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/pub_login_icon" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!--<android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recommend1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/pub_color_blue_F5FCFF" />
+    -->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/tv_recommend2"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:paddingBottom="11dp"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="11dp"
+                    android:text="食品推荐"
+                    android:textColor="@color/pub_color_black"
+                    android:textSize="@dimen/text_h16" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:paddingRight="22dp"
-                        android:text="夏秋换季调理"
-                        android:textColor="@color/pub_color_blue_588a9a"
-                        android:textSize="@dimen/text_h14" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:paddingRight="22dp"
-                        android:text="名饮大折扣"
-                        android:textColor="@color/pub_color_black"
-                        android:textSize="@dimen/text_h10" />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="76dp"
-                        android:layout_margin="5dp"
-                        android:background="@color/pub_color_white"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/pub_login_icon" />
-
-                </LinearLayout>
-
-                <View
-                    style="@style/line_gray_v"
-                    android:layout_width="5dp"
-                    android:background="@color/pub_color_white" />
-
-                <LinearLayout
+                <com.framework.view.IFView
+                    android:id="@+id/tv_arr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:paddingRight="22dp"
-                        android:text="夏秋换季调理"
-                        android:textColor="@color/pub_color_blue_588a9a"
-                        android:textSize="@dimen/text_h14" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
-                        android:gravity="center"
-                        android:lines="1"
-                        android:paddingRight="22dp"
-                        android:text="名饮大折扣"
-                        android:textColor="@color/pub_color_black"
-                        android:textSize="@dimen/text_h10" />
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="76dp"
-                        android:layout_margin="5dp"
-                        android:background="@color/pub_color_white"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/pub_login_icon" />
-
-                </LinearLayout>
+                    android:paddingBottom="11dp"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:paddingTop="11dp"
+                    android:text="更多分类"
+                    android:textColor="@color/pub_color_blue"
+                    android:textSize="@dimen/text_h16" />
             </LinearLayout>
 
-        </LinearLayout>
 
-        <!--<android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_recommend1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/pub_color_blue_F5FCFF" />
--->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recommend2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pub_color_blue_F5FCFF"
+                android:paddingLeft="8dp" />
 
             <TextView
-                android:id="@+id/tv_recommend2"
-                android:layout_width="0dp"
+                android:id="@+id/tv_recommend3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:paddingBottom="11dp"
                 android:paddingLeft="15dp"
                 android:paddingTop="11dp"
-                android:text="食品推荐"
+                android:text="特别推荐"
                 android:textColor="@color/pub_color_black"
                 android:textSize="@dimen/text_h16" />
 
-            <com.framework.view.IFView
-                android:id="@+id/tv_arr"
-                android:layout_width="wrap_content"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recommend3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="11dp"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
-                android:paddingTop="11dp"
-                android:text="更多分类"
-                android:textColor="@color/pub_color_blue"
-                android:textSize="@dimen/text_h16" />
+                android:padding="2dp" />
+
         </LinearLayout>
+    </ScrollView>
 
+    <FrameLayout
+        android:id="@+id/fl_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_recommend2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/pub_color_blue_F5FCFF"
-            android:paddingLeft="8dp" />
-
-        <TextView
-            android:id="@+id/tv_recommend3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="11dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="11dp"
-            android:text="特别推荐"
-            android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h16" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_recommend3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp" />
-
-    </LinearLayout>
-
-</ScrollView>
+</FrameLayout>

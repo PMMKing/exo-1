@@ -1,5 +1,6 @@
 package com.page.home.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -43,6 +44,7 @@ public class MainTabActivity extends BaseActivity implements TabLayout.OnTabClic
 
     @Override
     public void onTabClick(TabItem tabItem) {
+        sendBroadcast(new Intent(MainActivity.REFRESH_TAB_ACTION));
         try {
             int index = mTabs.indexOf(tabItem);
             if (index == tabLayout.getCurrentTab()) {

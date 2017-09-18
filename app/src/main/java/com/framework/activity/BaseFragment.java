@@ -57,7 +57,7 @@ import com.framework.view.TitleBar;
  */
 public abstract class BaseFragment extends Fragment implements OnClickListener,
         OnLongClickListener, OnItemClickListener, OnItemLongClickListener,
-        NetworkListener, IBaseActFrag {
+        NetworkListener, IBaseActFrag, FragmentOnBackListener {
 
     protected Handler mHandler;
     protected Bundle myBundle;
@@ -559,5 +559,10 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
             }
         });
         return popupWindow;
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return false;
     }
 }

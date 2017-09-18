@@ -102,7 +102,7 @@ public class HandlerCallbacks {
                             }
                         } else {
                             synchronized (this) {
-                                if (param.result.bstatus.code == 6) {
+                                if (param.result.bstatus.code == 600) {
                                     Intent intent = new Intent();
                                     intent.setClass(MainApplication.applicationContext, LoginActivity.class);
                                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);

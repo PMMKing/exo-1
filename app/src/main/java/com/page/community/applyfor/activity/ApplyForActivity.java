@@ -11,6 +11,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.ArrayUtils;
+import com.framework.utils.BusinessUtils;
 import com.framework.view.AddView;
 import com.qfant.wuye.R;
 import com.page.community.applyfor.model.ApplyForParam;
@@ -62,6 +63,10 @@ public class ApplyForActivity extends BaseActivity {
         }
         if (TextUtils.isEmpty(phone)) {
             showToast("联系电话不能为空");
+            return;
+        }
+        if (!BusinessUtils.checkPhoneNumber(phone)) {
+            showToast("请输入正确的手机号码");
             return;
         }
         if (TextUtils.isEmpty(address)) {

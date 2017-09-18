@@ -120,7 +120,7 @@ public class ProDetailsActivity extends BaseActivity implements OnItemClickListe
 
     private void setTabView() {
         tvCollect.initData(new TabItem("收藏", null, null, R.string.icon_font_home));
-        tvCar.initData(new TabItem("购物车", null, null, R.string.icon_font_home));
+        tvCar.initData(new TabItem("购物车", null, null, R.string.icon_font_buy_car));
     }
 
     private void refreshTabView() {

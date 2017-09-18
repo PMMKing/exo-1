@@ -1,18 +1,25 @@
 package com.page.home.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.framework.activity.BaseFragment;
+import com.framework.activity.FragmentBackHelper;
 import com.framework.utils.ArrayUtils;
+import com.framework.utils.ShopCarUtils;
 import com.framework.view.tab.TabItem;
 import com.framework.view.tab.TabLayout;
+import com.framework.view.tab.TabView;
 import com.page.store.home.fragment.ShopHomeFragment;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
 import com.qfant.wuye.R;
@@ -34,9 +41,12 @@ import butterknife.OnClick;
 
 public class MainActivity extends MainTabActivity {
 
+    public static final String REFRESH_TAB_ACTION = "com.qfant.wuye.refreshtab";
+
     @BindView(R.id.tl_tab)
     TabLayout tlTab;
     private boolean mIsExit;
+    private TabNumberReceiver tabNumberReceiver;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +60,10 @@ public class MainActivity extends MainTabActivity {
         addTab("购物车", ShoppingCartFragment.class, myBundle, R.string.icon_font_buy_car);
         addTab("我的", UserCenterFragment.class, myBundle, R.string.icon_font_my);
         onPostCreate();
+        tabNumberReceiver = new TabNumberReceiver();
+        IntentFilter filter = new IntentFilter(REFRESH_TAB_ACTION);
+        registerReceiver(tabNumberReceiver, filter);
+
 
     }
 
@@ -71,6 +85,7 @@ public class MainActivity extends MainTabActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        sendBroadcast(new Intent(REFRESH_TAB_ACTION));
     }
 
 //    @Override
@@ -85,7 +100,7 @@ public class MainActivity extends MainTabActivity {
 
     @Override
     public void onBackPressed() {
-        if (!onBackPressedWithFragment()) {
+        if (!FragmentBackHelper.onBackPressed(this)) {
             exitBy2Click();
         }
     }
@@ -107,31 +122,19 @@ public class MainActivity extends MainTabActivity {
         }
     }
 
-    boolean onBackPressedWithFragment() {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        if (fragmentManager != null) {
-            List<Fragment> fragments = fragmentManager.getFragments();
-            if (!ArrayUtils.isEmpty(fragments)) {
-                for (Fragment fragment : fragments) {
-                    if (fragment == null) {
-                        return false;
-                    }
-//                    if (fragment.isVisible()) {
-//                        FragmentOnBackListener backListener = (FragmentOnBackListener) fragment;
-//                        if (backListener.onBackPressed()) {
-//                            return true;
-//                        }
-//                    }
-                }
-            }
-        }
-        return false;
-    }
-
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(tabNumberReceiver);
     }
 
+    public class TabNumberReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            TabView shopCarTab = (TabView) tabLayout.getChildAt(3);
+            shopCarTab.setNumber(ShopCarUtils.getInstance().getShopCarSize());
+        }
+    }
 
 }

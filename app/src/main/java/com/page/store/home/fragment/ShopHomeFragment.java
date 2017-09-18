@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -234,6 +235,19 @@ public class ShopHomeFragment extends BaseFragment {
 
     @OnClick(R.id.tv_arr)
     public void onViewClicked() {
-        startActivity(new Intent(getContext(), ClassifyActivity.class));
+        FragmentTransaction fragmentTransaction = getContext().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(
+                R.anim.back_left_in_show
+                , R.anim.back_right_out_dismiss
+                , R.anim.back_left_in_show
+                , R.anim.back_right_out_dismiss);
+        ClassifyFragment fragment = new ClassifyFragment();
+        fragmentTransaction.replace(R.id.fl_fragment, fragment);
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return super.onBackPressed();
     }
 }
