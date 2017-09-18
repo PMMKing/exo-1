@@ -26,6 +26,7 @@ public class ImageLoad {
                 .load(url)
                 .placeholder(placeholderResId)
                 .error(errorResId)
+                .resize(120, 160)
                 .into(imageView);
     }
 

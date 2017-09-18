@@ -56,8 +56,6 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     Unbinder unbinder;
     @BindView(R.id.tv_add_qp)
     TextView tvAddQp;
-    //    @BindView(R.id.tv_my_qp)
-//    TextView tvMyQp;
     private MultiAdapter mAdapter;
 
     @Nullable
@@ -84,8 +82,8 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
 
     @Override
     public void onResume() {
-        startRequest(1);
         super.onResume();
+        startRequest(1);
     }
 
     private void startRequest(int pager) {

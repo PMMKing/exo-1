@@ -24,6 +24,7 @@ import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.CircleImageView;
 import com.igexin.sdk.PushManager;
+import com.page.home.activity.MainActivity;
 import com.qfant.wuye.R;
 import com.page.uc.bean.LoginResult;
 import com.page.uc.bean.NickNameResult;
@@ -114,6 +115,11 @@ public class UserInfoActivity extends BaseActivity {
                 PushManager.getInstance().unBindAlias(getContext(), UCUtils.getInstance().getUserInfo().phone, false);
                 UCUtils.getInstance().saveUserInfo(null);
                 ShopCarUtils.getInstance().clearData();//清空购物车
+                Intent intent = new Intent();
+                intent.setClass(getContext(), LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                        | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                qStartActivity(intent);
                 finish();
 //                Request.startRequest(new BaseParam(), ServiceMap.customerLogout, mHandler);
                 break;
