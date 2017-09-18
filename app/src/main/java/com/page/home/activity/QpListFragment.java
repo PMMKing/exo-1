@@ -61,10 +61,8 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.pub_fragment_qplist_layout, container, false);
+        View view = onCreateViewWithTitleBar(inflater, container, R.layout.pub_fragment_qplist_layout);
         unbinder = ButterKnife.bind(this, view);
-        mTitleBar = (TitleBar) view.findViewById(R.id.title_bar);
-        tvAddQp.setText(R.string.icon_font_add);
         return view;
     }
 
@@ -78,6 +76,7 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
             }
         });
         setListView();
+        tvAddQp.setText(R.string.icon_font_add);
     }
 
     @Override
@@ -89,7 +88,6 @@ public class QpListFragment extends BaseFragment implements SwipRefreshLayout.On
     private void startRequest(int pager) {
         QpListParam param = new QpListParam();
         param.pageNo = pager;
-        param.pageSize = 7;
         Request.startRequest(param, pager, ServiceMap.getSnapshots, mHandler);
     }
 

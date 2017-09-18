@@ -28,7 +28,6 @@ public class ImageLoad {
                 .placeholder(placeholderResId)
                 .error(errorResId)
                 .transform(new CompressTransformation())
-//                .resize(360, 480)
                 .into(imageView);
     }
 

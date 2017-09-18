@@ -5,16 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.framework.view.TitleBar
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.framework.view.TitleBar>
-
     <com.framework.view.pull.SwipRefreshLayout
         android:id="@+id/spl_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/title_bar"
         app:direction="both">
 
         <android.support.v7.widget.RecyclerView
