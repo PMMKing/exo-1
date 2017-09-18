@@ -96,6 +96,7 @@ public class HeadderView extends LinearLayout {
         ViewPagerHelper.bind(magicIndicator, vpImage);
         PagerAdapter pagerAdapter = new PagerAdapter(((BaseActivity) getContext()).getSupportFragmentManager(), mTitleDataList);
         vpImage.setAdapter(pagerAdapter);
+        vpImage.setCurrentItem(0);//一个的时候默认没有选中
     }
 
     static class PagerAdapter extends FragmentPagerAdapter {

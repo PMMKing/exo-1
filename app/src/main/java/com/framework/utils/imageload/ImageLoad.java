@@ -1,6 +1,7 @@
 package com.framework.utils.imageload;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.widget.ImageView;
 
 import com.framework.utils.Dimen;
@@ -26,7 +27,21 @@ public class ImageLoad {
                 .load(url)
                 .placeholder(placeholderResId)
                 .error(errorResId)
-                .resize(120, 160)
+                .transform(new CompressTransformation())
+//                .resize(360, 480)
+                .into(imageView);
+    }
+
+    public static void loadPlaceholderSize(Context context, String url, ImageView imageView) {
+        loadPlaceholderSize(context, url, imageView, R.drawable.moren, R.drawable.moren);
+    }
+
+    public static void loadPlaceholderSize(Context context, String url, ImageView imageView, int placeholderResId, int errorResId) {
+        Picasso.with(context)
+                .load(url)
+                .placeholder(placeholderResId)
+                .error(errorResId)
+
                 .into(imageView);
     }
 

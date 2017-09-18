@@ -2,6 +2,8 @@ package com.framework.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -15,6 +17,7 @@ import com.framework.activity.BaseActivity;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
+import com.framework.utils.BitmapHelper;
 import com.framework.utils.Dimen;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
@@ -26,6 +29,8 @@ import com.page.uc.chooseavatar.UpLoadHeadImageDialog;
 import com.page.uc.chooseavatar.YCLTools;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -71,6 +76,18 @@ public class AddView extends LinearLayout implements View.OnClickListener {
         layoutParams.width = LayoutParams.MATCH_PARENT;
         layoutParams.height = height;
         llAdd.setLayoutParams(layoutParams);
+
+//        YCLTools.getInstance().setOnChoosePictureListener(new OnChoosePictureListener() {
+//            @Override
+//            public void OnChoose(String filePath) {
+//                sendImage(filePath);
+//            }
+//
+//            @Override
+//            public void OnCancel() {
+//
+//            }
+//        });
     }
 
     public void setAddNumber(int number) {
@@ -123,21 +140,33 @@ public class AddView extends LinearLayout implements View.OnClickListener {
     }
 
     private void sendImage(String filePath) {
+        Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+        File mCurrentPhotoFile = new File(filePath);
+        Bitmap bt = BitmapHelper.compressImage(bitmap);
+        FileOutputStream fos = null;
         try {
-            File file = new File(filePath);
+            fos = new FileOutputStream(mCurrentPhotoFile);
+            bt.compress(Bitmap.CompressFormat.JPEG, 50, fos);
+            fos.flush();
+            fos.close();
             UpdateMyPortraitParam param = new UpdateMyPortraitParam();
-            param.byteLength = file.length();
+            param.byteLength = mCurrentPhotoFile.length();
             param.ext = "jpg";
             NetworkParam np = Request.getRequest(param,
                     ServiceMap.uploadPic, new Request.RequestFeature[]{
                             BLOCK, CANCELABLE});
             np.progressMessage = "上传中......";
-            np.filePath = file.getAbsolutePath();
-            np.ext = filePath;
+            np.filePath = mCurrentPhotoFile.getAbsolutePath();
             Request.startRequest(np, ((BaseActivity) getContext()).mHandler);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                }
+            }
         }
     }
 
@@ -165,6 +194,9 @@ public class AddView extends LinearLayout implements View.OnClickListener {
 
             }
         });
+
+//        YCLTools.getInstance().upLoadImage(requestCode, resultCode, data);
+
     }
 
 

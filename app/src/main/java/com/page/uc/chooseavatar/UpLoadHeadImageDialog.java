@@ -6,11 +6,11 @@ import android.support.v4.app.FragmentActivity;
 
 public class UpLoadHeadImageDialog {
 
-    private final FragmentActivity act;
+    private final FragmentActivity activity;
     private final AlertDialog.Builder builder;
 
-    public UpLoadHeadImageDialog(final FragmentActivity act) {
-        builder = new AlertDialog.Builder(act);
+    public UpLoadHeadImageDialog(final FragmentActivity activity) {
+        builder = new AlertDialog.Builder(activity);
 //        builder.setTitle("设置头像");
         String[] cities = new String[]{"相机", "相册"};
         builder.setItems(cities, new android.content.DialogInterface.OnClickListener() {
@@ -18,17 +18,17 @@ public class UpLoadHeadImageDialog {
                 dialog.dismiss();
                 switch (which) {
                     case 0:
-                        YCLTools.getInstance().startChoose(act, 0);
+                        YCLTools.getInstance().startChoose(activity, 0);
                         break;
                     case 1:
-                        YCLTools.getInstance().startChoose(act, 1);
+                        YCLTools.getInstance().startChoose(activity, 1);
                         break;
                     default:
                 }
 
             }
         });
-        this.act = act;
+        this.activity = activity;
     }
 
     public void show() {
