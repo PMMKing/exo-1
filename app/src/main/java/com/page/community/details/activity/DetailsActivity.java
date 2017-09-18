@@ -1,11 +1,13 @@
 package com.page.community.details.activity;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
@@ -13,6 +15,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.TextViewUtils;
+import com.framework.utils.viewutils.ViewUtils;
 import com.framework.view.AddView;
 import com.page.community.details.model.RepairDetailParam;
 import com.page.community.details.model.RepairDetailResult;
@@ -55,16 +58,20 @@ public class DetailsActivity extends BaseActivity {
     LinearLayout llPhone;
     @BindView(R.id.line_phone)
     View linePhone;
-    @BindView(R.id.cb_evaluate_ok)
-    CheckBox cbEvaluateOk;
-    @BindView(R.id.cb_evaluate_no)
-    CheckBox cbEvaluateNo;
+    @BindView(R.id.rb_manyi)
+    RadioButton rbManyi;
+    @BindView(R.id.rb_bumanyi)
+    RadioButton rbBumanyi;
     @BindView(R.id.ll_evaluate)
     LinearLayout llEvaluate;
     @BindView(R.id.et_no_cause)
     EditText etNoCause;
     @BindView(R.id.tv_commit)
     TextView tvCommit;
+    @BindView(R.id.rg_group)
+    RadioGroup rgGroup;
+    @BindView(R.id.tv_evaluate)
+    TextView tvEvaluate;
     private String id;
 
     @Override
@@ -79,6 +86,19 @@ public class DetailsActivity extends BaseActivity {
         id = myBundle.getString(ID);
         startRequest();
         addView.setClickable(false);
+        rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId) {
+                    case R.id.rb_manyi:
+                        etNoCause.setVisibility(View.GONE);
+                        break;
+                    case R.id.rb_bumanyi:
+                        etNoCause.setVisibility(View.VISIBLE);
+                        break;
+                }
+            }
+        });
     }
 
     @Override
@@ -94,7 +114,15 @@ public class DetailsActivity extends BaseActivity {
     }
 
     private void evaluateRepair() {
+        String trim = etNoCause.getText().toString().trim();
+        if (rbManyi.isChecked() && TextUtils.isEmpty(trim)) {
+            showToast("不满意的原因还没有写~");
+            return;
+        }
         RepairEvaParam param = new RepairEvaParam();
+        param.id = id;
+        param.comment = trim;
+        param.evaluate = rbManyi.isChecked() ? 1 : 2;
         Request.startRequest(param, ServiceMap.evaluateRepair, mHandler, Request.RequestFeature.BLOCK);
     }
 
@@ -116,7 +144,14 @@ public class DetailsActivity extends BaseActivity {
             llPhone.setVisibility(View.VISIBLE);
             tvPhone.setText(data.workerphone);
         }
-
+        if (TextUtils.isEmpty(data.comment)) {
+            tvEvaluate.setVisibility(View.GONE);
+        } else {
+            tvEvaluate.setVisibility(View.VISIBLE);
+            tvEvaluate.setText(String.format("评价内容：%s", data.comment));
+        }
+        ViewUtils.setOrGone(llEvaluate, data.status == 6);
+        ViewUtils.setOrGone(tvCommit, data.status == 6);
     }
 
     @Override
@@ -129,6 +164,8 @@ public class DetailsActivity extends BaseActivity {
         } else if (param.key == ServiceMap.evaluateRepair) {
             if (param.result.bstatus.code == 0) {
                 showToast("评价成功");
+                startRequest();
+                etNoCause.setVisibility(View.GONE);
             } else {
                 showToast(param.result.bstatus.des);
             }
@@ -148,7 +185,7 @@ public class DetailsActivity extends BaseActivity {
     * */
     private CharSequence getState(int state) {
 
-        String temp = "状态：";
+        String temp = "";
         int color = getContext().getResources().getColor(R.color.pub_color_gray_666);
 
         switch (state) {
@@ -184,7 +221,7 @@ public class DetailsActivity extends BaseActivity {
                 temp += "订单异常";
                 break;
         }
-        return TextViewUtils.genericColorfulText(temp, color, new int[]{3, temp.length() - 1});
+        return TextViewUtils.genericColorfulText(temp, color, new int[]{0, temp.length()});
     }
 
 }

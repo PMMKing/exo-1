@@ -24,6 +24,7 @@ import com.page.home.model.ShopCarData;
 import com.page.store.orderaffirm.activity.OrderAffirmActivity;
 import com.page.store.orderaffirm.model.CommitOrderParam;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
+import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.qfant.wuye.R;
 
 import java.io.Serializable;
@@ -147,6 +148,8 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
 
     @Override
     public void onItemClickListener(View view, Product data, int position) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString(ProDetailsActivity.ID, data.id);
+        qStartActivity(ProDetailsActivity.class, bundle);
     }
 }

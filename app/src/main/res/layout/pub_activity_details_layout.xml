@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pub_color_gray_f5f5f5"
@@ -23,27 +24,24 @@
             <LinearLayout
                 android:id="@+id/ll_repair_name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="28dp">
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <com.framework.view.IFView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/icon_font_money"
-                    android:textColor="@color/pub_color_gray_666"
-                    android:textSize="@dimen/text_h16" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/pub_icon_menu" />
 
                 <TextView
                     android:id="@+id/tv_repair_mame"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="22dp"
-                    android:text="水龙头坏了"
                     android:textColor="@color/pub_color_black"
-                    android:textSize="@dimen/text_h15" />
+                    android:textSize="@dimen/text_h15"
+                    tools:text="水龙头坏了" />
 
             </LinearLayout>
 
@@ -54,27 +52,24 @@
             <LinearLayout
                 android:id="@+id/ll_repair_address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingLeft="28dp">
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-                <com.framework.view.IFView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/icon_font_money"
-                    android:textColor="@color/pub_color_gray_666"
-                    android:textSize="@dimen/text_h16" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginLeft="15dp"
+                    android:src="@drawable/pub_icon_location" />
 
                 <TextView
                     android:id="@+id/tv_repair_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:paddingBottom="15dp"
-                    android:paddingTop="22dp"
-                    android:text="xxxx小区街道106"
                     android:textColor="@color/pub_color_black"
-                    android:textSize="@dimen/text_h15" />
+                    android:textSize="@dimen/text_h15"
+                    tools:text="xxxx小区街道106" />
 
             </LinearLayout>
 
@@ -102,9 +97,9 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="6dp"
                     android:paddingTop="22dp"
-                    android:text="已接单"
                     android:textColor="@color/pub_color_black"
-                    android:textSize="@dimen/text_h14" />
+                    android:textSize="@dimen/text_h14"
+                    tools:text="已接单" />
 
             </LinearLayout>
 
@@ -182,7 +177,9 @@
                 android:layout_height="wrap_content"
                 android:background="@color/pub_color_white"
                 android:orientation="horizontal"
-                android:paddingLeft="15dp">
+                android:paddingLeft="15dp"
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <TextView
                     android:layout_width="100dp"
@@ -193,21 +190,30 @@
                     android:textColor="@color/pub_color_gray_666"
                     android:textSize="@dimen/text_h14" />
 
-                <CheckBox
-                    android:id="@+id/cb_evaluate_ok"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="满意"
-                    android:checked="true"
-                    android:textColor="@color/pub_color_black" />
+                <RadioGroup
+                    android:id="@+id/rg_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
 
-                <CheckBox
-                    android:id="@+id/cb_evaluate_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
-                    android:text="不满意"
-                    android:textColor="@color/pub_color_black" />
+                    <RadioButton
+                        android:id="@+id/rb_manyi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="满意"
+                        android:textColor="@color/pub_color_black" />
+
+                    <RadioButton
+                        android:id="@+id/rb_bumanyi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="不满意"
+                        android:textColor="@color/pub_color_black" />
+
+                </RadioGroup>
 
             </LinearLayout>
 
@@ -226,7 +232,25 @@
                 android:paddingTop="11dp"
                 android:textColor="@color/pub_color_gray_666"
                 android:textColorHint="@color/pub_color_gray_666"
-                android:textSize="@dimen/text_h12" />
+                android:textSize="@dimen/text_h12"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_evaluate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/pub_color_white"
+                android:gravity="left"
+                android:paddingBottom="11dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:paddingTop="11dp"
+                android:textColor="@color/pub_color_gray_666"
+                android:textColorHint="@color/pub_color_gray_666"
+                android:textSize="@dimen/text_h12"
+                android:visibility="gone"
+                tools:text="快捷酒店后付款水电费"
+                tools:visibility="visible" />
 
 
             <TextView
@@ -245,7 +269,9 @@
                 android:paddingTop="13dp"
                 android:text="提交"
                 android:textColor="@color/pub_color_white"
-                android:textSize="@dimen/text_h18" />
+                android:textSize="@dimen/text_h18"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
         </LinearLayout>
 
