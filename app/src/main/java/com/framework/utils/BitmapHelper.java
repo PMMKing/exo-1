@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
@@ -67,29 +68,37 @@ public class BitmapHelper {
     public static int dip2px(Context context, float dp) {
         return (int) (convertUnitToPixel(context, TypedValue.COMPLEX_UNIT_DIP, dp) + 0.5f);
     }
-    public static Bitmap compressImage(Bitmap image) {
 
+    public static Bitmap compressImage(Bitmap image) {
         if (image == null) {
             return null;
         }
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);//质量压缩方法，这里100表示不压缩，把压缩后的数据存放到baos中
-        int options = 100;
-        while ( baos.toByteArray().length / 1024>100) {	//循环判断如果压缩后图片是否大于100kb,大于继续压缩
-            baos.reset();//重置baos即清空baos
-            image.compress(Bitmap.CompressFormat.JPEG, options, baos);//这里压缩options%，把压缩后的数据存放到baos中
-            options -= 10;//每次都减少10
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        image.compress(Bitmap.CompressFormat.JPEG, 100, output);
+        float zoom = (float) Math.sqrt(100 * 1024 / (float) output.toByteArray().length); //获取缩放比例
+        // 设置矩阵数据
+        Matrix matrix = new Matrix();
+        matrix.setScale(zoom, zoom);
+        // 根据矩阵数据进行新bitmap的创建
+        Bitmap resultBitmap = Bitmap.createBitmap(image, 0, 0, image.getWidth(), image.getHeight(), matrix, true);
+        output.reset();
+        resultBitmap.compress(Bitmap.CompressFormat.JPEG, 100, output);
+        if (image != resultBitmap) {
+            image.recycle();
         }
-        ByteArrayInputStream isBm = new ByteArrayInputStream(baos.toByteArray());//把压缩后的数据baos存放到ByteArrayInputStream中
-        Bitmap bitmap = BitmapFactory.decodeStream(isBm, null, null);//把ByteArrayInputStream数据生成图片
-        image.recycle();
-        return bitmap;
+        try {
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return resultBitmap;
     }
+
     /**
      * dip2px的返回float版
-     * @see #dip2px
+     *
      * @author ran.feng
+     * @see #dip2px
      */
     public static float dip2pxF(Context context, float dp) {
         return convertUnitToPixel(context, TypedValue.COMPLEX_UNIT_DIP, dp);
@@ -106,8 +115,9 @@ public class BitmapHelper {
 
     /**
      * iPhone效果图上标注的px值转当前机器真实px值,可直接用来设置Margin之类的. 如需二次计算,请用 {@link #iPXToPXF}提高精度
+     *
      * @param context
-     * @param iPX iPhone效果图上的px值
+     * @param iPX     iPhone效果图上的px值
      * @return 真实px值
      * @author ran.feng
      * @since 2013年9月19日下午2:19:53
@@ -119,8 +129,9 @@ public class BitmapHelper {
 
     /**
      * iPXToPX的返回float版
-     * @see #iPXToPX
+     *
      * @author ran.feng
+     * @see #iPXToPX
      */
     public static float iPXToPXF(Context context, float iPX) {
         return context.getResources().getDisplayMetrics().widthPixels / 640f * iPX;
@@ -150,6 +161,7 @@ public class BitmapHelper {
 
     /**
      * 图片叠加器
+     *
      * @param bottomResId
      * @param topResId
      * @return
@@ -169,6 +181,7 @@ public class BitmapHelper {
 
     /**
      * 读取资源文件返回可编辑的Bitmap
+     *
      * @param res
      * @param id
      * @return
@@ -186,6 +199,7 @@ public class BitmapHelper {
 
     /**
      * 从view 得到图片
+     *
      * @param view
      * @return
      */

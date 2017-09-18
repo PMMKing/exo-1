@@ -192,7 +192,7 @@ public class UserInfoActivity extends BaseActivity {
         FileOutputStream fos = null;
         try {
             fos = new FileOutputStream(mCurrentPhotoFile);
-            bt.compress(Bitmap.CompressFormat.JPEG, 60, fos);
+            bt.compress(Bitmap.CompressFormat.JPEG, 100, fos);
             fos.flush();
             fos.close();
             UpdateMyPortraitParam param = new UpdateMyPortraitParam();

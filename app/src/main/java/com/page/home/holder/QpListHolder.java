@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.DateFormatUtils;
+import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.qfant.wuye.R;
 import com.page.home.model.QpListResult;
@@ -38,6 +39,7 @@ public class QpListHolder extends BaseViewHolder<Snapshots> {
     public void onBindViewHolder(BaseViewHolder holder, Snapshots data, int position) {
         tvTitle.setText(data.intro);
         tvTime.setText("发布时间：" + DateFormatUtils.format(data.createtime, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd"));
-        ImageLoad.loadPlaceholder(mContext, data.pic1, ivImage);
+//        ImageLoad.loadPlaceholder(mContext, data.pic1, ivImage);
+        ImageLoader.getInstance(mContext).loadImage(data.pic1, ivImage);
     }
 }
