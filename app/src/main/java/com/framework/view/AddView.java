@@ -156,6 +156,7 @@ public class AddView extends LinearLayout implements View.OnClickListener {
                     ServiceMap.uploadPic, new Request.RequestFeature[]{
                             BLOCK, CANCELABLE});
             np.progressMessage = "上传中......";
+            np.ext = filePath;
             np.filePath = mCurrentPhotoFile.getAbsolutePath();
             Request.startRequest(np, ((BaseActivity) getContext()).mHandler);
         } catch (Exception e) {

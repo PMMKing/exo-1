@@ -31,19 +31,6 @@ public class ImageLoad {
                 .into(imageView);
     }
 
-    public static void loadPlaceholderSize(Context context, String url, ImageView imageView) {
-        loadPlaceholderSize(context, url, imageView, R.drawable.moren, R.drawable.moren);
-    }
-
-    public static void loadPlaceholderSize(Context context, String url, ImageView imageView, int placeholderResId, int errorResId) {
-        Picasso.with(context)
-                .load(url)
-                .placeholder(placeholderResId)
-                .error(errorResId)
-
-                .into(imageView);
-    }
-
     public static void loadRound(Context context, String url, ImageView imageView) {
         loadRound(context, url, imageView, 3, 0);
     }
