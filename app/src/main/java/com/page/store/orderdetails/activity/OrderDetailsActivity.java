@@ -14,6 +14,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.ArrayUtils;
+import com.framework.utils.BusinessUtils;
 import com.framework.utils.Dimen;
 import com.framework.utils.viewutils.ViewUtils;
 import com.page.community.event.activity.EventActivity;
@@ -30,7 +31,6 @@ import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by shucheng.qu on 2017/8/18.
@@ -60,6 +60,8 @@ public class OrderDetailsActivity extends BaseActivity {
     LinearLayout llProducts;
     @BindView(R.id.ll_status)
     LinearLayout llStatus;
+    @BindView(R.id.tv_total_price)
+    TextView tvTotalPrice;
 
     private String id;
     private OrderDetailResult result;
@@ -110,6 +112,7 @@ public class OrderDetailsActivity extends BaseActivity {
             llProducts.setBackgroundColor(getResources().getColor(R.color.pub_color_white));
             llProducts.addView(productView);
         }
+        tvTotalPrice.setText(String.format("总价合计 ¥%s", BusinessUtils.formatDouble2String(data.totalprice)));
         switch (status) {
             case 1:
                 orderCancle();

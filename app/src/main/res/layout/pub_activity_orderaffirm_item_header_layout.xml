@@ -29,7 +29,7 @@
             android:layout_height="17dp"
             android:layout_marginLeft="15dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/pub_login_icon" />
+            android:src="@drawable/pub_icon_location" />
 
         <TextView
             android:id="@+id/tv_address"

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.ArrayUtils;
+import com.framework.utils.BusinessUtils;
 import com.framework.utils.Dimen;
 import com.page.store.orderlist.inteface.OnOrderStatusCallBack;
 import com.page.store.orderlist.model.OrderListResult.Data.OrderList;
@@ -30,6 +31,8 @@ public class OrderListHolder extends BaseViewHolder<OrderList> {
     LinearLayout llProducts;
     @BindView(R.id.ll_order_status)
     LinearLayout llOrderStatus;
+    @BindView(R.id.tv_total_price)
+    TextView tvTotalPrice;
 
     public OrderListHolder(Context context, View itemView, OnOrderStatusCallBack onOrderStatusCallBack) {
         super(context, itemView);
@@ -49,6 +52,7 @@ public class OrderListHolder extends BaseViewHolder<OrderList> {
             productView.updataView(product);
             llProducts.addView(productView);
         }
+        geTotalTextView(data.totalprice);
         switch (data.status) {
             case 1:
                 orderCancle(data.id);
@@ -81,6 +85,19 @@ public class OrderListHolder extends BaseViewHolder<OrderList> {
                 break;
         }
 
+    }
+
+    private void geTotalTextView(double totalPrice) {
+        TextView textView = new TextView(mContext);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, Dimen.dpToPx(33));
+        params.leftMargin = Dimen.dpToPx(10);
+        params.weight = 1;
+        textView.setText(String.format("总价合计 ¥%s", BusinessUtils.formatDouble2String(totalPrice)));
+        textView.setTextColor(mContext.getResources().getColor(R.color.pub_color_blue));
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 13);
+        textView.setGravity(Gravity.CENTER_VERTICAL);
+        textView.setLayoutParams(params);
+        llOrderStatus.addView(textView);
     }
 
     private TextView getTextView(String text) {

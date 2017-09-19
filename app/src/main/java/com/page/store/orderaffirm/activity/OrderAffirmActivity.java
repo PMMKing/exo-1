@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -127,7 +128,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     private void startRequest() {
         CommitOrderParam param = new CommitOrderParam();
         Product product = products.get(0);
-        if (product == null || product.address == null) {
+        if (product == null || product.address == null || TextUtils.isEmpty(product.address.address)) {
             showToast("先填写收货信息");
             return;
         }
