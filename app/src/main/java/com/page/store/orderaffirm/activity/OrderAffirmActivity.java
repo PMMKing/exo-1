@@ -152,7 +152,13 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString(OrderDetailsActivity.ID, "" + result.data.id);
-                qStartActivity(OrderDetailsActivity.class, bundle);
+                bundle.putInt(OrderDetailsActivity.STATUS, 1);
+                Intent intent = new Intent();
+                intent.putExtras(bundle);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.setClass(this, OrderDetailsActivity.class);
+                startActivity(intent);
+                finish();
             }
         } else if (param.key == ServiceMap.getDefaultAddress) {
             DefaultAddressResult result = (DefaultAddressResult) param.result;

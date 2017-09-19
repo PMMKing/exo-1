@@ -77,6 +77,7 @@ public class WaitFeeFragment extends BaseFragment implements OnItemClickListener
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         setListView();
+        startRequest();
     }
 
     private void startRequest() {

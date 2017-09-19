@@ -178,7 +178,6 @@ public class OrderDetailsActivity extends BaseActivity {
         return textView;
     }
 
-
     private void orderCancle() {
         TextView textView = getTextView("取消");
         llStatus.addView(textView);

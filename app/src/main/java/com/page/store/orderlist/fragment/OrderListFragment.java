@@ -204,7 +204,7 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
     public void onItemClickListener(View view, OrderList data, int position) {
         Bundle bundle = new Bundle();
         bundle.putString(OrderDetailsActivity.ID, data.id);
-        bundle.putInt(OrderDetailsActivity.ID, data.status);
+        bundle.putInt(OrderDetailsActivity.STATUS, data.status);
         qStartActivity(OrderDetailsActivity.class, bundle);
     }
 

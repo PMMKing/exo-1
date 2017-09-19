@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by shucheng.qu on 2017/9/13.
@@ -101,8 +102,15 @@ public class ShopCarUtils {
     }
 
     public int getShopCarSize() {
+        int size = 0;
         ShopCarData shopCarData = getShopCarData();
-        return shopCarData.products.size();
+        Set<String> strings = shopCarData.products.keySet();
+        if (ArrayUtils.isEmpty(strings)) return size;
+        for (String s : strings) {
+            Product product = shopCarData.products.get(s);
+            size += product.num;
+        }
+        return size;
     }
 
     public ArrayList<Product> getShopCarList() {

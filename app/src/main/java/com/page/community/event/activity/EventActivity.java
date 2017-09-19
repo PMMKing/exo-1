@@ -76,7 +76,7 @@ public class EventActivity extends BaseActivity {
         etTitle.setText(data.title);
         etEventTime.setText(data.time);
         etEventAddress.setText(data.place);
-        etEventPeople.setText(data.persons + "人");
+        etEventPeople.setText(data.persons);
         cbLimit.setChecked(data.islimit == 1);
         etEventDetail.setText(data.intro);
     }
@@ -99,11 +99,13 @@ public class EventActivity extends BaseActivity {
         int number;
         try {
             number = Integer.parseInt(persons.replace("人", ""));
-            if (number <= 0) {
-                showToast("请输入正确人数，如10人");
+            if (number <= 0 && cbLimit.isChecked()) {
+                showToast("请输入正确人数，如10");
             }
         } catch (Exception e) {
-            showToast("请输入正确人数，如10人");
+            if (cbLimit.isChecked()) {
+                showToast("请输入正确人数，如10");
+            }
             return;
         }
         EventParam param = new EventParam();
@@ -162,7 +164,7 @@ public class EventActivity extends BaseActivity {
         datePickerDialog.showDatePickerDialog(new DatePickerDialog.DatePickerDialogInterface() {
             @Override
             public void sure(int year, int month, int day) {
-                etEventTime.setText(String.format("%d-%d-%d",year,month,day));
+                etEventTime.setText(String.format("%d-%d-%d", year, month, day));
             }
 
             @Override

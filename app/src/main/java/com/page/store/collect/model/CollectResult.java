@@ -19,7 +19,7 @@ public class CollectResult extends BaseResult {
         public List<PraiseList> praiseList;
 
         public static class PraiseList implements Serializable {
-            public int id;
+            public String id;
             public String name;
             public String pic1;
             public double price;

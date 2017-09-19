@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/pub_color_gray_f5f5f5"
     android:orientation="vertical">
 
@@ -47,9 +47,9 @@
                     android:lines="1"
                     android:paddingBottom="6dp"
                     android:paddingTop="22dp"
-                    tools:text="晚上吃烧烤"
                     android:textColor="@color/pub_color_black"
-                    android:textSize="@dimen/text_h14" />
+                    android:textSize="@dimen/text_h14"
+                    tools:text="晚上吃烧烤" />
 
             </LinearLayout>
 
@@ -82,9 +82,9 @@
                     android:lines="1"
                     android:paddingBottom="6dp"
                     android:paddingTop="22dp"
-                    tools:text="2017-12-17"
                     android:textColor="@color/pub_color_black"
-                    android:textSize="@dimen/text_h14" />
+                    android:textSize="@dimen/text_h14"
+                    tools:text="2017-12-17" />
 
             </LinearLayout>
 
@@ -116,9 +116,9 @@
                     android:lines="1"
                     android:paddingBottom="6dp"
                     android:paddingTop="22dp"
-                    tools:text="浦东新区锦康路400弄"
                     android:textColor="@color/pub_color_black"
-                    android:textSize="@dimen/text_h14" />
+                    android:textSize="@dimen/text_h14"
+                    tools:text="浦东新区锦康路400弄" />
 
             </LinearLayout>
 
@@ -147,13 +147,14 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="10dp"
                     android:background="@null"
-                    android:lines="1"
+                    android:digits="0123456789"
                     android:inputType="number"
+                    android:lines="1"
                     android:paddingBottom="6dp"
                     android:paddingTop="22dp"
-                    tools:text="10人"
                     android:textColor="@color/pub_color_black"
-                    android:textSize="@dimen/text_h14" />
+                    android:textSize="@dimen/text_h14"
+                    tools:text="10人" />
 
             </LinearLayout>
 

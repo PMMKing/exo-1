@@ -25,6 +25,7 @@ import com.page.store.collect.model.CollectParam;
 import com.page.store.collect.model.CollectResult;
 import com.page.store.collect.model.CollectResult.Data;
 import com.page.store.collect.model.CollectResult.Data.PraiseList;
+import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -115,6 +116,8 @@ public class CollectActivity extends BaseActivity implements SwipRefreshLayout.O
 
     @Override
     public void onItemClickListener(View view, PraiseList data, int position) {
-
+        Bundle bundle = new Bundle();
+        bundle.putString(ProDetailsActivity.ID, data.id);
+        qStartActivity(ProDetailsActivity.class, bundle);
     }
 }

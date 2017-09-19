@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import com.framework.activity.BaseFragment;
+import com.framework.app.AppConstants;
 import com.framework.domain.param.BaseParam;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
@@ -228,8 +229,8 @@ public class HomeFragment extends BaseFragment {
                             qStartActivity(ServeActivity.class, bundle);
                             break;
                         case "电话":
-//                            bundle.putString(TITLE, "电话");
-//                            bundle.putSerializable(SERVICEMAP, ServiceMap.contact);
+                            bundle.putString(TITLE, "电话");
+                            bundle.putString(WebActivity.URL, AppConstants.COMMON_URL + "/contact.do");
                             qStartActivity(WebActivity.class, bundle);
                             break;
                     }
@@ -255,6 +256,20 @@ public class HomeFragment extends BaseFragment {
 
         };
         banner.setBannerAdapter(bannerAdapter);
+        banner.setOnBannerItemClickListener(new Banner.OnBannerItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                try {
+                    Links links = (Links) bannerAdapter.getmDataList().get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(TITLE, links.title);
+                    bundle.putString(WebActivity.URL, links.link);
+                    qStartActivity(WebActivity.class, bundle);
+                } catch (Exception e) {
+
+                }
+            }
+        });
     }
 
     public void getNotices() {

@@ -28,6 +28,7 @@ import com.framework.utils.imageload.ImageLoad;
 import com.framework.view.GridDecoration;
 import com.framework.view.sivin.Banner;
 import com.framework.view.sivin.BannerAdapter;
+import com.page.home.activity.WebActivity;
 import com.page.home.holder.Shopping2Holder;
 import com.page.home.holder.Shopping3Holder;
 import com.page.home.model.LinksParam;
@@ -48,6 +49,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+
+import static com.page.community.serve.activity.ServeActivity.SERVICEMAP;
+import static com.page.community.serve.activity.ServeActivity.TITLE;
 
 /**
  * Created by shucheng.qu on 2017/9/14.
@@ -100,6 +104,8 @@ public class ShopHomeFragment extends BaseFragment {
         getLinks();
         getHome();
         getRecommend();
+
+
     }
 
 
@@ -132,6 +138,20 @@ public class ShopHomeFragment extends BaseFragment {
 
         };
         banner.setBannerAdapter(bannerAdapter);
+        banner.setOnBannerItemClickListener(new Banner.OnBannerItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                try {
+                    Links links = (Links) bannerAdapter.getmDataList().get(position);
+                    Bundle bundle = new Bundle();
+                    bundle.putString(TITLE, links.title);
+                    bundle.putString(WebActivity.URL, links.link);
+                    qStartActivity(WebActivity.class, bundle);
+                } catch (Exception e) {
+
+                }
+            }
+        });
     }
 
     private void setRecommend2() {

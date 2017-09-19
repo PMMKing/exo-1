@@ -33,13 +33,17 @@ public abstract class BannerAdapter<T> {
         mDataList.add(t);
     }
 
-    public void addImages(List<T> list){
+    public void addImages(List<T> list) {
         mDataList.addAll(list);
     }
 
     public void setImages(List<T> list) {
         mDataList.clear();
         mDataList.addAll(list);
+    }
+
+    public List<T> getmDataList() {
+        return mDataList;
     }
 
     protected abstract void bindTips(TextView tv, T t);
