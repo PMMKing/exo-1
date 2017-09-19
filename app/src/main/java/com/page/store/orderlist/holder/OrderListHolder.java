@@ -31,8 +31,6 @@ public class OrderListHolder extends BaseViewHolder<OrderList> {
     LinearLayout llProducts;
     @BindView(R.id.ll_order_status)
     LinearLayout llOrderStatus;
-    @BindView(R.id.tv_total_price)
-    TextView tvTotalPrice;
 
     public OrderListHolder(Context context, View itemView, OnOrderStatusCallBack onOrderStatusCallBack) {
         super(context, itemView);

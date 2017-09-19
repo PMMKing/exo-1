@@ -158,6 +158,7 @@ public class OrderDetailsActivity extends BaseActivity {
         } else if (param.key == ServiceMap.cancelOrder) {
             if (param.result.bstatus.code == 0) {
                 showToast("订单取消成功");
+                finish();
             } else {
                 showToast(param.result.bstatus.des);
             }

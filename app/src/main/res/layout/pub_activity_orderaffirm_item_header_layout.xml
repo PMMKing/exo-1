@@ -1,50 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:lines="1"
-        android:paddingLeft="40dp"
-        android:paddingTop="19dp"
-        android:textColor="@color/pub_color_black"
-        android:textSize="@dimen/text_h14"
-        tools:text="收货人：豆豆小朋友" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="20dp"
-        android:paddingTop="10dp">
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="17dp"
-            android:layout_marginLeft="15dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/pub_icon_location" />
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:paddingRight="37dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingLeft="40dp"
+            android:paddingTop="19dp"
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h14"
-            tools:text="收货地址：上海市浦东新区锦康路\n800号世纪公园888室" />
+            tools:text="收货人：豆豆小朋友" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="20dp"
+            android:paddingTop="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="17dp"
+                android:layout_marginLeft="15dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/pub_icon_location" />
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:paddingRight="37dp"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h14"
+                tools:text="收货地址：上海市浦东新区锦康路\n800号世纪公园888室" />
+
+        </LinearLayout>
+
+        <View
+            style="@style/line_gray_h"
+            android:layout_height="10dp" />
 
     </LinearLayout>
 
-    <View
-        style="@style/line_gray_h"
-        android:layout_height="10dp" />
+    <TextView
+        android:id="@+id/tv_address_tips"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/pub_color_white"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="点击添加地址"
+        android:textColor="@color/pub_color_blue"
+        android:textSize="@dimen/text_h16" />
 
-</LinearLayout>
+
+</FrameLayout>

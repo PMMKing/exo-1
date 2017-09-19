@@ -2,8 +2,10 @@ package com.page.community.eventdetails.activity;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
@@ -12,6 +14,7 @@ import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.DateFormatUtils;
 import com.framework.utils.imageload.ImageLoad;
+import com.framework.utils.viewutils.ViewUtils;
 import com.page.community.eventdetails.adapter.ImagePagerAdapter;
 import com.page.community.eventdetails.model.EventDetailParam;
 import com.page.community.eventdetails.model.EventDetailsResult;
@@ -47,6 +50,12 @@ public class EventDetailActivity extends BaseActivity {
     ImageView ivImage;
     @BindView(R.id.tv_title)
     TextView tvTitle;
+    @BindView(R.id.tv_customername)
+    TextView tvCustomername;
+    @BindView(R.id.ll_customername)
+    LinearLayout llCustomername;
+    @BindView(R.id.line_customername)
+    View lineCustomername;
     private String id;
     private ImagePagerAdapter imagePagerAdapter;
     private ArrayList<Fragment> mTitleDataList;
@@ -86,6 +95,9 @@ public class EventDetailActivity extends BaseActivity {
         ImageLoad.loadPlaceholder(getContext(), data.pic, ivImage);
         tvJoin.setVisibility(View.VISIBLE);
         refreshJoin(data.ismine == 1 ? 2 : data.isjoin == 0 ? 0 : 1);
+        ViewUtils.setOrGone(llCustomername, /*data.ismine == 1 &&*/ !TextUtils.isEmpty(data.customername));
+        ViewUtils.setOrGone(lineCustomername, /*data.ismine == 1 && */!TextUtils.isEmpty(data.customername));
+        tvCustomername.setText(data.customername);
     }
 
     private void refreshJoin(int isjoin) {

@@ -58,6 +58,8 @@
             android:layout_height="match_parent"
             android:background="@null"
             android:hint="联系电话"
+            android:inputType="phone"
+            android:digits="0123456789"
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h14" />
 
