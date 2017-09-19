@@ -15,6 +15,7 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.Arith;
 import com.framework.utils.ArrayUtils;
 import com.framework.utils.BusinessUtils;
 import com.framework.utils.ShopCarUtils;
@@ -121,7 +122,8 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
         totalPrice = 0;
         for (Product product : adapter.getData()) {
             if (product != null && product.price > 0) {
-                totalPrice += product.num * product.price;
+                totalPrice = Arith.add(totalPrice, Arith.mul(product.num, product.price));
+//                totalPrice += product.num * product.price;
             }
         }
         tvMoney.setText(String.format("合计：￥%s", BusinessUtils.formatDouble2String(totalPrice)));

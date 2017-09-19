@@ -20,6 +20,7 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.Arith;
 import com.framework.utils.ArrayUtils;
 import com.framework.utils.DateFormatUtils;
 import com.framework.view.DatePickerDialog;
@@ -102,7 +103,7 @@ public class WaitFeeFragment extends BaseFragment implements OnItemClickListener
         if (!ArrayUtils.isEmpty(datas)) {
             for (Datas temp : datas) {
                 if (temp.isSelect) {
-                    totalPrices += temp.price;
+                    totalPrices = Arith.add(totalPrices, temp.price);
                 }
             }
         }

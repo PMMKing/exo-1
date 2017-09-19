@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
             android:orientation="horizontal">
 
             <TextView
@@ -22,48 +23,54 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/pub_btn_blue_selector"
                 android:clickable="true"
+                android:editable="false"
                 android:gravity="center"
                 android:hint="开始时间"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:textColor="@color/pub_color_white"
-                android:textColorHint="@color/pub_color_white"
-                android:textSize="@dimen/text_h16" />
+                android:background="@drawable/pub_textview_underline"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/pub_color_gray_666"
+                android:textColorHint="@color/pub_color_gray_cccccc"
+                android:textSize="@dimen/text_h14" />
 
             <TextView
                 android:id="@+id/tv_end_time"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:background="@drawable/pub_btn_blue_selector"
                 android:clickable="true"
+                android:editable="false"
                 android:gravity="center"
                 android:hint="结束时间"
+                android:background="@drawable/pub_textview_underline"
+                android:paddingBottom="8dp"
+                android:paddingTop="8dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/pub_color_gray_666"
+                android:textColorHint="@color/pub_color_gray_cccccc"
+                android:textSize="@dimen/text_h14" />
+
+
+            <TextView
+                android:id="@+id/tv_query"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/pub_btn_blue_arc_selector"
+                android:clickable="true"
+                android:gravity="center"
+                android:hint="查询"
                 android:paddingBottom="10dp"
                 android:paddingTop="10dp"
                 android:textColor="@color/pub_color_white"
                 android:textColorHint="@color/pub_color_white"
-                android:textSize="@dimen/text_h16" />
+                android:textSize="@dimen/text_h14" />
 
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_query"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/pub_btn_blue_selector"
-            android:clickable="true"
-            android:gravity="center"
-            android:hint="查询"
-            android:paddingBottom="10dp"
-            android:paddingTop="10dp"
-            android:textColor="@color/pub_color_white"
-            android:textColorHint="@color/pub_color_white"
-            android:textSize="@dimen/text_h16" />
 
         <FrameLayout
             android:layout_width="match_parent"

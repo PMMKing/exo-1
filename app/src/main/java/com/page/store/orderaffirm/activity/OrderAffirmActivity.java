@@ -19,6 +19,7 @@ import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.Arith;
 import com.framework.utils.BusinessUtils;
 import com.framework.utils.ShopCarUtils;
 import com.page.address.Address;
@@ -111,7 +112,8 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
         totalPrice = 0;
         for (Product product : products) {
             if (product != null && product.price > 0) {
-                totalPrice += product.num * product.price;
+                totalPrice = Arith.add(totalPrice, Arith.mul(product.num, product.price));
+//                totalPrice += product.num * product.price;
             }
         }
         tvMoney.setText("合计：￥" + BusinessUtils.formatDouble2String(totalPrice));
