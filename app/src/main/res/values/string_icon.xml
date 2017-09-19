@@ -12,4 +12,5 @@
     <string name="icon_font_menu">&#xe604;</string>//三点菜单
     <string name="icon_font_money">&#xe670;</string>//口袋钱
     <string name="icon_font_right_arrows">&#xe612;</string>//右箭头
+    <string name="icon_font_collect">&#xe60f;</string>收藏
 </resources>

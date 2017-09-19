@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">维修师傅</string>
+    <string name="app_name">幸福宜居师傅端</string>
     <string name="sure">确定</string>
     <string name="notice">提示信息</string>
     <string name="state_loading_failed">加载失败，请重试</string>
