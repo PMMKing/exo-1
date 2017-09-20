@@ -61,12 +61,12 @@ public class OrderListHolder extends BaseViewHolder<OrderList> {
                 break;
             case 3:
                 orderBack(data.id);
-                orderConfirm(data.id);
                 break;
             case 4:
 
                 break;
             case 5:
+                orderConfirm(data.id);
                 orderBack(data.id);
                 break;
             case 6:

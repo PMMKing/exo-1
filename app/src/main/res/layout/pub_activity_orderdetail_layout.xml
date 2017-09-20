@@ -20,27 +20,30 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/pub_color_blue"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:paddingBottom="25dp"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:paddingTop="25dp">
 
                 <TextView
                     android:id="@+id/tv_status"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingBottom="25dp"
-                    android:paddingLeft="14dp"
-                    android:paddingTop="25dp"
                     android:textColor="@color/pub_color_white"
                     android:textSize="@dimen/text_h15"
                     tools:text="卖家已发货" />
 
-                <ImageView
-                    android:id="@+id/iv_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="40dp"
-                    android:scaleType="center"
-                    tools:src="@drawable/pub_icon_car" />
+                <TextView
+                    android:id="@+id/tv_reason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/pub_color_white"
+                    android:textSize="@dimen/text_h13"
+                    android:visibility="gone"
+                    tools:text="卖家已发货"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 

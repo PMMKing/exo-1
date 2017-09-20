@@ -20,7 +20,6 @@ import com.igexin.sdk.PushService;
 import com.page.community.serve.activity.RepairActivity;
 import com.page.store.collect.activity.CollectActivity;
 import com.page.uc.payfee.activity.PayFeeHistoryActivity;
-import com.page.uc.payfee.activity.WaitPayFeeActivity;
 import com.qfant.wuye.R;
 import com.framework.activity.BaseFragment;
 import com.framework.view.CircleImageView;

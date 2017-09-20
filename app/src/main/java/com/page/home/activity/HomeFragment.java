@@ -50,7 +50,6 @@ import com.page.store.home.model.FoodRecResult;
 import com.page.store.home.model.FoodRecResult.Data.Products;
 import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.page.uc.payfee.activity.PayFeeHistoryActivity;
-import com.page.uc.payfee.activity.WaitPayFeeActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,8 +40,6 @@ public class OrderDetailsActivity extends BaseActivity {
     public static final String ID = "id";
     @BindView(R.id.tv_status)
     TextView tvStatus;
-    @BindView(R.id.iv_image)
-    ImageView ivImage;
     @BindView(R.id.tv_logistics_msg)
     TextView tvLogisticsMsg;
     @BindView(R.id.tv_logistics_time)
@@ -61,6 +58,8 @@ public class OrderDetailsActivity extends BaseActivity {
     LinearLayout llStatus;
     @BindView(R.id.tv_total_price)
     TextView tvTotalPrice;
+    @BindView(R.id.tv_reason)
+    TextView tvReason;
 
     private String id;
     private OrderDetailResult result;
@@ -109,6 +108,7 @@ public class OrderDetailsActivity extends BaseActivity {
             llProducts.addView(productView);
         }
         tvTotalPrice.setText(String.format("总价合计 ¥%s", BusinessUtils.formatDouble2String(data.totalprice)));
+        ViewUtils.setOrGone(tvReason, data.reason);
         switch (data.status) {
             case 1:
                 orderCancle();
@@ -119,12 +119,12 @@ public class OrderDetailsActivity extends BaseActivity {
                 break;
             case 3:
                 orderBack();
-                orderConfirm();
                 break;
             case 4:
 
                 break;
             case 5:
+                orderConfirm();
                 orderBack();
                 break;
             case 6:
