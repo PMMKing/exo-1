@@ -69,8 +69,8 @@ public class URLImageParser implements ImageGetter {
                 QLog.d("qushucheng", "onPrepareLoad" + "    :     " + source);
             }
         };
-        ImageLoad.loadPlaceholder(c, source, target);
-//        Picasso.with(c).load(source).into(target);
+//        ImageLoad.loadPlaceholder(c, source, target);
+        Picasso.with(c).load(source).into(target);
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
