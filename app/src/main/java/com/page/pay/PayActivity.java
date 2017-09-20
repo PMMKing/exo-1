@@ -113,8 +113,10 @@ public class PayActivity extends BaseActivity {
     /**
      * 支付宝支付
      *
-     * @param payInfo
-     */
+     * @param pa
+     * */
+
+
     public void airPay(final String payInfo) {
 
         Runnable payRunnable = new Runnable() {
