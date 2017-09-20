@@ -29,6 +29,7 @@ public class PayResultActivity extends BaseActivity {
     @BindView(R.id.iv_image)
     ImageView ivImage;
     private String id;
+    private String orderno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,15 @@ public class PayResultActivity extends BaseActivity {
         setContentView(R.layout.pub_activity_payresult_layout);
         ButterKnife.bind(this);
         id = myBundle.getString("id");
+        orderno = myBundle.getString("orderno");
         updataView();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        myBundle.putString("id",id);
+        myBundle.putString("orderno",orderno);
     }
 
     @Override
@@ -44,13 +53,14 @@ public class PayResultActivity extends BaseActivity {
         super.onNewIntent(intent);
         if (intent != null && intent.getExtras() != null) {
             id = intent.getExtras().getString("id");
+            orderno = intent.getExtras().getString("orderno");
         }
         updataView();
     }
 
     private void updataView() {
         ivImage.setImageResource(R.drawable.pub_icon_success);
-        textView.setText(String.format("订单编号%s支付成功", id));
+        textView.setText(String.format("订单编号%s支付成功", orderno));
     }
 
     @OnClick({R.id.tv_order_detail, R.id.tv_go_shopping})

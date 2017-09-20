@@ -153,7 +153,8 @@ public class PayActivity extends BaseActivity {
             qBackToActivity(MainActivity.class, null);
         }else {
             Bundle bundle = new Bundle();
-            bundle.putString("id", order.orderno + "");
+            bundle.putString("id", order.id + "");
+            bundle.putString("orderno", order.orderno + "");
             qBackToActivity(PayResultActivity.class, bundle);
         }
         finish();
