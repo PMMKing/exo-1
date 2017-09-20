@@ -90,10 +90,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="214dp"
                 android:paddingBottom="4dp"
                 android:paddingTop="4dp"
                 android:text="费用"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="60dp"
                 android:textColor="@color/pub_color_gray_666"
                 android:textSize="@dimen/text_h13" />
 

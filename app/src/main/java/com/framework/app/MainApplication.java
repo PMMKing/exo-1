@@ -20,6 +20,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Typeface;
 
 import com.framework.utils.ArrayUtils;
+import com.igexin.sdk.PushManager;
+import com.igexin.sdk.PushService;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
@@ -50,6 +52,7 @@ public class MainApplication extends Application {
         final IWXAPI msgApi = WXAPIFactory.createWXAPI(this, null);
 // 将该app注册到微信
         msgApi.registerApp(AppConstants.APP_ID);
+        PushManager.getInstance().initialize(this, com.qfant.wuye.push.PushService.class);
     }
 
 

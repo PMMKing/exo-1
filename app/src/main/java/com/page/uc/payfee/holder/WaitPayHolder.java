@@ -36,7 +36,7 @@ public class WaitPayHolder extends BaseViewHolder<Datas> {
     @Override
     public void onBindViewHolder(BaseViewHolder holder, Datas data, int position) {
         if (data == null) return;
-        tvTime.setText(String.format("%s - %s 物业费", DateFormatUtils.format(data.startdate, "yyyy.MM"), DateFormatUtils.format(data.enddate, "yyyy.MM")));
+        tvTime.setText(String.format("%s - %s 物业费", DateFormatUtils.format(data.startdate, "yyyy.MM.dd"), DateFormatUtils.format(data.enddate, "yyyy.MM.dd")));
         tvPrice.setText(data.price + "");
         cbSelect.setChecked(data.isSelect);
     }

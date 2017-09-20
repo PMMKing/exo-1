@@ -20,11 +20,12 @@ public class OrderDetailResult extends BaseResult {
         public String orderno;
         public int totalprice;
         public String createtime;
-        public String status;
+        public int status;
         public String address;
         public String receiver;
         public String phone;
         public String logistics;
+        public String statusCN;
         public List<Products> products;
 
     }

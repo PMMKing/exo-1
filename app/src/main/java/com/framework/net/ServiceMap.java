@@ -51,6 +51,8 @@ public enum ServiceMap implements Enums.IType, Serializable {
     checkVersion("/checkVersion.do", BaseResult.class),
     alipayPayProduct("/alipayPayProduct.do", ProductPayResult.class),
     alipayPayWuyeFee("/alipayPayWuyeFee.do", ProductPayResult.class),
+    wechatPayProduct("/wechatPayProduct.do", ProductPayResult.class),//微信商城
+    wechatPayWuyeFee("/wechatPayWuyeFee.do", ProductPayResult.class),//微信物业缴费
     getAddresses("/getAddresses.do", AddressResult.class),
     submitAddress("/submitAddress.do", BaseResult.class),
     updateAddress("/updateAddress.do", BaseResult.class),

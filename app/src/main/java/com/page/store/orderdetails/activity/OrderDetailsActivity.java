@@ -39,7 +39,6 @@ import butterknife.ButterKnife;
 public class OrderDetailsActivity extends BaseActivity {
 
     public static final String ID = "id";
-    public static final String STATUS = "status";
     @BindView(R.id.tv_status)
     TextView tvStatus;
     @BindView(R.id.iv_image)
@@ -65,7 +64,6 @@ public class OrderDetailsActivity extends BaseActivity {
 
     private String id;
     private OrderDetailResult result;
-    private int status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +73,6 @@ public class OrderDetailsActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleBar("订单详情", true);
         id = myBundle.getString(ID);
-        status = myBundle.getInt(STATUS);
         startRequest();
     }
 
@@ -89,7 +86,6 @@ public class OrderDetailsActivity extends BaseActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         myBundle.putString(ID, id);
-        myBundle.putInt(STATUS, status);
     }
 
     private void startRequest() {
@@ -100,7 +96,7 @@ public class OrderDetailsActivity extends BaseActivity {
 
 
     private void updataView(Data data) {
-        tvStatus.setText(data.status);
+        tvStatus.setText(data.statusCN);
         tvAddress.setText(String.format("收货地址：%s", data.address));
         tvName.setText(String.format("收货人：%s", data.receiver));
         ViewUtils.setOrGone(tvLogisticsTime, data.orderno);
@@ -113,7 +109,7 @@ public class OrderDetailsActivity extends BaseActivity {
             llProducts.addView(productView);
         }
         tvTotalPrice.setText(String.format("总价合计 ¥%s", BusinessUtils.formatDouble2String(data.totalprice)));
-        switch (status) {
+        switch (data.status) {
             case 1:
                 orderCancle();
                 orderPay(data.totalprice);

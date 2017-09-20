@@ -138,7 +138,7 @@ public class PayActivity extends BaseActivity {
     private void weChatPay() {
         IWXAPI api = WXAPIFactory.createWXAPI(this, AppConstants.APP_ID);
         PayReq request = new PayReq();
-        request.appId = "wxd930ea5d5a258f4f";
+        request.appId = AppConstants.APP_ID;
         request.partnerId = "1900000109";
         request.prepayId = "1101000000140415649af9fc314aa427";
         request.packageValue = "Sign=WXPay";

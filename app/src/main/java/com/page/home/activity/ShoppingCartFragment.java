@@ -145,6 +145,7 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
         }
         Bundle bundle = new Bundle();
         bundle.putSerializable(OrderAffirmActivity.PROLIST, ShopCarUtils.getInstance().getShopCarList());
+        bundle.putBoolean(OrderAffirmActivity.ISSHOPCAR, true);
         qStartActivity(OrderAffirmActivity.class, bundle);
     }
 

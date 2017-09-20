@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.net.ServiceMap;
 import com.framework.utils.imageload.ImageLoad;
+import com.igexin.sdk.PushManager;
+import com.igexin.sdk.PushService;
 import com.page.community.serve.activity.RepairActivity;
 import com.page.store.collect.activity.CollectActivity;
 import com.page.uc.payfee.activity.PayFeeHistoryActivity;
@@ -98,9 +100,7 @@ public class UserCenterFragment extends BaseFragment {
 
     @OnClick({R.id.image_head, R.id.image_setting, R.id.ll_order_0, R.id.ll_order_1, R.id.ll_order_2, R.id.ll_order_3, R.id.ll_list_0, R.id.ll_list_1, R.id.ll_list_2, R.id.ll_list_3, R.id.ll_list_4, R.id.ll_list_5, R.id.ll_list_6, R.id.ll_list_7})
     public void onClick(View view) {
-
         Bundle bundle = new Bundle();
-
         switch (view.getId()) {
             case R.id.image_head:
                 if (UCUtils.getInstance().isLogin()) {

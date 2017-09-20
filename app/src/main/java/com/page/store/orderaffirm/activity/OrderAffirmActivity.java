@@ -47,6 +47,7 @@ import butterknife.OnClick;
 public class OrderAffirmActivity extends BaseActivity implements OnItemClickListener<Product> {
 
     public static final String PROLIST = "prolist";
+    public static final String ISSHOPCAR = "isshopcar";
 
     @BindView(R.id.rv_list)
     RecyclerView rvList;
@@ -57,6 +58,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     private ArrayList<Product> products;
     private MultiAdapter adapter;
     private double totalPrice;
+    private boolean isShopCar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
         ButterKnife.bind(this);
         setTitleBar("订单填写", true);
         products = (ArrayList<Product>) myBundle.getSerializable(PROLIST);
+        isShopCar = myBundle.getBoolean(ISSHOPCAR, false);
         setListView();
         refreshPrice();
         defAddress();
@@ -75,6 +78,7 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         myBundle.putSerializable(PROLIST, products);
+        myBundle.putBoolean(ISSHOPCAR, isShopCar);
     }
 
     private void setListView() {
@@ -148,12 +152,11 @@ public class OrderAffirmActivity extends BaseActivity implements OnItemClickList
         if (param.key == ServiceMap.submitOrder) {
             if (param.result.bstatus.code == 0) {
                 SubmitResult result = (SubmitResult) param.result;
-                if (products.size() > 2) {
+                if (isShopCar) {
                     ShopCarUtils.getInstance().clearData();//清空购物车
                 }
                 Bundle bundle = new Bundle();
                 bundle.putString(OrderDetailsActivity.ID, "" + result.data.id);
-                bundle.putInt(OrderDetailsActivity.STATUS, 1);
                 Intent intent = new Intent();
                 intent.putExtras(bundle);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
