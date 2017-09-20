@@ -6,8 +6,12 @@ import android.widget.ImageView;
 
 import com.framework.utils.Dimen;
 import com.qfant.wuye.R;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.picasso.OkHttpDownloader;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by shucheng.qu on 2017/8/24.
@@ -24,12 +28,25 @@ public class ImageLoad {
     }
 
     public static void loadPlaceholder(Context context, String url, Target target) {
-        Picasso.with(context)
-                .load(url)
-                .placeholder(R.drawable.moren)
-                .error(R.drawable.moren)
+
+        /**
+         * 设置超时时间
+         */
+        OkHttpClient okHttpClient = new OkHttpClient();
+        okHttpClient.setConnectTimeout(30, TimeUnit.SECONDS);
+        okHttpClient.setReadTimeout(30, TimeUnit.SECONDS);
+        okHttpClient.setWriteTimeout(30, TimeUnit.SECONDS);
+
+        Picasso picasso = new Picasso.Builder(context)
+                .downloader(new OkHttpDownloader(okHttpClient))
+                .build();
+
+
+        picasso.load(url)
+//                .placeholder(R.drawable.moren)
+//                .error(R.drawable.moren)
 //                .transform(new CompressTransformation())
-                .transform(new ImageTransform())
+//                .transform(new ImageTransform())
                 .into(target);
     }
 

@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.utils.QLog;
+import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.qfant.wuye.R;
 import com.squareup.picasso.Callback;
@@ -70,7 +71,11 @@ public class URLImageParser implements ImageGetter {
             }
         };
 //        ImageLoad.loadPlaceholder(c, source, target);
+//
         Picasso.with(c).load(source).into(target);
+
+
+
 //        new Handler().postDelayed(new Runnable() {
 //            @Override
 //            public void run() {
