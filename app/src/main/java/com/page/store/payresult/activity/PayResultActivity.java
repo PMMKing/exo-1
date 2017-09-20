@@ -3,12 +3,12 @@ package com.page.store.payresult.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
 import com.page.home.activity.MainActivity;
 import com.qfant.wuye.R;
-import com.page.store.orderdetails.activity.OrderDetailsActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +26,8 @@ public class PayResultActivity extends BaseActivity {
     TextView tvGoShopping;
     @BindView(R.id.text)
     TextView textView;
+    @BindView(R.id.iv_image)
+    ImageView ivImage;
     private String id;
 
     @Override
@@ -34,7 +36,7 @@ public class PayResultActivity extends BaseActivity {
         setContentView(R.layout.pub_activity_payresult_layout);
         ButterKnife.bind(this);
         id = myBundle.getString("id");
-        textView.setText(String.format("订单编号%s支付成功", id));
+        updataView();
     }
 
     @Override
@@ -43,6 +45,11 @@ public class PayResultActivity extends BaseActivity {
         if (intent != null && intent.getExtras() != null) {
             id = intent.getExtras().getString("id");
         }
+        updataView();
+    }
+
+    private void updataView() {
+        ivImage.setImageResource(R.drawable.pub_icon_success);
         textView.setText(String.format("订单编号%s支付成功", id));
     }
 

@@ -31,7 +31,6 @@ import com.page.store.orderaffirm.model.CommitOrderParam;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 import com.page.store.orderaffirm.model.DefaultAddressResult;
 import com.page.store.orderdetails.activity.OrderDetailsActivity;
-import com.page.store.payresult.activity.PayResultActivity;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
