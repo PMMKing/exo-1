@@ -18,6 +18,7 @@ import com.page.home.model.NoticeResult;
 import com.page.home.model.QpListResult;
 import com.page.home.model.ShopRecResult;
 import com.page.pay.ProductPayResult;
+import com.page.pay.WeChatPayResult;
 import com.page.store.classify.model.ClassifyResult;
 import com.page.store.collect.model.CollectResult;
 import com.page.store.home.model.FoodRecResult;
@@ -51,8 +52,8 @@ public enum ServiceMap implements Enums.IType, Serializable {
     checkVersion("/checkVersion.do", BaseResult.class),
     alipayPayProduct("/alipayPayProduct.do", ProductPayResult.class),
     alipayPayWuyeFee("/alipayPayWuyeFee.do", ProductPayResult.class),
-    wechatPayProduct("/wechatPayProduct.do", ProductPayResult.class),//微信商城
-    wechatPayWuyeFee("/wechatPayWuyeFee.do", ProductPayResult.class),//微信物业缴费
+    wechatPayProduct("/wechatPayProduct.do", WeChatPayResult.class),//微信商城
+    wechatPayWuyeFee("/wechatPayWuyeFee.do", WeChatPayResult.class),//微信物业缴费
     getAddresses("/getAddresses.do", AddressResult.class),
     submitAddress("/submitAddress.do", BaseResult.class),
     updateAddress("/updateAddress.do", BaseResult.class),

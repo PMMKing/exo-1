@@ -20,6 +20,7 @@ public class AppConstants {
 
     public static final boolean DEBUG = BuildConfig.DEBUG;
 
-    public static final String APP_ID = "wxd930ea5d5a258f4f";
-    public static final String AppSgin = "4f8c9c6c009b20d176a1417256083f6c";
+//    e1c8d16f2c0be7fc5b2decdb724423df
+    public static final String APP_ID = "wxb4f5998bd885e481";
+    public static final String AppSgin = "3e1157097a95a2f93c0548bdaf7fbcca";
 }

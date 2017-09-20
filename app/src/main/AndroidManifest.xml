@@ -246,6 +246,7 @@
         <activity
             android:name="com.qfant.wuye.wxapi.WXPayEntryActivity"
             android:exported="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:launchMode="singleTop" />
         <activity
             android:name="com.page.home.activity.TextViewActivity"
