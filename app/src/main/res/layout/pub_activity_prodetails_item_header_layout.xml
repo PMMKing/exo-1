@@ -1,125 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:descendantFocusability="blocksDescendants"
     android:orientation="vertical">
 
-    <com.framework.view.sivin.Banner
-        android:id="@+id/banner"
-        android:layout_width="match_parent"
-        android:layout_height="240dp"
-        app:banner_pageChangeDuration="800"
-        app:banner_pointAutoPlayInterval="3"
-        app:banner_pointContainerBackground="#fff"
-        app:banner_pointContainerLeftRightPadding="10dp"
-        app:banner_pointDrawable="@drawable/pub_banner_gray_blue_point"
-        app:banner_pointGravity="center_horizontal"
-        app:banner_pointLeftRightMargin="3dp"
-        app:banner_pointTopBottomMargin="6dp"
-        app:banner_tipTextColor="#FFFFFF"
-        app:banner_tipTextSize="12sp" />
-
-    <TextView
-        android:id="@+id/tv_money"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:lines="1"
-        android:paddingBottom="4dp"
-        android:paddingLeft="17dp"
-        android:paddingRight="17dp"
-        tools:text="￥100.00"
-        android:textColor="@color/pub_color_blue"
-        android:textSize="@dimen/text_h18" />
-
-    <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="6dp"
-        android:paddingLeft="17dp"
-        android:paddingRight="17dp"
-        tools:text="越南进口Tipo牛奶面包干饼干300g办公室零食大礼包浓浓奶香 下午茶 大包分享装"
-        android:textColor="@color/pub_color_gray_666"
-        android:textSize="@dimen/text_h14" />
-
-    <View style="@style/line_gray_h" />
-
     <LinearLayout
-        android:id="@+id/ll_explain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <com.framework.view.sivin.Banner
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            app:banner_pageChangeDuration="800"
+            app:banner_pointAutoPlayInterval="3"
+            app:banner_pointContainerBackground="#fff"
+            app:banner_pointContainerLeftRightPadding="10dp"
+            app:banner_pointDrawable="@drawable/pub_banner_gray_blue_point"
+            app:banner_pointGravity="center_horizontal"
+            app:banner_pointLeftRightMargin="3dp"
+            app:banner_pointTopBottomMargin="6dp"
+            app:banner_tipTextColor="#FFFFFF"
+            app:banner_tipTextSize="12sp" />
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/tv_money"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingBottom="17dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="13dp"
-            android:text="说明"
-            android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h14" />
-
-
-        <ImageView
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/right_arrow_icon" />
-
-    </LinearLayout>
-
-    <View
-        android:id="@+id/line_explain"
-        style="@style/line_gray_h" />
-
-    <TextView
-        android:id="@+id/tv_intro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/pub_color_gray_f5f5f5"
-        android:paddingBottom="12dp"
-        android:paddingLeft="14dp"
-        android:paddingRight="30dp"
-        android:paddingTop="12dp"
-        tools:text="宝贝收到满满的一箱，儿子很喜欢吃这个饼干。还送了椰子片，味道也不错。"
-        android:textColor="@color/pub_color_gray_666"
-        android:textSize="@dimen/text_h12" />
-
-    <View
-        android:id="@+id/line_intro"
-        style="@style/line_gray_h" />
-
-    <LinearLayout
-        android:id="@+id/ll_evaluate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            android:ellipsize="end"
+            android:lines="1"
+            android:paddingBottom="4dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:textColor="@color/pub_color_blue"
+            android:textSize="@dimen/text_h18"
+            tools:text="￥100.00" />
 
         <TextView
-            android:layout_width="0dp"
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingBottom="17dp"
-            android:paddingLeft="15dp"
-            android:paddingTop="13dp"
-            android:text="评价"
-            android:textColor="@color/pub_color_black"
-            android:textSize="@dimen/text_h14" />
+            android:paddingBottom="6dp"
+            android:paddingLeft="17dp"
+            android:paddingRight="17dp"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="@dimen/text_h14"
+            tools:text="越南进口Tipo牛奶面包干饼干300g办公室零食大礼包浓浓奶香 下午茶 大包分享装" />
+
+        <View style="@style/line_gray_h" />
+
+        <LinearLayout
+            android:id="@+id/ll_explain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="17dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="13dp"
+                android:text="说明"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h14" />
 
 
-        <ImageView
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="15dp"
-            android:src="@drawable/right_arrow_icon" />
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/right_arrow_icon" />
 
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line_explain"
+            style="@style/line_gray_h" />
+
+        <TextView
+            android:id="@+id/tv_intro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/pub_color_gray_f5f5f5"
+            android:paddingBottom="12dp"
+            android:paddingLeft="14dp"
+            android:paddingRight="30dp"
+            android:paddingTop="12dp"
+            android:textColor="@color/pub_color_gray_666"
+            android:textSize="@dimen/text_h12"
+            tools:text="宝贝收到满满的一箱，儿子很喜欢吃这个饼干。还送了椰子片，味道也不错。" />
+
+        <View
+            android:id="@+id/line_intro"
+            style="@style/line_gray_h" />
+
+        <LinearLayout
+            android:id="@+id/ll_evaluate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingBottom="17dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="13dp"
+                android:text="评价"
+                android:textColor="@color/pub_color_black"
+                android:textSize="@dimen/text_h14" />
+
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/right_arrow_icon" />
+
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>

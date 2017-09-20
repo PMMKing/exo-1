@@ -10,6 +10,7 @@ import com.framework.domain.param.BaseParam;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
+import com.framework.utils.html.URLImageParser;
 import com.page.home.model.ContactResult;
 import com.qfant.wuye.R;
 
@@ -42,7 +43,7 @@ public class TextViewActivity extends BaseActivity {
         if (TextUtils.isEmpty(content)) {
             Request.startRequest(new BaseParam(), ServiceMap.contact, mHandler, Request.RequestFeature.BLOCK, Request.RequestFeature.CANCELABLE);
         }else {
-            tvContent.setText(Html.fromHtml(content));
+            tvContent.setText(Html.fromHtml(content, new URLImageParser(tvContent,getContext()),null));
         }
     }
 

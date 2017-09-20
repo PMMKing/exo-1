@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import com.framework.utils.Dimen;
 import com.qfant.wuye.R;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 /**
  * Created by shucheng.qu on 2017/8/24.
@@ -20,6 +21,16 @@ public class ImageLoad {
 
     public static void loadPlaceholder(Context context, String url, ImageView imageView) {
         loadPlaceholder(context, url, imageView, R.drawable.moren, R.drawable.moren);
+    }
+
+    public static void loadPlaceholder(Context context, String url, Target target) {
+        Picasso.with(context)
+                .load(url)
+                .placeholder(R.drawable.moren)
+                .error(R.drawable.moren)
+//                .transform(new CompressTransformation())
+                .transform(new ImageTransform())
+                .into(target);
     }
 
     public static void loadPlaceholder(Context context, String url, ImageView imageView, int placeholderResId, int errorResId) {

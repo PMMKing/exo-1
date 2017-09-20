@@ -1,6 +1,7 @@
 package com.page.store.prodetails.holder;
 
 import android.content.Context;
+import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.ArrayUtils;
 import com.framework.utils.BusinessUtils;
+import com.framework.utils.html.URLImageParser;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.utils.viewutils.ViewUtils;
 import com.framework.view.sivin.Banner;
@@ -69,7 +71,8 @@ public class HeaderHolder extends BaseViewHolder<PEResult.Evaluate> {
             lineExplain.setVisibility(View.VISIBLE);
             tvIntro.setVisibility(View.VISIBLE);
             lineIntro.setVisibility(View.VISIBLE);
-            tvIntro.setText(data.product.intro);
+//            tvIntro.setText(Html.fromHtml(data.product.intro));
+            tvIntro.setText(Html.fromHtml(data.product.intro,new URLImageParser(tvIntro,mContext),null));
         }
 
         ViewUtils.setOrGone(llEvaluate, holder.getCount() > 1);
@@ -111,11 +114,11 @@ public class HeaderHolder extends BaseViewHolder<PEResult.Evaluate> {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_explain:
-                if (tvTitle.getVisibility() == View.GONE) {
-                    tvTitle.setVisibility(View.VISIBLE);
+                if (tvIntro.getVisibility() == View.GONE) {
+                    tvIntro.setVisibility(View.VISIBLE);
                     lineIntro.setVisibility(View.VISIBLE);
                 } else {
-                    tvTitle.setVisibility(View.GONE);
+                    tvIntro.setVisibility(View.GONE);
                     lineIntro.setVisibility(View.GONE);
                 }
                 break;
