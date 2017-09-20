@@ -13,5 +13,6 @@ public class PayData implements Serializable {
     public int id;
     public double price;
     public int from;
+    public String orderno;
 
 }

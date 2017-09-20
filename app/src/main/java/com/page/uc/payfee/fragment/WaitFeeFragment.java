@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.framework.activity.BaseFragment;
-import com.framework.domain.param.BaseParam;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
@@ -27,7 +26,7 @@ import com.framework.view.DatePickerDialog;
 import com.framework.view.LineDecoration;
 import com.page.pay.PayActivity;
 import com.page.pay.PayData;
-import com.page.uc.payfee.activity.ubmitWuyeFeeResult;
+import com.page.uc.payfee.model.ubmitWuyeFeeResult;
 import com.page.uc.payfee.holder.WaitPayHolder;
 import com.page.uc.payfee.model.WaitFeeParam;
 import com.page.uc.payfee.model.WaitFeeQueryParam;
@@ -35,7 +34,6 @@ import com.page.uc.payfee.model.WaitFeeResult;
 import com.page.uc.payfee.model.WaitFeeResult.Data.Datas;
 import com.qfant.wuye.R;
 
-import java.util.Calendar;
 import java.util.List;
 
 import butterknife.BindView;
@@ -170,6 +168,7 @@ public class WaitFeeFragment extends BaseFragment implements OnItemClickListener
             payData.id = result.data.orderid;
             payData.price = result.data.totalprice;
             payData.from = -1;
+            payData.orderno = result.data.orderno;
             bundle.putSerializable("order", payData);
             qStartActivity(PayActivity.class, bundle);
             showToast(param.result.bstatus.des);

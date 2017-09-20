@@ -1,4 +1,4 @@
-package com.page.uc.payfee.activity;
+package com.page.uc.payfee.model;
 
 import com.framework.domain.response.BaseResult;
 

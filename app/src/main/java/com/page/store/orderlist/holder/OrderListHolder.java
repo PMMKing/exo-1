@@ -54,7 +54,7 @@ public class OrderListHolder extends BaseViewHolder<OrderList> {
         switch (data.status) {
             case 1:
                 orderCancle(data.id);
-                orderPay(data.id, data.totalprice);
+                orderPay(data.id, data.totalprice,data.orderno);
                 break;
             case 2:
 //                orderCancle(data.id);
@@ -126,14 +126,14 @@ public class OrderListHolder extends BaseViewHolder<OrderList> {
         });
     }
 
-    private void orderPay(final String id, final double totalprice) {
+    private void orderPay(final String id, final double totalprice, final String orderno) {
         TextView textView = getTextView("支付");
         llOrderStatus.addView(textView);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (onOrderStatusCallBack != null) {
-                    onOrderStatusCallBack.orderPay(id, totalprice);
+                    onOrderStatusCallBack.orderPay(id, totalprice,orderno);
                 }
             }
         });

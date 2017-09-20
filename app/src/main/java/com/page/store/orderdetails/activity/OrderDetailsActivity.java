@@ -112,7 +112,7 @@ public class OrderDetailsActivity extends BaseActivity {
         switch (data.status) {
             case 1:
                 orderCancle();
-                orderPay(data.totalprice);
+                orderPay(data.totalprice, data.orderno);
                 break;
             case 2:
 //                orderCancle(data.id);
@@ -191,7 +191,7 @@ public class OrderDetailsActivity extends BaseActivity {
         });
     }
 
-    private void orderPay(final double totalprice) {
+    private void orderPay(final double totalprice, final String orderno) {
         TextView textView = getTextView("支付");
         llStatus.addView(textView);
         textView.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +201,7 @@ public class OrderDetailsActivity extends BaseActivity {
                 PayData payData = new PayData();
                 payData.id = Integer.parseInt(id);
                 payData.price = totalprice;
+                payData.orderno = orderno;
                 bundle.putSerializable("order", payData);
                 qStartActivity(PayActivity.class, bundle);
             }

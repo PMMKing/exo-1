@@ -101,8 +101,8 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
                     }
 
                     @Override
-                    public void orderPay(String id, double totalprice) {
-                        OrderListFragment.this.orderPay(id, totalprice);
+                    public void orderPay(String id, double totalprice,String orderno) {
+                        OrderListFragment.this.orderPay(id, totalprice,orderno);
                     }
 
                     @Override
@@ -137,11 +137,12 @@ public class OrderListFragment extends BaseFragment implements OnItemClickListen
         Request.startRequest(param, ServiceMap.cancelOrder, mHandler, Request.RequestFeature.BLOCK);
     }
 
-    private void orderPay(String id, double totalprice) {
+    private void orderPay(String id, double totalprice,String orderno) {
         Bundle bundle = new Bundle();
         PayData payData = new PayData();
         payData.id = Integer.parseInt(id);
         payData.price = totalprice;
+        payData.orderno = orderno;
         bundle.putSerializable("order", payData);
         qStartActivity(PayActivity.class, bundle);
     }

@@ -35,7 +35,7 @@ import com.page.uc.bean.RegiserResult;
 import com.page.uc.bean.RoomsResult;
 import com.page.uc.bean.UnitsResult;
 import com.page.uc.bean.UpdateMyPortraitResult;
-import com.page.uc.payfee.activity.ubmitWuyeFeeResult;
+import com.page.uc.payfee.model.ubmitWuyeFeeResult;
 import com.page.uc.payfee.model.FeeListResult;
 import com.page.uc.payfee.model.FeeMonthResult;
 import com.page.uc.payfee.model.WaitFeeResult;
