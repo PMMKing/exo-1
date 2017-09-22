@@ -10,6 +10,7 @@ import com.framework.activity.BaseActivity;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
+import com.framework.utils.html.HtmlUtils;
 import com.framework.utils.viewutils.ViewUtils;
 import com.page.community.serve.model.SerDetailParam;
 import com.page.community.serve.model.SerDetailResult;
@@ -75,7 +76,7 @@ public class ServerDetailActivity extends BaseActivity {
         ViewUtils.setOrGone(tvAddress, data.address);
         ViewUtils.setOrGone(llContent, !TextUtils.isEmpty(data.content));
         ViewUtils.setOrGone(tvContent, data.content);
-        tvContent.setText(Html.fromHtml(data.content));
+        tvContent.setText(HtmlUtils.getHtml(getContext(),tvContent,data.content));
         ViewUtils.setOrGone(llName, !TextUtils.isEmpty(data.title));
         ViewUtils.setOrGone(tvName, data.title);
     }

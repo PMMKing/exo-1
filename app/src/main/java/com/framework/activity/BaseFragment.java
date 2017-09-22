@@ -64,6 +64,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
     private HandlerCallbacks.FragmentCallback hcb;
     protected QProgressDialogFragment progressDialog;
     protected TitleBar mTitleBar;
+    private BaseActivity mActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -328,8 +329,18 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
     }
 
     @Override
+    public void onAttach(Activity activity) {
+        this.mActivity = (BaseActivity) activity;
+        super.onAttach(activity);
+    }
+
+    @Override
     public BaseActivity getContext() {
-        return (BaseActivity) getActivity();
+        BaseActivity activity = (BaseActivity) getActivity();
+        if (activity == null) {
+            activity = mActivity;
+        }
+        return activity;
     }
 
     @Override

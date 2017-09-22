@@ -1,7 +1,6 @@
 package com.page.home.activity;
 
 import android.os.Bundle;
-import android.text.Html;
 import android.text.TextUtils;
 import android.widget.TextView;
 
@@ -10,7 +9,7 @@ import com.framework.domain.param.BaseParam;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
-import com.framework.utils.html.URLImageParser;
+import com.framework.utils.html.HtmlUtils;
 import com.page.home.model.ContactResult;
 import com.qfant.wuye.R;
 
@@ -40,10 +39,11 @@ public class TextViewActivity extends BaseActivity {
         content = myBundle.getString("content");
         setTitleBar("通知详情", true);
         serviceMap = (ServiceMap) myBundle.getSerializable(SERVICEMAP);
+
         if (TextUtils.isEmpty(content)) {
             Request.startRequest(new BaseParam(), ServiceMap.contact, mHandler, Request.RequestFeature.BLOCK, Request.RequestFeature.CANCELABLE);
         }else {
-            tvContent.setText(Html.fromHtml(content, new URLImageParser(tvContent,getContext()),null));
+            tvContent.setText(HtmlUtils.getHtml(getContext(),tvContent,content));
         }
     }
 
@@ -52,7 +52,7 @@ public class TextViewActivity extends BaseActivity {
         if (param.key == ServiceMap.contact) {
             ContactResult result = (ContactResult) param.result;
             if (param.result.bstatus.code == 0) {
-                tvContent.setText(Html.fromHtml(content));
+                tvContent.setText(HtmlUtils.getHtml(getContext(),tvContent,content));
             }
         }
         return super.onMsgSearchComplete(param);

@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.utils.BusinessUtils;
 import com.framework.utils.ShopCarUtils;
 import com.framework.utils.ToastUtils;
 import com.framework.utils.imageload.ImageLoad;
@@ -52,6 +53,7 @@ public class ProHolder extends BaseViewHolder<Produts> {
         this.data = data;
         ImageLoad.loadPlaceholder(mContext, data.pic1, ivImage);
         tvName.setText(data.name);
+        tvSalesVolume.setText(String.format("价格 ¥%s", BusinessUtils.formatDouble2String(data.price)));
         Product productForId = ShopCarUtils.getInstance().getProductForId(data.id);
         refresh(productForId == null ? 0 : productForId.num);
     }

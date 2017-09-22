@@ -286,7 +286,7 @@ public class HomeFragment extends BaseFragment {
     private void getEvents() {
         EventListParam param = new EventListParam();
         param.pageNo = 1;
-        param.pageSize = 4;
+        param.pageSize = 5;
         Request.startRequest(param, ServiceMap.getActivityList, mHandler);
     }
 

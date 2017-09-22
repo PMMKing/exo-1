@@ -72,7 +72,6 @@ public class OrderDetailsActivity extends BaseActivity {
         ButterKnife.bind(this);
         setTitleBar("订单详情", true);
         id = myBundle.getString(ID);
-        startRequest();
     }
 
     @Override
@@ -85,6 +84,12 @@ public class OrderDetailsActivity extends BaseActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         myBundle.putString(ID, id);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startRequest();
     }
 
     private void startRequest() {
@@ -109,6 +114,7 @@ public class OrderDetailsActivity extends BaseActivity {
         }
         tvTotalPrice.setText(String.format("总价合计 ¥%s", BusinessUtils.formatDouble2String(data.totalprice)));
         ViewUtils.setOrGone(tvReason, data.reason);
+        //1 等待支付 2订单取消 3 支付成功 4 支付失败 5已发货6申请退款 7退款完成8订单完成9已评价
         switch (data.status) {
             case 1:
                 orderCancle();

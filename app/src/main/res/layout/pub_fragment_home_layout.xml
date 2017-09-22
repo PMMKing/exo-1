@@ -39,7 +39,6 @@
             android:inAnimation="@anim/in"
             android:outAnimation="@anim/go" />
 
-
         <android.support.v7.widget.GridLayout
             android:id="@+id/gl_mode"
             android:layout_width="match_parent"

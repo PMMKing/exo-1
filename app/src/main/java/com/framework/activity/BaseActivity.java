@@ -54,6 +54,7 @@ import com.framework.utils.HandlerCallbacks;
 import com.framework.utils.IBaseActFrag;
 import com.framework.utils.QLog;
 import com.framework.utils.ToastUtils;
+import com.framework.utils.XStatusBarHelper;
 import com.framework.utils.inject.Injector;
 import com.framework.utils.tuski.Tuski;
 import com.framework.view.QProgressDialogFragment;
@@ -107,16 +108,6 @@ public abstract class BaseActivity extends FragmentActivity implements
         blockTouch = myBundle.getBoolean("blockTouch");
     }
 
-    private void setBarTint() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            setTranslucentStatus(true);
-        }
-
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.colorPrimaryDark);
-    }
-
     @TargetApi(19)
     private void setTranslucentStatus(boolean on) {
         Window win = getWindow();
@@ -135,17 +126,9 @@ public abstract class BaseActivity extends FragmentActivity implements
         super.onStart();
     }
 
+    @Override
     protected void onPause() {
         super.onPause();
-    }
-
-    /**
-     * 返回
-     *
-     * @param view
-     */
-    public void back(View view) {
-        finish();
     }
 
     /**
@@ -170,34 +153,32 @@ public abstract class BaseActivity extends FragmentActivity implements
         return linearLayout;
     }
 
-    public void setContentView(View view, boolean autoInject) {
-//        final ViewGroup realRoot = genRealRootView();
+    public void setContent(View view) {
         mRoot = genRootView();
         mTitleBar = new TitleBar(this);
         mRoot.addView(mTitleBar, -1, -2);
         mRoot.addView(view, -1, -1);
-//        realRoot.addView(mRoot, -1, -1);
+//        mRoot.setBackgroundColor(Color.argb((int) (0.2 * 255), 0, 0, 0));
+//        mRoot.setPadding(0,50,0,0);
+//        mRoot.setFitsSystemWindows(true);
+//        mTitleBar.setFitsSystemWindows(true);
         super.setContentView(mRoot);
         mTitleBar.setVisibility(View.GONE);
-//        if (autoInject) {
-//            Injector.inject(this);
-//        }
-    }
-
-    public void setContentView(int layoutResID, boolean autoInject) {
-        final View content = getLayoutInflater().inflate(layoutResID, null);
-        setContentView(content, autoInject);
+//        XStatusBarHelper.forceFitsSystemWindows(this);
+//        XStatusBarHelper.immersiveStatusBar(this);
+//        XStatusBarHelper.setHeightAndPadding(this, mTitleBar);
     }
 
     @Override
     public void setContentView(int layoutResID) {
-        setContentView(layoutResID, true);
+        final View content = getLayoutInflater().inflate(layoutResID, null);
+        setContent(content);
     }
-
-    @Override
-    public void setContentView(View view) {
-        setContentView(view, true);
-    }
+//
+//    @Override
+//    public void setContentView(View view) {
+//        setContentView(view, true);
+//    }
 
     public void openSoftinput(final EditText editText) {
         editText.setFocusable(true);
