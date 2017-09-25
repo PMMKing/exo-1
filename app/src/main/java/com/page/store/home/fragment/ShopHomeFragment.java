@@ -112,7 +112,7 @@ public class ShopHomeFragment extends BaseFragment {
     private void getLinks() {
         LinksParam param = new LinksParam();
         param.type = 2;
-        Request.startRequest(param, ServiceMap.getLinks, mHandler);
+        Request.startRequest(param, ServiceMap.getLinks, mHandler, Request.RequestFeature.BLOCK);
     }
 
     private void getHome() {
@@ -120,7 +120,7 @@ public class ShopHomeFragment extends BaseFragment {
     }
 
     private void getRecommend() {
-        Request.startRequest(new BaseParam(), ServiceMap.getParticularProducts, mHandler);
+        Request.startRequest(new BaseParam(), ServiceMap.getParticularProducts, mHandler, Request.RequestFeature.BLOCK);
     }
 
     private void setBanner() {

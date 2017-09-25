@@ -36,6 +36,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.framework.utils.XStatusBarHelper;
 import com.qfant.wuye.R;
 import com.framework.net.NetworkListener;
 import com.framework.net.NetworkManager;
@@ -112,6 +113,10 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
         linearLayout.addView(view, LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         mTitleBar.setVisibility(View.GONE);
+
+        XStatusBarHelper.forceFitsSystemWindows(getContext());
+        XStatusBarHelper.immersiveStatusBar(getContext());
+        XStatusBarHelper.setHeightAndPadding(getContext(), mTitleBar);
         return linearLayout;
     }
 

@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -15,6 +16,7 @@ import android.graphics.drawable.Drawable;
 import android.text.Html.ImageGetter;
 import android.widget.TextView;
 
+import com.framework.utils.imageload.IFacadeBitmapCallback;
 import com.framework.utils.imageload.ImageLoad;
 import com.qfant.wuye.R;
 import com.squareup.picasso.Picasso;
@@ -65,67 +67,7 @@ public class URLImageGetter implements ImageGetter {
         };
 
         targets.add(target);
-        ImageLoad.loadPlaceholder(c,source,target);
-
-//        cachedThreadPool.submit(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                try {
-//                    Bitmap bitmap = Picasso.with(c).load(source).get();
-//                    QLog.d("qushucheng", "onBitmapLoaded");
-//                    Drawable drawable = new BitmapDrawable(bitmap);
-//                    drawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-//                    urlDrawable.setDrawable(drawable);
-//                    urlDrawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-//                    tv_image.invalidate();
-//                    tv_image.setText(tv_image.getText());
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//
-////                ImageLoad.get(c, source, new IFacadeBitmapCallback() {
-////                    @Override
-////                    public void onBitmapFailed(String url) {
-////                        Drawable drawable = c.getResources().getDrawable(R.drawable.moren);
-////                        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-////                        urlDrawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-////                        urlDrawable.setDrawable(drawable);
-////                        tv_image.invalidate();
-////                    }
-////
-////                    @Override
-////                    public void onBitmapLoaded(String url, Bitmap bitmap) {
-////
-////                        QLog.d("qushucheng", "onBitmapLoaded");
-////                        Drawable drawable = new BitmapDrawable(bitmap);
-////                        drawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-////                        urlDrawable.setDrawable(drawable);
-////                        urlDrawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-////                        tv_image.invalidate();
-////                        tv_image.setText(tv_image.getText());
-//////
-//////
-//////
-//////                        BitmapDrawable d = new BitmapDrawable(c.getResources(), bitmap);
-//////                        d.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-//////                        urlDrawable.setBounds(0, 0, bitmap.getWidth(), bitmap.getHeight());
-//////                        urlDrawable.setDrawable(d);
-//////                        tv_image.invalidate();
-//////                        tv_image.setText(tv_image.getText()); // 解决图文
-////                    }
-////
-////                    @Override
-////                    public void onBitmapStart(String url) {
-////                        Drawable drawable = c.getResources().getDrawable(R.drawable.moren);
-////                        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-////                        urlDrawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
-////                        urlDrawable.setDrawable(drawable);
-////                        tv_image.invalidate();
-////                    }
-////                });
-//            }
-//        });
+        ImageLoad.loadPlaceholder(c, source, target);
         return urlDrawable;
     }
 }

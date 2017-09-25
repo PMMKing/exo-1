@@ -1,6 +1,7 @@
 package com.page.uc.payfee.holder;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -9,13 +10,13 @@ import android.widget.TextView;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.ArrayUtils;
 import com.framework.utils.DateFormatUtils;
+import com.framework.utils.viewutils.ViewUtils;
 import com.page.uc.payfee.model.FeeListResult;
 import com.page.uc.payfee.model.FeeListResult.Data.DatasX.Datas;
 import com.qfant.wuye.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by shucheng.qu on 2017/9/17.
@@ -33,6 +34,8 @@ public class FeeListHolder extends BaseViewHolder<FeeListResult.Data.DatasX> {
     LinearLayout llItem;
     @BindView(R.id.ll_content)
     LinearLayout llContent;
+    @BindView(R.id.ll_time)
+    LinearLayout llTime;
 
     public FeeListHolder(Context context, View itemView) {
         super(context, itemView);
@@ -45,6 +48,7 @@ public class FeeListHolder extends BaseViewHolder<FeeListResult.Data.DatasX> {
         if (data == null) return;
         tvOrderNo.setText(data.orderno);
         tvPayState.setText(data.paystatus);
+        ViewUtils.setOrGone(llTime, !TextUtils.isEmpty(data.paytime));
         tvPayTime.setText(data.paytime);
         llItem.removeAllViews();
         if (!ArrayUtils.isEmpty(data.datas)) {

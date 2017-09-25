@@ -296,7 +296,6 @@ public class XStatusBarHelper {
                         ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight(container.getContext()));
                 container.addView(translucentView, lp);
             }
-
             translucentView.setBackgroundColor(Color.argb((int) (alpha * 255), 0, 0, 0));
         }
     }
@@ -310,9 +309,10 @@ public class XStatusBarHelper {
     public static void setHeightAndPadding(Context context, View view) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             ViewGroup.LayoutParams lp = view.getLayoutParams();
-            lp.height += getStatusBarHeight(context);//增高
-            view.setPadding(view.getPaddingLeft(), view.getPaddingTop() + getStatusBarHeight(context),
-                    view.getPaddingRight(), view.getPaddingBottom());
+            int statusBarHeight = getStatusBarHeight(context);
+            lp.height = statusBarHeight + Dimen.dpToPx(50);//增高
+            view.setPadding(view.getPaddingLeft(), view.getPaddingTop() + statusBarHeight, view.getPaddingRight(), view.getPaddingBottom());
+            view.setLayoutParams(lp);
         }
     }
 

@@ -49,6 +49,7 @@ import com.framework.net.NetworkManager;
 import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.utils.BusinessUtils;
+import com.framework.utils.Dimen;
 import com.framework.utils.Globals;
 import com.framework.utils.HandlerCallbacks;
 import com.framework.utils.IBaseActFrag;
@@ -158,15 +159,21 @@ public abstract class BaseActivity extends FragmentActivity implements
         mTitleBar = new TitleBar(this);
         mRoot.addView(mTitleBar, -1, -2);
         mRoot.addView(view, -1, -1);
-//        mRoot.setBackgroundColor(Color.argb((int) (0.2 * 255), 0, 0, 0));
-//        mRoot.setPadding(0,50,0,0);
-//        mRoot.setFitsSystemWindows(true);
-//        mTitleBar.setFitsSystemWindows(true);
         super.setContentView(mRoot);
         mTitleBar.setVisibility(View.GONE);
-//        XStatusBarHelper.forceFitsSystemWindows(this);
-//        XStatusBarHelper.immersiveStatusBar(this);
-//        XStatusBarHelper.setHeightAndPadding(this, mTitleBar);
+
+        XStatusBarHelper.forceFitsSystemWindows(this);
+        XStatusBarHelper.immersiveStatusBar(this);
+        XStatusBarHelper.setHeightAndPadding(this, mTitleBar);
+    }
+
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resId = getContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resId > 0) {
+            result = getContext().getResources().getDimensionPixelSize(resId);
+        }
+        return result;
     }
 
     @Override

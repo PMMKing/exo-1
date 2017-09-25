@@ -272,14 +272,14 @@ public class HomeFragment extends BaseFragment {
     }
 
     public void getNotices() {
-        Request.startRequest(new BaseParam(), ServiceMap.getNoticeList, mHandler);
+        Request.startRequest(new BaseParam(), ServiceMap.getNoticeList, mHandler, Request.RequestFeature.BLOCK);
     }
 
 
     private void getLinks() {
         LinksParam param = new LinksParam();
         param.type = 1;
-        Request.startRequest(param, ServiceMap.getLinks, mHandler);
+        Request.startRequest(param, ServiceMap.getLinks, mHandler, Request.RequestFeature.BLOCK);
     }
 
 
@@ -287,11 +287,11 @@ public class HomeFragment extends BaseFragment {
         EventListParam param = new EventListParam();
         param.pageNo = 1;
         param.pageSize = 5;
-        Request.startRequest(param, ServiceMap.getActivityList, mHandler);
+        Request.startRequest(param, ServiceMap.getActivityList, mHandler, Request.RequestFeature.BLOCK);
     }
 
     private void getRecommend() {
-        Request.startRequest(new BaseParam(), ServiceMap.getRecommendCategorys, mHandler);
+        Request.startRequest(new BaseParam(), ServiceMap.getRecommendCategorys, mHandler, Request.RequestFeature.BLOCK);
     }
 
     @Override
