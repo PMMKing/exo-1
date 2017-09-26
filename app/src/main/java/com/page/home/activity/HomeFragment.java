@@ -92,6 +92,7 @@ public class HomeFragment extends BaseFragment {
     private Unbinder unbinder;
     private Object notices;
     private MultiAdapter adapter711;
+    private int status = 0;
 
     @Nullable
     @Override
@@ -112,10 +113,12 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        getNotices();
-        getLinks();
-        getEvents();
-        getRecommend();
+        if(status < 4){
+            getNotices();
+            getLinks();
+            getEvents();
+            getRecommend();
+        }
     }
 
     private void setEvent(List<ActivityList> activityList) {
@@ -300,12 +303,14 @@ public class HomeFragment extends BaseFragment {
             LinksResult linksResult = (LinksResult) param.result;
             if (linksResult != null && linksResult.data != null && linksResult.data.links != null) {
                 updataBanner(linksResult.data.links);
+                status++;
             }
 
         } else if (param.key == ServiceMap.getActivityList) {
             EventListResult result = (EventListResult) param.result;
             if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.activityList)) {
                 setEvent(result.data.activityList);
+                status++;
             }
         } else if (param.key == ServiceMap.getNoticeList) {
             NoticeResult result = (NoticeResult) param.result;
@@ -325,10 +330,12 @@ public class HomeFragment extends BaseFragment {
                     });
                     flipper.addView(view);
                 }
+                status++;
             }
         } else if (param.key == ServiceMap.getRecommendCategorys) {
             FoodRecResult result = (FoodRecResult) param.result;
             updataList(result);
+            status++;
         }
         return false;
     }

@@ -2,7 +2,7 @@
 <resources>
 
     <color name="colorPrimary">@color/pub_color_blue</color>//actionbar color ScrollView
-    <color name="colorPrimaryDark">@color/pub_color_blue</color>//statusbar
+    <color name="colorPrimaryDark">@color/pub_color_gray_cccccc</color>//statusbar
     <color name="colorAccent">@color/pub_color_blue</color>//checkbox check color
     <drawable name="transparent">#00000000</drawable>
     <color name="transparent">#00000000</color>

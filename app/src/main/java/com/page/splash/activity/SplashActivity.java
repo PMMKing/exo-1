@@ -21,8 +21,6 @@ public class SplashActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         PushManager.getInstance().initialize(this.getApplication(), com.qfant.wuye.push.PushService.class);
-
-//        qStartActivity(LoginActivity.class);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

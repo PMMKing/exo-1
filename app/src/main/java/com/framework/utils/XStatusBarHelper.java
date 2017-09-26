@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 public class XStatusBarHelper {
 
     private static float DEFAULT_ALPHA = 0.2f;
+    private static int DEFAULT_COLOR = -1342177;//black
 
     /**
      * 设置默认值
@@ -36,6 +37,15 @@ public class XStatusBarHelper {
      */
     public static void setDefaultAlpha(@FloatRange(from = 0.0, to = 1.0) float alpha) {
         DEFAULT_ALPHA = alpha;
+    }
+
+    /**
+     * 设置默认值
+     *
+     * @param color
+     */
+    public static void setDefaultColor(@ColorInt int color) {
+        DEFAULT_COLOR = color;
     }
 
     /**
@@ -296,7 +306,9 @@ public class XStatusBarHelper {
                         ViewGroup.LayoutParams.MATCH_PARENT, getStatusBarHeight(container.getContext()));
                 container.addView(translucentView, lp);
             }
-            translucentView.setBackgroundColor(Color.argb((int) (alpha * 255), 0, 0, 0));
+            translucentView.setBackgroundColor(DEFAULT_COLOR);
+            translucentView.getBackground().setAlpha((int) (alpha * 255));
+//            translucentView.setBackgroundColor(Color.argb((int) (alpha * 255), 0, 0, 0));
         }
     }
 

@@ -161,19 +161,17 @@ public abstract class BaseActivity extends FragmentActivity implements
         mRoot.addView(view, -1, -1);
         super.setContentView(mRoot);
         mTitleBar.setVisibility(View.GONE);
-
-        XStatusBarHelper.forceFitsSystemWindows(this);
-        XStatusBarHelper.immersiveStatusBar(this);
-        XStatusBarHelper.setHeightAndPadding(this, mTitleBar);
+//        setStatusBar();
     }
 
-    public int getStatusBarHeight() {
-        int result = 0;
-        int resId = getContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resId > 0) {
-            result = getContext().getResources().getDimensionPixelSize(resId);
-        }
-        return result;
+
+    protected void setStatusBar() {
+        if(mTitleBar == null)return;
+        XStatusBarHelper.setDefaultAlpha(0.2f);
+        XStatusBarHelper.setDefaultColor(getResources().getColor(R.color.pub_color_black));
+        XStatusBarHelper.forceFitsSystemWindows(getContext());
+        XStatusBarHelper.immersiveStatusBar(getContext());
+        XStatusBarHelper.setHeightAndPadding(getContext(), mTitleBar);
     }
 
     @Override

@@ -5,11 +5,13 @@ import android.annotation.TargetApi;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
@@ -102,7 +104,7 @@ public class QProgressDialogFragment extends DialogFragment implements Observer 
 
     @Override
     public int getTheme() {
-        return R.style.Theme_Dialog_Router;
+        return R.style.progress_fragmeng;
     }
 
     @Override
@@ -245,4 +247,5 @@ public class QProgressDialogFragment extends DialogFragment implements Observer 
             tvMessage.setText((CharSequence) data);
         }
     }
+
 }

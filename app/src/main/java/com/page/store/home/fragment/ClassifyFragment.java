@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,10 +21,11 @@ import com.framework.rvadapter.click.OnItemClickListener;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
 import com.framework.utils.ArrayUtils;
+import com.framework.utils.XStatusBarHelper;
 import com.framework.view.LineDecoration;
-import com.page.store.classify.holder.NavHolder;
-import com.page.store.classify.holder.ProHolder;
-import com.page.store.classify.model.ClassifyResult;
+import com.page.store.home.holder.NavHolder;
+import com.page.store.home.holder.ProHolder;
+import com.page.store.home.model.ClassifyResult;
 import com.page.store.orderaffirm.model.CommitOrderParam;
 import com.page.store.prodetails.activity.ProDetailsActivity;
 import com.qfant.wuye.R;
@@ -67,7 +67,6 @@ public class ClassifyFragment extends BaseFragment implements View.OnTouchListen
         setRightListView();
         startRequest();
     }
-
 
     private void startRequest() {
         Request.startRequest(new BaseParam(), ServiceMap.getCategorys, mHandler, Request.RequestFeature.BLOCK);

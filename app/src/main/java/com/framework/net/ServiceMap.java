@@ -19,7 +19,7 @@ import com.page.home.model.QpListResult;
 import com.page.home.model.ShopRecResult;
 import com.page.pay.ProductPayResult;
 import com.page.pay.WeChatPayResult;
-import com.page.store.classify.model.ClassifyResult;
+import com.page.store.home.model.ClassifyResult;
 import com.page.store.collect.model.CollectResult;
 import com.page.store.home.model.FoodRecResult;
 import com.page.store.orderaffirm.activity.SubmitResult;

@@ -1,4 +1,4 @@
-package com.page.store.classify.model;
+package com.page.store.home.model;
 
 import com.framework.domain.response.BaseResult;
 

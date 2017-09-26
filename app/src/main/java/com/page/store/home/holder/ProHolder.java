@@ -1,4 +1,4 @@
-package com.page.store.classify.holder;
+package com.page.store.home.holder;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import com.framework.utils.ShopCarUtils;
 import com.framework.utils.ToastUtils;
 import com.framework.utils.imageload.ImageLoad;
 import com.page.home.activity.MainActivity;
-import com.page.store.classify.model.ClassifyResult.Data.Datas.Produts;
+import com.page.store.home.model.ClassifyResult.Data.Datas.Produts;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
 import com.qfant.wuye.R;
 

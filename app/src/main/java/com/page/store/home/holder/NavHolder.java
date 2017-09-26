@@ -1,13 +1,11 @@
-package com.page.store.classify.holder;
+package com.page.store.home.holder;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
-import com.page.store.classify.model.ClassifyResult;
-import com.page.store.classify.model.ClassifyResult.Data.Datas;
-import com.qfant.wuye.R;
+import com.page.store.home.model.ClassifyResult.Data.Datas;
 
 /**
  * Created by shucheng.qu on 2017/8/15.

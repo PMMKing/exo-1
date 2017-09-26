@@ -113,11 +113,22 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
         linearLayout.addView(view, LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT);
         mTitleBar.setVisibility(View.GONE);
+//        setStatusBar();
+        return linearLayout;
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    protected void setStatusBar(){
+        if(mTitleBar == null)return;
+        XStatusBarHelper.setDefaultAlpha(0.2f);
+        XStatusBarHelper.setDefaultColor(getResources().getColor(R.color.pub_color_black));
         XStatusBarHelper.forceFitsSystemWindows(getContext());
         XStatusBarHelper.immersiveStatusBar(getContext());
         XStatusBarHelper.setHeightAndPadding(getContext(), mTitleBar);
-        return linearLayout;
     }
 
     @Override
