@@ -14,10 +14,12 @@ import com.framework.net.ServiceMap;
 import com.framework.rvadapter.adapter.MultiAdapter;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.rvadapter.manage.ITypeView;
+import com.framework.utils.ArrayUtils;
 import com.framework.view.LineDecoration;
 import com.page.community.signup.holder.HeaderHolder;
 import com.page.community.signup.holder.ViewHolder;
 import com.page.community.signup.model.SignUpParam;
+import com.page.community.signup.model.SignUpResult;
 import com.qfant.wuye.R;
 
 import java.util.ArrayList;
@@ -94,7 +96,12 @@ public class SignupActivity extends BaseActivity {
     public boolean onMsgSearchComplete(NetworkParam param) {
 
         if (param.key == ServiceMap.getActivityJoinerList) {
-
+            SignUpResult result = (SignUpResult) param.result;
+            if (result != null && result.data != null && !ArrayUtils.isEmpty(result.data.datas)) {
+                adapter.setData(result.data.datas);
+                adapter.addData(null, 0);
+                adapter.notifyDataSetChanged();
+            }
         }
         return false;
     }

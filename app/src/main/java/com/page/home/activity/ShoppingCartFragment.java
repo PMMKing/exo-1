@@ -123,7 +123,6 @@ public class ShoppingCartFragment extends BaseFragment implements OnItemClickLis
         for (Product product : adapter.getData()) {
             if (product != null && product.price > 0) {
                 totalPrice = Arith.add(totalPrice, Arith.mul(product.num, product.price));
-//                totalPrice += product.num * product.price;
             }
         }
         tvMoney.setText(String.format("合计：￥%s", BusinessUtils.formatDouble2String(totalPrice)));

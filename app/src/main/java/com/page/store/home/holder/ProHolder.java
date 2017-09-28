@@ -6,11 +6,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.framework.app.MainApplication;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.BusinessUtils;
 import com.framework.utils.ShopCarUtils;
 import com.framework.utils.ToastUtils;
 import com.framework.utils.imageload.ImageLoad;
+import com.framework.utils.viewutils.ViewUtils;
 import com.page.home.activity.MainActivity;
 import com.page.store.home.model.ClassifyResult.Data.Datas.Produts;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
@@ -54,26 +56,18 @@ public class ProHolder extends BaseViewHolder<Produts> {
         ImageLoad.loadPlaceholder(mContext, data.pic1, ivImage);
         tvName.setText(data.name);
         tvSalesVolume.setText(String.format("价格 ¥%s", BusinessUtils.formatDouble2String(data.price)));
-        Product productForId = ShopCarUtils.getInstance().getProductForId(data.id);
-        refresh(productForId == null ? 0 : productForId.num);
+        refresh();
     }
 
-    private void refresh(int num) {
-        if (num > 0) {
-            tvCarNumber.setText("X" + num);
-            tvSub.setVisibility(View.VISIBLE);
-        } else {
-            tvCarNumber.setText("");
-            tvSub.setVisibility(View.GONE);
-        }
+    private void refresh() {
+        Product product = ShopCarUtils.getInstance().getProductForId(data.id);
+        tvCarNumber.setText(product == null ? "" : "X" + product.num);
+        ViewUtils.setOrGone(tvSub, product != null);
     }
 
     @OnClick({R.id.tv_sub, R.id.tv_add})
     public void onViewClicked(View view) {
-        Product product = ShopCarUtils.getInstance().getProductForId(data.id);
-        if (product == null) {
-            product = new Product();
-        }
+        Product product = new Product();
         product.price = data.price;
         product.pic = data.pic1;
         product.id = data.id;
@@ -81,27 +75,17 @@ public class ProHolder extends BaseViewHolder<Produts> {
         product.storage = data.storage;
         switch (view.getId()) {
             case R.id.tv_sub:
-                if (product.num > 1) {
-                    product.num -= 1;
-                    ShopCarUtils.getInstance().saveProduct(product);
-                    refresh(product.num);
-                } else {
-                    refresh(0);
-                    ShopCarUtils.getInstance().removeProduct(product);
-                }
+                product.num = -1;
+                ShopCarUtils.getInstance().addProduct(product);
+                refresh();
                 break;
             case R.id.tv_add:
-                if (product.num < data.storage) {
-                    product.num += 1;
-                    ShopCarUtils.getInstance().saveProduct(product);
-                    refresh(product.num);
-                } else {
-                    ToastUtils.toastSth(mContext, "库存不足");
-                }
-
+                product.num = 1;
+                ShopCarUtils.getInstance().addProduct(product);
+                refresh();
                 break;
         }
-        mContext.sendBroadcast(new Intent(MainActivity.REFRESH_TAB_ACTION));
+       mContext.sendBroadcast(new Intent(MainActivity.REFRESH_TAB_ACTION));
     }
 
 }

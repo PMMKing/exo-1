@@ -40,7 +40,6 @@
             android:paddingTop="2dp"
             android:textColor="@color/pub_color_gray_666"
             android:textSize="@dimen/text_h12"
-            android:visibility="gone"
             tools:text="50人已报名" />
 
         <TextView
@@ -236,6 +235,7 @@
             android:paddingLeft="26dp"
             android:paddingRight="26dp"
             android:paddingTop="8dp"
+            android:paddingBottom="10dp"
             android:textColor="@color/pub_color_black"
             android:textSize="@dimen/text_h12"
             tools:text="7月底的上海，一家书店温暖一座城，在你心中是否也住着一家小书店，每个人心中都有理想书店的样子，它是浮华的的避难所，是心灵栖息地。一家书店温暖一座城，在你心中是否也住着一家小书店，每个人心中都有理想书店的样子，它是浮华的避难所是心灵栖息地。" />

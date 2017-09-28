@@ -12,6 +12,7 @@ import com.page.community.quickpain.model.ScommentsReault;
 import com.page.community.serve.model.RepairResult;
 import com.page.community.serve.model.SerDetailResult;
 import com.page.community.serve.model.ServeResult;
+import com.page.community.signup.model.SignUpResult;
 import com.page.home.model.ContactResult;
 import com.page.home.model.LinksResult;
 import com.page.home.model.NoticeResult;
@@ -87,7 +88,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     joinActivity("/joinActivity.do", BaseResult.class),//参与活动
     updateActivity("/updateActivity.do", BaseResult.class),//活动修改
     canceljoinActivity("/canceljoinActivity.do", BaseResult.class),//取消参与活动
-    getActivityJoinerList("/getActivityJoinerList.do", BaseResult.class),//获取活动参与人
+    getActivityJoinerList("/getActivityJoinerList.do", SignUpResult.class),//获取活动参与人
     submitSnapshot("/submitSnapshot.do", BaseResult.class),//发布随手拍
     getMySnapshots("/getMySnapshots.do", QpListResult.class),
     deleteSnapshot("/deleteSnapshot.do", BaseResult.class),//删除
@@ -96,6 +97,7 @@ public enum ServiceMap implements Enums.IType, Serializable {
     updateSnapshot("/updateSnapshot.do", QpDetailResult.class),//编辑
     scomment("/scomment.do", BaseResult.class),//评论
     scomments("/scomments.do", ScommentsReault.class),//评论列表
+    deleteScomment("/deleteScomment.do", BaseResult.class),//评论del
     submitRepair("/submitRepair.do", BaseResult.class),//add维修
     getRepair("/getRepair.do", RepairDetailResult.class),//维修detail
     evaluateRepair("/evaluateRepair.do", BaseResult.class),//维修评价

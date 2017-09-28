@@ -103,7 +103,6 @@ public class AddressActivity extends BaseActivity {
     }
     public class AddressAdapter extends QSimpleAdapter<Address> {
 
-
         public AddressAdapter(Context context) {
             super(context);
         }

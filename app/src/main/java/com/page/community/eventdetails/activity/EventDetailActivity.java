@@ -1,11 +1,17 @@
 package com.page.community.eventdetails.activity;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.framework.activity.BaseActivity;
@@ -13,6 +19,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.DateFormatUtils;
+import com.framework.utils.html.ZoomImageView;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.utils.viewutils.ViewUtils;
 import com.page.community.eventdetails.adapter.ImagePagerAdapter;
@@ -59,6 +66,11 @@ public class EventDetailActivity extends BaseActivity {
     private String id;
     private ImagePagerAdapter imagePagerAdapter;
     private ArrayList<Fragment> mTitleDataList;
+    private PopupWindow popupWindow;
+    //需要放大的图片
+    private ZoomImageView tecent_chat_image;
+    //加载中的进度条
+    private ProgressBar image_scale_progress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +83,27 @@ public class EventDetailActivity extends BaseActivity {
         id = myBundle.getString(ID);
         startRequest();
 //        setViewPager();
+        initPopWindow();
+    }
+
+    private void initPopWindow() {
+        View popView = LayoutInflater.from(getContext()).inflate(R.layout.pub_zoom_popwindow_layout, null);
+        tecent_chat_image = (ZoomImageView) popView.findViewById(R.id.image_scale_image);
+        image_scale_progress = (ProgressBar) popView.findViewById(R.id.image_scale_progress);
+
+        popView.findViewById(R.id.image_scale_rll).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (popupWindow != null && popupWindow.isShowing()) {
+                    popupWindow.dismiss();
+                }
+            }
+        });
+        popupWindow = new PopupWindow(popView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);// 设置允许在外点击消失
+        ColorDrawable dw = new ColorDrawable(0x50000000);
+        popupWindow.setBackgroundDrawable(dw);
     }
 
     @Override
@@ -92,7 +125,9 @@ public class EventDetailActivity extends BaseActivity {
         tvTime.setText(DateFormatUtils.format(data.time, "yyyy.MM.dd EE"));
         tvAddress.setText(data.place);
         tvDetail.setText(data.intro);
+        tvJoinNumber.setText(String.format("%d人已参与", data.persons));
         ImageLoad.loadPlaceholder(getContext(), data.pic, ivImage);
+        ivImage.setTag(data.pic);
         tvJoin.setVisibility(View.VISIBLE);
         refreshJoin(data.ismine == 1 ? 2 : data.isjoin == 0 ? 0 : 1);
         ViewUtils.setOrGone(llCustomername, /*data.ismine == 1 &&*/ !TextUtils.isEmpty(data.customername));
@@ -169,5 +204,14 @@ public class EventDetailActivity extends BaseActivity {
                 qStartActivity(SignupActivity.class, bundle);
                 break;
         }
+    }
+
+    @OnClick(R.id.iv_image)
+    public void onImageViewClicked() {
+        String url = (String) ivImage.getTag();
+        if (TextUtils.isEmpty(url)) return;
+        image_scale_progress.setVisibility(View.GONE);
+        popupWindow.showAtLocation(ivImage, Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 0);
+        ImageLoad.loadPlaceholder(getContext(), url, tecent_chat_image);
     }
 }

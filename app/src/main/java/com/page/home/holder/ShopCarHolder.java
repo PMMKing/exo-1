@@ -1,17 +1,20 @@
 package com.page.home.holder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.framework.app.MainApplication;
 import com.framework.rvadapter.holder.BaseViewHolder;
 import com.framework.utils.BusinessUtils;
 import com.framework.utils.ShopCarUtils;
 import com.framework.utils.ToastUtils;
 import com.framework.utils.imageload.ImageLoad;
+import com.page.home.activity.MainActivity;
 import com.page.home.activity.ShoppingCartFragment;
 import com.page.store.orderaffirm.model.CommitOrderParam;
 import com.page.store.orderaffirm.model.CommitOrderParam.Product;
@@ -76,15 +79,15 @@ public class ShopCarHolder extends BaseViewHolder<Product> {
                 }
                 break;
             case R.id.tv_add:
-                if (number > 100) {
+                if (number > data.storage) {
                     ToastUtils.toastSth(mContext, "库存不足");
                 } else {
                     tvNumber2.setText(++number + "");
                     data.num = number;
                     fragment.refreshPrice();
                 }
-
                 break;
         }
+        mContext.sendBroadcast(new Intent(MainActivity.REFRESH_TAB_ACTION));
     }
 }

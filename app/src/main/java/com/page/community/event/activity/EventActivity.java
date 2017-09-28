@@ -76,7 +76,7 @@ public class EventActivity extends BaseActivity {
         etTitle.setText(data.title);
         etEventTime.setText(data.time);
         etEventAddress.setText(data.place);
-        etEventPeople.setText(data.persons);
+        etEventPeople.setText(data.persons + "");
         cbLimit.setChecked(data.islimit == 1);
         etEventDetail.setText(data.intro);
     }

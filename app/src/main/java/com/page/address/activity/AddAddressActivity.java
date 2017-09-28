@@ -62,7 +62,7 @@ public class AddAddressActivity extends BaseActivity {
             editName.setText(address.name);
             editPhone.setText(address.tel);
             editAddress2.setText(address.detail);
-            cbSelect.setEnabled(address.isdefault == 1);
+            cbSelect.setChecked(address.isdefault == 1);
         }
     }
 

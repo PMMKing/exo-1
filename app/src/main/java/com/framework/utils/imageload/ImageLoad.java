@@ -2,6 +2,7 @@ package com.framework.utils.imageload;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.framework.utils.Dimen;
@@ -21,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class ImageLoad {
 
     public static void load(Context context, String url, ImageView imageView) {
+        if (TextUtils.isEmpty(url) || imageView == null) return;
         Picasso.with(context).load(url).into(imageView);
     }
 
@@ -29,6 +31,7 @@ public class ImageLoad {
     }
 
     public static void loadPlaceholder(Context context, String url, Target target) {
+        if (TextUtils.isEmpty(url) || target == null) return;
         Picasso.with(context)
                 .load(url)
                 .placeholder(R.drawable.moren)
@@ -38,6 +41,7 @@ public class ImageLoad {
     }
 
     public static void loadPlaceholder(Context context, String url, ImageView imageView, int placeholderResId, int errorResId) {
+        if (TextUtils.isEmpty(url) || imageView == null) return;
         Picasso.with(context)
                 .load(url)
                 .placeholder(placeholderResId)
@@ -51,6 +55,7 @@ public class ImageLoad {
     }
 
     public static void loadRound(Context context, String url, ImageView imageView, int radius, int margin) {
+        if (TextUtils.isEmpty(url) || imageView == null) return;
         Picasso.with(context)
                 .load(url)
                 .transform(new RoundedTransformation(Dimen.dpToPx(radius), Dimen.dpToPx(margin)))
@@ -58,6 +63,7 @@ public class ImageLoad {
     }
 
     public static void loadCircle(Context context, String url, ImageView imageView) {
+        if (TextUtils.isEmpty(url) || imageView == null) return;
         Picasso.with(context)
                 .load(url)
                 .transform(new CircleImageTransformation())

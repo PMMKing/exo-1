@@ -30,6 +30,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
         <TextView
@@ -45,20 +46,21 @@
             android:textSize="@dimen/text_h12"
             tools:text="2017-07-24 16:24" />
 
-        <com.framework.view.IFView
-            android:id="@+id/tv_zan"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <TextView
+            android:id="@+id/tv_del"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pub_btn_blue_arc_selector"
             android:clickable="true"
             android:ellipsize="end"
             android:gravity="center"
             android:lines="1"
             android:visibility="gone"
-            android:paddingLeft="11dp"
-            android:paddingRight="11dp"
-            android:textColor="@color/pub_color_gray_666"
-            android:textSize="@dimen/text_h12"
-            tools:text="126" />
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="删除"
+            android:textColor="@color/pub_color_white"
+            android:textSize="@dimen/text_h12" />
 
     </LinearLayout>
 

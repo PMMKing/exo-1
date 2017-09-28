@@ -21,6 +21,7 @@ import com.framework.view.LineDecoration;
 import com.framework.view.pull.SwipRefreshLayout;
 import com.page.community.quickpain.holder.ContentHolder;
 import com.page.community.quickpain.holder.HeaderHolder;
+import com.page.community.quickpain.model.DelEvaParam;
 import com.page.community.quickpain.model.QpDetailParam;
 import com.page.community.quickpain.model.QpDetailResult;
 import com.page.community.quickpain.model.ScommentParam;
@@ -99,6 +100,13 @@ public class QuickPaiNActivity extends BaseActivity implements SwipRefreshLayout
         Request.startRequest(param, ServiceMap.scomment, mHandler, Request.RequestFeature.BLOCK);
     }
 
+    public void deletEvaluate(String id, int position) {
+        DelEvaParam param = new DelEvaParam();
+        param.id = id;
+        Request.startRequest(param, position, ServiceMap.deleteScomment, mHandler, Request.RequestFeature.BLOCK);
+    }
+
+
     private void setListView() {
         adapter = new MultiAdapter<Datas>(this, datases).addTypeView(new ITypeView() {
             @Override
@@ -165,6 +173,14 @@ public class QuickPaiNActivity extends BaseActivity implements SwipRefreshLayout
             if (param.result.bstatus.code == 0) {
                 etScomment.setText("");
                 startRequestScomments(1);
+            } else {
+                showToast(param.result.bstatus.des);
+            }
+        } else if (param.key == ServiceMap.deleteScomment) {
+            if (param.result.bstatus.code == 0) {
+                int position = (int) param.ext;
+                adapter.removeData(position);
+                adapter.notifyDataSetChanged();
             } else {
                 showToast(param.result.bstatus.des);
             }

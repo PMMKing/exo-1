@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.framework.rvadapter.holder.BaseViewHolder;
+import com.framework.utils.DateFormatUtils;
 import com.framework.utils.cache.ImageLoader;
 import com.framework.utils.imageload.ImageLoad;
 import com.framework.utils.viewutils.ViewUtils;
@@ -44,7 +45,7 @@ public class ViewHolder extends BaseViewHolder<ActivityList> {
     public void onBindViewHolder(BaseViewHolder holder, ActivityList data, int position) {
         tvTitle.setText(data.title);
         tvInitiator.setText("发起人：" + data.place);
-        tvNumber.setText("参与人数：" + data.persons);
+        tvNumber.setText("活动时间：" + DateFormatUtils.format(data.time,"yyyy.MM.dd"));
         ImageLoad.loadPlaceholder(mContext, data.pic, ivImage);
     }
 
