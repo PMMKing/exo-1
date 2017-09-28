@@ -8,4 +8,5 @@ import com.framework.domain.param.BaseParam;
 
 public class DetailParam extends BaseParam {
     public int id;
+    public String endpic;
 }

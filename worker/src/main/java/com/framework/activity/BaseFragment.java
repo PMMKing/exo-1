@@ -422,7 +422,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener,
 	}
     @Override
     public boolean onMsgSearchComplete(final NetworkParam param) {
-		if (param.result.bstatus.code == 6) {
+		if (param.result.bstatus.code == 600) {
 			qStartActivity(LoginActivity.class);
 			return true;
 		}

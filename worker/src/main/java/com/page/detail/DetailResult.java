@@ -29,5 +29,6 @@ public class DetailResult extends BaseResult {
         public int status;
         public int evaluate;
         public String address;
+        public String endpic;
     }
 }

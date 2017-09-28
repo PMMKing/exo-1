@@ -74,7 +74,7 @@ public abstract class BaseActivity extends FragmentActivity implements
 
     private static final int COLOR_7000 = 0x77000000;
 
-    protected Handler mHandler;
+    public Handler mHandler;
     protected Bundle myBundle;
 
     protected ViewGroup mRoot;

@@ -8,11 +8,13 @@ import android.net.Uri;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.framework.app.NetConnChangeReceiver;
 import com.framework.utils.QLog;
 import com.haolb.client.R;
+import com.page.chooseavatar.ImageTools;
 import com.squareup.picasso.Cache;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Downloader;
@@ -22,6 +24,8 @@ import com.squareup.picasso.Target;
 import com.squareup.picasso.Transformation;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.util.concurrent.ExecutorService;
 
@@ -33,7 +37,9 @@ public class ImageLoader {
 	private Picasso picasso;
 	private Context context;
 	private static float PER_CAN_RELEASE = 0.8f;
-	/** 3G下默认加载图 **/
+	/**
+	 * 3G下默认加载图
+	 **/
 	private Bitmap mLoadingBitmap3g;
 	private static final boolean ALWAY_DEFAULT = true;
 	private QunarImageDownloader qunarImageDownloader;
@@ -53,11 +59,19 @@ public class ImageLoader {
 	private ImageLoader(Context contextInput) {
 		context = contextInput.getApplicationContext();
 		mLoadingBitmap3g = BitmapFactory.decodeResource(context.getResources(),
-				R.drawable.app_splash);
+				R.drawable.ic_launcher);
 		Picasso oldPicasso = Picasso.with(context);
 		qunarImageDownloader = QunarImageDownloader
 				.createQunarImageDownloader(context);
 		buildPicasso(context, oldPicasso, qunarImageDownloader);
+	}
+
+	public void loadImageFile(String filePath, ImageView imagePic1) {
+		WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		int width = wm.getDefaultDisplay().getWidth();
+		int height = wm.getDefaultDisplay().getHeight();
+		Bitmap bitmap = ImageTools.rotateBitmap(filePath, width, height);
+		imagePic1.setImageBitmap(bitmap);  ///把流转化为Bitmap图片
 	}
 
 	/***
@@ -67,7 +81,7 @@ public class ImageLoader {
 	 * @param oldPicasso
 	 */
 	private void buildPicasso(Context context, Picasso oldPicasso,
-			QunarImageDownloader downloader) {
+							  QunarImageDownloader downloader) {
 		boolean canModifyCacheFromPicasso = false;
 		Field field = null;
 		Object obj = null;
@@ -92,7 +106,7 @@ public class ImageLoader {
 				}
 			}
 		} catch (Exception e) {
-            QLog.e(e);
+			QLog.e(e);
 		}
 		// cache
 		try {
@@ -191,46 +205,46 @@ public class ImageLoader {
 	}
 
 	public void loadImageMask(Object imageData, ImageView view,
-			int placeHolderId) {
+							  int placeHolderId) {
 		MaskTransformation mask = MaskTransformation.newMask(context, view);
 		loadImage(imageData, view, placeHolderId, mask, mask);
 	}
 
 	public void resizeImage(Object imageData, ImageView imageView,
-			int widthPix, int heightPix, Drawable placeHolderDrawable,
-			Transformation transformation, Callback callback) {
+							int widthPix, int heightPix, Drawable placeHolderDrawable,
+							Transformation transformation, Callback callback) {
 		capacityLoadImage(imageData, imageView, null, widthPix, heightPix,
 				placeHolderDrawable, null, mLoadingBitmap3g, transformation,
 				ALWAY_DEFAULT, callback);
 	}
 
 	public void resizeImage(Object imageData, ImageView imageView,
-			int widthPix, int heightPix, Drawable placeHolderDrawable,
-			Transformation transformation, boolean alwaysload, Callback callback) {
+							int widthPix, int heightPix, Drawable placeHolderDrawable,
+							Transformation transformation, boolean alwaysload, Callback callback) {
 		capacityLoadImage(imageData, imageView, null, widthPix, heightPix,
 				placeHolderDrawable, null, mLoadingBitmap3g, transformation,
 				alwaysload, callback);
 	}
 
 	public void resizeImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, int widthPix, int heightPix,
-			Drawable placeHolderDrawable, Transformation transformation,
-			Callback callback) {
+							OnClickListener qOnClickListener, int widthPix, int heightPix,
+							Drawable placeHolderDrawable, Transformation transformation,
+							Callback callback) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, widthPix,
 				heightPix, placeHolderDrawable, null, mLoadingBitmap3g,
 				transformation, ALWAY_DEFAULT, callback);
 	}
 
 	public void resizeImage(Object imageData, int widthPix, int heightPix,
-			Drawable placeHolderDrawable, Transformation transformation,
-			Target target) {
+							Drawable placeHolderDrawable, Transformation transformation,
+							Target target) {
 		capacityLoadImage(imageData, null, widthPix, heightPix,
 				placeHolderDrawable, null, mLoadingBitmap3g, transformation,
 				target, ALWAY_DEFAULT);
 	}
 
 	public void resizeImage(Object imageData, ImageView imageView,
-			int widthPix, int heightPix, int placeHolderId) {
+							int widthPix, int heightPix, int placeHolderId) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -241,7 +255,7 @@ public class ImageLoader {
 	}
 
 	public void resizeImage(Object imageData, ImageView imageView,
-			int widthPix, int heightPix, int placeHolderId, boolean alwayload) {
+							int widthPix, int heightPix, int placeHolderId, boolean alwayload) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -251,8 +265,8 @@ public class ImageLoader {
 	}
 
 	public void resizeImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, int widthPix, int heightPix,
-			int placeHolderId) {
+							OnClickListener qOnClickListener, int widthPix, int heightPix,
+							int placeHolderId) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -267,57 +281,57 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener) {
+						  OnClickListener qOnClickListener) {
 		loadImage(imageData, imageView, qOnClickListener, ALWAY_DEFAULT);
 	}
 
 	public void loadImage(Object imageData, int width, int height,
-			ImageView imageView) {
+						  ImageView imageView) {
 		loadImage(imageData, width, height, imageView, null);
 	}
 
 	public void loadImage(Object imageData, int width, int height,
-			ImageView imageView, OnClickListener qOnClickListener) {
+						  ImageView imageView, OnClickListener qOnClickListener) {
 		loadImage(imageData, imageView, qOnClickListener, width, height, 0, 0,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			boolean alwayload) {
+						  boolean alwayload) {
 		loadImage(imageData, imageView, alwayload, null);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, boolean alwayload) {
+						  OnClickListener qOnClickListener, boolean alwayload) {
 		loadImage(imageData, imageView, qOnClickListener, alwayload, null);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			boolean alwayload, Callback callback) {
+						  boolean alwayload, Callback callback) {
 		loadImage(imageData, imageView, 0, 0, 0, 0, alwayload, callback);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, boolean alwayload,
-			Callback callback) {
+						  OnClickListener qOnClickListener, boolean alwayload,
+						  Callback callback) {
 		loadImage(imageData, imageView, qOnClickListener, 0, 0, 0, 0,
 				alwayload, callback);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView, Target target,
-			boolean alwayload) {
+						  boolean alwayload) {
 		capacityLoadImage(imageData, imageView, null, 0, 0, null, null, null,
 				null, target, alwayload);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, Target target, boolean alwayload) {
+						  OnClickListener qOnClickListener, Target target, boolean alwayload) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0, null,
 				null, null, null, target, alwayload);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView, int widthPix,
-			int heightPix, int placeHolderId, Target target, boolean alwayload) {
+						  int heightPix, int placeHolderId, Target target, boolean alwayload) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -327,8 +341,8 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, int widthPix, int heightPix,
-			int placeHolderId, Target target, boolean alwayload) {
+						  OnClickListener qOnClickListener, int widthPix, int heightPix,
+						  int placeHolderId, Target target, boolean alwayload) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -338,51 +352,51 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			int placeHolderId) {
+						  int placeHolderId) {
 		loadImage(imageData, imageView, placeHolderId, ALWAY_DEFAULT);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			int placeHolderId, boolean alwayload) {
+						  int placeHolderId, boolean alwayload) {
 		loadImage(imageData, imageView, 0, 0, placeHolderId, 0, alwayload, null);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			int placeHolderId, int errHolderId) {
+						  int placeHolderId, int errHolderId) {
 		loadImage(imageData, imageView, 0, 0, placeHolderId, errHolderId,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			int placeHolderId, int errHolderId, boolean alwayload) {
+						  int placeHolderId, int errHolderId, boolean alwayload) {
 		loadImage(imageData, imageView, 0, 0, placeHolderId, errHolderId,
 				alwayload);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView, int widthPix,
-			int heightPix, int placeHolderId, int errResourceId) {
+						  int heightPix, int placeHolderId, int errResourceId) {
 		loadImage(imageData, imageView, widthPix, heightPix, placeHolderId,
 				errResourceId, ALWAY_DEFAULT);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView, int widthPix,
-			int heightPix, int placeHolderId, int errResourceId,
-			boolean alwayload) {
+						  int heightPix, int placeHolderId, int errResourceId,
+						  boolean alwayload) {
 		loadImage(imageData, imageView, widthPix, heightPix, placeHolderId,
 				errResourceId, alwayload, null);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView, int widthPix,
-			int heightPix, int placeHolderId, int errHolderId,
-			boolean alwayload, Callback callback) {
+						  int heightPix, int placeHolderId, int errHolderId,
+						  boolean alwayload, Callback callback) {
 		loadImage(imageData, imageView, null, widthPix, heightPix,
 				placeHolderId, errHolderId, alwayload, callback);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, int widthPix, int heightPix,
-			int placeHolderId, int errHolderId, boolean alwayload,
-			Callback callback) {
+						  OnClickListener qOnClickListener, int widthPix, int heightPix,
+						  int placeHolderId, int errHolderId, boolean alwayload,
+						  Callback callback) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -397,29 +411,29 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, Transformation transformation) {
+						  Drawable placeHolderDrawable, Transformation transformation) {
 		loadImage(imageData, imageView, null, placeHolderDrawable,
 				transformation);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, boolean alwayload,
-			Transformation transformation) {
+						  Drawable placeHolderDrawable, boolean alwayload,
+						  Transformation transformation) {
 		loadImage(imageData, imageView, null, placeHolderDrawable, alwayload,
 				transformation);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, Drawable placeHolderDrawable,
-			Transformation transformation) {
+						  OnClickListener qOnClickListener, Drawable placeHolderDrawable,
+						  Transformation transformation) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0,
 				placeHolderDrawable, null, mLoadingBitmap3g, transformation,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, Drawable placeHolderDrawable,
-			boolean alwayload, Transformation transformation) {
+						  OnClickListener qOnClickListener, Drawable placeHolderDrawable,
+						  boolean alwayload, Transformation transformation) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0,
 				placeHolderDrawable, null, mLoadingBitmap3g, transformation,
 				alwayload, null);
@@ -429,8 +443,7 @@ public class ImageLoader {
 	 * addby: tao.sha 直接返回Bitmap，不设置ImageView
 	 *
 	 * @param imageData
-	 * @param target
-	 *            回调对象，（必须自己增加引用，picaasa只有weak引用
+	 * @param target    回调对象，（必须自己增加引用，picaasa只有weak引用
 	 */
 	public void loadImage(Object imageData, Target target, int placeHolderId) {
 		Drawable placeDrawable = null;
@@ -442,7 +455,7 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, Target target, int placeHolderId,
-			boolean alwayLoad) {
+						  boolean alwayLoad) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -452,19 +465,19 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			Callback callback, int placeHolderId) {
+						  Callback callback, int placeHolderId) {
 		loadImage(imageData, imageView, null, callback, placeHolderId);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			Callback callback, int placeHolderId, boolean alwayLoad) {
+						  Callback callback, int placeHolderId, boolean alwayLoad) {
 		loadImage(imageData, imageView, null, callback, placeHolderId,
 				alwayLoad);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, Callback callback,
-			int placeHolderId) {
+						  OnClickListener qOnClickListener, Callback callback,
+						  int placeHolderId) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -475,8 +488,8 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, Callback callback,
-			int placeHolderId, boolean alwayLoad) {
+						  OnClickListener qOnClickListener, Callback callback,
+						  int placeHolderId, boolean alwayLoad) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -487,21 +500,21 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			int placeHolderId, Transformation transformation, Callback callback) {
+						  int placeHolderId, Transformation transformation, Callback callback) {
 		loadImage(imageData, imageView, null, placeHolderId, transformation,
 				callback);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			int placeHolderId, Transformation transformation,
-			Callback callback, boolean alwayLoad) {
+						  int placeHolderId, Transformation transformation,
+						  Callback callback, boolean alwayLoad) {
 		loadImage(imageData, imageView, null, placeHolderId, transformation,
 				callback, alwayLoad);
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, int placeHolderId,
-			Transformation transformation, Callback callback) {
+						  OnClickListener qOnClickListener, int placeHolderId,
+						  Transformation transformation, Callback callback) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -512,8 +525,8 @@ public class ImageLoader {
 	}
 
 	public void loadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, int placeHolderId,
-			Transformation transformation, Callback callback, boolean alwayLoad) {
+						  OnClickListener qOnClickListener, int placeHolderId,
+						  Transformation transformation, Callback callback, boolean alwayLoad) {
 		Drawable placeDrawable = null;
 		if (placeHolderId > 0) {
 			placeDrawable = context.getResources().getDrawable(placeHolderId);
@@ -523,111 +536,113 @@ public class ImageLoader {
 				alwayLoad, callback);
 	}
 
-	/** 智能加载图片 */
+	/**
+	 * 智能加载图片
+	 */
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			int placeHolder) {
+								  int placeHolder) {
 		capacityLoadImage(imageData, imageView, null, 0, 0, context
-				.getResources().getDrawable(placeHolder), null,
+						.getResources().getDrawable(placeHolder), null,
 				mLoadingBitmap3g, null, ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			int placeHolder, boolean alwayLoad) {
+								  int placeHolder, boolean alwayLoad) {
 		capacityLoadImage(imageData, imageView, null, 0, 0, context
-				.getResources().getDrawable(placeHolder), null,
+						.getResources().getDrawable(placeHolder), null,
 				mLoadingBitmap3g, null, alwayLoad, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable) {
+								  Drawable placeHolderDrawable) {
 		capacityLoadImage(imageData, imageView, null, 0, 0,
 				placeHolderDrawable, null, mLoadingBitmap3g, null,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, boolean alwayLoad) {
+								  Drawable placeHolderDrawable, boolean alwayLoad) {
 		capacityLoadImage(imageData, imageView, null, 0, 0,
 				placeHolderDrawable, null, mLoadingBitmap3g, null, alwayLoad,
 				null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			int placeHolder, Bitmap bitmap3g) {
+								  int placeHolder, Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, null, 0, 0, context
-				.getResources().getDrawable(placeHolder), null, bitmap3g, null,
+						.getResources().getDrawable(placeHolder), null, bitmap3g, null,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			int placeHolder, Bitmap bitmap3g, boolean alwayLoad) {
+								  int placeHolder, Bitmap bitmap3g, boolean alwayLoad) {
 		capacityLoadImage(imageData, imageView, null, 0, 0, context
-				.getResources().getDrawable(placeHolder), null, bitmap3g, null,
+						.getResources().getDrawable(placeHolder), null, bitmap3g, null,
 				alwayLoad, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, Bitmap bitmap3g) {
+								  Drawable placeHolderDrawable, Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, null, 0, 0,
 				placeHolderDrawable, null, bitmap3g, null, ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, Bitmap bitmap3g, boolean alwayLoad) {
+								  Drawable placeHolderDrawable, Bitmap bitmap3g, boolean alwayLoad) {
 		capacityLoadImage(imageData, imageView, null, 0, 0,
 				placeHolderDrawable, null, bitmap3g, null, alwayLoad, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, Transformation transformation,
-			Bitmap bitmap3g) {
+								  Drawable placeHolderDrawable, Transformation transformation,
+								  Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, null, 0, 0,
 				placeHolderDrawable, null, bitmap3g, transformation,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, Transformation transformation,
-			Bitmap bitmap3g, boolean alwayLoad) {
+								  Drawable placeHolderDrawable, Transformation transformation,
+								  Bitmap bitmap3g, boolean alwayLoad) {
 		capacityLoadImage(imageData, imageView, null, 0, 0,
 				placeHolderDrawable, null, bitmap3g, transformation, alwayLoad,
 				null);
 	}
 
 	public void capacityLoadImage(Object imageData, ImageView imageView,
-			OnClickListener qOnClickListener, int placeHolder, Bitmap bitmap3g) {
+								  OnClickListener qOnClickListener, int placeHolder, Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0, context
-				.getResources().getDrawable(placeHolder), null, bitmap3g, null,
+						.getResources().getDrawable(placeHolder), null, bitmap3g, null,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(OnClickListener qOnClickListener,
-			Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, Bitmap bitmap3g) {
+								  Object imageData, ImageView imageView,
+								  Drawable placeHolderDrawable, Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0,
 				placeHolderDrawable, null, bitmap3g, null, ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(OnClickListener qOnClickListener,
-			Object imageData, ImageView imageView,
-			Drawable placeHolderDrawable, boolean alwayLoad, Bitmap bitmap3g) {
+								  Object imageData, ImageView imageView,
+								  Drawable placeHolderDrawable, boolean alwayLoad, Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0,
 				placeHolderDrawable, null, bitmap3g, null, alwayLoad, null);
 	}
 
 	public void capacityLoadImage(Object imageData,
-			OnClickListener qOnClickListener, ImageView imageView,
-			Drawable placeHolderDrawable, Transformation transformation,
-			Bitmap bitmap3g) {
+								  OnClickListener qOnClickListener, ImageView imageView,
+								  Drawable placeHolderDrawable, Transformation transformation,
+								  Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0,
 				placeHolderDrawable, null, bitmap3g, transformation,
 				ALWAY_DEFAULT, null);
 	}
 
 	public void capacityLoadImage(Object imageData,
-			OnClickListener qOnClickListener, ImageView imageView,
-			Drawable placeHolderDrawable, boolean alwayLoad,
-			Transformation transformation, Bitmap bitmap3g) {
+								  OnClickListener qOnClickListener, ImageView imageView,
+								  Drawable placeHolderDrawable, boolean alwayLoad,
+								  Transformation transformation, Bitmap bitmap3g) {
 		capacityLoadImage(imageData, imageView, qOnClickListener, 0, 0,
 				placeHolderDrawable, null, bitmap3g, transformation, alwayLoad,
 				null);
@@ -636,27 +651,24 @@ public class ImageLoader {
 	/**
 	 * 智能方式加载
 	 *
-	 * @param imageData
-	 *            imageData (resourceID,File,Uri,String)四种类型
+	 * @param imageData           imageData (resourceID,File,Uri,String)四种类型
 	 * @param imageView
-	 * @param qOnClickListener
-	 *            imageView设置的点击事件回调
+	 * @param qOnClickListener    imageView设置的点击事件回调
 	 * @param widthPix
 	 * @param heightPix
 	 * @param placeHolderDrawable
 	 * @param errDrawable
 	 * @param bitmap3g
-	 * @param transformation
-	 *            转化圆角
+	 * @param transformation      转化圆角
 	 * @param alwayLoad
 	 * @param callback
 	 */
 	public void capacityLoadImage(final Object imageData,
-			final ImageView imageView, final OnClickListener qOnClickListener,
-			final int widthPix, final int heightPix,
-			final Drawable placeHolderDrawable, final Drawable errDrawable,
-			Bitmap bitmap3g, final Transformation transformation,
-			final boolean alwayLoad, final Callback callback) {
+								  final ImageView imageView, final OnClickListener qOnClickListener,
+								  final int widthPix, final int heightPix,
+								  final Drawable placeHolderDrawable, final Drawable errDrawable,
+								  Bitmap bitmap3g, final Transformation transformation,
+								  final boolean alwayLoad, final Callback callback) {
 		if (imageView != null) {
 			if (placeHolderDrawable != null) {
 				imageView.setImageDrawable(placeHolderDrawable);
@@ -722,7 +734,7 @@ public class ImageLoader {
 			NetConnChangeReceiver.dealNetworkInfo(context);
 		}
 		boolean isAutoLoad = NetConnChangeReceiver.wifi
-				  || alwayLoad;
+				|| alwayLoad;
 		if (existInDiskCache || isAutoLoad || imageData instanceof Integer) {
 			requestCreator.into(imageView, callback);
 		} else {
@@ -748,38 +760,38 @@ public class ImageLoader {
 									finalRequestCreator.into(imageView,
 											callback);
 								}
-							}) ;
+							});
 				}
 			}
 		}
 	}
 
 	public void capacityLoadImage(final Object imageData,
-			final ImageView imageView, final int widthPix, final int heightPix,
-			final Drawable placeHolderDrawable, final Drawable errDrawable,
-			Bitmap bitmap3g, final Transformation transformation,
-			final boolean alwayLoad, final Callback callback) {
+								  final ImageView imageView, final int widthPix, final int heightPix,
+								  final Drawable placeHolderDrawable, final Drawable errDrawable,
+								  Bitmap bitmap3g, final Transformation transformation,
+								  final boolean alwayLoad, final Callback callback) {
 		capacityLoadImage(imageData, imageView, null, widthPix, heightPix,
 				placeHolderDrawable, errDrawable, bitmap3g, transformation,
 				alwayLoad, callback);
 	}
 
 	public void capacityLoadImage(final Object imageData,
-			final ImageView imageView, final int widthPix, final int heightPix,
-			final Drawable placeHolderDrawable, final Drawable errDrawable,
-			Bitmap bitmap3g, final Transformation transformation,
-			final Target target, final boolean alwayLoad) {
+								  final ImageView imageView, final int widthPix, final int heightPix,
+								  final Drawable placeHolderDrawable, final Drawable errDrawable,
+								  Bitmap bitmap3g, final Transformation transformation,
+								  final Target target, final boolean alwayLoad) {
 		capacityLoadImage(imageData, imageView, null, widthPix, heightPix,
 				placeHolderDrawable, errDrawable, bitmap3g, transformation,
 				target, alwayLoad);
 	}
 
 	public void capacityLoadImage(final Object imageData,
-			final ImageView imageView, final OnClickListener qOnClickListener,
-			final int widthPix, final int heightPix,
-			final Drawable placeHolderDrawable, final Drawable errDrawable,
-			Bitmap bitmap3g, final Transformation transformation,
-			final Target target, final boolean alwayLoad) {
+								  final ImageView imageView, final OnClickListener qOnClickListener,
+								  final int widthPix, final int heightPix,
+								  final Drawable placeHolderDrawable, final Drawable errDrawable,
+								  Bitmap bitmap3g, final Transformation transformation,
+								  final Target target, final boolean alwayLoad) {
 		if (imageView != null) {
 			if (placeHolderDrawable != null) {
 				imageView.setImageDrawable(placeHolderDrawable);
@@ -850,7 +862,7 @@ public class ImageLoader {
 			NetConnChangeReceiver.dealNetworkInfo(context);
 		}
 		boolean isAutoLoad = NetConnChangeReceiver.wifi
-				 || alwayLoad;
+				|| alwayLoad;
 		if (existInDiskCache || isAutoLoad || imageData instanceof Integer) {
 			if (target != null) {
 				requestCreator.into(target);
@@ -888,7 +900,7 @@ public class ImageLoader {
 	}
 
 	public RequestCreator buildRequestCreator(int widthPix, int heightPix,
-			int resourceId) {
+											  int resourceId) {
 		RequestCreator requestCreator = picasso.load(resourceId);
 		if (widthPix > 0 && heightPix > 0) {
 			requestCreator.resize(widthPix, heightPix);
@@ -897,12 +909,12 @@ public class ImageLoader {
 	}
 
 	public RequestCreator buildRequestCreator(int widthPix, int heightPix,
-			Object imageData) {
+											  Object imageData) {
 		return buildRequestCreator(widthPix, heightPix, imageData, 0);
 	}
 
 	public RequestCreator buildRequestCreator(int widthPix, int heightPix,
-			Object imageData, int placeHolderId) {
+											  Object imageData, int placeHolderId) {
 		RequestCreator requestCreator = null;
 		if (imageData == null) {
 			return null;
@@ -1033,12 +1045,13 @@ public class ImageLoader {
 	 * 千万要注意：使用该方法较危险，在setPauseWork（true）后，要记得setPauseWork（false）
 	 * 否则会发生可怕的后果（后续图片加载功就没法继续工作） 原因：在于Imageloader此处是一个单例。
 	 *
-	 * @param pauseWork
-	 *            是否暂停下载任务
+	 * @param pauseWork 是否暂停下载任务
 	 */
 	public void setPauseWork(boolean pauseWork) {
 		if (qunarImageDownloader != null) {
 			qunarImageDownloader.setPauseWork(pauseWork);
 		}
 	}
+
+
 }

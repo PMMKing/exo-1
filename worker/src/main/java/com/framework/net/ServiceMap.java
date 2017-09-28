@@ -4,6 +4,7 @@ package com.framework.net;
 import com.framework.domain.response.BaseResult;
 import com.framework.utils.Enums;
 import com.page.detail.DetailResult;
+import com.page.detail.UpdateMyPortraitResult;
 import com.page.home.WorkerRepairResult;
 import com.page.login.activity.LoginResult;
 
@@ -20,6 +21,7 @@ public enum ServiceMap implements Enums.IType {
     getRepair("/getRepair.do", DetailResult.class),
     startRepair("/startRepair.do", BaseResult.class),
     endRepair("/endRepair.do", BaseResult.class),
+    uploadPic("/uploadPic.do", UpdateMyPortraitResult.class, ServiceMap.NET_TASKTYPE_FILE),
     ;
 
     private final String mType;
