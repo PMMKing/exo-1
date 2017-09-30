@@ -60,6 +60,10 @@ public class DetailActivity extends BaseActivity {
     ImageView imageBig;
     @BindView(R.id.ll_big)
     LinearLayout llBig;
+    @BindView(R.id.ll_bi2)
+    LinearLayout llBig2;
+    @BindView(R.id.image_big2)
+    ImageView imageBig2;
     private DetailData item;
     private String mUrl;
 
@@ -85,6 +89,7 @@ public class DetailActivity extends BaseActivity {
         btnEnd.setVisibility(View.GONE);
         if (!TextUtils.isEmpty(item.endpic)) {
             ImageLoader.getInstance(getContext()).loadImage(item.endpic, image_com);
+            ImageLoader.getInstance(getContext()).loadImage(item.endpic, imageBig2);
             image_com.setVisibility(View.VISIBLE);
         } else {
             image_com.setVisibility(View.GONE);
@@ -130,7 +135,13 @@ public class DetailActivity extends BaseActivity {
             case R.id.btn_end:
                 break;
             case R.id.image_com:
-                new UpLoadHeadImageDialog((BaseActivity) getContext()).show();
+                if (item.status ==3||item.status ==5||item.status ==4||item.status ==1){
+                    new UpLoadHeadImageDialog((BaseActivity) getContext()).show();
+                }else {
+                    if (llBig2.getVisibility() == View.GONE) {
+                        llBig2.setVisibility(View.VISIBLE);
+                    }
+                }
                 break;
         }
     }
@@ -143,6 +154,7 @@ public class DetailActivity extends BaseActivity {
             @Override
             public void OnChoose(String filePath) {
                 ImageLoader.getInstance(getContext()).loadImageFile(filePath, image_com);
+                ImageLoader.getInstance(getContext()).loadImageFile(filePath, imageBig2);
                 mFilePath = filePath;
                 sendImage(filePath);
             }
@@ -227,7 +239,7 @@ public class DetailActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.image, R.id.image_big, R.id.ll_big})
+    @OnClick({R.id.image, R.id.image_big, R.id.ll_big,R.id.image_big2, R.id.ll_bi2})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.image:
@@ -239,6 +251,13 @@ public class DetailActivity extends BaseActivity {
             case R.id.ll_big:
                 if (llBig.getVisibility() == View.VISIBLE) {
                     llBig.setVisibility(View.GONE);
+                }
+                break;
+
+            case R.id.image_big2:
+            case R.id.ll_bi2:
+                if (llBig2.getVisibility() == View.VISIBLE) {
+                    llBig2.setVisibility(View.GONE);
                 }
                 break;
         }

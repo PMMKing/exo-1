@@ -91,9 +91,8 @@
 
         <TextView
             android:id="@+id/tv_intro"
-            android:layout_width="80dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:paddingLeft="20dp"
             android:text="详情"
             android:textColor="#666"
@@ -106,6 +105,12 @@
             android:layout_gravity="center"
             android:layout_width="150dp"
             android:layout_height="150dp" />
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColor="#666"
+            android:textSize="12dp" />
         <Button
             android:id="@+id/btn_start"
             android:layout_width="match_parent"
@@ -144,6 +149,19 @@
 
         <ImageView
             android:id="@+id/image_big"
+            android:src="@drawable/moren"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_bi2"
+        android:background="#99000000"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_big2"
             android:src="@drawable/moren"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
