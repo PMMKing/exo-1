@@ -53,7 +53,6 @@ public class QuickPaiActivity extends BaseActivity implements SwipRefreshLayout.
     private void startRequest(int pager) {
         QpListParam param = new QpListParam();
         param.pageNo = pager;
-        param.pageSize = 7;
         Request.startRequest(param, pager, ServiceMap.getMySnapshots, mHandler);
     }
 

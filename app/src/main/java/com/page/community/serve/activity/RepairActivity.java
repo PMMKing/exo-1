@@ -105,7 +105,6 @@ public class RepairActivity extends BaseActivity implements OnItemClickListener<
         if (serviceMap == null) return;
         ServeParam param = new ServeParam();
         param.pageNo = pager;
-        param.pageSize = 7;
         Request.startRequest(param, pager, serviceMap, mHandler);
     }
 

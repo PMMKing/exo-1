@@ -174,6 +174,7 @@ public class EventDetailActivity extends BaseActivity {
             if (param.result.bstatus.code == 0) {
                 showToast("成功参与活动");
                 refreshJoin(1);
+                startRequest();
             } else {
                 showToast(param.result.bstatus.des);
             }
@@ -181,6 +182,7 @@ public class EventDetailActivity extends BaseActivity {
             if (param.result.bstatus.code == 0) {
                 showToast("成功取消参与活动");
                 refreshJoin(0);
+                startRequest();
             } else {
                 showToast(param.result.bstatus.des);
             }

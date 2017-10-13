@@ -96,6 +96,7 @@ public class QuickPaiNActivity extends BaseActivity implements SwipRefreshLayout
         ScommentParam param = new ScommentParam();
         String content = etScomment.getText().toString();
         param.snapshotid = id;
+
         param.content = content;
         Request.startRequest(param, ServiceMap.scomment, mHandler, Request.RequestFeature.BLOCK);
     }

@@ -345,6 +345,7 @@ public class NetworkManager implements TaskListener {
             throw new IllegalArgumentException("no task type = " + taskType);
         }
         synchronized (taskList) {
+            //在这里开始 tasks 数组中的item不为空
             if (taskList.size() < maxCount) {
                 taskList.add(task);
                 suc = true;
@@ -380,7 +381,7 @@ public class NetworkManager implements TaskListener {
                     }
                 }
             }
-
+//拦截重复请求
             if (isRepeat) {
                 return;
             }
@@ -596,6 +597,9 @@ public class NetworkManager implements TaskListener {
 
     }
 
+    /**
+     *
+     */
     public void checkTasks() {
         if (this.listSequence.size() == 0) {
             return;
@@ -695,9 +699,9 @@ public class NetworkManager implements TaskListener {
      * @param proxyPort 代理port
      *                  <p>
      *                  <pre>
-     *                                                                       CMWAP 10.0.0.172:80
-     *                                                                       CTWAP 10.0.0.200
-     *                                                                     </pre>
+     *                                                                                                         CMWAP 10.0.0.172:80
+     *                                                                                                         CTWAP 10.0.0.200
+     *                                                                                                       </pre>
      * @return httpClient
      */
     public static HttpClient getHttpClient(String proxyHost, int proxyPort) {

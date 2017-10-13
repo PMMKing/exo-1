@@ -115,7 +115,7 @@ public class DetailsActivity extends BaseActivity {
 
     private void evaluateRepair() {
         String trim = etNoCause.getText().toString().trim();
-        if (rbManyi.isChecked() && TextUtils.isEmpty(trim)) {
+        if (rbBumanyi.isChecked() && TextUtils.isEmpty(trim)) {
             showToast("不满意的原因还没有写~");
             return;
         }
