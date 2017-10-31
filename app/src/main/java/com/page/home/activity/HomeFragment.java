@@ -113,7 +113,7 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(status < 4){
+        if (status < 4) {
             getNotices();
             getLinks();
             getEvents();
@@ -177,7 +177,7 @@ public class HomeFragment extends BaseFragment {
         ArrayList<HomeModel> list = new ArrayList<>();
         list.add(new HomeModel("维修", R.drawable.weixiu));
         list.add(new HomeModel("送水", R.drawable.songshui));
-        list.add(new HomeModel("洗衣", R.drawable.xiyi));
+        list.add(new HomeModel("租房", R.drawable.pub_zufang_icon));
         list.add(new HomeModel("家政", R.drawable.baojie));
         list.add(new HomeModel("缴费", R.drawable.jiaofei));
         list.add(new HomeModel("超市", R.drawable.chaoshi));
