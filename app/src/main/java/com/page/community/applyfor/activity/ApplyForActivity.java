@@ -53,10 +53,10 @@ public class ApplyForActivity extends BaseActivity {
         String phone = etPhone.getText().toString().trim();
         String address = etAddress.getText().toString().trim();
 
-        if (ArrayUtils.isEmpty(imageUrls)) {
-            showToast("还没有上传图片");
-            return;
-        }
+//        if (ArrayUtils.isEmpty(imageUrls)) {
+//            showToast("还没有上传图片");
+//            return;
+//        }
         if (TextUtils.isEmpty(intro)) {
             showToast("问题描述不能为空");
             return;
@@ -88,13 +88,17 @@ public class ApplyForActivity extends BaseActivity {
             addView.onMsgSearchComplete(param);
         } else if (param.key == ServiceMap.submitRepair) {
             if (param.result.bstatus.code == 0) {
-                finish();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("refresh",true);
+                qBackForResult(RESULT_OK,bundle);
             } else {
                 showToast(param.result.bstatus.des);
             }
         } else if (param.key == ServiceMap.updateSnapshot) {
             if (param.result.bstatus.code == 0) {
-                finish();
+                Bundle bundle = new Bundle();
+                bundle.putBoolean("refresh",true);
+                qBackForResult(RESULT_OK,bundle);
             } else {
                 showToast(param.result.bstatus.des);
             }

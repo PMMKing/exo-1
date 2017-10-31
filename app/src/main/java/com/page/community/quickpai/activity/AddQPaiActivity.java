@@ -67,8 +67,8 @@ public class AddQPaiActivity extends BaseActivity {
             showToast("写一些随手拍描述在分享吧~");
             return;
         }
-        if (TextUtils.isEmpty(imageUrls[0]) || TextUtils.isEmpty(imageUrls[1]) || TextUtils.isEmpty(imageUrls[2])) {
-            showToast("看的不过瘾，多分享几张吧~");
+        if (TextUtils.isEmpty(imageUrls[0]) && TextUtils.isEmpty(imageUrls[1]) && TextUtils.isEmpty(imageUrls[2])) {
+            showToast("有图有真相，快去添加图片吧~");
             return;
         }
         AddQpParam param = new AddQpParam();

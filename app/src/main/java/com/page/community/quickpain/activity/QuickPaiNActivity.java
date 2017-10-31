@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -29,8 +31,10 @@ import com.page.community.quickpain.model.ScommentsParam;
 import com.page.community.quickpain.model.ScommentsReault;
 import com.page.community.quickpain.model.ScommentsReault.Data.Datas;
 import com.qfant.wuye.R;
+import com.taobao.weex.devtools.common.LogUtil;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -95,8 +99,11 @@ public class QuickPaiNActivity extends BaseActivity implements SwipRefreshLayout
     private void startRequestScomment() {
         ScommentParam param = new ScommentParam();
         String content = etScomment.getText().toString();
+        if (TextUtils.isEmpty(content.trim())) {
+            showToast("评论内容不能为空~");
+            return;
+        }
         param.snapshotid = id;
-
         param.content = content;
         Request.startRequest(param, ServiceMap.scomment, mHandler, Request.RequestFeature.BLOCK);
     }
@@ -146,7 +153,7 @@ public class QuickPaiNActivity extends BaseActivity implements SwipRefreshLayout
                     item.hearderData = result.data;
                     datases.remove(0);
                     datases.add(0, item);
-                    adapter.notifyItemChanged(0);
+                    adapter.notifyDataSetChanged();
                 }
             }
         } else if (param.key == ServiceMap.scomments) {
@@ -158,13 +165,12 @@ public class QuickPaiNActivity extends BaseActivity implements SwipRefreshLayout
                     datases.add(temp);
                     datases.addAll(1, result.data.datas);
                     adapter.notifyDataSetChanged();
-
                 } else {
                     adapter.addData(result.data.datas);
                 }
             } else {
                 if ((int) param.ext == 1) {
-                    showToast("还没有添加评论~");
+//                    showToast("还没有添加评论~");
                 } else {
                     showToast("没有更多了");
                 }

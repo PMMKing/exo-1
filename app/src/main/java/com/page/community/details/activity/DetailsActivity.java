@@ -5,6 +5,7 @@ import android.support.annotation.IdRes;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,6 +16,7 @@ import com.framework.net.NetworkParam;
 import com.framework.net.Request;
 import com.framework.net.ServiceMap;
 import com.framework.utils.TextViewUtils;
+import com.framework.utils.imageload.ImageLoad;
 import com.framework.utils.viewutils.ViewUtils;
 import com.framework.view.AddView;
 import com.page.community.details.model.RepairDetailParam;
@@ -34,8 +36,6 @@ import butterknife.OnClick;
 public class DetailsActivity extends BaseActivity {
 
     public static String ID = "id";
-    @BindView(R.id.addView)
-    AddView addView;
     @BindView(R.id.tv_repair_mame)
     TextView tvRepairMame;
     @BindView(R.id.ll_repair_name)
@@ -72,6 +72,8 @@ public class DetailsActivity extends BaseActivity {
     RadioGroup rgGroup;
     @BindView(R.id.tv_evaluate)
     TextView tvEvaluate;
+    @BindView(R.id.iv_image)
+    ImageView ivImage;
     private String id;
 
     @Override
@@ -85,7 +87,6 @@ public class DetailsActivity extends BaseActivity {
         setTitleBar("维修详情", true);
         id = myBundle.getString(ID);
         startRequest();
-        addView.setClickable(false);
         rgGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
@@ -128,7 +129,8 @@ public class DetailsActivity extends BaseActivity {
 
 
     private void updatView(Data data) {
-        addView.setAddNumber(new String[]{data.pic});
+        ImageLoad.loadPlaceholder(getContext(), data.pic, ivImage);
+        ViewUtils.setOrGone(ivImage, !TextUtils.isEmpty(data.pic));
         tvRepairAddress.setText(data.address);
         tvRepairMame.setText(data.intro);
         tvStatus.setText(getState(data.status));

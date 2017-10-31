@@ -47,7 +47,7 @@ import java.io.Serializable;
 /**
  * @author zexu
  */
-public enum ServiceMap implements Enums.IType, Serializable {
+public enum ServiceMap implements Enums.IType {
     OPENGATE("/opengate.do", BaseResult.class), //获取通讯录联系人
     getLinks("/getLinks.do", LinksResult.class),
     checkVersion("/checkVersion.do", BaseResult.class),

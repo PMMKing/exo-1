@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -99,7 +100,7 @@ public class HeadderView extends LinearLayout {
         vpImage.setCurrentItem(0);//一个的时候默认没有选中
     }
 
-    static class PagerAdapter extends FragmentPagerAdapter {
+    private static class PagerAdapter extends FragmentStatePagerAdapter {
 
         private List<Fragment> mFragments;
 
@@ -122,6 +123,8 @@ public class HeadderView extends LinearLayout {
         public int getCount() {
             return mFragments.size();
         }
+
+
 
     }
 
